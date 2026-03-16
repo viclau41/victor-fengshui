@@ -103,23 +103,33 @@
     }
 
     .lang-btn {
-        padding: 4px 12px;
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
-        border: 1px solid rgba(255,255,255,0.4);
+        border: 1px solid transparent;
         opacity: 0.7;
-        font-size: 13px;
-        color: white;
-        font-weight: 500;
-        background: rgba(255,255,255,0.1);
+        font-size: 0;
+        color: transparent;
+        overflow: hidden;
     }
 
     .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
         opacity: 1;
         border-color: white;
-        background: rgba(255,255,255,0.25);
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
     }
 
     /* 主要內容區域 */
@@ -821,8 +831,8 @@
     <header class="header">
         <!-- 語言切換按鈕 -->
         <div class="language-switcher">
-            <div class="lang-btn zh active" onclick="switchLanguage('zh')">中文</div>
-            <div class="lang-btn en" onclick="switchLanguage('en')">EN</div>
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
         </div>
 
         <div class="header-text">
@@ -908,7 +918,7 @@
                             </div>
                             <div class="payment-details">
                                 <div class="method-name" id="method-paypal">PayPal</div>
-                                <div class="method-value"><a href="/cdn-cgi/l/email-protection#b1c7d8d2ddd0c48580f1d6dcd0d8dd9fd2dedc"><span class="__cf_email__" data-cfemail="32445b515e5347060372555f535b5e1c515d5f">[email&#160;protected]</span></a></div>
+                                <div class="method-value"><a href="/cdn-cgi/l/email-protection#86f0efe5eae7f3b2b7c6e1ebe7efeaa8e5e9eb"><span class="__cf_email__" data-cfemail="57213e343b3622636617303a363e3b7934383a">[email&#160;protected]</span></a></div>
                             </div>
                         </div>
                     </div>
@@ -956,7 +966,7 @@
     <footer class="footer">
         <p id="copyright">版權所有 &copy; 2002-2026</p>
         <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
-        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#295f404a45485c1d18694e44484045074a4644"><span class="__cf_email__" data-cfemail="4d3b242e212c38797c0d2a202c2421632e2220">[email&#160;protected]</span></a></p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#2f59464c434e5a1b1e6f48424e4643014c4042"><span class="__cf_email__" data-cfemail="14627d777875612025547379757d783a777b79">[email&#160;protected]</span></a></p>
     </footer>
 </div>
 
