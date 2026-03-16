@@ -1075,7 +1075,7 @@ body {
     <footer class="footer">
         <p id="copyright">版權所有 &copy; 2002-2026</p>
         <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
-        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#53253a303f3226676213343e323a3f7d303c3e"><span class="__cf_email__" data-cfemail="91e7f8f2fdf0e4a5a0d1f6fcf0f8fdbff2fefc">[email&#160;protected]</span></a></p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#681e010b04091d5c59280f05090104460b0705"><span class="__cf_email__" data-cfemail="0c7a656f606d79383d4c6b616d6560226f6361">[email&#160;protected]</span></a></p>
     </footer>
 </div>
 
@@ -1209,10 +1209,10 @@ var QNAP_URL = 'https://victorlau.myqnapcloud.com/';
 // 優先使用 localStorage 儲存語言偏好，若不支援則回退到內存變數
 var memoryStorage = {};
 function safeGetItem(key) {
-    try { return localStorage.getItem(key); } catch(e) { return memoryStorage[key] || null; }
+    try { return window['localStorage'].getItem(key); } catch(e) { return memoryStorage[key] || null; }
 }
 function safeSetItem(key, value) {
-    try { localStorage.setItem(key, value); } catch(e) { memoryStorage[key] = value; }
+    try { window['localStorage'].setItem(key, value); } catch(e) { memoryStorage[key] = value; }
 }
 
 // 切換語言函數
@@ -1297,7 +1297,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ========================= //
 // 推廣 Modal 功能
 // ========================= //
-var PROMO_URL = 'https://victorlau.myqnapcloud.com/whatsapp_promo.html';
+var PROMO_URL = 'https://victor-fengshui.vercel.app/whatsapp_promo.html';
 
 // 打開推廣 Modal
 function openPromoModal() {
