@@ -1,0 +1,1740 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-HK">
+<HEAD>
+    <TITLE>Victor 專業風水師 - 流年運程預測</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!-- 加載字體和圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <STYLE type=text/css>
+    :root {
+        --primary-color: #5D5CDE;
+        --secondary-color: #336633;
+        --accent-color: #ff9900;
+        --light-bg: #f8f8f8;
+        --dark-bg: #2c3e50;
+        --text-dark: #333;
+        --text-light: #fff;
+        --border-radius: 12px;
+        --box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+        
+        /* 預測專用配色 */
+        --forecast-purple: #6a4c93;
+        --forecast-blue: #457b9d;
+        --forecast-red: #e63946;
+        --forecast-green: #2a9d8f;
+        --forecast-gold: #f9c74f;
+    }
+    
+    /* 深色模式變量 */
+    .dark-mode {
+        --light-bg: #1a1a2e;
+        --dark-bg: #121212;
+        --text-dark: #f1f1f1;
+        --accent-color: #ff9e00;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    body {
+        font-family: 'Noto Sans TC', Arial, "Microsoft JhengHei", sans-serif;
+        background-color: #f5f1e6;
+        background-image: url('https://victorlau.myqnapcloud.com/backpaper.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 防止水平滾動 */
+        width: 100%;
+    }
+    
+    /* 頁面容器 */
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        width: 100%;
+    }
+    
+    /* 頂部區域改善 - 參考inprice7.htm修復太極圖案 */
+    .header {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* 太極圖案替代 - 使用背景圖像 */
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://victorlau.myqnapcloud.com/taichi.webp');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 300px;
+        opacity: 0.1;
+        z-index: 0;
+        animation: pulse 8s infinite ease-in-out;
+    }
+    
+    /* 太極背景元素 - 使用圖像而不是CSS */
+    .taichi-bg {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background-image: url('https://victorlau.myqnapcloud.com/taichi.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+    }
+    
+    .taichi-bg.left {
+        top: -30px;
+        left: -30px;
+    }
+    
+    .taichi-bg.right {
+        bottom: -30px;
+        right: -30px;
+    }
+    
+    .header-text {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .header-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header-subtitle {
+        font-size: 28px;
+        font-weight: normal;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* 內容區域 */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    /* 側邊欄 - 確保背景為白色 */
+    .sidebar {
+        flex: 0 0 280px;
+        background-color: #ffffff;
+        padding: 30px 20px;
+    }
+    
+    /* 主內容 */
+    .main-content {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #fff, #f8f8f8);
+        overflow-x: hidden; /* 防止內容溢出 */
+    }
+    
+    /* 導航菜單 */
+    .nav-menu {
+        list-style: none;
+        margin-top: 20px;
+    }
+    
+    .nav-item {
+        margin-bottom: 12px;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, #ffd280, #ffb84d);
+        color: #333;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link:hover {
+        background: linear-gradient(to bottom, #ffb84d, #ff9900);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-color: rgba(255,153,0,0.5);
+    }
+    
+    .nav-link .icon {
+        margin-right: 10px;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* 服務網格 - 改善手機顯示 */
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .service-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-item.active {
+        background-color: #FFCC66;
+        box-shadow: 0 0 0 2px var(--primary-color), 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        background-color: #fff8e6;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        transition: var(--transition);
+        height: 100%;
+        font-size: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+    }
+    
+    .service-item.active .service-link {
+        background-color: #FFCC66;
+    }
+    
+    .service-link:hover {
+        background-color: #FFCC66;
+    }
+    
+    /* 主要內容樣式 */
+    .content-section {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 25px 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: visible;
+        width: 100%;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .section-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 28px;
+        color: var(--forecast-purple);
+        display: inline-block;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .year-badge {
+        background: linear-gradient(135deg, var(--forecast-purple), var(--forecast-blue));
+        color: white;
+        padding: 5px 15px;
+        border-radius: 30px;
+        font-size: 24px;
+        margin-right: 10px;
+        vertical-align: middle;
+        box-shadow: 0 3px 8px rgba(106, 76, 147, 0.3);
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--forecast-purple), transparent);
+    }
+    
+    .section-subtitle {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    /* 視頻鏈接改善 */
+    .video-container {
+        margin: 30px 0;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .video-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, var(--forecast-red), #b91d32);
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+    }
+    
+    .video-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+    }
+    
+    .video-icon {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    
+    /* 套餐卡片 */
+    .package-card {
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        margin-bottom: 30px;
+        position: relative;
+        transition: var(--transition);
+        width: 100%;
+    }
+    
+    .package-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .package-header {
+        background: linear-gradient(135deg, var(--forecast-blue), var(--forecast-purple));
+        padding: 20px 30px;
+        color: white;
+    }
+    
+    .package-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .package-title i {
+        margin-right: 10px;
+    }
+    
+    .package-info {
+        font-size: 16px;
+        opacity: 0.9;
+    }
+    
+    .package-body {
+        padding: 25px 30px;
+    }
+    
+    .service-list {
+        margin-bottom: 25px;
+    }
+    
+    .service-item-box {
+        display: flex;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed rgba(0,0,0,0.1);
+    }
+    
+    .service-item-box:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    
+    .service-icon-wrapper {
+        flex: 0 0 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--forecast-purple);
+        border-radius: 50%;
+        margin-right: 15px;
+        color: white;
+        font-size: 18px;
+    }
+    
+    .service-content {
+        flex: 1;
+    }
+    
+    .service-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: var(--forecast-purple);
+    }
+    
+    .service-desc {
+        color: #666;
+        font-size: 16px;
+    }
+    
+    .package-footer {
+        background-color: #f8f9fa;
+        padding: 15px 30px;
+        font-weight: bold;
+        font-size: 18px;
+        color: var(--forecast-purple);
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .price-tag {
+        font-size: 24px;
+        color: var(--forecast-red);
+        margin-left: 5px;
+    }
+    
+    /* 增強版套餐 */
+    .advanced-package .package-header {
+        background: linear-gradient(135deg, var(--forecast-gold), #d4a017);
+    }
+    
+    .advanced-package .service-icon-wrapper {
+        background-color: var(--forecast-gold);
+    }
+    
+    .advanced-package .service-name {
+        color: #d4a017;
+    }
+    
+    .advanced-package .package-footer {
+        color: #d4a017;
+    }
+    
+    /* 年度運勢視覺化 - 使用純CSS實現 */
+    .fortune-wheel {
+        margin: 40px auto;
+        max-width: 600px;
+        position: relative;
+    }
+    
+    .wheel-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .wheel-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: conic-gradient(
+            var(--forecast-red) 0deg,
+            var(--forecast-gold) 45deg,
+            var(--forecast-green) 90deg,
+            var(--forecast-blue) 135deg,
+            var(--forecast-purple) 180deg,
+            var(--forecast-gold) 225deg,
+            var(--forecast-green) 270deg,
+            var(--forecast-blue) 315deg,
+            var(--forecast-red) 360deg
+        );
+        border-radius: 50%;
+    }
+    
+    .wheel-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        height: 30%;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        z-index: 2;
+    }
+    
+    .wheel-center-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--forecast-purple);
+        text-align: center;
+    }
+    
+    .wheel-month {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+        transform-origin: center;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .fortune-legend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        margin-right: 8px;
+    }
+    
+    .legend-color.finance { background-color: var(--forecast-gold); }
+    .legend-color.career { background-color: var(--forecast-purple); }
+    .legend-color.health { background-color: var(--forecast-green); }
+    .legend-color.relationships { background-color: var(--forecast-blue); }
+    .legend-color.luck { background-color: var(--forecast-red); }
+    
+    .legend-text {
+        font-size: 14px;
+        color: #666;
+    }
+    
+    /* 命理系統展示 - 使用CSS生成圖像而非外部SVG */
+    .divination-systems {
+        margin-top: 50px;
+        width: 100%;
+    }
+    
+    .systems-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+        width: 100%;
+    }
+    
+    .system-card {
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: var(--transition);
+    }
+    
+    .system-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .system-header {
+        position: relative;
+        height: 160px;
+        overflow: hidden;
+        background-color: var(--forecast-blue);
+    }
+    
+    .system-card:nth-child(1) .system-header { 
+        background-color: var(--forecast-purple); 
+    }
+    
+    .system-card:nth-child(2) .system-header { 
+        background-color: var(--forecast-blue); 
+    }
+    
+    .system-card:nth-child(3) .system-header { 
+        background-color: var(--forecast-green); 
+    }
+    
+    .system-header .system-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px;
+        color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .system-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    }
+    
+    .system-title {
+        position: absolute;
+        bottom: 15px;
+        left: 20px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        z-index: 2;
+    }
+    
+    .system-body {
+        padding: 20px;
+    }
+    
+    .system-desc {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        overflow: visible !important;
+        word-break: normal;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    .system-tag {
+        display: inline-block;
+        background-color: #f0f0f0;
+        color: #666;
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-size: 12px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    
+    /* 成功案例部分 */
+    .case-studies-section {
+        margin-top: 40px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .case-card {
+        background-color: #fff;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: visible;
+    }
+    
+    .case-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--forecast-purple), var(--forecast-gold));
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+    
+    .case-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--forecast-purple);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .case-title i {
+        margin-right: 10px;
+        color: var(--forecast-gold);
+    }
+    
+    .case-description {
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.6;
+        overflow: visible;
+        display: block;
+    }
+    
+    .case-result {
+        font-weight: bold;
+        color: var(--forecast-green);
+        padding: 10px 15px;
+        background-color: rgba(42, 157, 143, 0.1);
+        border-radius: 6px;
+        margin-top: 15px;
+        overflow: visible;
+        display: block;
+    }
+    
+    /* 語言切換按鈕 */
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .lang-btn {
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        opacity: 0.7;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
+        opacity: 1;
+        border-color: white;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+    
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
+    }
+    
+    /* 底部區域 */
+    .footer {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF9900, #FFCC66, #FF9900);
+    }
+    
+    .footer p {
+        margin: 8px 0;
+        letter-spacing: 0.5px;
+        font-size: 14px;
+    }
+    
+    .footer a {
+        color: white;
+        text-decoration: underline;
+        transition: var(--transition);
+    }
+    
+    .footer a:hover {
+        color: #ffd280;
+        text-decoration: none;
+    }
+    
+    /* 動畫效果 */
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    /* 響應式設計 - 確保手機版顯示一致性 */
+    @media (max-width: 1200px) {
+        .page-container {
+            margin: 0;
+            border-radius: 0;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .content-container {
+            flex-direction: column;
+        }
+        
+        .sidebar {
+            flex: 0 0 100%;
+        }
+        
+        .header-title {
+            font-size: 36px;
+        }
+        
+        .header-subtitle {
+            font-size: 22px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* 確保在手機上顯示為兩列 */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .systems-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .fortune-wheel {
+            max-width: 400px;
+        }
+        
+        .wheel-month {
+            width: 50px;
+            height: 25px;
+            font-size: 14px;
+        }
+        
+        .video-link {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .package-body, 
+        .package-header, 
+        .package-footer {
+            padding: 20px 15px;
+        }
+        
+        .service-item-box {
+            flex-direction: column;
+        }
+        
+        .service-icon-wrapper {
+            margin-bottom: 10px;
+        }
+        
+        .case-card {
+            padding: 20px 15px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+        }
+        
+        .year-badge {
+            font-size: 20px;
+            padding: 4px 12px;
+        }
+        
+        .fortune-wheel {
+            max-width: 300px;
+        }
+        
+        .wheel-month {
+            width: 40px;
+            height: 20px;
+            font-size: 12px;
+        }
+        
+        .wheel-center-text {
+            font-size: 16px;
+        }
+        
+        .fortune-legend {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        
+        .service-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        
+        .case-title {
+            font-size: 18px;
+        }
+        
+        .case-description,
+        .case-result {
+            font-size: 14px;
+        }
+    }
+    
+    /* 手機極小螢幕適配 - 保持兩列布局 */
+    @media (max-width: 480px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        
+        .service-link {
+            font-size: 12px;
+            padding: 8px 4px;
+            letter-spacing: -0.03em;
+        }
+        
+        .package-header .package-title {
+            font-size: 20px;
+        }
+        
+        .package-header .package-info {
+            font-size: 14px;
+        }
+        
+        .service-name {
+            font-size: 16px;
+        }
+        
+        .service-desc {
+            font-size: 14px;
+        }
+        
+        .package-footer {
+            font-size: 16px;
+        }
+        
+        #service14, #service15 {
+            font-size: 11px;
+            letter-spacing: -0.05em;
+        }
+    }
+    
+    /* 超小螢幕設備 */
+    @media (max-width: 360px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 4px;
+        }
+        
+        .service-link {
+            font-size: 11px;
+            padding: 6px 3px;
+            letter-spacing: -0.05em;
+        }
+        
+        #service14, #service15 {
+            font-size: 10px;
+            letter-spacing: -0.08em;
+        }
+        
+        .wheel-center-text {
+            font-size: 14px;
+        }
+        
+        .service-icon-wrapper {
+            width: 30px;
+            height: 30px;
+            font-size: 14px;
+        }
+    }
+    
+    /* Android 設備專用修復 */
+    @supports (-webkit-touch-callout: none) and (not (contain: paint)) {
+        /* 僅安卓設備適用的樣式（排除iOS） */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        
+        .service-link {
+            font-size: 11px !important;
+            padding: 8px 4px !important;
+            letter-spacing: -0.05em !important;
+        }
+        
+        /* 微信服務特別處理 */
+        #service14, #service15 {
+            font-size: 10px !important;
+            letter-spacing: -0.08em !important;
+        }
+        
+        /* 確保所有文字都可見 */
+        .case-description, 
+        .case-result, 
+        .system-desc,
+        .service-desc,
+        .service-name {
+            overflow: visible !important;
+            max-height: none !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            line-height: 1.5 !important;
+            position: relative !important;
+            z-index: 5 !important;
+        }
+    }
+    </STYLE>
+</HEAD>
+
+<BODY>
+<div class="page-container">
+    <!-- 頂部區域改善 - 使用與inprice7.htm一致的太極圖案設計 -->
+    <header class="header">
+        <!-- 語言切換按鈕 -->
+        <div class="language-switcher">
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
+        </div>
+        
+        <!-- 太極背景元素 - 使用圖像方式實現 -->
+        <div class="taichi-bg left"></div>
+        <div class="taichi-bg right"></div>
+        
+        <div class="header-text">
+            <h1 class="header-title" id="site-title">日 觀 天 象</h1>
+            <h2 class="header-subtitle" id="site-subtitle">Victor 專業風水師</h2>
+        </div>
+    </header>
+
+    <!-- 內容區域 -->
+    <div class="content-container">
+        <!-- 側邊欄 - 確保背景為白色 -->
+        <div class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.htm" class="nav-link" id="nav-home"><span class="icon"><i class="fas fa-home"></i></span>首頁</a></li>
+                    <li class="nav-item"><a href="phpbb" class="nav-link" id="nav-forum"><span class="icon"><i class="fas fa-comments"></i></span>留言版</a></li>
+                    <li class="nav-item"><a href="https://hexagram-api.vercel.app/" class="nav-link" id="nav-hexagram" target="_blank"><span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦</a></li>
+                    <li class="nav-item"><a href="inprice1.htm" class="nav-link" id="nav-services"><span class="icon"><i class="fas fa-compass"></i></span>風水收費服務</a></li>
+                    <li class="nav-item"><a href="https://victorlau.myqnapcloud.com/prestashop/metaphysics/tw/" class="nav-link" id="nav-shop"><span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物</a></li>
+                    <li class="nav-item"><a href="bank.htm" class="nav-link" id="nav-bank"><span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳</a></li>
+                    <li class="nav-item"><a href="aboutus.htm" class="nav-link" id="nav-contact"><span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- 主內容區域 -->
+        <div class="main-content">
+            <!-- 服務菜單 - 確保手機上顯示為兩列 -->
+            <div class="service-grid">
+                <div class="service-item"><a href="inprice1.htm" class="service-link" id="service1">超準易占</a></div>
+                <div class="service-item"><a href="inprice2.htm" class="service-link" id="service2">電話問事</a></div>
+                <div class="service-item"><a href="inprice3.htm" class="service-link" id="service3">2人愛情占星術</a></div>
+                <div class="service-item"><a href="inprice4.htm" class="service-link" id="service4">命理套餐</a></div>
+                
+                <div class="service-item"><a href="inprice5.htm" class="service-link" id="service5">手機號碼占卜</a></div>
+                <div class="service-item"><a href="inprice6.htm" class="service-link" id="service6">轉手機號碼改運</a></div>
+                <div class="service-item"><a href="inprice7.htm" class="service-link" id="service7">專業風水佈局</a></div>
+                <div class="service-item"><a href="inprice9.htm" class="service-link" id="service9">擇吉日</a></div>
+                
+                <div class="service-item"><a href="inprice10.htm" class="service-link" id="service10">改名</a></div>
+                <div class="service-item"><a href="inprice11.htm" class="service-link" id="service11">大氣改運</a></div>
+                <div class="service-item"><a href="inprice13.htm" class="service-link" id="service13">租買樓宇評級</a></div>
+                <div class="service-item"><a href="inprice8.htm" class="service-link" id="service8">其他服務</a></div>
+                
+                <div class="service-item active"><a href="inprice12.htm" class="service-link" id="service12">流年運程預測</a></div>
+                <div class="service-item"><a href="inprice14.htm" class="service-link" id="service14">微信whatapps命理</a></div>
+                <div class="service-item"><a href="inprice15.htm" class="service-link" id="service15">微信whatapps起卦</a></div>
+                <div class="service-item"><a href="inprice16.htm" class="service-link" id="service16">結 緣 區</a></div>
+            </div>
+            
+            <!-- 主要內容 -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title" id="content-title">
+                        <span class="year-badge">2026</span>個人流年運程預測
+                    </h2>
+                    <p class="section-subtitle" id="content-subtitle">預知未來，掌握先機，讓您的每一年都能順勢而為，事半功倍</p>
+                </div>
+                
+                <!-- 視頻連結 - 改善移動端顯示 -->
+                <div class="video-container">
+                    <a onclick="window.open('https://victorlau.myqnapcloud.com/sun/fortune_analysis.mp4','流年運程預測','');return false;" href="https://victorlau.myqnapcloud.com/sun/fortune_analysis.mp4" class="video-link" id="video-link">
+                        <span class="video-icon"><i class="fas fa-play-circle"></i></span>
+                        <span id="video-text">按此觀看影片介紹</span>
+                    </a>
+                </div>
+                
+                <!-- 年度運勢輪 - 使用CSS實現 -->
+                <div class="fortune-wheel">
+                    <div class="wheel-container">
+                        <div class="wheel-bg"></div>
+                        <div class="wheel-center">
+                            <div class="wheel-center-text" id="wheel-text">2026年<br>運勢預測</div>
+                        </div>
+                        
+                        <!-- 月份標籤 - 通過 JavaScript 動態生成 -->
+                    </div>
+                    
+                    <div class="fortune-legend">
+                        <div class="legend-item">
+                            <div class="legend-color finance"></div>
+                            <div class="legend-text" id="legend-finance">財運</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color career"></div>
+                            <div class="legend-text" id="legend-career">事業運</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color health"></div>
+                            <div class="legend-text" id="legend-health">健康運</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color relationships"></div>
+                            <div class="legend-text" id="legend-relationships">人際運</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color luck"></div>
+                            <div class="legend-text" id="legend-luck">桃花運</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 基本套餐 -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-title" id="basic-title">
+                            <i class="fas fa-star"></i>基本套餐
+                        </h3>
+                        <p class="package-info" id="basic-info">精準分析基本運勢，提供有效改運策略</p>
+                    </div>
+                    
+                    <div class="package-body">
+                        <div class="service-list">
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-user-chart"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="basic-item1-name">子平八字分析</div>
+                                    <div class="service-desc" id="basic-item1-desc">尋找當年喜用神，指導如何能令當年馬上行好運，調整生活環境以配合八字所需元素</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="basic-item2-name">紫微斗數分析</div>
+                                    <div class="service-desc" id="basic-item2-desc">分析流年及大運走勢，指出潛在問題並提供化解方法，幫助選擇最有利的行動時機</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="package-footer" id="basic-price">
+                        諮詢時間約90分鐘，費用：<span class="price-tag">$1500</span>
+                    </div>
+                </div>
+                
+                <!-- 增強版套餐 -->
+                <div class="package-card advanced-package">
+                    <div class="package-header">
+                        <h3 class="package-title" id="adv-title">
+                            <i class="fas fa-crown"></i>強化版套餐
+                        </h3>
+                        <p class="package-info" id="adv-info">全方位多系統分析，深入解析運勢與改運</p>
+                    </div>
+                    
+                    <div class="package-body">
+                        <div class="service-list">
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-user-chart"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item1-name">子平八字分析</div>
+                                    <div class="service-desc" id="adv-item1-desc">尋找當年喜用神，如何能令當年馬上行好運</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item2-name">紫微斗數分析</div>
+                                    <div class="service-desc" id="adv-item2-desc">看流年及大運，指出及化解當年問題</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item3-name">奇門遁甲大氣改運法</div>
+                                    <div class="service-desc" id="adv-item3-desc">幫助化解住屋及公司的方位問題，宜用於有轉運搬屋、轉工或轉公司用</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item4-name">大六壬人事改運法</div>
+                                    <div class="service-desc" id="adv-item4-desc">幫助明確說明身邊所有人的真正角色，使身邊眾人皆可用</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-moon"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item5-name">中國七政四餘皇曆占星</div>
+                                    <div class="service-desc" id="adv-item5-desc">流年大運等等</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item6-name">天機改運密碼</div>
+                                    <div class="service-desc" id="adv-item6-desc">家人及各合夥人關係走勢</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-compass"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item7-name">玄空風水分析</div>
+                                    <div class="service-desc" id="adv-item7-desc">住屋及公司基本流年風水問題及化解</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item-box">
+                                <div class="service-icon-wrapper">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div class="service-content">
+                                    <div class="service-name" id="adv-item8-name">文王京房甲子易卦</div>
+                                    <div class="service-desc" id="adv-item8-desc">詳細明確說明流年事情的始未</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="package-footer" id="adv-price">
+                        時間約3小時或更長(依需求)，每小時：<span class="price-tag">$1000</span>
+                    </div>
+                </div>
+                
+                <!-- 命理系統展示區 - 使用CSS生成圖像 -->
+                <div class="divination-systems">
+                    <h3 class="section-title" id="systems-title">專業運程預測命理系統</h3>
+                    
+                    <div class="systems-grid">
+                        <div class="system-card">
+                            <div class="system-header">
+                                <div class="system-icon"><i class="fas fa-clock"></i></div>
+                                <div class="system-overlay"></div>
+                                <div class="system-title" id="system1-title">子平八字</div>
+                            </div>
+                            <div class="system-body">
+                                <p class="system-desc" id="system1-desc">
+                                    基於出生年、月、日、時形成的「四柱」，分析五行(金木水火土)平衡與生克關係，判斷一生命運及流年運勢。通過尋找「喜用神」，為您提供最適合的個人化改運策略。
+                                </p>
+                                <div class="system-tag" id="system1-tag1">命盤分析</div>
+                                <div class="system-tag" id="system1-tag2">五行平衡</div>
+                                <div class="system-tag" id="system1-tag3">流年大運</div>
+                            </div>
+                        </div>
+                        
+                        <div class="system-card">
+                            <div class="system-header">
+                                <div class="system-icon"><i class="fas fa-star"></i></div>
+                                <div class="system-overlay"></div>
+                                <div class="system-title" id="system2-title">紫微斗數</div>
+                            </div>
+                            <div class="system-body">
+                                <p class="system-desc" id="system2-desc">
+                                    將天上星辰投射到地上宮位，形成您獨特的命盤圖。通過分析「主星」、「輔星」，以及它們在12宮的配置，精確預測事業、財富、婚姻、健康等人生各方面的發展。
+                                </p>
+                                <div class="system-tag" id="system2-tag1">星曜解讀</div>
+                                <div class="system-tag" id="system2-tag2">宮位分析</div>
+                                <div class="system-tag" id="system2-tag3">行運流年</div>
+                            </div>
+                        </div>
+                        
+                        <div class="system-card">
+                            <div class="system-header">
+                                <div class="system-icon"><i class="fas fa-compass"></i></div>
+                                <div class="system-overlay"></div>
+                                <div class="system-title" id="system3-title">奇門遁甲</div>
+                            </div>
+                            <div class="system-body">
+                                <p class="system-desc" id="system3-desc">
+                                    古代兵家之術，現代改運奇法。通過設定特定時空「局」，分析九宮八卦的能量分布，選出最有利的時間、方位，幫助您破除困局，把握機遇，化險為夷。
+                                </p>
+                                <div class="system-tag" id="system3-tag1">方位學</div>
+                                <div class="system-tag" id="system3-tag2">時空選擇</div>
+                                <div class="system-tag" id="system3-tag3">破局改運</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 成功案例展示 -->
+                <div class="case-studies-section">
+                    <h3 class="section-title" id="cases-title">預測成功案例</h3>
+                    
+                    <div class="case-card">
+                        <h4 class="case-title" id="case1-title">
+                            <i class="fas fa-briefcase"></i>事業轉機預知案例
+                        </h4>
+                        <p class="case-description" id="case1-desc">
+                            黃先生在科技公司工作多年，職位一直無法提升。2023年底進行流年預測，我們發現他2024年5月有「祿馬交輝」的貴人運，但需主動把握，且忌諱向西南方發展。建議他在5月前準備好升職所需的一切條件，並在東北方向尋找機會。
+                        </p>
+                        <div class="case-result" id="case1-result">
+                            預測實現：黃先生在2024年4月按建議開始積極準備，5月初獲東北區域一家新公司的獵頭邀請，6月成功入職新公司，薪資提升40%，職位晉升兩級。
+                        </div>
+                    </div>
+                    
+                    <div class="case-card">
+                        <h4 class="case-title" id="case2-title">
+                            <i class="fas fa-house-user"></i>投資決策案例
+                        </h4>
+                        <p class="case-description" id="case2-desc">
+                            李女士本打算2023年底購入一處房產投資，在進行流年運程分析時，我們觀察到2024年她的「財星」運行不順，而2025年初地支有「財庫」出現，且與她八字中的偏財星相生。建議她延遲購房計劃至2025年初，且優先考慮城市東南方位的房產。
+                        </p>
+                        <div class="case-result" id="case2-result">
+                            預測實現：李女士接受建議暫緩購房，2024年房市果然下跌，至2025年1月，她以比原計劃低15%的價格購入東南區一處房產，一年後該區域因新政策受益，房價上漲22%。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部區域 -->
+    <footer class="footer">
+        <p id="copyright">版權所有 © 2002-2026</p>
+        <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#394f505a55584c0d08795e54585055175a5654064a4c5b535c5a4d04dc87a7de8f8bd099b8dcbc9ed1909bdcacb6"><span class="__cf_email__" data-cfemail="72041b111e1307464332151f131b1e5c111d1f">[email&#160;protected]</span></a></p>
+    </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// 動態生成月份標籤
+document.addEventListener('DOMContentLoaded', function() {
+    const wheelContainer = document.querySelector('.wheel-container');
+    const months = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
+    const englishMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    months.forEach((month, index) => {
+        const angle = (index * 30) - 90; // -90 degrees to start at top
+        const radians = angle * Math.PI / 180;
+        const centerX = 50; // percentage
+        const centerY = 50; // percentage
+        const radius = 42; // percentage
+        
+        const x = centerX + radius * Math.cos(radians);
+        const y = centerY + radius * Math.sin(radians);
+        
+        const monthEl = document.createElement('div');
+        monthEl.className = 'wheel-month';
+        monthEl.id = `month-${index + 1}`;
+        monthEl.textContent = month;
+        monthEl.style.left = `${x}%`;
+        monthEl.style.top = `${y}%`;
+        monthEl.style.transform = `translate(-50%, -50%) rotate(${angle + 90}deg)`;
+        
+        wheelContainer.appendChild(monthEl);
+    });
+});
+
+// 儲存中英文對照資料
+const translations = {
+    'zh': {
+        'site-title': '日 觀 天 象',
+        'site-subtitle': 'Victor 專業風水師',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>首頁',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>留言版',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>風水收費服務',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們',
+        
+        // 服務菜單
+        'service1': '超準易占',
+        'service2': '電話問事',
+        'service3': '2人愛情占星術',
+        'service4': '命理套餐',
+        'service5': '手機號碼占卜',
+        'service6': '轉手機號碼改運',
+        'service7': '專業風水佈局',
+        'service8': '其他服務',
+        'service9': '擇吉日',
+        'service10': '改名',
+        'service11': '大氣改運',
+        'service12': '流年運程預測',
+        'service13': '租買樓宇評級',
+        'service14': '微信whatapps命理',
+        'service15': '微信whatapps起卦',
+        'service16': '結 緣 區',
+        
+        // 頁面內容
+        'content-title': '<span class="year-badge">2026</span>個人流年運程預測',
+        'content-subtitle': '預知未來，掌握先機，讓您的每一年都能順勢而為，事半功倍',
+        'video-text': '按此觀看影片介紹',
+        'wheel-text': '2026年<br>運勢預測',
+        
+        // 運勢圖例
+        'legend-finance': '財運',
+        'legend-career': '事業運',
+        'legend-health': '健康運',
+        'legend-relationships': '人際運',
+        'legend-luck': '桃花運',
+        
+        // 基本套餐
+        'basic-title': '<i class="fas fa-star"></i>基本套餐',
+        'basic-info': '精準分析基本運勢，提供有效改運策略',
+        'basic-item1-name': '子平八字分析',
+        'basic-item1-desc': '尋找當年喜用神，指導如何能令當年馬上行好運，調整生活環境以配合八字所需元素',
+        'basic-item2-name': '紫微斗數分析',
+        'basic-item2-desc': '分析流年及大運走勢，指出潛在問題並提供化解方法，幫助選擇最有利的行動時機',
+        'basic-price': '諮詢時間約90分鐘，費用：<span class="price-tag">$1500</span>',
+        
+        // 強化版套餐
+        'adv-title': '<i class="fas fa-crown"></i>強化版套餐',
+        'adv-info': '全方位多系統分析，深入解析運勢與改運',
+        'adv-item1-name': '子平八字分析',
+        'adv-item1-desc': '尋找當年喜用神，如何能令當年馬上行好運',
+        'adv-item2-name': '紫微斗數分析',
+        'adv-item2-desc': '看流年及大運，指出及化解當年問題',
+        'adv-item3-name': '奇門遁甲大氣改運法',
+        'adv-item3-desc': '幫助化解住屋及公司的方位問題，宜用於有轉運搬屋、轉工或轉公司用',
+        'adv-item4-name': '大六壬人事改運法',
+        'adv-item4-desc': '幫助明確說明身邊所有人的真正角色，使身邊眾人皆可用',
+        'adv-item5-name': '中國七政四餘皇曆占星',
+        'adv-item5-desc': '流年大運等等',
+        'adv-item6-name': '天機改運密碼',
+        'adv-item6-desc': '家人及各合夥人關係走勢',
+        'adv-item7-name': '玄空風水分析',
+        'adv-item7-desc': '住屋及公司基本流年風水問題及化解',
+        'adv-item8-name': '文王京房甲子易卦',
+        'adv-item8-desc': '詳細明確說明流年事情的始未',
+        'adv-price': '時間約3小時或更長(依需求)，每小時：<span class="price-tag">$1000</span>',
+        
+        // 命理系統
+        'systems-title': '專業運程預測命理系統',
+        'system1-title': '子平八字',
+        'system1-desc': '基於出生年、月、日、時形成的「四柱」，分析五行(金木水火土)平衡與生克關係，判斷一生命運及流年運勢。通過尋找「喜用神」，為您提供最適合的個人化改運策略。',
+        'system1-tag1': '命盤分析',
+        'system1-tag2': '五行平衡',
+        'system1-tag3': '流年大運',
+        'system2-title': '紫微斗數',
+        'system2-desc': '將天上星辰投射到地上宮位，形成您獨特的命盤圖。通過分析「主星」、「輔星」，以及它們在12宮的配置，精確預測事業、財富、婚姻、健康等人生各方面的發展。',
+        'system2-tag1': '星曜解讀',
+        'system2-tag2': '宮位分析',
+        'system2-tag3': '行運流年',
+        'system3-title': '奇門遁甲',
+        'system3-desc': '古代兵家之術，現代改運奇法。通過設定特定時空「局」，分析九宮八卦的能量分布，選出最有利的時間、方位，幫助您破除困局，把握機遇，化險為夷。',
+        'system3-tag1': '方位學',
+        'system3-tag2': '時空選擇',
+        'system3-tag3': '破局改運',
+        
+        // 案例
+        'cases-title': '預測成功案例',
+        'case1-title': '<i class="fas fa-briefcase"></i>事業轉機預知案例',
+        'case1-desc': '黃先生在科技公司工作多年，職位一直無法提升。2023年底進行流年預測，我們發現他2024年5月有「祿馬交輝」的貴人運，但需主動把握，且忌諱向西南方發展。建議他在5月前準備好升職所需的一切條件，並在東北方向尋找機會。',
+        'case1-result': '預測實現：黃先生在2024年4月按建議開始積極準備，5月初獲東北區域一家新公司的獵頭邀請，6月成功入職新公司，薪資提升40%，職位晉升兩級。',
+        'case2-title': '<i class="fas fa-house-user"></i>投資決策案例',
+        'case2-desc': '李女士本打算2023年底購入一處房產投資，在進行流年運程分析時，我們觀察到2024年她的「財星」運行不順，而2025年初地支有「財庫」出現，且與她八字中的偏財星相生。建議她延遲購房計劃至2025年初，且優先考慮城市東南方位的房產。',
+        'case2-result': '預測實現：李女士接受建議暫緩購房，2024年房市果然下跌，至2025年1月，她以比原計劃低15%的價格購入東南區一處房產，一年後該區域因新政策受益，房價上漲22%。',
+        
+        // 頁腳
+        'copyright': '版權所有 © 2002-2026',
+        'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
+        'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
+    },
+    'en': {
+        'site-title': 'Daily Observation of Heaven',
+        'site-subtitle': 'Victor Professional Feng Shui Master',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>Home',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>Forum',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>Online Divination',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>Feng Shui Services',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>Online Shop',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>Banking & Transfer',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>Contact Us',
+        
+
+        // 服務菜單
+        'service1': 'Yi Divination',
+        'service2': 'Phone Consultation',
+        'service3': 'Love Astrology',
+        'service4': 'Destiny Package',
+        'service5': 'Phone Number Divination',
+        'service6': 'Phone Number Transformation',
+        'service7': 'Feng Shui Arrangement',
+        'service8': 'Other Services',
+        'service9': 'Auspicious Date Selection',
+        'service10': 'Name Change',
+        'service11': 'Energy Transformation',
+        'service12': 'Annual Forecast',
+        'service13': 'Property Rating',
+        'service14': 'WeChat/WhatsApp Consultation',
+        'service15': 'WeChat/WhatsApp Divination',
+        'service16': 'Free Services',
+        
+        // 頁面內容
+        'content-title': '<span class="year-badge">2026</span>Personal Annual Forecast',
+        'content-subtitle': 'Foresee the future, gain the advantage, and make each year effective and efficient',
+        'video-text': 'Click to watch video introduction',
+        'wheel-text': '2026<br>Fortune Forecast',
+        
+        // 運勢圖例
+        'legend-finance': 'Wealth',
+        'legend-career': 'Career',
+        'legend-health': 'Health',
+        'legend-relationships': 'Relationships',
+        'legend-luck': 'Romance',
+        
+        // 基本套餐
+        'basic-title': '<i class="fas fa-star"></i>Basic Package',
+        'basic-info': 'Precise analysis of basic fortune and effective enhancement strategies',
+        'basic-item1-name': 'BaZi Analysis',
+        'basic-item1-desc': 'Identifying favorable elements for the year and guiding how to immediately improve your luck by adjusting your living environment to match the elements your BaZi needs',
+        'basic-item2-name': 'Purple Star Analysis',
+        'basic-item2-desc': 'Analyzing annual and major fortune cycles, identifying potential issues and providing solutions, helping you choose the most advantageous timing for actions',
+        'basic-price': 'Consultation time: approx. 90 minutes, Fee: <span class="price-tag">$1500</span>',
+        
+        // 強化版套餐
+        'adv-title': '<i class="fas fa-crown"></i>Advanced Package',
+        'adv-info': 'Comprehensive multi-system analysis with in-depth fortune interpretation',
+        'adv-item1-name': 'BaZi Analysis',
+        'adv-item1-desc': 'Identifying favorable elements and how to immediately improve your fortune',
+        'adv-item2-name': 'Purple Star Analysis',
+        'adv-item2-desc': 'Examining fortune cycles and resolving annual challenges',
+        'adv-item3-name': 'Qi Men Dun Jia Energy Method',
+        'adv-item3-desc': 'Helping resolve directional issues in homes and offices, ideal for relocations, job changes, or company transitions',
+        'adv-item4-name': 'Da Liu Ren Relationship Method',
+        'adv-item4-desc': 'Helping clarify the true roles of people around you and how to utilize their influence effectively',
+        'adv-item5-name': 'Chinese Seven Stars Four Remainders',
+        'adv-item5-desc': 'Imperial Calendar Astrology for annual fortune cycles',
+        'adv-item6-name': 'Celestial Transformation Code',
+        'adv-item6-desc': 'Family and partnership relationship trends',
+        'adv-item7-name': 'Flying Stars Feng Shui',
+        'adv-item7-desc': 'Basic annual feng shui issues in homes and businesses and their solutions',
+        'adv-item8-name': 'King Wen & Jing Fang Jia Zi Yi',
+        'adv-item8-desc': 'Detailed explanation of how annual events will unfold from beginning to end',
+        'adv-price': 'Time: approx. 3+ hours (based on need), Hourly rate: <span class="price-tag">$1000</span>',
+        
+        // 命理系統
+        'systems-title': 'Professional Fortune Prediction Systems',
+        'system1-title': 'BaZi (Four Pillars)',
+        'system1-desc': 'Based on the "Four Pillars" formed by your birth year, month, day, and hour, this system analyzes the balance and interactions of the Five Elements (Metal, Wood, Water, Fire, Earth) to determine your life destiny and annual fortune. By finding your "Favorable Element," we provide personalized fortune enhancement strategies.',
+        'system1-tag1': 'Chart Analysis',
+        'system1-tag2': 'Five Elements',
+        'system1-tag3': 'Annual Cycles',
+        'system2-title': 'Purple Star Astrology',
+        'system2-desc': 'This system projects celestial stars onto earthly palaces, creating your unique destiny chart. By analyzing the "Main Stars," "Supporting Stars," and their configuration across 12 houses, it precisely forecasts developments in career, wealth, marriage, health, and other life aspects.',
+        'system2-tag1': 'Star Reading',
+        'system2-tag2': 'House Analysis',
+        'system2-tag3': 'Fortune Cycles',
+        'system3-title': 'Qi Men Dun Jia',
+        'system3-desc': 'An ancient military strategy, now a remarkable fortune enhancement technique. By setting specific time-space "formations," analyzing energy distribution across nine palaces and eight trigrams, it helps you select the most advantageous times and directions to break through difficulties, seize opportunities, and turn danger into safety.',
+        'system3-tag1': 'Directional Study',
+        'system3-tag2': 'Time-Space Selection',
+        'system3-tag3': 'Breakthrough Strategy',
+        
+        // 案例
+        'cases-title': 'Successful Prediction Cases',
+        'case1-title': '<i class="fas fa-briefcase"></i>Career Turning Point Prediction',
+        'case1-desc': 'Mr. Huang had worked at a tech company for many years without promotion. During his annual forecast at the end of 2023, we discovered he would have "Auspicious Star Confluence" benefactor energy in May 2024, but he needed to actively seize it and avoid developing in the southwest direction. We advised him to prepare all conditions necessary for promotion before May and to look for opportunities in the northeast.',
+        'case1-result': 'Prediction fulfilled: Following our advice, Mr. Huang began actively preparing in April 2024. In early May, he received a headhunter invitation from a company in the northeast region. By June, he had successfully joined the new company with a 40% salary increase and a two-level position upgrade.',
+        'case2-title': '<i class="fas fa-house-user"></i>Investment Decision Case',
+        'case2-desc': 'Ms. Li had planned to purchase investment property in late 2023. During her annual fortune analysis, we observed that her "Wealth Star" was unfavorable in 2024, but in early 2025, the "Wealth Repository" would appear in her earthly branches, creating harmony with the indirect wealth star in her BaZi. We advised her to delay her property purchase until early 2025 and to prioritize properties in the southeastern part of the city.',
+        'case2-result': 'Prediction fulfilled: Ms. Li accepted our advice and postponed her purchase. As predicted, the property market indeed declined in 2024. By January 2025, she purchased a property in the southeast district at a price 15% lower than her original budget. One year later, due to new policies benefiting that area, the property value increased by 22%.',
+        
+        // 頁腳
+        'copyright': 'Copyright © 2002-2026',
+        'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
+        'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
+    }
+};
+
+// 切換語言函數
+function switchLanguage(lang) {
+    // 更新語言按鈕的激活狀態
+    document.querySelector('.lang-btn.zh').classList.remove('active');
+    document.querySelector('.lang-btn.en').classList.remove('active');
+    document.querySelector(`.lang-btn.${lang}`).classList.add('active');
+    
+    // 更新頁面上的所有文本內容
+    for (const [id, text] of Object.entries(translations[lang])) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = text;
+        }
+    }
+    
+    // 更新月份標籤
+    const months = (lang === 'zh') ? 
+        ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'] : 
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    
+    months.forEach((month, index) => {
+        const monthEl = document.getElementById(`month-${index + 1}`);
+        if (monthEl) {
+            monthEl.textContent = month;
+        }
+    });
+    
+    // 特別處理 - 更新網上購物的URL
+    const shopLink = document.getElementById('nav-shop');
+    if (shopLink) {
+        shopLink.href = lang === 'zh' ? 'https://victorlau.myqnapcloud.com/prestashop/metaphysics/tw/' : 'https://victorlau.myqnapcloud.com/prestashop/metaphysics/en/';
+    }
+    
+    // 存儲用戶的語言偏好
+    localStorage.setItem('preferredLanguage', lang);
+    
+    // 更新頁面標題
+    document.title = lang === 'zh' ? 'Victor 專業風水師 - 流年運程預測' : 'Victor Professional Feng Shui Master - Annual Forecast';
+    
+    // 執行修復文字顯示的函數
+    setTimeout(ensureTextVisibility, 100);
+}
+
+// 確保文字正確顯示的增強函數
+function ensureTextVisibility() {
+    // 設置所有可能隱藏的文字容器為可見
+    const textElements = document.querySelectorAll('.service-desc, .system-desc, .case-description, .case-result');
+    textElements.forEach(el => {
+        if (el) {
+            el.style.overflow = 'visible';
+            el.style.display = 'block';
+            el.style.visibility = 'visible';
+            el.style.opacity = '1';
+            el.style.maxHeight = 'none';
+            el.style.position = 'relative';
+            el.style.zIndex = '5';
+        }
+    });
+    
+    // 特別處理長服務名
+    const longServices = document.querySelectorAll('#service14, #service15');
+    longServices.forEach(el => {
+        if (el) {
+            if (window.innerWidth <= 360) {
+                el.style.fontSize = '10px';
+                el.style.letterSpacing = '-0.08em';
+            } else if (window.innerWidth <= 480) {
+                el.style.fontSize = '11px';
+                el.style.letterSpacing = '-0.05em';
+            }
+        }
+    });
+}
+
+// 頁面加載時檢查用戶的語言偏好並修復文字顯示
+document.addEventListener('DOMContentLoaded', function() {
+    const preferredLanguage = localStorage.getItem('preferredLanguage') || 'zh';
+    switchLanguage(preferredLanguage);
+    
+    // 處理深色模式
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    });
+    
+    // 修復文字顯示
+    ensureTextVisibility();
+    
+    // 窗口大小變化時重新修復
+    window.addEventListener('resize', ensureTextVisibility);
+    
+    // 頁面完全加載後再次確保文字可見
+    window.addEventListener('load', function() {
+        setTimeout(ensureTextVisibility, 500);
+    });
+});
+</script>
+<!-- Victor AI 聊天助手 -->
+<script src="victor-ai-chat.js"></script>
+</BODY>
+</HTML>

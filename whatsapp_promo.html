@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春分開運 · AI智慧起卦</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            overflow: hidden;
+            height: 100vh;
+            background: #0d2818;
+        }
+
+        /* ===== SLIDER LAYOUT ===== */
+        .slider {
+            display: flex;
+            width: 200vw;
+            height: 100vh;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            overflow-x: visible;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slide-inner {
+            width: 100%;
+            max-width: 460px;
+            padding: 0 22px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* ===== NAV DOTS ===== */
+        .nav-dots {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 14px;
+            z-index: 100;
+            background: rgba(0,0,0,0.45);
+            padding: 7px 18px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #d4af37;
+            box-shadow: 0 0 10px rgba(212,175,55,0.6);
+            transform: scale(1.25);
+        }
+
+        /* ===== SHARED STYLES ===== */
+        .top-badge {
+            width: 100%;
+            text-align: center;
+            padding: 13px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 44px;
+            background: linear-gradient(180deg, #f4e4a6 0%, #d4af37 50%, #9a7b1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 6px 0;
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            font-family: 'ZCOOL XiaoWei', serif;
+            color: #c9a227;
+            font-size: 15px;
+            letter-spacing: 4px;
+            margin-bottom: 16px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 900;
+            font-family: 'Noto Serif TC', serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        .cta-btn:hover { transform: translateY(-2px); }
+
+        /* =========================================== */
+        /* PAGE 1: SPRING EQUINOX                      */
+        /* =========================================== */
+        .slide-spring {
+            background: linear-gradient(175deg, #0b1f14 0%, #163d28 45%, #0e2a1a 100%);
+            position: relative;
+        }
+
+        .slide-spring .top-badge {
+            background: linear-gradient(135deg, #1e5c38 0%, #2d8a52 50%, #1e5c38 100%);
+            color: #d4eedd;
+        }
+
+        /* Floating cherry blossom petals */
+        .petals {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 50;
+            transition: opacity 0.5s;
+        }
+
+        .petal {
+            position: absolute;
+            opacity: 0;
+            animation: petal-fall linear infinite;
+        }
+
+        .petal:nth-child(1) { left: 7%;  font-size: 18px; animation-duration: 9s;   animation-delay: 0s;   }
+        .petal:nth-child(2) { left: 22%; font-size: 13px; animation-duration: 11s;  animation-delay: 2.5s; }
+        .petal:nth-child(3) { left: 42%; font-size: 16px; animation-duration: 8s;   animation-delay: 1s;   }
+        .petal:nth-child(4) { left: 62%; font-size: 14px; animation-duration: 10.5s;animation-delay: 3.5s; }
+        .petal:nth-child(5) { left: 80%; font-size: 17px; animation-duration: 12s;  animation-delay: 0.8s; }
+        .petal:nth-child(6) { left: 50%; font-size: 11px; animation-duration: 9.5s; animation-delay: 5s;   }
+        .petal:nth-child(7) { left: 35%; font-size: 15px; animation-duration: 13s;  animation-delay: 6.5s; }
+
+        @keyframes petal-fall {
+            0%   { transform: translateY(-30px) rotate(0deg) translateX(0);    opacity: 0; }
+            8%   { opacity: 0.75; }
+            50%  { transform: translateY(50vh) rotate(200deg) translateX(30px); opacity: 0.6; }
+            92%  { opacity: 0.35; }
+            100% { transform: translateY(105vh) rotate(380deg) translateX(-20px); opacity: 0; }
+        }
+
+        /* Yin-yang visual */
+        .spring-visual {
+            position: relative;
+            width: 160px; height: 160px;
+            margin: 22px 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+
+        .spring-glow {
+            position: absolute;
+            width: 170px; height: 170px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(78,175,80,0.25) 0%, rgba(212,175,55,0.12) 50%, transparent 72%);
+            animation: glow-pulse 3.5s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50%      { transform: scale(1.18); opacity: 1; }
+        }
+
+        .yinyang-wrap {
+            width: 96px;
+            height: 96px;
+            animation: gentle-spin 35s linear infinite;
+        }
+
+        .yinyang-svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes gentle-spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        .equinox-date {
+            display: inline-block;
+            background: rgba(212,175,55,0.12);
+            border: 1px solid rgba(212,175,55,0.3);
+            color: #d4af37;
+            padding: 5px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .spring-desc {
+            color: #9ec5a8;
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: center;
+            margin: 0 0 16px;
+            max-width: 340px;
+        }
+
+        .spring-features {
+            width: 100%;
+            max-width: 360px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(78,175,80,0.2);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 6px;
+        }
+
+        .sf-item {
+            display: flex;
+            align-items: center;
+            margin: 9px 0;
+            color: #b8d9c0;
+            font-size: 14px;
+        }
+
+        .sf-dot {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2d6b3f, #4caf50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .sf-hl { color: #f4e4a6; font-weight: 700; }
+
+        .slide-spring .cta-btn {
+            background: linear-gradient(135deg, #2d6b3f 0%, #4caf50 50%, #2d6b3f 100%);
+            color: #fff;
+            box-shadow: 0 4px 22px rgba(74,158,102,0.4);
+            border: 1px solid rgba(212,175,55,0.25);
+        }
+
+        .slide-spring .cta-btn:hover {
+            box-shadow: 0 8px 35px rgba(74,158,102,0.55);
+        }
+
+        .swipe-hint {
+            color: rgba(212,175,55,0.45);
+            font-size: 12px;
+            margin-top: 14px;
+            animation: hint-bob 2.5s ease-in-out infinite;
+        }
+
+        @keyframes hint-bob {
+            0%, 100% { opacity: 0.35; transform: translateX(0); }
+            50%      { opacity: 0.75; transform: translateX(4px); }
+        }
+
+        /* =========================================== */
+        /* PAGE 2: AI SYSTEMS                          */
+        /* =========================================== */
+        .slide-ai {
+            background: linear-gradient(175deg, #0c1125 0%, #1a2a4d 45%, #0f1830 100%);
+        }
+
+        .slide-ai .top-badge {
+            background: linear-gradient(135deg, #3a2872 0%, #5D5CDE 50%, #3a2872 100%);
+            color: #dbd6f4;
+        }
+
+        /* 4 system cards */
+        .sys-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+            max-width: 380px;
+            margin: 12px 0;
+        }
+
+        .sys-card {
+            border-radius: 14px;
+            padding: 16px 10px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+
+        .sys-card:hover { transform: translateY(-3px); }
+
+        .sys-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .sys-emoji { font-size: 30px; margin-bottom: 6px; }
+
+        .sys-name {
+            font-weight: 900;
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .sys-desc { font-size: 11px; opacity: 0.7; }
+
+        .sys-liuren {
+            background: linear-gradient(150deg, #2a1f08 0%, #3d2f12 100%);
+            color: #f4e4a6;
+        }
+        .sys-liuren::after { background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+
+        .sys-jiazi {
+            background: linear-gradient(150deg, #082a12 0%, #123d1e 100%);
+            color: #a8e6b8;
+        }
+        .sys-jiazi::after { background: linear-gradient(90deg, transparent, #4caf50, transparent); }
+
+        .sys-tarot {
+            background: linear-gradient(150deg, #2a080f 0%, #3d121a 100%);
+            color: #f4a6b0;
+        }
+        .sys-tarot::after { background: linear-gradient(90deg, transparent, #e74c6f, transparent); }
+
+        .sys-qimen {
+            background: linear-gradient(150deg, #082a2b 0%, #12393d 100%);
+            color: #a6e4e6;
+        }
+        .sys-qimen::after { background: linear-gradient(90deg, transparent, #26c6da, transparent); }
+
+        .new-tag {
+            position: absolute;
+            top: 7px; right: 7px;
+            background: linear-gradient(135deg, #e53935, #c62828);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            animation: tag-blink 1.8s ease-in-out infinite;
+        }
+
+        @keyframes tag-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.55; }
+        }
+
+        /* AI Assistant highlight */
+        .ai-box {
+            width: 100%;
+            max-width: 380px;
+            background: linear-gradient(135deg, rgba(93,92,222,0.12) 0%, rgba(212,175,55,0.08) 100%);
+            border: 1px solid rgba(93,92,222,0.3);
+            border-radius: 14px;
+            padding: 16px;
+            margin: 12px 0;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .ai-orb {
+            width: 46px; height: 46px;
+            min-width: 46px;
+            background: linear-gradient(135deg, #5D5CDE, #8b89ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 0 18px rgba(93,92,222,0.45);
+            animation: orb-glow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes orb-glow {
+            0%, 100% { box-shadow: 0 0 18px rgba(93,92,222,0.4); }
+            50%      { box-shadow: 0 0 30px rgba(93,92,222,0.7); }
+        }
+
+        .ai-label {
+            color: #b0aeff;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .ai-text {
+            color: #8a88bb;
+            font-size: 13px;
+            line-height: 1.75;
+        }
+
+        .ai-hl { color: #f4e4a6; font-weight: 700; }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(212,175,55,0.12);
+            border: 1px solid rgba(212,175,55,0.3);
+            color: #d4af37;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .slide-ai .cta-btn {
+            background: linear-gradient(135deg, #4a48c9 0%, #6b69ff 50%, #4a48c9 100%);
+            color: #fff;
+            box-shadow: 0 4px 22px rgba(93,92,222,0.4);
+        }
+
+        .slide-ai .cta-btn:hover {
+            box-shadow: 0 8px 35px rgba(93,92,222,0.55);
+        }
+
+        .share-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.35);
+            padding: 7px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 8px;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .share-btn:hover {
+            border-color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.55);
+        }
+
+        .footer-brand {
+            color: rgba(255,255,255,0.2);
+            font-size: 11px;
+            margin-top: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SHARE MODAL ===== */
+        .share-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .share-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .share-box {
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background: #1a1a2e;
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .share-overlay.open .share-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .share-x {
+            position: absolute;
+            top: 10px; right: 14px;
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 26px;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .share-x:hover { color: #aaa; }
+
+        .share-heading {
+            color: #d4af37;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .share-preview {
+            background: #111;
+            border-radius: 10px;
+            padding: 14px;
+            color: #bbb;
+            font-size: 12.5px;
+            line-height: 1.85;
+            white-space: pre-wrap;
+            margin-bottom: 14px;
+            max-height: 280px;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .share-copy-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            border: none;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Noto Serif TC', serif;
+            background: linear-gradient(135deg, #2d6b3f, #4caf50);
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .share-copy-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(74,158,102,0.4);
+        }
+
+        .share-guide {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .share-guide h4 {
+            color: #d4af37;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .share-guide ol {
+            color: #777;
+            font-size: 12px;
+            padding-left: 18px;
+            line-height: 1.9;
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-80px);
+            background: linear-gradient(135deg, #2d6b3f, #4caf50);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            z-index: 300;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-height: 620px) {
+            .spring-visual { width: 120px; height: 120px; margin: 14px 0 6px; }
+            .spring-glow { width: 130px; height: 130px; }
+            .yinyang-wrap { width: 70px; height: 70px; }
+            .section-title { font-size: 36px; }
+            .section-sub { font-size: 13px; margin-bottom: 10px; }
+            .spring-desc { font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
+            .sf-item { margin: 6px 0; font-size: 13px; }
+            .sf-dot { width: 26px; height: 26px; font-size: 12px; }
+            .cta-btn { padding: 11px 28px; font-size: 14px; }
+            .slide-inner { padding-bottom: 40px; }
+            .sys-card { padding: 12px 8px; }
+            .ai-box { padding: 12px; gap: 10px; }
+            .ai-orb { width: 38px; height: 38px; min-width: 38px; font-size: 18px; }
+        }
+
+        @media (max-width: 340px) {
+            .slide-inner { padding: 0 14px 45px; }
+            .section-title { font-size: 34px; }
+            .sys-grid { gap: 7px; }
+            .sys-card { padding: 12px 8px; }
+            .sys-name { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Floating petals -->
+<div class="petals" id="petals">
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌿</div>
+    <div class="petal">🌸</div>
+</div>
+
+<!-- ============================================ -->
+<!-- SLIDER                                       -->
+<!-- ============================================ -->
+<div class="slider" id="slider">
+
+    <!-- ===== SLIDE 1: SPRING EQUINOX ===== -->
+    <div class="slide slide-spring">
+        <div class="top-badge">🌿 春分節氣 · 開運特別企劃 🌿</div>
+        <div class="slide-inner">
+
+            <div class="spring-visual">
+                <div class="spring-glow"></div>
+                <div class="yinyang-wrap">
+                    <svg class="yinyang-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="yyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7be8a4"/>
+                                <stop offset="50%" stop-color="#d4af37"/>
+                                <stop offset="100%" stop-color="#f4e4a6"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="1.5"/>
+                        <circle cx="50" cy="50" r="44" fill="#0e2a1a"/>
+                        <path d="M50,6 A44,44 0 0,1 50,94 A22,22 0 0,1 50,50 A22,22 0 0,0 50,6 Z" fill="url(#yyGrad)" opacity="0.9"/>
+                        <circle cx="50" cy="28" r="7" fill="#d4af37"/>
+                        <circle cx="50" cy="72" r="7" fill="#1a3a28"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h1 class="section-title">春分開運</h1>
+            <p class="section-sub">陰陽平衡 · 萬物更新</p>
+
+            <div class="equinox-date">📅 春分 · 三月二十日</div>
+
+            <p class="spring-desc">
+                春分，日夜均分，陰陽調和。<br>
+                自古以來是占卜問事的上佳時機。<br>
+                把握節氣能量，洞悉前路吉凶。
+            </p>
+
+            <div class="spring-features">
+                <div class="sf-item">
+                    <span class="sf-dot">🌸</span>
+                    <span><span class="sf-hl">春分運勢</span> 特別分析</span>
+                </div>
+                <div class="sf-item">
+                    <span class="sf-dot">📜</span>
+                    <span><span class="sf-hl">專業精準解讀</span> 即問即答</span>
+                </div>
+                <div class="sf-item">
+                    <span class="sf-dot">🎁</span>
+                    <span><span class="sf-hl">易經塔羅</span> 免費開放中</span>
+                </div>
+            </div>
+
+            <a href="https://iching-tarot.vercel.app/?lang=zh-TW" target="_blank" class="cta-btn">
+                ✨ 免費體驗 · 春分開運占卜 ✨
+            </a>
+
+            <div class="swipe-hint">向左滑動查看智慧起卦系統 →</div>
+        </div>
+    </div>
+
+    <!-- ===== SLIDE 2: AI SYSTEMS ===== -->
+    <div class="slide slide-ai">
+        <div class="top-badge">🔮 全港首創 · 智慧玄學平台 🔮</div>
+        <div class="slide-inner">
+
+            <h1 class="section-title">三式齊備</h1>
+            <p class="section-sub">智慧賦能 · 洞悉天機</p>
+
+            <div class="sys-grid">
+                <div class="sys-card sys-liuren">
+                    <div class="sys-emoji">🧮</div>
+                    <div class="sys-name">大六壬</div>
+                    <div class="sys-desc">智慧排盤</div>
+                </div>
+                <div class="sys-card sys-jiazi">
+                    <div class="sys-emoji">☯</div>
+                    <div class="sys-name">甲子易</div>
+                    <div class="sys-desc">專業起卦</div>
+                </div>
+                <div class="sys-card sys-tarot">
+                    <div class="sys-emoji">🎴</div>
+                    <div class="sys-name">易經塔羅</div>
+                    <div class="sys-desc">精準解讀</div>
+                </div>
+                <div class="sys-card sys-qimen">
+                    <div class="sys-emoji">✨</div>
+                    <div class="sys-name">奇門遁甲</div>
+                    <div class="sys-desc">智慧排盤</div>
+                    <span class="new-tag">NEW</span>
+                </div>
+            </div>
+
+            <div class="ai-box">
+                <div class="ai-orb">🔮</div>
+                <div>
+                    <div class="ai-label">玄學智能助手</div>
+                    <div class="ai-text">
+                        不知道問甚麼？用哪個系統？<br>
+                        智能助手從交談中幫您<span class="ai-hl">整理問題</span>，<br>
+                        推薦<span class="ai-hl">最適合的起卦方式</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-badge">💎 專業付費系統 · 精準專業</div>
+
+            <a href="https://hexagram-api.vercel.app/?lang=zh-TW" target="_blank" class="cta-btn">
+                🚀 立即體驗完整系統 🚀
+            </a>
+
+            <button class="share-btn" onclick="openShare()">📲 分享至 WhatsApp</button>
+
+            <div class="footer-brand">Victor 專業風水師 · 超過20年經驗</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Nav dots -->
+<div class="nav-dots">
+    <span class="dot active" onclick="goSlide(0)"></span>
+    <span class="dot" onclick="goSlide(1)"></span>
+</div>
+
+<!-- ============================================ -->
+<!-- SHARE MODAL                                  -->
+<!-- ============================================ -->
+<div class="share-overlay" id="shareOverlay" onclick="closeShare(event)">
+    <div class="share-box" onclick="event.stopPropagation()">
+        <button class="share-x" onclick="closeShareDirect()">&times;</button>
+        <div class="share-heading">📲 WhatsApp 宣傳文案</div>
+        <div class="share-preview">🌿 春分開運 · 把握先機 🌿
+
+春分，陰陽調和之時
+自古是占卜問事的上佳時機！
+
+━━━━━━━━━━━━━━━
+
+🔮 全港首創智慧玄學起卦系統
+四大系統齊備：
+
+🧮 大六壬 · 智慧排盤
+☯️ 甲子易 · 專業起卦
+🎴 易經塔羅 · 精準解讀
+✨ 奇門遁甲 · 智慧排盤【NEW】
+
+🔮 玄學智能助手
+不知道問甚麼？智能助手幫你整理問題
+選擇最適合的起卦系統！
+
+━━━━━━━━━━━━━━━
+
+👇 立即體驗 👇
+https://hexagram-api.vercel.app/?lang=zh-TW
+
+春分時節，讓千年智慧為你指引方向 🌸</div>
+        <button class="share-copy-btn" onclick="copyPromoText()">📋 複製文案</button>
+        <div class="share-guide">
+            <h4>📲 分享教學</h4>
+            <ol>
+                <li>點擊「複製文案」按鈕</li>
+                <li>打開 WhatsApp，選擇聯絡人或群組</li>
+                <li>貼上文案，發送！🚀</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">✅ 已複製到剪貼板！</div>
+
+<script>
+    /* ===== SLIDER ===== */
+    var current = 0;
+    var slider = document.getElementById('slider');
+    var dots = document.querySelectorAll('.dot');
+    var petals = document.getElementById('petals');
+
+    // Auto-rotate timer
+    var autoTimer = null;
+    var AUTO_INTERVAL = 12000; // 12 seconds
+
+    function goSlide(n) {
+        current = n;
+        slider.style.transform = 'translateX(-' + (n * 50) + '%)';
+        for (var i = 0; i < dots.length; i++) {
+            dots[i].classList.toggle('active', i === n);
+        }
+        // Petals only on spring slide
+        petals.style.opacity = n === 0 ? '1' : '0';
+        // Reset auto-rotate after any navigation
+        resetAutoTimer();
+    }
+
+    function resetAutoTimer() {
+        if (autoTimer) clearTimeout(autoTimer);
+        autoTimer = setTimeout(function() {
+            // Toggle: 0→1, 1→0
+            goSlide(current === 0 ? 1 : 0);
+        }, AUTO_INTERVAL);
+    }
+
+    // Start auto-rotate on load
+    resetAutoTimer();
+
+    // Touch swipe
+    var sx = 0, sy = 0;
+    slider.addEventListener('touchstart', function(e) {
+        sx = e.touches[0].clientX;
+        sy = e.touches[0].clientY;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', function(e) {
+        var dx = sx - e.changedTouches[0].clientX;
+        var dy = sy - e.changedTouches[0].clientY;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+            if (dx > 0 && current < 1) goSlide(1);
+            if (dx < 0 && current > 0) goSlide(0);
+        }
+    }, { passive: true });
+
+    // Keyboard arrows
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' && current < 1) goSlide(1);
+        if (e.key === 'ArrowLeft' && current > 0) goSlide(0);
+        if (e.key === 'Escape') closeShareDirect();
+    });
+
+    /* ===== SHARE MODAL ===== */
+    var shareTitle = '春分開運 · 智慧起卦';
+    var promoText = '🌿 春分開運 · 把握先機 🌿\n\n春分，陰陽調和之時\n自古是占卜問事的上佳時機！\n\n━━━━━━━━━━━━━━━\n\n🔮 全港首創智慧玄學起卦系統\n四大系統齊備：\n\n🧮 大六壬 · 智慧排盤\n☯️ 甲子易 · 專業起卦\n🎴 易經塔羅 · 精準解讀\n✨ 奇門遁甲 · 智慧排盤【NEW】\n\n🔮 玄學智能助手\n不知道問甚麼？智能助手幫你整理問題\n選擇最適合的起卦系統！\n\n🎁 易經塔羅 免費開放中！\n\n━━━━━━━━━━━━━━━\n\n👇 立即體驗 👇\nhttps://hexagram-api.vercel.app/?lang=zh-TW\n\n春分時節，讓千年智慧為你指引方向 🌸';
+
+    function openShare() {
+        // Try native share first (mobile)
+        if (navigator.share) {
+            navigator.share({
+                title: shareTitle,
+                text: promoText
+            }).catch(function() {
+                // Fallback to modal
+                showShareModal();
+            });
+        } else {
+            showShareModal();
+        }
+    }
+
+    function showShareModal() {
+        document.getElementById('shareOverlay').classList.add('open');
+    }
+
+    function closeShare(e) {
+        if (e && e.target !== e.currentTarget) return;
+        document.getElementById('shareOverlay').classList.remove('open');
+    }
+
+    function closeShareDirect() {
+        document.getElementById('shareOverlay').classList.remove('open');
+    }
+
+    function copyPromoText() {
+        navigator.clipboard.writeText(promoText).then(function() {
+            showToast();
+        });
+    }
+
+    function showToast() {
+        var t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(function() { t.classList.remove('show'); }, 2200);
+    }
+
+    /* ===== LANGUAGE SUPPORT ===== */
+    var promoTextEn = '🌿 Spring Fortune · Seize the Moment 🌿\n\nSpring Equinox — Yin and Yang in perfect harmony.\nSince ancient times, the ideal moment for divination!\n\n━━━━━━━━━━━━━━━\n\n🔮 First in HK · Intelligent Metaphysical Platform\nFour divination systems:\n\n🧮 Da Liu Ren · Intelligent Charting\n☯️ Jia Zi Yi · Professional Divination\n🎴 I Ching Tarot · Precise Reading\n✨ Qi Men Dun Jia · Intelligent Charting【NEW】\n\n🔮 Metaphysical Assistant\nNot sure what to ask? Our assistant helps you\norganize questions and choose the best system!\n\n🎁 I Ching Tarot — Free Access!\n\n━━━━━━━━━━━━━━━\n\n👇 Try Now 👇\nhttps://hexagram-api.vercel.app/?lang=en\n\nLet ancient wisdom illuminate your path this Spring 🌸';
+
+    function detectLang() {
+        var p = new URLSearchParams(window.location.search);
+        var l = p.get('lang');
+        if (l === 'en') return 'en';
+        return 'zh';
+    }
+
+    function applyEnglish() {
+        var q = function(s) { return document.querySelector(s); };
+        var qa = function(s) { return document.querySelectorAll(s); };
+
+        // Page 1 — Spring Equinox
+        q('.slide-spring .top-badge').textContent = '🌿 Spring Equinox · Fortune Special 🌿';
+        var t1 = q('.slide-spring .section-title');
+        t1.textContent = 'Spring Fortune';
+        t1.style.fontFamily = "'Noto Serif TC', serif";
+        q('.slide-spring .section-sub').textContent = 'Yin-Yang Balance · Renewal';
+        q('.equinox-date').textContent = '📅 Spring Equinox · March 20th';
+        q('.spring-desc').innerHTML = 'The Spring Equinox \u2014 day and night in perfect balance,<br>Yin and Yang in harmony.<br>Since ancient times, the ideal moment for divination.';
+
+        var sf = qa('.sf-item > span:last-child');
+        if (sf[0]) sf[0].innerHTML = '<span class="sf-hl">Spring Fortune</span> Special Analysis';
+        if (sf[1]) sf[1].innerHTML = '<span class="sf-hl">Professional</span> Precise Readings';
+        if (sf[2]) sf[2].innerHTML = '<span class="sf-hl">I Ching Tarot</span> Free Access';
+
+        var c1 = q('.slide-spring .cta-btn');
+        c1.textContent = '✨ Free Trial · Spring Fortune Reading ✨';
+        c1.href = 'https://iching-tarot.vercel.app/?lang=en';
+
+        q('.swipe-hint').textContent = 'Swipe left for Divination Systems \u2192';
+
+        // Page 2 — Four Systems
+        q('.slide-ai .top-badge').textContent = '🔮 First in HK · Intelligent Metaphysical Platform 🔮';
+        var t2 = q('.slide-ai .section-title');
+        t2.textContent = 'Four Systems';
+        t2.style.fontFamily = "'Noto Serif TC', serif";
+        q('.slide-ai .section-sub').textContent = 'Intelligent \u00B7 Cosmic Insight';
+
+        q('.sys-liuren .sys-name').textContent = 'Da Liu Ren';
+        q('.sys-liuren .sys-desc').textContent = 'Intelligent Charting';
+        q('.sys-jiazi .sys-name').textContent = 'Jia Zi Yi';
+        q('.sys-jiazi .sys-desc').textContent = 'Professional Divination';
+        q('.sys-tarot .sys-name').textContent = 'I Ching Tarot';
+        q('.sys-tarot .sys-desc').textContent = 'Precise Reading';
+        q('.sys-qimen .sys-name').textContent = 'Qi Men Dun Jia';
+        q('.sys-qimen .sys-desc').textContent = 'Intelligent Charting';
+
+        q('.ai-label').textContent = 'Metaphysical Assistant';
+        q('.ai-text').innerHTML = 'Not sure what to ask? Which system?<br>Our assistant helps <span class="ai-hl">organize your questions</span><br>and recommends <span class="ai-hl">the best divination method</span>';
+
+        q('.price-badge').textContent = '💎 Professional Paid System \u00B7 Expert & Precise';
+
+        var c2 = q('.slide-ai .cta-btn');
+        c2.textContent = '🚀 Try the Full System Now 🚀';
+        c2.href = 'https://hexagram-api.vercel.app/?lang=en';
+
+        q('.share-btn').textContent = '📲 Share on WhatsApp';
+        q('.footer-brand').textContent = 'Victor Professional Feng Shui Master \u00B7 20+ Years';
+
+        // Share modal
+        q('.share-heading').textContent = '📲 WhatsApp Promo Text';
+        q('.share-preview').textContent = promoTextEn;
+        q('.share-copy-btn').textContent = '📋 Copy Text';
+        q('.share-guide h4').textContent = '📲 How to Share';
+        var lis = qa('.share-guide li');
+        if (lis[0]) lis[0].textContent = 'Click "Copy Text"';
+        if (lis[1]) lis[1].textContent = 'Open WhatsApp, select a contact or group';
+        if (lis[2]) lis[2].innerHTML = 'Paste the text and send! 🚀';
+
+        // Toast
+        q('.toast').textContent = '✅ Copied to clipboard!';
+
+        // Update share variables
+        promoText = promoTextEn;
+        shareTitle = 'Spring Fortune \u00B7 Intelligent Divination';
+    }
+
+    // Auto-detect and apply
+    if (detectLang() === 'en') {
+        applyEnglish();
+    }
+</script>
+
+<script src="https://hexagram-api.vercel.app/victor-divination-assistant.js"></script>
+</body>
+</html>
