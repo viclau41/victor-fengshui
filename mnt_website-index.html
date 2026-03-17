@@ -1,0 +1,1365 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-HK">
+<HEAD>
+    <TITLE>Victor 專業風水師 - 首頁</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <!-- 確保移動裝置上正確顯示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- 添加一些過渡效果的CSS動畫 -->
+    <STYLE type=text/css>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    :root {
+        --primary-color: #5D5CDE;
+        --primary-dark: #4a49b0;
+        --secondary-color: #ff9900;
+        --accent-color: #336633;
+        --light-bg: #f8f9fa;
+        --dark-text: #2c3e50;
+        --light-text: #ecf0f1;
+        --border-radius: 12px;
+        --box-shadow: 0 10px 20px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+        --transition: all 0.3s ease;
+    }
+
+body {
+        font-family: 'Noto Sans TC', Arial, "Microsoft JhengHei", sans-serif;
+        background-color: #f5f1e6;
+        background-image: url('https://victor-fengshui.vercel.app/backpaper.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--dark-text);
+    }
+
+    /* 頁面容器 - 擴闊方格 */
+    .page-container {
+        width: 1000px;
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: var(--box-shadow);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 頂部區域樣式 - 移除羅庚，使用太極元素融入設計 */
+    .header {
+        background-color: var(--accent-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://pfst.cf2.poecdn.net/base/image/d74668f1e48554633fa7616d76fd397683bf2a62d1e595a475de5458dc97c0af?w=536&h=536');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 300px;
+        opacity: 0.1;
+        z-index: 0;
+        animation: pulse 8s infinite ease-in-out;
+    }
+
+    /* 太極背景元素 */
+    .taichi-bg {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background-image: url('https://pfst.cf2.poecdn.net/base/image/d74668f1e48554633fa7616d76fd397683bf2a62d1e595a475de5458dc97c0af?w=536&h=536');
+        background-size: contain;
+        opacity: 0.15;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+    }
+
+    .taichi-bg.left {
+        top: -30px;
+        left: -30px;
+    }
+
+    .taichi-bg.right {
+        bottom: -30px;
+        right: -30px;
+    }
+
+    .header-text {
+        position: relative;
+        z-index: 2;
+    }
+
+    .header-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header-subtitle {
+        font-size: 28px;
+        font-weight: normal;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* 主要內容區域 */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .sidebar {
+        width: 300px;
+        padding: 20px;
+        background-color: #f8f8f8;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+        background-color: #fff;
+        min-width: 300px;
+    }
+
+    /* 底部區域 */
+    .footer {
+        background-color: var(--accent-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+    }
+
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF9900, #FFCC66, #FF9900);
+    }
+
+    /* 導航菜單 */
+    .nav-menu {
+        list-style: none;
+        margin-top: 20px;
+    }
+
+    .nav-item {
+        margin-bottom: 12px;
+    }
+
+    .nav-link {
+        display: flex;
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, #ffd280, #ffb84d);
+        color: #333;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        align-items: center;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-link:hover {
+        background: linear-gradient(to bottom, #ffb84d, #ff9900);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-color: rgba(255,153,0,0.5);
+    }
+
+    .nav-link .icon {
+        margin-right: 10px;
+        font-size: 18px;
+        width: 24px;
+        text-align: center;
+    }
+
+    /* 首頁特定樣式 */
+    .content-box {
+        background-color: white;
+        padding: 30px;
+        border-radius: var(--border-radius);
+        margin-top: 20px;
+        box-shadow: var(--box-shadow);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .content-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-color), #9080ff, var(--primary-color));
+    }
+
+    /* 背景元素 */
+    .bagua-bg {
+        position: absolute;
+        bottom: -120px;
+        right: -120px;
+        width: 400px;
+        height: 400px;
+        background-image: url('https://pfst.cf2.poecdn.net/base/image/d74668f1e48554633fa7616d76fd397683bf2a62d1e595a475de5458dc97c0af?w=536&h=536');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.03;
+        z-index: 0;
+    }
+
+    /* 介紹文字 */
+    .introduction-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
+    .introduction-section {
+        position: relative;
+        background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .introduction-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .feng-shui-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px; /* 確保不會被壓縮 */
+        background-image: url('https://pfst.cf2.poecdn.net/base/image/d74668f1e48554633fa7616d76fd397683bf2a62d1e595a475de5458dc97c0af?w=536&h=536');
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-right: 15px;
+        opacity: 0.8;
+    }
+
+    .introduction-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .introduction-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .introduction-text:last-child {
+        margin-bottom: 0;
+    }
+
+    /* 八字五行圖表 */
+    .elements-chart {
+        background: linear-gradient(135deg, #f0f4fd 0%, #e6ecfa 100%);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin: 30px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+    }
+
+    .elements-title {
+        width: 100%;
+        font-family: 'Noto Serif TC', serif;
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .element-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 18%;
+        padding: 15px 10px;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        transition: var(--transition);
+    }
+
+    .element-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .element-icon {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .element-name {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .element-desc {
+        font-size: 14px;
+        text-align: center;
+        color: #666;
+    }
+
+    .element-wood .element-icon {
+        color: #4CAF50;
+    }
+
+    .element-fire .element-icon {
+        color: #F44336;
+    }
+
+    .element-earth .element-icon {
+        color: #795548;
+    }
+
+    .element-metal .element-icon {
+        color: #9E9E9E;
+    }
+
+    .element-water .element-icon {
+        color: #2196F3;
+    }
+
+    /* 服務卡片 */
+    .services-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 28px;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin: 40px 0 30px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .services-title::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+        margin: 15px auto 0;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-color), #9080ff);
+        z-index: 1;
+    }
+
+    .service-card::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        background-image: url('https://pfst.cf2.poecdn.net/base/image/d74668f1e48554633fa7616d76fd397683bf2a62d1e595a475de5458dc97c0af?w=536&h=536');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.03;
+        transform: translate(-50%, -50%) rotate(30deg);
+        z-index: 0;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(93, 92, 222, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-icon i {
+        font-size: 32px;
+        color: var(--primary-color);
+    }
+
+    .service-card-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--primary-dark);
+        margin-bottom: 15px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-card-description {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: center;
+        margin-bottom: 20px;
+        flex-grow: 1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-card-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, var(--primary-color), #7876ff);
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-card-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 15px rgba(93, 92, 222, 0.3);
+    }
+
+    .service-card-link i {
+        margin-left: 8px;
+    }
+
+    /* 易經八卦介紹 */
+    .bagua-section {
+        margin-top: 40px;
+        padding: 30px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: var(--border-radius);
+        position: relative;
+        z-index: 1;
+    }
+
+    .bagua-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .bagua-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .bagua-text {
+        flex: 1;
+        padding-right: 30px;
+    }
+
+    .bagua-description {
+        margin-bottom: 20px;
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .bagua-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .bagua-img {
+        width: 300px;
+        height: 300px;
+        background-image: url('https://pfst.cf2.poecdn.net/base/image/d74668f1e48554633fa7616d76fd397683bf2a62d1e595a475de5458dc97c0af?w=536&h=536');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: slowRotate 60s linear infinite;
+    }
+
+    /* 語言切換按鈕 */
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .lang-btn {
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        opacity: 0.7;
+    }
+
+    .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
+        opacity: 1;
+        border-color: white;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
+    }
+
+    /* 動畫效果 */
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes slowRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .footer p {
+        margin: 8px 0;
+        letter-spacing: 0.5px;
+    }
+
+    .footer a {
+        color: white;
+        text-decoration: underline;
+        transition: var(--transition);
+    }
+
+    .footer a:hover {
+        color: #ffd280;
+        text-decoration: none;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 1000px) {
+        .page-container {
+            width: 100%;
+            border-radius: 0;
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .content-container {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 100%;
+        }
+
+        .header-title {
+            font-size: 36px;
+        }
+
+        .header-subtitle {
+            font-size: 22px;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .elements-chart {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .element-item {
+            width: 80%;
+            margin-bottom: 15px;
+        }
+
+        .bagua-content {
+            flex-direction: column;
+        }
+
+        .bagua-text {
+            padding-right: 0;
+            margin-bottom: 20px;
+        }
+
+        .bagua-img {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* 移動設備上的特殊調整 */
+        .introduction-header {
+            flex-wrap: nowrap; /* 確保不換行 */
+            align-items: flex-start; /* 頂部對齊 */
+        }
+
+        .feng-shui-icon {
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+
+        .introduction-title {
+            font-size: 20px;
+            line-height: 1.3;
+        }
+
+        .content-box {
+            padding: 20px 15px;
+        }
+
+        .introduction-section {
+            padding: 20px 15px;
+        }
+
+        .introduction-text {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header {
+            padding: 30px 15px;
+        }
+
+        .header-title {
+            font-size: 28px;
+        }
+
+        .header-subtitle {
+            font-size: 18px;
+        }
+
+        .element-item {
+            width: 95%;
+        }
+
+        .bagua-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .bagua-section,
+        .elements-chart {
+            padding: 15px;
+        }
+
+        .service-card {
+            padding: 20px 15px;
+        }
+    }
+
+    /* ========================= */
+    /* 推廣 Modal 彈出框樣式 */
+    /* ========================= */
+    .promo-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .promo-modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .promo-modal-container {
+        position: relative;
+        width: 90%;
+        max-width: 520px;
+        height: 85vh;
+        max-height: 750px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+        transform: scale(0.8) translateY(30px);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .promo-modal-overlay.active .promo-modal-container {
+        transform: scale(1) translateY(0);
+    }
+
+    .promo-modal-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.3s ease;
+        line-height: 1;
+    }
+
+    .promo-modal-close:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: rotate(90deg);
+    }
+
+    .promo-modal-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .promo-modal-loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #666;
+    }
+
+    .promo-modal-loading .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e0e0e0;
+        border-top-color: var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    /* 手機版優化 */
+    @media (max-width: 600px) {
+        .promo-modal-container {
+            width: 95%;
+            height: 90vh;
+            border-radius: 12px;
+        }
+
+        .promo-modal-close {
+            top: 8px;
+            right: 8px;
+            width: 32px;
+            height: 32px;
+            font-size: 20px;
+        }
+    }
+    /* ========================= */
+    /* 推廣 Modal 彈出框樣式結束 */
+    /* ========================= */
+    </STYLE>
+</HEAD>
+
+<BODY>
+
+<!-- 推廣 Modal 彈出框 -->
+<div id="promo-modal" class="promo-modal-overlay" onclick="closePromoModal(event)">
+    <div class="promo-modal-container" onclick="event.stopPropagation()">
+        <button class="promo-modal-close" onclick="closePromoModal()" title="關閉">&times;</button>
+        <div class="promo-modal-loading" id="promo-loading">
+            <div class="spinner"></div>
+            <p>載入中...</p>
+        </div>
+        <iframe
+            id="promo-iframe"
+            class="promo-modal-iframe"
+            src="about:blank"
+            onload="hidePromoLoading()"
+        ></iframe>
+    </div>
+</div>
+
+<div class="page-container">
+    <!-- 頂部區域 - 移除羅庚，改用太極背景元素 -->
+    <header class="header">
+        <!-- 語言切換按鈕 -->
+        <div class="language-switcher">
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
+        </div>
+
+        <!-- 太極背景元素 -->
+        <div class="taichi-bg left"></div>
+        <div class="taichi-bg right"></div>
+
+        <div class="header-text">
+            <h1 class="header-title" id="site-title">Victor Fengshui & Divination</h1>
+            <h2 class="header-subtitle" id="site-subtitle">Victor 專業風水師</h2>
+        </div>
+    </header>
+
+    <!-- 內容區域 -->
+    <div class="content-container">
+        <!-- 側邊欄 -->
+       <div class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link" id="nav-home"><span class="icon"><i class="fas fa-home"></i></span>首頁</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/phpbb" class="nav-link" id="nav-forum"><span class="icon"><i class="fas fa-comments"></i></span>留言版</a></li>
+                    <li class="nav-item"><a href="https://hexagram-api.vercel.app/?lang=zh-TW" class="nav-link" id="nav-hexagram" target="_blank"><span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦</a></li>
+                    <li class="nav-item"><a href="inprice1.html" class="nav-link" id="nav-services"><span class="icon"><i class="fas fa-compass"></i></span>風水收費服務</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/" class="nav-link" id="nav-shop"><span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物</a></li>
+                    <li class="nav-item"><a href="bank.html" class="nav-link" id="nav-bank"><span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" id="nav-contact"><span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 主內容區域 -->
+        <div class="main-content">
+            <!-- 主要內容 -->
+            <div class="content-box">
+                <!-- 八卦背景 -->
+                <div class="bagua-bg"></div>
+
+                <!-- 介紹文字部分 -->
+                <div class="introduction-wrapper">
+                    <div class="introduction-section">
+                        <div class="introduction-header">
+                            <div class="feng-shui-icon"></div>
+                            <h2 class="introduction-title" id="intro-title">專業玄學服務</h2>
+                        </div>
+
+                        <p class="introduction-text" id="intro-text-1">
+                            憑藉超過20年的專業風水師經驗，我精通各種專業術數，並經常融會各家各派的精髓。我採用簡易、易明的方式，提供直接的解答及化解方法，因此在眾人心中奠定了無可取代的地位！
+                        </p>
+
+                        <p class="introduction-text" id="intro-text-2">
+                            天象是各派玄學的基礎。世人往往希望用最簡便的方法去洞悉萬物，因此便出現了掌管五行的干支系統，八字即為其中的代表。對於一般日常應用，通常可以滿足七成左右的需求。
+                        </p>
+
+                        <p class="introduction-text" id="intro-text-3">
+                            然而，若要應用於重要大事，則絕不容輕率兒嬉。此時，專業的皇曆天文系統便顯得不可或缺。至於「三式」（如奇門遁甲、太乙神數、六壬神課）、易占、九星尋龍等高深術數，豈是輕易能夠精通？為了適應現況，只能將其精要融入淺顯易懂的方法中，力求內外兼顧，惠及眾人。
+                        </p>
+                    </div>
+
+                    <!-- 五行圖表 -->
+                    <div class="elements-chart">
+                        <h3 class="elements-title" id="elements-title">五行相生相剋圖</h3>
+
+                        <!-- 木 -->
+                        <div class="element-item element-wood">
+                            <div class="element-icon"><i class="fas fa-tree"></i></div>
+                            <div class="element-name" id="element-wood">木</div>
+                            <div class="element-desc" id="element-wood-desc">代表春季、東方</div>
+                        </div>
+
+                        <!-- 火 -->
+                        <div class="element-item element-fire">
+                            <div class="element-icon"><i class="fas fa-fire"></i></div>
+                            <div class="element-name" id="element-fire">火</div>
+                            <div class="element-desc" id="element-fire-desc">代表夏季、南方</div>
+                        </div>
+
+                        <!-- 土 -->
+                        <div class="element-item element-earth">
+                            <div class="element-icon"><i class="fas fa-mountain"></i></div>
+                            <div class="element-name" id="element-earth">土</div>
+                            <div class="element-desc" id="element-earth-desc">代表四季交替、中央</div>
+                        </div>
+
+                        <!-- 金 -->
+                        <div class="element-item element-metal">
+                            <div class="element-icon"><i class="fas fa-coins"></i></div>
+                            <div class="element-name" id="element-metal">金</div>
+                            <div class="element-desc" id="element-metal-desc">代表秋季、西方</div>
+                        </div>
+
+                        <!-- 水 -->
+                        <div class="element-item element-water">
+                            <div class="element-icon"><i class="fas fa-water"></i></div>
+                            <div class="element-name" id="element-water">水</div>
+                            <div class="element-desc" id="element-water-desc">代表冬季、北方</div>
+                        </div>
+                    </div>
+
+                    <!-- 易經八卦介紹 -->
+                    <div class="bagua-section">
+                        <h3 class="bagua-title" id="bagua-title">易經八卦精髓</h3>
+
+                        <div class="bagua-content">
+                            <div class="bagua-text">
+                                <p class="bagua-description" id="bagua-description-1">
+                                    易經八卦是中國古代哲學和宇宙觀的核心，代表宇宙中的八種基本能量。乾、坤、震、巽、坎、離、艮、兌各代表不同的自然現象和人生境遇。
+                                </p>
+                                <p class="bagua-description" id="bagua-description-2">
+                                    八卦相互組合形成六十四卦，透過卦象變化，能夠精確解讀現在的情況，預測未來的發展，並提供化解方法。這套古老智慧系統已被證明具有驚人的準確性和實用性。
+                                </p>
+                            </div>
+
+                            <div class="bagua-image">
+                                <div class="bagua-img"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 熱門服務標題 -->
+                    <h2 class="services-title" id="services-title">熱門玄學服務</h2>
+
+                    <!-- 熱門服務卡片 -->
+                    <div class="services-grid">
+                        <!-- 服務1: 風水佈局 -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="service-card-title" id="service1-title">風水佈局</h3>
+                            <p class="service-card-description" id="service1-desc">
+                                專業風水佈局服務，為您的住宅或辦公室打造和諧能量場，提升運勢與生活品質。根據八宅派與玄空飛星理論，找出最有利的佈局方案。
+                            </p>
+                            <a href="inprice7.html" class="service-card-link" id="service1-link">了解更多 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+
+                        <!-- 服務2: 命理分析 -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3 class="service-card-title" id="service2-title">命理分析</h3>
+                            <p class="service-card-description" id="service2-desc">
+                                全面的生辰八字命理分析，揭示您的人生軌跡，把握機遇，趨吉避凶。精通紫微斗數、子平八字和西洋占星三大命理系統，提供綜合分析。
+                            </p>
+                            <a href="inprice4.html" class="service-card-link" id="service2-link">了解更多 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+
+                        <!-- 服務3: WhatsApp占卜 -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3 class="service-card-title" id="service3-title">WhatsApp占卜</h3>
+                            <p class="service-card-description" id="service3-desc">
+                                便捷的WhatsApp占卜服務，隨時隨地為您解答疑惑，提供專業指導。無論您在世界何處，都能獲得即時、準確的玄學指導和建議。
+                            </p>
+                            <a href="inprice15.html" class="service-card-link" id="service3-link">了解更多 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+
+                        <!-- 服務4: 網上起卦服務 -->
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-yin-yang"></i>
+                            </div>
+                            <h3 class="service-card-title" id="service4-title">網上起卦服務</h3>
+                            <p class="service-card-description" id="service4-desc">
+                                全新智慧起卦系統，結合傳統易經與現代科技。提供大六壬排盤、甲子易專業起卦，詳細課式解讀，助您洞悉吉凶，趨利避害。
+                            </p>
+                            <a href="https://hexagram-api.vercel.app/?lang=zh-TW" target="_blank" class="service-card-link" id="service4-link">立即起卦 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+
+                        <!-- 服務5: 線上塔羅 -->
+                        <div class="service-card">
+                            <div class="service-icon" style="background-color: rgba(139, 0, 0, 0.1);">
+                                <i class="fas fa-magic" style="color: #8B0000;"></i>
+                            </div>
+                            <h3 class="service-card-title" id="service5-title" style="color: #8B0000;">線上塔羅</h3>
+                            <p class="service-card-description" id="service5-desc">
+                                免費易經塔羅占卜服務，融合千年易學智慧與塔羅牌陣。三張牌陣、大衛星牌陣、指引之星牌陣，讓古人智慧照亮您的前路。
+                            </p>
+                            <a href="https://iching-tarot.vercel.app/?lang=zh-TW" target="_blank" class="service-card-link" id="service5-link" style="background: linear-gradient(135deg, #8B0000, #DC143C);">立即體驗 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部區域 -->
+    <footer class="footer">
+        <p id="copyright">版權所有 &copy; 2002-2026</p>
+        <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#502639333c3125646110373d31393c7e333f3d"><span class="__cf_email__" data-cfemail="75031c161914004144351218141c195b161a18">[email&#160;protected]</span></a></p>
+    </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// 存儲中英文對照資料
+var translations = {
+    'zh': {
+        'site-title': 'Victor Fengshui & Divination',
+        'site-subtitle': 'Victor 專業風水師',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>首頁',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>留言版',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>風水收費服務',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們',
+
+        // 介紹文字
+        'intro-title': '專業玄學服務',
+        'intro-text-1': '憑藉超過20年的專業風水師經驗，我精通各種專業術數，並經常融會各家各派的精髓。我採用簡易、易明的方式，提供直接的解答及化解方法，因此在眾人心中奠定了無可取代的地位！',
+        'intro-text-2': '天象是各派玄學的基礎。世人往往希望用最簡便的方法去洞悉萬物，因此便出現了掌管五行的干支系統，八字即為其中的代表。對於一般日常應用，通常可以滿足七成左右的需求。',
+        'intro-text-3': '然而，若要應用於重要大事，則絕不容輕率兒嬉。此時，專業的皇曆天文系統便顯得不可或缺。至於「三式」（如奇門遁甲、太乙神數、六壬神課）、易占、九星尋龍等高深術數，豈是輕易能夠精通？為了適應現況，只能將其精要融入淺顯易懂的方法中，力求內外兼顧，惠及眾人。',
+
+        // 五行圖表
+        'elements-title': '五行相生相剋圖',
+        'element-wood': '木',
+        'element-wood-desc': '代表春季、東方',
+        'element-fire': '火',
+        'element-fire-desc': '代表夏季、南方',
+        'element-earth': '土',
+        'element-earth-desc': '代表四季交替、中央',
+        'element-metal': '金',
+        'element-metal-desc': '代表秋季、西方',
+        'element-water': '水',
+        'element-water-desc': '代表冬季、北方',
+
+        // 八卦介紹
+        'bagua-title': '易經八卦精髓',
+        'bagua-description-1': '易經八卦是中國古代哲學和宇宙觀的核心，代表宇宙中的八種基本能量。乾、坤、震、巽、坎、離、艮、兌各代表不同的自然現象和人生境遇。',
+        'bagua-description-2': '八卦相互組合形成六十四卦，透過卦象變化，能夠精確解讀現在的情況，預測未來的發展，並提供化解方法。這套古老智慧系統已被證明具有驚人的準確性和實用性。',
+
+        'services-title': '熱門玄學服務',
+
+        'service1-title': '風水佈局',
+        'service1-desc': '專業風水佈局服務，為您的住宅或辦公室打造和諧能量場，提升運勢與生活品質。根據八宅派與玄空飛星理論，找出最有利的佈局方案。',
+        'service1-link': '了解更多 <i class="fas fa-arrow-right"></i>',
+        'service2-title': '命理分析',
+        'service2-desc': '全面的生辰八字命理分析，揭示您的人生軌跡，把握機遇，趨吉避凶。精通紫微斗數、子平八字和西洋占星三大命理系統，提供綜合分析。',
+        'service2-link': '了解更多 <i class="fas fa-arrow-right"></i>',
+        'service3-title': 'WhatsApp占卜',
+        'service3-desc': '便捷的WhatsApp占卜服務，隨時隨地為您解答疑惑，提供專業指導。無論您在世界何處，都能獲得即時、準確的玄學指導和建議。',
+        'service3-link': '了解更多 <i class="fas fa-arrow-right"></i>',
+        'service4-title': '網上起卦服務',
+        'service4-desc': '全新AI智慧起卦系統，結合傳統易經與現代科技。提供大六壬排盤、甲子易專業起卦，詳細課式解讀，助您洞悉吉凶，趨利避害。',
+        'service4-link': '立即起卦 <i class="fas fa-arrow-right"></i>',
+
+        'service5-title': '線上塔羅',
+        'service5-desc': '免費易經塔羅占卜服務，融合千年易學智慧與塔羅牌陣。三張牌陣、大衛星牌陣、指引之星牌陣，讓古人智慧照亮您的前路。',
+        'service5-link': '立即體驗 <i class="fas fa-arrow-right"></i>',
+
+        // 頁腳
+        'copyright': '版權所有 © 2002-2026',
+        'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
+        'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
+    },
+    'en': {
+        'site-title': 'Daily Observation of Heaven',
+        'site-subtitle': 'Victor Professional Feng Shui Master',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>Home',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>Forum',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>Feng Shui Services',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>Online Shop',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>Online Divination',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>Banking & Transfer',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>Contact Us',
+
+        // 介紹文字
+        'intro-title': 'Professional Metaphysical Services',
+        'intro-text-1': 'With over 20 years of experience as a professional Feng Shui master, I am proficient in various professional techniques and frequently integrate the essence of different schools. I adopt a simple and clear approach to provide direct solutions and remedies, establishing an irreplaceable position in the hearts of many!',
+        'intro-text-2': 'Celestial observation forms the foundation of various metaphysical schools. People often seek the simplest method to understand all things, which led to the emergence of the Five Elements system governed by Heavenly Stems and Earthly Branches, with Bazi (Eight Characters) being a prime example. For general daily applications, this typically satisfies about 70% of needs.',
+        'intro-text-3': 'However, when applied to important matters, one must not take it lightly. At such times, professional astronomical calendar systems become indispensable. As for advanced techniques like the "Three Methods" (such as Qi Men Dun Jia, Tai Yi Shen Shu, and Liu Ren Shen Ke), Yi Divination, and Nine Star Dragon Seeking - how could anyone master these profound arts easily? To adapt to current situations, one can only incorporate their essence into easily understandable methods, striving to balance both depth and accessibility for the benefit of all.',
+
+        // 五行圖表
+        'elements-title': 'Five Elements Cycle',
+        'element-wood': 'Wood',
+        'element-wood-desc': 'Spring, East',
+        'element-fire': 'Fire',
+        'element-fire-desc': 'Summer, South',
+        'element-earth': 'Earth',
+        'element-earth-desc': 'Seasonal transitions, Center',
+        'element-metal': 'Metal',
+        'element-metal-desc': 'Autumn, West',
+        'element-water': 'Water',
+        'element-water-desc': 'Winter, North',
+
+        // 八卦介紹
+        'bagua-title': 'I Ching Bagua Essence',
+        'bagua-description-1': 'The Eight Trigrams (Bagua) of the I Ching represent the core of ancient Chinese philosophy and cosmology, symbolizing eight fundamental energies in the universe. Qian, Kun, Zhen, Xun, Kan, Li, Gen, and Dui each represent different natural phenomena and life situations.',
+        'bagua-description-2': 'The eight trigrams combine to form sixty-four hexagrams. Through the changes in these patterns, one can precisely interpret current situations, predict future developments, and provide methods for resolution. This ancient wisdom system has proven to have remarkable accuracy and practicality.',
+
+        'services-title': 'Popular Metaphysical Services',
+
+        'service1-title': 'Feng Shui Arrangement',
+        'service1-desc': 'Professional Feng Shui services to create harmonious energy fields for your home or office, enhancing fortune and quality of life. Based on Eight Mansions and Flying Star theories to find the most beneficial arrangements.',
+        'service1-link': 'Learn More <i class="fas fa-arrow-right"></i>',
+        'service2-title': 'Destiny Analysis',
+        'service2-desc': 'Comprehensive Bazi destiny analysis, revealing your life path, helping you seize opportunities and avoid misfortune. Mastering three major destiny systems: Purple Star Astrology, Four Pillars, and Western Astrology for integrated analysis.',
+        'service2-link': 'Learn More <i class="fas fa-arrow-right"></i>',
+        'service3-title': 'WhatsApp Divination',
+        'service3-desc': 'Convenient WhatsApp divination services, providing professional guidance and answers to your questions anytime, anywhere. No matter where you are in the world, you can receive immediate, accurate metaphysical guidance and advice.',
+        'service3-link': 'Learn More <i class="fas fa-arrow-right"></i>',
+        'service4-title': 'Online Hexagram Divination',
+        'service4-desc': 'Brand new intelligent divination hexagram system combining traditional I Ching wisdom with modern technology. Featuring Da Liu Ren and Jia Zi Yi professional divination with detailed interpretations to help you navigate fortune and avoid misfortune.',
+        'service4-link': 'Start Divination <i class="fas fa-arrow-right"></i>',
+
+        'service5-title': 'Online Tarot',
+        'service5-desc': 'Free I Ching Tarot divination service, blending thousand-year-old Yi Jing wisdom with Tarot spreads. Three-card spread, Star of David spread, and Guiding Star spread - let ancient wisdom illuminate your path.',
+        'service5-link': 'Try Now <i class="fas fa-arrow-right"></i>',
+
+        // 頁腳
+        'copyright': 'Copyright © 2002-2026',
+        'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
+        'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
+    }
+};
+
+// 基礎 URL
+var BASE_URL = '';
+var QNAP_URL = 'https://victor-fengshui.vercel.app/';
+
+// 優先使用 localStorage 儲存語言偏好，若不支援則回退到內存變數
+var memoryStorage = {};
+function safeGetItem(key) {
+    try { return window['localStorage'].getItem(key); } catch(e) { return memoryStorage[key] || null; }
+}
+function safeSetItem(key, value) {
+    try { window['localStorage'].setItem(key, value); } catch(e) { memoryStorage[key] = value; }
+}
+
+// 切換語言函數
+function switchLanguage(lang) {
+    // 更新語言按鈕的激活狀態
+    document.querySelector('.lang-btn.zh').classList.remove('active');
+    document.querySelector('.lang-btn.en').classList.remove('active');
+    document.querySelector('.lang-btn.' + lang).classList.add('active');
+
+    // 更新頁面上的所有文本內容
+    for (var id in translations[lang]) {
+        if (translations[lang].hasOwnProperty(id)) {
+            var element = document.getElementById(id);
+            if (element) {
+                element.innerHTML = translations[lang][id];
+            }
+        }
+    }
+
+    // 更新導航連結 href（修正為完整 URL）
+    var navHome = document.getElementById('nav-home');
+    if (navHome) navHome.href = BASE_URL + 'index.html';
+
+    var navForum = document.getElementById('nav-forum');
+    if (navForum) navForum.href = QNAP_URL + 'phpbb';
+
+    var navServices = document.getElementById('nav-services');
+    if (navServices) navServices.href = BASE_URL + 'inprice1.html';
+
+    var navBank = document.getElementById('nav-bank');
+    if (navBank) navBank.href = BASE_URL + 'bank.html';
+
+    var navContact = document.getElementById('nav-contact');
+    if (navContact) navContact.href = BASE_URL + 'aboutus.html';
+
+    // 更新網上購物連結
+    var shopLink = document.getElementById('nav-shop');
+    if (shopLink) {
+        shopLink.href = lang === 'zh'
+            ? QNAP_URL + 'prestashop/metaphysics/tw/'
+            : QNAP_URL + 'prestashop/metaphysics/en/';
+    }
+
+    // 更新服務卡片連結
+    var service1Link = document.getElementById('service1-link');
+    if (service1Link) service1Link.href = BASE_URL + 'inprice7.html';
+
+    var service2Link = document.getElementById('service2-link');
+    if (service2Link) service2Link.href = BASE_URL + 'inprice4.html';
+
+    var service3Link = document.getElementById('service3-link');
+    if (service3Link) service3Link.href = BASE_URL + 'inprice15.html';
+
+    // 存儲用戶的語言偏好
+    safeSetItem('preferredLanguage', lang);
+
+    // 更新頁面標題
+    document.title = lang === 'zh' ? 'Victor 專業風水師 - 首頁' : 'Victor Professional Feng Shui Master - Home';
+
+    // 更新起卦系統連結（傳遞語言參數）
+    var hexLang = lang === 'en' ? '?lang=en' : '?lang=zh-TW';
+    var hexagramNav = document.getElementById('nav-hexagram');
+    if (hexagramNav) hexagramNav.href = 'https://hexagram-api.vercel.app/' + hexLang;
+    var hexagramCard = document.getElementById('service4-link');
+    if (hexagramCard) hexagramCard.href = 'https://hexagram-api.vercel.app/' + hexLang;
+    // 塔羅連結也傳遞語言
+    var tarotCard = document.getElementById('service5-link');
+    if (tarotCard) tarotCard.href = 'https://iching-tarot.vercel.app/' + hexLang;
+}
+
+// 頁面加載時檢查用戶的語言偏好
+document.addEventListener('DOMContentLoaded', function() {
+    var preferredLanguage = safeGetItem('preferredLanguage') || 'zh';
+    switchLanguage(preferredLanguage);
+
+    // 延遲 0.5 秒後顯示推廣 Modal
+    setTimeout(function() {
+        openPromoModal();
+    }, 500);
+});
+
+// ========================= //
+// 推廣 Modal 功能
+// ========================= //
+var PROMO_URL = 'https://victor-fengshui.vercel.app/whatsapp_promo.html';
+
+// 打開推廣 Modal
+function openPromoModal() {
+    var modal = document.getElementById('promo-modal');
+    var iframe = document.getElementById('promo-iframe');
+    var loading = document.getElementById('promo-loading');
+
+    // 顯示載入中
+    loading.style.display = 'block';
+
+    // 根據首頁語言設定傳遞語言參數給推廣頁
+    var currentLang = safeGetItem('preferredLanguage') || 'zh';
+    iframe.src = currentLang === 'en' ? PROMO_URL + '?lang=en' : PROMO_URL;
+
+    // 顯示 Modal
+    modal.classList.add('active');
+
+    // 防止背景滾動
+    document.body.style.overflow = 'hidden';
+}
+
+// 關閉推廣 Modal
+function closePromoModal(event) {
+    // 如果是點擊事件，且點擊的是容器內部，則不關閉
+    if (event && event.target.closest('.promo-modal-container') && !event.target.classList.contains('promo-modal-close')) {
+        return;
+    }
+
+    var modal = document.getElementById('promo-modal');
+    var iframe = document.getElementById('promo-iframe');
+
+    // 隱藏 Modal
+    modal.classList.remove('active');
+
+    // 恢復背景滾動
+    document.body.style.overflow = '';
+
+    // 延遲清除 iframe 來源（避免動畫時看到白頁）
+    setTimeout(function() {
+        iframe.src = 'about:blank';
+    }, 400);
+}
+
+// 隱藏載入中指示器
+function hidePromoLoading() {
+    var loading = document.getElementById('promo-loading');
+    var iframe = document.getElementById('promo-iframe');
+
+    // 只有當 iframe 載入了實際內容時才隱藏
+    if (iframe.src !== 'about:blank') {
+        loading.style.display = 'none';
+    }
+}
+
+// 支援 ESC 鍵關閉
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePromoModal();
+    }
+});
+</script>
+<!-- Victor AI 聊天助手 -->
+<script src="victor-ai-chat.js"></script>
+</BODY>
+</HTML>
