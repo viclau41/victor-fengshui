@@ -1,0 +1,1812 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-HK">
+<HEAD>
+    <TITLE>Victor 專業風水師 - 租買樓宇評級</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!-- 加載字體和圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <STYLE type=text/css>
+    :root {
+        --primary-color: #5D5CDE;
+        --secondary-color: #336633;
+        --accent-color: #ff9900;
+        --light-bg: #f8f8f8;
+        --dark-bg: #2c3e50;
+        --text-dark: #333;
+        --text-light: #fff;
+        --border-radius: 12px;
+        --box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+        
+        /* 物業評級特有配色 */
+        --property-indigo: #4361ee;
+        --property-blue: #4895ef;
+        --property-green: #3fa39a;
+        --property-gold: #fca311;
+        --property-red: #e63946;
+    }
+    
+    /* 深色模式變量 */
+    .dark-mode {
+        --light-bg: #1a1a2e;
+        --dark-bg: #121212;
+        --text-dark: #f1f1f1;
+        --accent-color: #ff9e00;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    body {
+        font-family: 'Noto Sans TC', Arial, "Microsoft JhengHei", sans-serif;
+        background-color: #f5f1e6;
+        background-image: url('https://victor-fengshui.vercel.app/backpaper.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 防止水平滾動 */
+        width: 100%;
+        position: relative;
+        max-width: 100vw;
+    }
+    
+    html {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    /* 頁面容器 */
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        width: 100%;
+    }
+    
+    /* 頂部區域 - 與inprice7.htm一致的風格 */
+    .header {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* 太極圖案背景 - 使用圖像而非CSS */
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://victor-fengshui.vercel.app/taichi.webp');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 300px;
+        opacity: 0.1;
+        z-index: 0;
+        animation: pulse 8s infinite ease-in-out;
+    }
+    
+    /* 太極背景元素 - 使用圖像而非CSS */
+    .taichi-bg {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background-image: url('https://victor-fengshui.vercel.app/taichi.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+    }
+    
+    .taichi-bg.left {
+        top: -30px;
+        left: -30px;
+    }
+    
+    .taichi-bg.right {
+        bottom: -30px;
+        right: -30px;
+    }
+    
+    .header-text {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .header-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header-subtitle {
+        font-size: 28px;
+        font-weight: normal;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* 內容區域 */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    /* 側邊欄 */
+    .sidebar {
+        flex: 0 0 280px;
+        background-color: #ffffff;
+        padding: 30px 20px;
+    }
+    
+    /* 主內容 */
+    .main-content {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #fff, #f8f8f8);
+        overflow-x: hidden; /* 防止水平溢出 */
+    }
+    
+    /* 導航菜單 */
+    .nav-menu {
+        list-style: none;
+        margin-top: 20px;
+    }
+    
+    .nav-item {
+        margin-bottom: 12px;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, #ffd280, #ffb84d);
+        color: #333;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link:hover {
+        background: linear-gradient(to bottom, #ffb84d, #ff9900);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-color: rgba(255,153,0,0.5);
+    }
+    
+    .nav-link .icon {
+        margin-right: 10px;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* 服務網格 - 修改為與inprice7.htm一致的4x4網格 */
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .service-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-item.active {
+        background-color: #FFCC66;
+        box-shadow: 0 0 0 2px var(--primary-color), 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        background-color: #fff8e6;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        transition: var(--transition);
+        height: 100%;
+        font-size: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+    }
+    
+    .service-item.active .service-link {
+        background-color: #FFCC66;
+    }
+    
+    .service-link:hover {
+        background-color: #FFCC66;
+    }
+    
+    /* 主要內容樣式 */
+    .content-section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: visible; /* 修改為visible，允許特定元素顯示 */
+    overflow-x: hidden; /* 防止水平溢出 */
+    width: 100%;
+}
+    
+    .section-header {
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .section-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 28px;
+        color: var(--property-indigo);
+        display: inline-block;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--property-indigo), transparent);
+    }
+    
+    .section-subtitle {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    /* 視頻鏈接 - 採用inprice7.htm樣式 */
+    .video-container {
+        margin: 30px 0;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .video-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, var(--property-red), #b91d32);
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+    }
+    
+    .video-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+    }
+    
+    .video-icon {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    
+    /* 服務卡片對比 - 修復寬度和排版 */
+    .services-comparison {
+        margin: 40px 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 100%; /* 添加這行 */
+    overflow-x: hidden; /* 添加這行 */
+}
+
+.service-card {
+    /* 原有樣式保留 */
+    max-width: 100%; /* 添加這行 */
+    overflow-x: hidden; /* 添加這行 */
+}
+
+.meter-container {
+    position: relative;
+    height: 120px;
+    margin: 50px auto 60px;
+    max-width: 600px;
+    width: 100%;
+    padding: 0 20px;
+    overflow: hidden; /* 添加這行 */
+}
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    
+    .service-card-header {
+        padding: 25px;
+        background: linear-gradient(135deg, var(--property-blue), var(--property-indigo));
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-card-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.2;
+        z-index: 0;
+    }
+    
+    .service-card:nth-child(1) .service-card-header {
+        background: linear-gradient(135deg, #90be6d, #43aa8b);
+    }
+    
+    .service-card:nth-child(2) .service-card-header {
+        background: linear-gradient(135deg, #4895ef, #4361ee);
+    }
+    
+    .service-card:nth-child(3) .service-card-header {
+        background: linear-gradient(135deg, #f8961e, #f3722c);
+    }
+    
+    .service-header-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .service-icon {
+        font-size: 36px;
+        margin-bottom: 15px;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    .service-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .service-subtitle {
+        font-size: 16px;
+        opacity: 0.9;
+    }
+    
+    .service-card-body {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .service-features {
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+    
+    .feature-item {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: flex-start;
+    }
+    
+    .feature-icon {
+        color: var(--property-green);
+        margin-right: 15px;
+        font-size: 18px;
+        margin-top: 2px;
+        flex-shrink: 0; /* 防止圖標縮小 */
+    }
+    
+    .feature-text {
+        flex: 1;
+        color: #555;
+        line-height: 1.5;
+    }
+    
+    .service-card-footer {
+        padding: 20px 25px;
+        background-color: #f8f9fa;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        text-align: center;
+    }
+    
+    .service-price {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--property-indigo);
+    }
+    
+    .service-card:nth-child(1) .service-price {
+        color: #43aa8b;
+    }
+    
+    .service-card:nth-child(2) .service-price {
+        color: #4361ee;
+    }
+    
+    .service-card:nth-child(3) .service-price {
+        color: #f3722c;
+    }
+    
+    .price-note {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #777;
+    }
+    
+    /* 評級系統說明 - 修復樣式 */
+    .rating-system {
+        margin: 40px 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .rating-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+        width: 100%;
+    }
+    
+    .rating-category {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .rating-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .rating-category::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+    }
+    
+    .rating-category:nth-child(1)::after {
+        background-color: #43aa8b;
+    }
+    
+    .rating-category:nth-child(2)::after {
+        background-color: #4361ee;
+    }
+    
+    .rating-category:nth-child(3)::after {
+        background-color: #f3722c;
+    }
+    
+    .rating-category:nth-child(4)::after {
+        background-color: #e63946;
+    }
+    
+    .rating-category:nth-child(5)::after {
+        background-color: #14213d;
+    }
+    
+    .rating-icon {
+        font-size: 32px;
+        color: var(--property-blue);
+        margin-bottom: 15px;
+    }
+    
+    .rating-category:nth-child(1) .rating-icon {
+        color: #43aa8b;
+    }
+    
+    .rating-category:nth-child(2) .rating-icon {
+        color: #4361ee;
+    }
+    
+    .rating-category:nth-child(3) .rating-icon {
+        color: #f3722c;
+    }
+    
+    .rating-category:nth-child(4) .rating-icon {
+        color: #e63946;
+    }
+    
+    .rating-category:nth-child(5) .rating-icon {
+        color: #14213d;
+    }
+    
+    .rating-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .rating-desc {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+    
+    /* 風水評級標尺 - 優化顯示 */
+    .feng-shui-meter {
+        margin: 40px 0;
+        text-align: center;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .meter-container {
+        position: relative;
+        height: 120px;
+        margin: 50px auto 60px;
+        max-width: 600px;
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    .meter-bar {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        transform: translateY(-50%);
+        background: linear-gradient(90deg, #e63946, #f3722c, #fca311, #90be6d, #43aa8b);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .meter-marker {
+        position: absolute;
+        width: 2px;
+        height: 30px;
+        background-color: rgba(255,255,255,0.7);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .meter-marker:nth-child(1) { left: 20%; }
+    .meter-marker:nth-child(2) { left: 40%; }
+    .meter-marker:nth-child(3) { left: 60%; }
+    .meter-marker:nth-child(4) { left: 80%; }
+    
+    .meter-label {
+        position: absolute;
+        transform: translateX(-50%);
+        font-size: 14px;
+        color: #333;
+        bottom: -40px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .meter-label:nth-child(6) { left: 0; }
+    .meter-label:nth-child(7) { left: 20%; }
+    .meter-label:nth-child(8) { left: 40%; }
+    .meter-label:nth-child(9) { left: 60%; }
+    .meter-label:nth-child(10) { left: 80%; }
+    .meter-label:nth-child(11) { left: 100%; }
+    
+    .meter-indicator {
+        position: absolute;
+        top: -40px;
+        transform: translateX(-50%);
+        font-weight: bold;
+        color: #333;
+        font-size: 14px;
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .meter-indicator:nth-child(12) { left: 0; content: "不宜"; }
+    .meter-indicator:nth-child(13) { left: 25%; content: "較差"; }
+    .meter-indicator:nth-child(14) { left: 50%; content: "一般"; }
+    .meter-indicator:nth-child(15) { left: 75%; content: "良好"; }
+    .meter-indicator:nth-child(16) { left: 100%; content: "極佳"; }
+    
+    /* 服務流程 - 優化顯示 */
+    .service-process {
+        margin: 40px 0;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .process-steps {
+        position: relative;
+        counter-reset: step;
+        margin-top: 30px;
+        padding-left: 10px;
+    }
+    
+    .process-steps::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 15px;
+        width: 2px;
+        background-color: #e9ecef;
+        z-index: 1;
+    }
+    
+    .process-step {
+        position: relative;
+        padding-left: 50px;
+        margin-bottom: 30px;
+    }
+    
+    .process-step:last-child {
+        margin-bottom: 0;
+    }
+    
+    .process-step:last-child::after {
+        display: none;
+    }
+    
+    .step-number {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--property-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        z-index: 2;
+        box-shadow: 0 0 0 4px white;
+    }
+    
+    .step-number::before {
+        counter-increment: step;
+        content: counter(step);
+    }
+    
+    .step-content {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 20px 25px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .step-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--property-indigo);
+    }
+    
+    .step-desc {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    /* 語言切換按鈕 */
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .lang-btn {
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        opacity: 0.7;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
+        opacity: 1;
+        border-color: white;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+    
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
+    }
+    
+    /* 底部區域 */
+    .footer {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF9900, #FFCC66, #FF9900);
+    }
+    
+    .footer p {
+        margin: 8px 0;
+        letter-spacing: 0.5px;
+        font-size: 14px;
+    }
+    
+    .footer a {
+        color: white;
+        text-decoration: underline;
+        transition: var(--transition);
+    }
+    
+    .footer a:hover {
+        color: #ffd280;
+        text-decoration: none;
+    }
+    
+    /* 動畫效果 */
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    /* 響應式設計 - 更新手機版設計 */
+    @media (max-width: 1200px) {
+        .page-container {
+            margin: 0;
+            border-radius: 0;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .content-container {
+            flex-direction: column;
+        }
+        
+        .sidebar {
+            flex: 0 0 100%;
+        }
+        
+        .header-title {
+            font-size: 36px;
+        }
+        
+        .header-subtitle {
+            font-size: 22px;
+        }
+        
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* 確保在手機上顯示為兩列 */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .rating-categories {
+            grid-template-columns: 1fr;
+        }
+        
+        .video-link {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        /* 調整標尺在手機上的顯示 */
+        .meter-container {
+            height: 160px;
+            margin: 60px auto 70px;
+        }
+        
+        .meter-indicator,
+        .meter-label {
+            font-size: 12px;
+        }
+        
+        /* 調整評級卡片在手機上的顯示 */
+        .rating-category {
+            min-width: 100%;
+        }
+        
+        /* 調整服務類別卡片在手機上的顯示 */
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+        }
+        
+        .service-title {
+            font-size: 20px;
+        }
+        
+        .service-price {
+            font-size: 20px;
+        }
+        
+        /* 進一步調整標尺在小螢幕上的顯示 */
+        .meter-container {
+            height: 160px;
+            margin: 70px auto 80px;
+            padding: 0 10px;
+        }
+        
+        .meter-label {
+            font-size: 11px;
+            bottom: -35px;
+        }
+        
+        .meter-indicator {
+            font-size: 11px;
+            top: -35px;
+        }
+        
+        .service-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        
+        /* 調整步驟流程在小螢幕上的顯示 */
+        .process-step {
+            padding-left: 45px;
+        }
+        
+        .step-content {
+            padding: 15px 20px;
+        }
+        
+        .step-title {
+            font-size: 16px;
+        }
+        
+        .step-desc {
+            font-size: 14px;
+        }
+    }
+    
+    /* 手機極小螢幕適配 - 保持兩列布局 */
+    @media (max-width: 480px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        
+        .service-link {
+            font-size: 12px;
+            padding: 8px 4px;
+            letter-spacing: -0.03em;
+        }
+        
+        #service14, #service15 {
+            font-size: 11px;
+            letter-spacing: -0.05em;
+        }
+        
+        /* 進一步調整標尺在極小螢幕上的顯示 */
+        .meter-container {
+            height: 180px;
+        }
+        
+        .meter-label {
+            font-size: 10px;
+            width: 20px;
+        }
+        
+        .meter-indicator {
+            font-size: 10px;
+            width: 40px;
+        }
+        
+        /* 調整服務卡片在極小螢幕上的顯示 */
+        .service-card-header {
+            padding: 20px 15px;
+        }
+        
+        .service-card-body {
+            padding: 20px 15px;
+        }
+        
+        .service-card-footer {
+            padding: 15px;
+        }
+        
+        .feature-item {
+            margin-bottom: 12px;
+        }
+        
+        .feature-icon {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        .feature-text {
+            font-size: 13px;
+        }
+    }
+    
+    /* 超小螢幕設備 - 更多調整 */
+    @media (max-width: 360px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 4px;
+        }
+        
+        .service-link {
+            font-size: 11px;
+            padding: 6px 3px;
+            letter-spacing: -0.05em;
+        }
+        
+        #service14, #service15 {
+            font-size: 10px;
+            letter-spacing: -0.08em;
+        }
+        
+        /* 極小屏幕額外調整 */
+        .meter-container {
+            height: 200px;
+            margin: 80px auto 90px;
+        }
+        
+        .meter-label, .meter-indicator {
+            font-size: 9px;
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .process-step {
+            padding-left: 40px;
+        }
+        
+        .step-content {
+            padding: 12px 15px;
+        }
+        
+        .step-title {
+            font-size: 15px;
+        }
+        
+        .step-desc {
+            font-size: 13px;
+        }
+    }
+    
+    /* 特別處理八卦說明和評級系統的可見性 */
+#bagua-description, 
+.rating-category,
+.meter-container,
+.service-process,
+.services-comparison,
+.rating-system,
+.feng-shui-meter {
+    display: block !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* Android 設備專用修復 */
+@supports (-webkit-touch-callout: none) and (not (contain: paint)) {
+    /* 僅安卓設備適用的樣式（排除iOS） */
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .service-link {
+        font-size: 11px !important;
+        padding: 8px 4px !important;
+        letter-spacing: -0.05em !important;
+    }
+    
+    /* 微信服務特別處理 */
+    #service14, #service15 {
+        font-size: 10px !important;
+        letter-spacing: -0.08em !important;
+    }
+    
+    /* 防止Android設備上出界 */
+    body, html, .page-container, .content-container, .main-content, .sidebar, .content-section {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* 確保標尺顯示正確 */
+    .meter-container, .feng-shui-meter, .rating-system, .services-comparison, .service-process {
+        overflow: hidden !important;
+        max-width: 100% !important;
+    }
+    
+    /* 修復評級卡片在Android上的顯示 */
+    .rating-categories {
+        display: block !important;
+    }
+    
+    .rating-category {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+}
+    
+    /* 添加iOS特定修復 */
+    @supports (-webkit-touch-callout: none) {
+        /* 確保iOS設備上的顯示正確 */
+        body, html {
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .page-container, .content-container, .main-content {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        /* 標尺和其他容器修復 */
+        .meter-container, .feng-shui-meter, .services-comparison, .rating-system, .service-process {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+    }
+    </STYLE>
+</HEAD>
+
+<BODY style="overflow-x: hidden; max-width: 100%;">
+<div class="page-container">
+    <!-- 頂部區域 - 與inprice7.htm一致的風格 -->
+    <header class="header">
+        <!-- 語言切換按鈕 -->
+        <div class="language-switcher">
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
+        </div>
+        
+        <!-- 太極背景元素 - 使用inprice7.htm的圖像方式實現 -->
+        <div class="taichi-bg left"></div>
+        <div class="taichi-bg right"></div>
+        
+        <div class="header-text">
+            <h1 class="header-title" id="site-title">Victor Fengshui & Divination</h1>
+            <h2 class="header-subtitle" id="site-subtitle">Victor 專業風水師</h2>
+        </div>
+    </header>
+
+    <!-- 內容區域 -->
+    <div class="content-container">
+        <!-- 側邊欄 - 確保背景為白色 -->
+        <div class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link" id="nav-home"><span class="icon"><i class="fas fa-home"></i></span>首頁</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/phpbb" class="nav-link" id="nav-forum"><span class="icon"><i class="fas fa-comments"></i></span>留言版</a></li>
+                    <li class="nav-item"><a href="https://hexagram-api.vercel.app/" class="nav-link" id="nav-hexagram" target="_blank"><span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦</a></li>
+                    <li class="nav-item"><a href="inprice1.html" class="nav-link" id="nav-services"><span class="icon"><i class="fas fa-compass"></i></span>風水收費服務</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/" class="nav-link" id="nav-shop"><span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物</a></li>
+                    <li class="nav-item"><a href="bank.html" class="nav-link" id="nav-bank"><span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" id="nav-contact"><span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- 主內容區域 -->
+        <div class="main-content">
+            <!-- 服務菜單 - 確保手機上顯示為兩列 -->
+            <div class="service-grid">
+                <div class="service-item"><a href="inprice1.html" class="service-link" id="service1">超準易占</a></div>
+                <div class="service-item"><a href="inprice2.html" class="service-link" id="service2">電話問事</a></div>
+                <div class="service-item"><a href="inprice3.html" class="service-link" id="service3">2人愛情占星術</a></div>
+                <div class="service-item"><a href="inprice4.html" class="service-link" id="service4">命理套餐</a></div>
+                
+                <div class="service-item"><a href="inprice5.html" class="service-link" id="service5">手機號碼占卜</a></div>
+                <div class="service-item"><a href="inprice6.html" class="service-link" id="service6">轉手機號碼改運</a></div>
+                <div class="service-item"><a href="inprice7.html" class="service-link" id="service7">專業風水佈局</a></div>
+                <div class="service-item"><a href="inprice9.html" class="service-link" id="service9">擇吉日</a></div>
+                
+                <div class="service-item"><a href="inprice10.html" class="service-link" id="service10">改名</a></div>
+                <div class="service-item"><a href="inprice11.html" class="service-link" id="service11">大氣改運</a></div>
+                <div class="service-item active"><a href="inprice13.html" class="service-link" id="service13">租買樓宇評級</a></div>
+                <div class="service-item"><a href="inprice8.html" class="service-link" id="service8">其他服務</a></div>
+                
+                <div class="service-item"><a href="inprice12.html" class="service-link" id="service12">流年運程預測</a></div>
+                <div class="service-item"><a href="inprice14.html" class="service-link" id="service14">微信whatapps命理</a></div>
+                <div class="service-item"><a href="inprice15.html" class="service-link" id="service15">微信whatapps起卦</a></div>
+                <div class="service-item"><a href="inprice16.html" class="service-link" id="service16">結 緣 區</a></div>
+            </div>
+            
+            <!-- 主要內容 -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title" id="page-title">租買樓宇評級</h2>
+                    <p class="section-subtitle" id="page-subtitle">專業風水分析，讓您選擇最有利於事業、健康和財運的居所</p>
+                </div>
+                
+                <!-- 視頻連結 - 使用inprice7.htm的樣式 -->
+                <div class="video-container">
+                    <a onclick="window.open('https://victor-fengshui.vercel.app/sun/fengshui.mp4','租買樓宇評級','');return false;" href="https://victor-fengshui.vercel.app/sun/fengshui.mp4" class="video-link" id="video-link">
+                        <span class="video-icon"><i class="fas fa-play-circle"></i></span>
+                        <span id="video-text">按此觀看影片介紹</span>
+                    </a>
+                </div>
+                
+                <!-- 服務卡片 - 修復布局 -->
+                <div class="services-comparison">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-header-content">
+                                    <div class="service-icon"><i class="fas fa-laptop-house"></i></div>
+                                    <h3 class="service-title" id="service1-title">遠程評估服務</h3>
+                                    <div class="service-subtitle" id="service1-subtitle">無需親自到場的初步評估</div>
+                                </div>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service1-feat1">提供住宅或商業地產的全面風水評估，只需提供平面圖和位置信息</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service1-feat2">適合對多個物業進行初步篩選，或已確定但希望獲得專業意見的情況</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service1-feat3">分析整體風水格局、能量流動、不利因素識別和改善建議</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service1-feat4">包含書面報告，詳細說明物業的風水優缺點及可能的改善方案</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card-footer">
+                                <div class="service-price" id="service1-price">基本費用：$1,800</div>
+                                <div class="price-note" id="service1-note">遠程評估通常在3個工作日內完成</div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-header-content">
+                                    <div class="service-icon"><i class="fas fa-home"></i></div>
+                                    <h3 class="service-title" id="service2-title">現場實地評估</h3>
+                                    <div class="service-subtitle" id="service2-subtitle">專業風水師親自到場評估</div>
+                                </div>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service2-feat1">專業風水師親自到場進行全面評估，提供最準確的分析和建議</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service2-feat2">適合準備購買或租賃的物業，或希望優化現有居住/辦公環境的客戶</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service2-feat3">詳細的方位測量、能量點分析、居住者命理與住宅匹配度分析</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service2-feat4">提供具體化解方案，包括家具擺放、顏色選擇和裝飾品建議</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card-footer">
+                                <div class="service-price" id="service2-price">首兩小時：$2,800</div>
+                                <div class="price-note" id="service2-note">之後每小時加收$1,000</div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-card-header">
+                                <div class="service-header-content">
+                                    <div class="service-icon"><i class="fas fa-building"></i></div>
+                                    <h3 class="service-title" id="service3-title">商業地產專業評估</h3>
+                                    <div class="service-subtitle" id="service3-subtitle">專為企業主量身定制</div>
+                                </div>
+                            </div>
+                            <div class="service-card-body">
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service3-feat1">專為商業地產提供的高級風水評估服務，助企業主選擇有利於業務發展的場所</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service3-feat2">財位分析、客流能量評估、競爭環境分析、企業形象與空間匹配度評估</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service3-feat3">詳細評估辦公室佈局、會議室位置、前台設計等對企業發展的影響</div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div class="feature-text" id="service3-feat4">提供詳細的書面報告和改善建議，助提升商業成功機會</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-card-footer">
+                                <div class="service-price" id="service3-price">基本費用：$4,800 起</div>
+                                <div class="price-note" id="service3-note">視商業場所大小和複雜度而定</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px; font-style: italic; color: #666;" id="price-note">
+                        * 所有服務費用可能因應物業面積、複雜程度和其他因素而調整，請聯繫我們獲取準確報價。
+                    </div>
+                </div>
+                
+                <!-- 風水評級標尺 - 修復標尺顯示 -->
+                <div class="feng-shui-meter">
+                    <h3 class="section-title" id="meter-title" style="font-size: 24px;">風水評級標準</h3>
+                    <p id="meter-desc" style="color: #666; margin-bottom: 20px;">我們使用1-10分的評級系統，綜合考量多方面因素，為每個物業提供客觀評分</p>
+                    
+                    <div class="meter-container">
+                        <div class="meter-bar"></div>
+                        <div class="meter-marker"></div>
+                        <div class="meter-marker"></div>
+                        <div class="meter-marker"></div>
+                        <div class="meter-marker"></div>
+                        
+                        <div class="meter-label" id="score-1">1</div>
+                        <div class="meter-label" id="score-2">2</div>
+                        <div class="meter-label" id="score-3">4</div>
+                        <div class="meter-label" id="score-4">6</div>
+                        <div class="meter-label" id="score-5">8</div>
+                        <div class="meter-label" id="score-6">10</div>
+                        
+                        <div class="meter-indicator" id="level-1">不宜</div>
+                        <div class="meter-indicator" id="level-2">較差</div>
+                        <div class="meter-indicator" id="level-3">一般</div>
+                        <div class="meter-indicator" id="level-4">良好</div>
+                        <div class="meter-indicator" id="level-5">極佳</div>
+                    </div>
+                </div>
+                
+                <!-- 評級系統說明 - 修復響應式顯示 -->
+                <div class="rating-system">
+                    <h3 class="section-title" id="rating-title" style="font-size: 24px;">評級考量因素</h3>
+                    
+                    <div class="rating-categories">
+                        <div class="rating-category">
+                            <div class="rating-icon"><i class="fas fa-compass"></i></div>
+                            <h4 class="rating-title" id="factor1-title">坐向朝向</h4>
+                            <p class="rating-desc" id="factor1-desc">分析住宅或辦公室的坐向與朝向，評估各個朝向的能量流動和對居住者的影響。</p>
+                        </div>
+                        
+                        <div class="rating-category">
+                            <div class="rating-icon"><i class="fas fa-water"></i></div>
+                            <h4 class="rating-title" id="factor2-title">環境能量</h4>
+                            <p class="rating-desc" id="factor2-desc">評估周遭水流、道路、山勢等環境因素，分析其對物業能量場的影響。</p>
+                        </div>
+                        
+                        <div class="rating-category">
+                            <div class="rating-icon"><i class="fas fa-door-open"></i></div>
+                            <h4 class="rating-title" id="factor3-title">入口與動線</h4>
+                            <p class="rating-desc" id="factor3-desc">分析大門位置、玄關設計以及室內動線流暢度，確保能量流動順暢無阻。</p>
+                        </div>
+                        
+                        <div class="rating-category">
+                            <div class="rating-icon"><i class="fas fa-bed"></i></div>
+                            <h4 class="rating-title" id="factor4-title">關鍵空間配置</h4>
+                            <p class="rating-desc" id="factor4-desc">評估臥室、廚房、廁所等關鍵空間的位置與配置，確保不存在明顯風水缺陷。</p>
+                        </div>
+                        
+                        <div class="rating-category">
+                            <div class="rating-icon"><i class="fas fa-user"></i></div>
+                            <h4 class="rating-title" id="factor5-title">個人命盤匹配</h4>
+                            <p class="rating-desc" id="factor5-desc">分析居住者或業主的生辰八字與物業風水特性之間的匹配度，提供個人化評估。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 服務流程 - 優化響應式顯示 -->
+                <div class="service-process">
+                    <h3 class="section-title" id="process-title" style="font-size: 24px;">服務流程</h3>
+                    
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h4 class="step-title" id="step1-title">預約諮詢</h4>
+                                <p class="step-desc" id="step1-desc">通過電話、電郵或WhatsApp聯繫我們，說明您的需求和物業情況，選擇合適的評估服務。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h4 class="step-title" id="step2-title">資料提供</h4>
+                                <p class="step-desc" id="step2-desc">提供物業資料（如平面圖、照片、地址）和居住者/業主的基本資料（如出生日期時間）。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h4 class="step-title" id="step3-title">評估進行</h4>
+                                <p class="step-desc" id="step3-desc">根據所選服務，我們將進行遠程分析或安排專業風水師到現場進行詳細評估。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h4 class="step-title" id="step4-title">結果交付</h4>
+                                <p class="step-desc" id="step4-desc">提供詳細的評估報告，包括物業風水評級、優缺點分析、潛在問題和具體改善建議。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number"></div>
+                            <div class="step-content">
+                                <h4 class="step-title" id="step5-title">後續跟進</h4>
+                                <p class="step-desc" id="step5-desc">如需進一步優化和調整，我們可提供風水佈局和化解方案的實施建議與指導。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部區域 -->
+    <footer class="footer">
+        <p id="copyright">版權所有 © 2002-2026</p>
+        <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#63150a000f0216575223040e020a0f4d000c0e"><span class="__cf_email__" data-cfemail="56203f353a3723626716313b373f3a7835393b">[email&#160;protected]</span></a></p>
+    </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// 儲存中英文對照資料
+const translations = {
+    'zh': {
+        'site-title': 'Victor Fengshui & Divination',
+        'site-subtitle': 'Victor 專業風水師',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>首頁',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>留言版',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>風水收費服務',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們',
+        
+        // 服務菜單
+        'service1': '超準易占',
+        'service2': '電話問事',
+        'service3': '2人愛情占星術',
+        'service4': '命理套餐',
+        'service5': '手機號碼占卜',
+        'service6': '轉手機號碼改運',
+        'service7': '專業風水佈局',
+        'service8': '其他服務',
+        'service9': '擇吉日',
+        'service10': '改名',
+        'service11': '大氣改運',
+        'service12': '流年運程預測',
+        'service13': '租買樓宇評級',
+        'service14': '微信whatapps命理',
+        'service15': '微信whatapps起卦',
+        'service16': '結 緣 區',
+        
+        // 頁面內容
+        'page-title': '租買樓宇評級',
+        'page-subtitle': '專業風水分析，讓您選擇最有利於事業、健康和財運的居所',
+        'video-text': '按此觀看影片介紹',
+        
+        // 服務卡片
+        'service1-title': '遠程評估服務',
+        'service1-subtitle': '無需親自到場的初步評估',
+        'service1-feat1': '提供住宅或商業地產的全面風水評估，只需提供平面圖和位置信息',
+        'service1-feat2': '適合對多個物業進行初步篩選，或已確定但希望獲得專業意見的情況',
+        'service1-feat3': '分析整體風水格局、能量流動、不利因素識別和改善建議',
+        'service1-feat4': '包含書面報告，詳細說明物業的風水優缺點及可能的改善方案',
+        'service1-price': '基本費用：$1,800',
+        'service1-note': '遠程評估通常在3個工作日內完成',
+        
+        'service2-title': '現場實地評估',
+        'service2-subtitle': '專業風水師親自到場評估',
+        'service2-feat1': '專業風水師親自到場進行全面評估，提供最準確的分析和建議',
+        'service2-feat2': '適合準備購買或租賃的物業，或希望優化現有居住/辦公環境的客戶',
+        'service2-feat3': '詳細的方位測量、能量點分析、居住者命理與住宅匹配度分析',
+        'service2-feat4': '提供具體化解方案，包括家具擺放、顏色選擇和裝飾品建議',
+        'service2-price': '首兩小時：$2,800',
+        'service2-note': '之後每小時加收$1,000',
+        
+        'service3-title': '商業地產專業評估',
+        'service3-subtitle': '專為企業主量身定制',
+        'service3-feat1': '專為商業地產提供的高級風水評估服務，助企業主選擇有利於業務發展的場所',
+        'service3-feat2': '財位分析、客流能量評估、競爭環境分析、企業形象與空間匹配度評估',
+        'service3-feat3': '詳細評估辦公室佈局、會議室位置、前台設計等對企業發展的影響',
+        'service3-feat4': '提供詳細的書面報告和改善建議，助提升商業成功機會',
+        'service3-price': '基本費用：$4,800 起',
+        'service3-note': '視商業場所大小和複雜度而定',
+        
+        'price-note': '* 所有服務費用可能因應物業面積、複雜程度和其他因素而調整，請聯繫我們獲取準確報價。',
+        
+        // 風水評級標尺
+        'meter-title': '風水評級標準',
+        'meter-desc': '我們使用1-10分的評級系統，綜合考量多方面因素，為每個物業提供客觀評分',
+        'score-1': '1',
+        'score-2': '2',
+        'score-3': '4',
+        'score-4': '6',
+        'score-5': '8',
+        'score-6': '10',
+        'level-1': '不宜',
+        'level-2': '較差',
+        'level-3': '一般',
+        'level-4': '良好',
+        'level-5': '極佳',
+        
+        // 評級考量因素
+        'rating-title': '評級考量因素',
+        'factor1-title': '坐向朝向',
+        'factor1-desc': '分析住宅或辦公室的坐向與朝向，評估各個朝向的能量流動和對居住者的影響。',
+        'factor2-title': '環境能量',
+        'factor2-desc': '評估周遭水流、道路、山勢等環境因素，分析其對物業能量場的影響。',
+        'factor3-title': '入口與動線',
+        'factor3-desc': '分析大門位置、玄關設計以及室內動線流暢度，確保能量流動順暢無阻。',
+        'factor4-title': '關鍵空間配置',
+        'factor4-desc': '評估臥室、廚房、廁所等關鍵空間的位置與配置，確保不存在明顯風水缺陷。',
+        'factor5-title': '個人命盤匹配',
+        'factor5-desc': '分析居住者或業主的生辰八字與物業風水特性之間的匹配度，提供個人化評估。',
+        
+        // 服務流程
+        'process-title': '服務流程',
+        'step1-title': '預約諮詢',
+        'step1-desc': '通過電話、電郵或WhatsApp聯繫我們，說明您的需求和物業情況，選擇合適的評估服務。',
+        'step2-title': '資料提供',
+        'step2-desc': '提供物業資料（如平面圖、照片、地址）和居住者/業主的基本資料（如出生日期時間）。',
+        'step3-title': '評估進行',
+        'step3-desc': '根據所選服務，我們將進行遠程分析或安排專業風水師到現場進行詳細評估。',
+        'step4-title': '結果交付',
+        'step4-desc': '提供詳細的評估報告，包括物業風水評級、優缺點分析、潛在問題和具體改善建議。',
+        'step5-title': '後續跟進',
+        'step5-desc': '如需進一步優化和調整，我們可提供風水佈局和化解方案的實施建議與指導。',
+        
+        // 頁腳
+        'copyright': '版權所有 © 2002-2026',
+        'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
+        'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
+    },
+    'en': {
+        'site-title': 'Daily Observation of Heaven',
+        'site-subtitle': 'Victor Professional Feng Shui Master',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>Home',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>Forum',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>Online Divination',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>Feng Shui Services',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>Online Shop',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>Banking & Transfer',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>Contact Us',
+        
+        // 服務菜單
+        'service1': 'Yi Divination',
+        'service2': 'Phone Consultation',
+        'service3': 'Love Astrology',
+        'service4': 'Destiny Package',
+        'service5': 'Phone Number Divination',
+        'service6': 'Phone Number Transformation',
+        'service7': 'Feng Shui Arrangement',
+        'service8': 'Other Services',
+        'service9': 'Auspicious Date Selection',
+        'service10': 'Name Change',
+        'service11': 'Energy Transformation',
+        'service12': 'Annual Forecast',
+        'service13': 'Property Rating',
+        'service14': 'WeChat/WhatsApp Consultation',
+        'service15': 'WeChat/WhatsApp Divination',
+        'service16': 'Free Services',
+        
+        // 頁面內容
+        'page-title': 'Property Feng Shui Rating',
+        'page-subtitle': 'Professional feng shui analysis to help you choose properties most beneficial for career, health, and wealth',
+        'video-text': 'Click to watch video introduction',
+        
+        // 服務卡片
+        'service1-title': 'Remote Assessment Service',
+        'service1-subtitle': 'Preliminary evaluation without on-site visit',
+        'service1-feat1': 'Comprehensive feng shui evaluation for residential or commercial properties, requiring only floor plans and location details',
+        'service1-feat2': 'Ideal for preliminary screening of multiple properties or getting professional opinions on properties you\'ve already identified',
+        'service1-feat3': 'Analysis of overall feng shui configuration, energy flow, identification of unfavorable factors, and improvement recommendations',
+        'service1-feat4': 'Includes a written report detailing the property\'s feng shui strengths, weaknesses, and potential improvement solutions',
+        'service1-price': 'Basic Fee: $1,800',
+        'service1-note': 'Remote assessments are typically completed within 3 business days',
+        
+        'service2-title': 'On-Site Property Evaluation',
+        'service2-subtitle': 'Personal visit by a professional feng shui master',
+        'service2-feat1': 'Our professional feng shui master personally visits the site to conduct a comprehensive assessment for the most accurate analysis',
+        'service2-feat2': 'Suitable for properties you plan to purchase or rent, or for optimizing your current living/working environment',
+        'service2-feat3': 'Detailed directional measurements, energy point analysis, and compatibility between residents and property',
+        'service2-feat4': 'Provides specific solution recommendations including furniture placement, color choices, and decorative elements',
+        'service2-price': 'First Two Hours: $2,800',
+        'service2-note': 'Additional hours: $1,000 each',
+        
+        'service3-title': 'Professional Commercial Property Assessment',
+        'service3-subtitle': 'Tailored specifically for business owners',
+        'service3-feat1': 'Premium feng shui evaluation service for commercial properties, helping business owners select locations conducive to business growth',
+        'service3-feat2': 'Includes wealth position analysis, customer flow assessment, competitive environment analysis, and brand-space compatibility evaluation',
+        'service3-feat3': 'Detailed assessment of office layout, meeting room placement, reception design, and their impact on business development',
+        'service3-feat4': 'Provides comprehensive written reports and improvement suggestions to enhance business success opportunities',
+        'service3-price': 'Starting from: $4,800',
+        'service3-note': 'Varies based on commercial space size and complexity',
+        
+        'price-note': '* All service fees may be adjusted according to property size, complexity, and other factors. Please contact us for accurate quotations.',
+        
+        // 風水評級標尺
+        'meter-title': 'Feng Shui Rating Standards',
+        'meter-desc': 'We use a 1-10 rating system, considering multiple factors to provide an objective score for each property',
+        'score-1': '1',
+        'score-2': '2',
+        'score-3': '4',
+        'score-4': '6',
+        'score-5': '8',
+        'score-6': '10',
+        'level-1': 'Poor',
+        'level-2': 'Below Average',
+        'level-3': 'Average',
+        'level-4': 'Good',
+        'level-5': 'Excellent',
+        
+        // 評級考量因素
+        'rating-title': 'Rating Consideration Factors',
+        'factor1-title': 'Facing & Orientation',
+        'factor1-desc': 'Analysis of the property\'s sitting and facing directions, evaluating energy flow patterns and their effects on occupants.',
+        'factor2-title': 'Environmental Energy',
+        'factor2-desc': 'Assessment of surrounding water flows, roads, landforms, and other environmental factors and their influence on the property\'s energy field.',
+        'factor3-title': 'Entrance & Circulation',
+        'factor3-desc': 'Analysis of main door location, foyer design, and interior traffic flow to ensure smooth energy circulation.',
+        'factor4-title': 'Key Space Layout',
+        'factor4-desc': 'Evaluation of bedrooms, kitchen, bathrooms, and other critical spaces to ensure there are no significant feng shui defects.',
+        'factor5-title': 'Personal Chart Compatibility',
+        'factor5-desc': 'Analysis of the match between occupants\' or owners\' birth charts and the property\'s feng shui characteristics for personalized assessment.',
+        
+        // 服務流程
+        'process-title': 'Service Process',
+        'step1-title': 'Schedule Consultation',
+        'step1-desc': 'Contact us via phone, email, or WhatsApp to explain your needs and property situation, and choose the appropriate assessment service.',
+        'step2-title': 'Provide Information',
+        'step2-desc': 'Submit property details (floor plans, photos, address) and occupant/owner information (birth date and time).',
+        'step3-title': 'Assessment Process',
+        'step3-desc': 'Depending on the selected service, we will perform remote analysis or arrange for our professional feng shui master to conduct an on-site evaluation.',
+        'step4-title': 'Results Delivery',
+        'step4-desc': 'Receive a detailed assessment report including property feng shui rating, strengths and weaknesses analysis, potential issues, and specific improvement recommendations.',
+        'step5-title': 'Follow-up Support',
+        'step5-desc': 'For further optimization and adjustments, we can provide implementation advice and guidance on feng shui arrangements and remedies.',
+        
+        // 頁腳
+        'copyright': 'Copyright © 2002-2026',
+        'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
+        'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
+    }
+};
+
+// 切換語言函數
+function switchLanguage(lang) {
+    // 更新語言按鈕的激活狀態
+    document.querySelector('.lang-btn.zh').classList.remove('active');
+    document.querySelector('.lang-btn.en').classList.remove('active');
+    document.querySelector(`.lang-btn.${lang}`).classList.add('active');
+    
+    // 更新頁面上的所有文本內容
+    for (const [id, text] of Object.entries(translations[lang])) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = text;
+        }
+    }
+    
+    // 特別處理 - 更新網上購物的URL
+    const shopLink = document.getElementById('nav-shop');
+    if (shopLink) {
+        shopLink.href = lang === 'zh' ? 'https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/' : 'https://victor-fengshui.vercel.app/prestashop/metaphysics/en/';
+    }
+    
+    // 存儲用戶的語言偏好
+    try { window['localStorage'].setItem('preferredLanguage', lang); } catch(e) { /* ignore */ }
+    
+    // 更新頁面標題
+    document.title = lang === 'zh' ? 'Victor 專業風水師 - 租買樓宇評級' : 'Victor Professional Feng Shui Master - Property Feng Shui Rating';
+    
+    // 修復頁面可能的溢出問題
+    fixOverflow();
+}
+
+// 修復頁面溢出問題（簡化版）
+function fixOverflow() {
+    document.documentElement.style.overflowX = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    
+    // 特別處理標尺
+    const meterContainer = document.querySelector('.meter-container');
+    if (meterContainer) {
+        meterContainer.style.overflowX = 'hidden';
+        meterContainer.style.maxWidth = '100%';
+    }
+    
+    // 解決服務卡片可能溢出的問題
+    document.querySelectorAll('.service-card, .rating-category, .step-content').forEach(card => {
+        card.style.maxWidth = '100%';
+        card.style.overflowX = 'hidden';
+    });
+    
+    // 強制處理整個 body
+    document.body.style.overflowX = 'hidden';
+    document.body.style.maxWidth = '100%';
+    document.documentElement.style.overflowX = 'hidden';
+    document.documentElement.style.maxWidth = '100%';
+}
+
+// 頁面加載時檢查用戶的語言偏好
+document.addEventListener('DOMContentLoaded', function() {
+    var preferredLanguage = 'zh';
+    try { preferredLanguage = window['localStorage'].getItem('preferredLanguage') || 'zh'; } catch(e) { /* ignore */ }
+    switchLanguage(preferredLanguage);
+    
+    // 處理深色模式
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    });
+    
+    // 特別處理微訊服務的字體大小在小屏幕上
+    const longServices = document.querySelectorAll('#service14, #service15');
+    const adjustServiceFontSize = () => {
+        if (window.innerWidth <= 360) {
+            longServices.forEach(el => {
+                el.style.fontSize = '10px';
+                el.style.letterSpacing = '-0.08em';
+            });
+        } else if (window.innerWidth <= 480) {
+            longServices.forEach(el => {
+                el.style.fontSize = '11px';
+                el.style.letterSpacing = '-0.05em';
+            });
+        } else {
+            longServices.forEach(el => {
+                el.style.fontSize = '';
+                el.style.letterSpacing = '';
+            });
+        }
+    };
+    
+    adjustServiceFontSize();
+    
+    // 窗口大小變化時重新調整
+    window.addEventListener('resize', function() {
+        adjustServiceFontSize();
+        fixOverflow(); // 重新修復溢出問題
+    });
+    
+    // 初始修復溢出問題
+    fixOverflow();
+    
+    // 延遲檢查溢出問題，確保所有元素都已加載
+    setTimeout(fixOverflow, 500);
+    setTimeout(fixOverflow, 1000);
+    setTimeout(fixOverflow, 2000);
+});
+</script>
+<!-- Victor AI 聊天助手 -->
+<script src="victor-ai-chat.js"></script>
+</BODY>
+</HTML>

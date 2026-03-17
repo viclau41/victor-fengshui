@@ -1,0 +1,1248 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-HK">
+<HEAD>
+    <TITLE>Victor 專業風水師 - 結緣區</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!-- 加載字體和圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <STYLE type=text/css>
+    :root {
+        --primary-color: #5D5CDE;
+        --secondary-color: #336633;
+        --accent-color: #ff9900;
+        --light-bg: #f8f8f8;
+        --dark-bg: #2c3e50;
+        --text-dark: #333;
+        --text-light: #fff;
+        --border-radius: 12px;
+        --box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+        
+        /* 結緣區特有顏色 */
+        --free-purple: #8A2BE2;
+        --free-pink: #FF69B4;
+        --free-gold: #FFD700;
+        --free-blue: #1E90FF;
+        --free-green: #3CB371;
+    }
+    
+    /* 深色模式變量 */
+    .dark-mode {
+        --light-bg: #1a1a2e;
+        --dark-bg: #121212;
+        --text-dark: #f1f1f1;
+        --accent-color: #ff9e00;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    body {
+        font-family: 'Noto Sans TC', Arial, "Microsoft JhengHei", sans-serif;
+        background-color: #f5f1e6;
+        background-image: url('https://victor-fengshui.vercel.app/backpaper.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 防止水平滾動 */
+        width: 100%;
+    }
+    
+    /* 頁面容器 */
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        width: 100%;
+    }
+    
+    /* 頂部區域改善 - 參考inprice7.htm修復太極圖案 */
+    .header {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* 太極圖案替代 - 使用背景圖像 */
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://victor-fengshui.vercel.app/taichi.webp');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 300px;
+        opacity: 0.1;
+        z-index: 0;
+        animation: pulse 8s infinite ease-in-out;
+    }
+    
+    /* 太極背景元素 - 使用圖像而不是CSS */
+    .taichi-bg {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background-image: url('https://victor-fengshui.vercel.app/taichi.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+    }
+    
+    .taichi-bg.left {
+        top: -30px;
+        left: -30px;
+    }
+    
+    .taichi-bg.right {
+        bottom: -30px;
+        right: -30px;
+    }
+    
+    .header-text {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .header-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header-subtitle {
+        font-size: 28px;
+        font-weight: normal;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* 內容區域 */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    /* 側邊欄 - 確保背景為白色 */
+    .sidebar {
+        flex: 0 0 280px;
+        background-color: #ffffff;
+        padding: 30px 20px;
+    }
+    
+    /* 主內容 */
+    .main-content {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #fff, #f8f8f8);
+        overflow-x: hidden; /* 防止內容溢出 */
+    }
+    
+    /* 導航菜單 */
+    .nav-menu {
+        list-style: none;
+        margin-top: 20px;
+    }
+    
+    .nav-item {
+        margin-bottom: 12px;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, #ffd280, #ffb84d);
+        color: #333;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link:hover {
+        background: linear-gradient(to bottom, #ffb84d, #ff9900);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-color: rgba(255,153,0,0.5);
+    }
+    
+    .nav-link .icon {
+        margin-right: 10px;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* 服務網格 - 改善手機顯示 */
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .service-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-item.active {
+        background-color: #FFCC66;
+        box-shadow: 0 0 0 2px var(--primary-color), 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        background-color: #fff8e6;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        transition: var(--transition);
+        height: 100%;
+        font-size: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+    }
+    
+    .service-item.active .service-link {
+        background-color: #FFCC66;
+    }
+    
+    .service-link:hover {
+        background-color: #FFCC66;
+    }
+    
+    /* 主要內容樣式 */
+    .content-section {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 25px 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: visible;
+        width: 100%;
+    }
+    
+    .free-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        gap: 20px;
+    }
+    
+    .free-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 32px;
+        font-weight: bold;
+        color: var(--free-purple);
+        padding: 10px 20px;
+        background: linear-gradient(120deg, #FFCCFF, #F4F0F9);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(138, 43, 226, 0.2);
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .free-badge {
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--free-blue);
+        background-color: var(--free-gold);
+        padding: 10px 20px;
+        border-radius: 50px;
+        box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+        animation: pulse 2s infinite ease-in-out;
+    }
+    
+    .intro-container {
+        margin: 30px 0;
+        position: relative;
+    }
+    
+    .intro-text {
+        color: var(--free-pink);
+        font-size: 18px;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        padding: 5px 0;
+        position: relative;
+    }
+    
+    .intro-text::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--free-pink), transparent);
+    }
+    
+    .instruction-container {
+        margin: 40px 0;
+        background-color: #F4F0FF;
+        padding: 25px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+    }
+    
+    .instruction-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--free-purple), var(--free-pink));
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+    
+    .instruction-text {
+        color: var(--free-purple);
+        font-size: 18px;
+        line-height: 1.7;
+    }
+    
+    .example-container {
+        margin: 25px 0;
+        text-align: center;
+    }
+    
+    .example-box {
+        display: inline-block;
+        background-color: white;
+        padding: 20px 40px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: var(--transition);
+    }
+    
+    .example-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .example-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 20px;
+        color: var(--free-pink);
+        font-weight: bold;
+        margin: 0 15px;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+    
+    .example-link:hover {
+        transform: scale(1.05);
+        color: var(--free-purple);
+    }
+    
+    .example-icon {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    
+    .contact-container {
+        margin-top: 40px;
+        background: linear-gradient(135deg, #fff, #F4F0FF);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .contact-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--free-purple);
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px dashed rgba(138, 43, 226, 0.3);
+    }
+    
+    .contact-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .contact-item {
+        flex: 1;
+        min-width: 250px;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        transition: var(--transition);
+    }
+    
+    .contact-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    
+    .contact-icon {
+        margin-right: 15px;
+        font-size: 28px;
+        color: var(--free-green);
+    }
+    
+    .contact-icon.whatsapp {
+        color: #25D366;
+    }
+    
+    .contact-icon.wechat {
+        color: #07C160;
+    }
+    
+    .contact-text {
+        font-size: 18px;
+        color: #333;
+        font-weight: normal;
+    }
+    
+    .contact-text strong {
+        color: #333;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .contact-highlight {
+        display: block;
+        color: var(--free-pink);
+        font-weight: bold;
+        font-size: 22px;
+        margin-top: 5px;
+    }
+    
+    .features-container {
+        margin: 40px 0;
+    }
+    
+    .features-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--free-purple);
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .features-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .feature-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #FFCCFF, #F4F0F9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: var(--free-purple);
+        font-size: 30px;
+    }
+    
+    .feature-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--free-purple);
+        margin-bottom: 10px;
+    }
+    
+    .feature-text {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    /* 浮動符咒元素 */
+    .floating-symbols {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+    
+    .symbol {
+        position: absolute;
+        opacity: 0.1;
+        font-size: 40px;
+        color: var(--free-purple);
+        animation: floatUpDown 8s infinite ease-in-out;
+    }
+    
+    .symbol:nth-child(1) {
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+    }
+    
+    .symbol:nth-child(2) {
+        top: 30%;
+        right: 8%;
+        animation-delay: 1s;
+    }
+    
+    .symbol:nth-child(3) {
+        bottom: 25%;
+        left: 15%;
+        animation-delay: 2s;
+    }
+    
+    .symbol:nth-child(4) {
+        bottom: 10%;
+        right: 12%;
+        animation-delay: 3s;
+    }
+    
+    .symbol:nth-child(5) {
+        top: 45%;
+        left: 85%;
+        animation-delay: 4s;
+    }
+    
+    /* 語言切換按鈕 */
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .lang-btn {
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        opacity: 0.7;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
+        opacity: 1;
+        border-color: white;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+    
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
+    }
+    
+    /* 底部區域 */
+    .footer {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF9900, #FFCC66, #FF9900);
+    }
+    
+    .footer p {
+        margin: 8px 0;
+        letter-spacing: 0.5px;
+        font-size: 14px;
+    }
+    
+    .footer a {
+        color: white;
+        text-decoration: underline;
+        transition: var(--transition);
+    }
+    
+    .footer a:hover {
+        color: #ffd280;
+        text-decoration: none;
+    }
+    
+    /* 動畫效果 */
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    @keyframes floatUpDown {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    
+    /* 響應式設計 - 確保手機版顯示一致性 */
+    @media (max-width: 1200px) {
+        .page-container {
+            margin: 0;
+            border-radius: 0;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .content-container {
+            flex-direction: column;
+        }
+        
+        .sidebar {
+            flex: 0 0 100%;
+        }
+        
+        .header-title {
+            font-size: 36px;
+        }
+        
+        .header-subtitle {
+            font-size: 22px;
+        }
+        
+        .features-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* 確保在手機上顯示為兩列 */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .features-list {
+            grid-template-columns: 1fr;
+        }
+        
+        .free-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .free-title, .free-badge {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* 手機版聯繫方式文字加強 */
+        .contact-text {
+            font-size: 16px !important;
+            color: #333 !important;
+        }
+        
+        .contact-text strong {
+            color: #333 !important;
+            font-weight: bold !important;
+            font-size: 16px !important;
+        }
+        
+        .contact-highlight {
+            color: var(--free-pink) !important;
+            font-weight: bold !important;
+            font-size: 18px !important;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        
+        .free-title {
+            font-size: 24px;
+        }
+        
+        .free-badge {
+            font-size: 18px;
+        }
+        
+        .intro-text, .instruction-text {
+            font-size: 16px;
+        }
+        
+        .contact-items {
+            flex-direction: column;
+        }
+        
+        .service-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        
+        /* 小屏設備聯繫方式進一步加強 */
+        .contact-text {
+            font-size: 15px !important;
+            color: #222 !important;
+            line-height: 1.4 !important;
+        }
+        
+        .contact-text strong {
+            color: #222 !important;
+            font-weight: 700 !important;
+            font-size: 15px !important;
+            text-shadow: 0 0 1px rgba(0,0,0,0.3);
+        }
+        
+        .contact-highlight {
+            color: #e91e63 !important;
+            font-weight: 700 !important;
+            font-size: 17px !important;
+            text-shadow: 0 0 1px rgba(0,0,0,0.3);
+        }
+    }
+    
+    /* 手機極小螢幕適配 - 保持兩列布局 */
+    @media (max-width: 480px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        
+        .service-link {
+            font-size: 12px;
+            padding: 8px 4px;
+            letter-spacing: -0.03em;
+        }
+        
+        #service14, #service15 {
+            font-size: 11px;
+            letter-spacing: -0.05em;
+        }
+        
+        /* 極小屏聯繫方式最終加強 */
+        .contact-text {
+            font-size: 14px !important;
+            color: #111 !important;
+            font-weight: 500 !important;
+        }
+        
+        .contact-text strong {
+            color: #111 !important;
+            font-weight: 700 !important;
+            font-size: 14px !important;
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+        
+        .contact-highlight {
+            color: #d81b60 !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-shadow: 0 0 2px rgba(0,0,0,0.5);
+        }
+    }
+    
+    /* 超小螢幕設備 */
+    @media (max-width: 360px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 4px;
+        }
+        
+        .service-link {
+            font-size: 11px;
+            padding: 6px 3px;
+            letter-spacing: -0.05em;
+        }
+        
+        #service14, #service15 {
+            font-size: 10px;
+            letter-spacing: -0.08em;
+        }
+    }
+    
+    /* Android 設備專用修復 */
+    @supports (-webkit-touch-callout: none) and (not (contain: paint)) {
+        /* 僅安卓設備適用的樣式（排除iOS） */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        
+        .service-link {
+            font-size: 11px !important;
+            padding: 8px 4px !important;
+            letter-spacing: -0.05em !important;
+        }
+        
+        /* 微信服務特別處理 */
+        #service14, #service15 {
+            font-size: 10px !important;
+            letter-spacing: -0.08em !important;
+        }
+    }
+    </STYLE>
+</HEAD>
+
+<BODY>
+<div class="page-container">
+    <!-- 頂部區域改進 - 修復太極圖案及保持白色底色 -->
+    <header class="header">
+        <!-- 語言切換按鈕 -->
+        <div class="language-switcher">
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
+        </div>
+        
+        <!-- 太極背景元素 - 使用inprice7.htm的圖像方式實現 -->
+        <div class="taichi-bg left"></div>
+        <div class="taichi-bg right"></div>
+        
+        <div class="header-text">
+            <h1 class="header-title" id="site-title">Victor Fengshui & Divination</h1>
+            <h2 class="header-subtitle" id="site-subtitle">Victor 專業風水師</h2>
+        </div>
+    </header>
+
+    <!-- 內容區域 -->
+    <div class="content-container">
+        <!-- 側邊欄 - 確保背景為白色 -->
+        <div class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link" id="nav-home"><span class="icon"><i class="fas fa-home"></i></span>首頁</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/phpbb" class="nav-link" id="nav-forum"><span class="icon"><i class="fas fa-comments"></i></span>留言版</a></li>
+                    <li class="nav-item"><a href="https://hexagram-api.vercel.app/" class="nav-link" id="nav-hexagram" target="_blank"><span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦</a></li>
+                    <li class="nav-item"><a href="inprice1.html" class="nav-link" id="nav-services"><span class="icon"><i class="fas fa-compass"></i></span>風水收費服務</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/" class="nav-link" id="nav-shop"><span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物</a></li>
+                    <li class="nav-item"><a href="bank.html" class="nav-link" id="nav-bank"><span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" id="nav-contact"><span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- 主內容區域 -->
+        <div class="main-content">
+            <!-- 服務菜單 - 確保手機上顯示為兩列 -->
+            <div class="service-grid">
+                <div class="service-item"><a href="inprice1.html" class="service-link" id="service1">超準易占</a></div>
+                <div class="service-item"><a href="inprice2.html" class="service-link" id="service2">電話問事</a></div>
+                <div class="service-item"><a href="inprice3.html" class="service-link" id="service3">2人愛情占星術</a></div>
+                <div class="service-item"><a href="inprice4.html" class="service-link" id="service4">命理套餐</a></div>
+                
+                <div class="service-item"><a href="inprice5.html" class="service-link" id="service5">手機號碼占卜</a></div>
+                <div class="service-item"><a href="inprice6.html" class="service-link" id="service6">轉手機號碼改運</a></div>
+                <div class="service-item"><a href="inprice7.html" class="service-link" id="service7">專業風水佈局</a></div>
+                <div class="service-item"><a href="inprice9.html" class="service-link" id="service9">擇吉日</a></div>
+                
+                <div class="service-item"><a href="inprice10.html" class="service-link" id="service10">改名</a></div>
+                <div class="service-item"><a href="inprice11.html" class="service-link" id="service11">大氣改運</a></div>
+                <div class="service-item"><a href="inprice13.html" class="service-link" id="service13">租買樓宇評級</a></div>
+                <div class="service-item"><a href="inprice8.html" class="service-link" id="service8">其他服務</a></div>
+                
+                <div class="service-item"><a href="inprice12.html" class="service-link" id="service12">流年運程預測</a></div>
+                <div class="service-item"><a href="inprice14.html" class="service-link" id="service14">微訊whatapps命理</a></div>
+                <div class="service-item"><a href="inprice15.html" class="service-link" id="service15">微訊whatapps起卦</a></div>
+                <div class="service-item active"><a href="inprice16.html" class="service-link" id="service16">結 緣 區</a></div>
+            </div>
+            
+            <!-- 主要內容 -->
+            <div class="content-section">
+                <div class="floating-symbols">
+                    <div class="symbol"><i class="fas fa-yin-yang"></i></div>
+                    <div class="symbol"><i class="fas fa-star"></i></div>
+                    <div class="symbol"><i class="fas fa-moon"></i></div>
+                    <div class="symbol"><i class="fas fa-sun"></i></div>
+                    <div class="symbol"><i class="fas fa-infinity"></i></div>
+                </div>
+                
+                <!-- 服務標題 -->
+                <div class="free-header">
+                    <h2 class="free-title" id="title-main">八 字 大 批</h2>
+                    <div class="free-badge" id="title-free">基本是免費</div>
+                </div>
+                
+                <!-- 結緣區介紹 -->
+                <div class="intro-container">
+                    <p class="intro-text" id="desc-text1">
+                        結緣區是把有限的資源分給有緣人，各人都有自己極強的一面，能分享給有緣人，就是助人自助。
+                    </p>
+                    
+                    <p class="intro-text" id="desc-text2">
+                        歡迎任何有緣人參與，希望大家籍此增加善緣及貴人。
+                    </p>
+                </div>
+                
+                <!-- 免費八字大批使用方法 -->
+                <div class="instruction-container">
+                    <p class="instruction-text" id="instruction-text">
+                        免費電腦八字大批，有興趣人士透過微訊(victor3889)或whatapps(61883889)，輸入自己的出生年月日時，約一天內可收到大批檔案，以下是以香港回歸時的八字作例子。
+                    </p>
+                </div>
+                
+                <!-- 範例文件 -->
+                <div class="example-container">
+                    <div class="example-box">
+                        <a href="hk8w.docx" class="example-link" id="example-word">
+                            <span class="example-icon"><i class="fas fa-file-word"></i></span>
+                            Word文檔
+                        </a>
+                        <a href="hk8w.pdf" class="example-link" id="example-pdf">
+                            <span class="example-icon"><i class="fas fa-file-pdf"></i></span>
+                            PDF文檔
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 服務特點 -->
+                <div class="features-container">
+                    <h3 class="features-title" id="features-title">八字大批優勢</h3>
+                    
+                    <div class="features-list">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <h4 class="feature-title" id="feature1-title">穿越時空</h4>
+                            <p class="feature-text" id="feature1-desc">
+                                八字能跨越時空，揭示您的過去、現在和未來，提供全生命週期的洞察。
+                            </p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="feature-title" id="feature2-title">精準分析</h4>
+                            <p class="feature-text" id="feature2-desc">
+                                透過系統化的八字計算，精準分析您的命盤結構，揭示命運運行規律。
+                            </p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-compass"></i>
+                            </div>
+                            <h4 class="feature-title" id="feature3-title">人生指南</h4>
+                            <p class="feature-text" id="feature3-desc">
+                                不僅提供命運預測，更為您指明發展方向，助您趨吉避凶，把握人生機遇。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 聯繫方式 -->
+                <div class="contact-container">
+                    <h3 class="contact-title" id="contact-title">聯繫方式</h3>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-text" id="whatsapp-text">
+                                <strong>WhatsApp</strong>
+                                <span class="contact-highlight">6188 3889</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon wechat">
+                                <i class="fab fa-weixin"></i>
+                            </div>
+                            <div class="contact-text" id="wechat-text">
+                                <strong>微信ID</strong>
+                                <span class="contact-highlight">victor3889</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部區域 -->
+    <footer class="footer">
+        <p id="copyright">版權所有 © 2002-2026</p>
+        <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#b2c4dbd1ded3c78683f2d5dfd3dbde9cd1dddf"><span class="__cf_email__" data-cfemail="62140b010e0317565322050f030b0e4c010d0f">[email&#160;protected]</span></a></p>
+    </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// 儲存中英文對照資料
+const translations = {
+    'zh': {
+        'site-title': 'Victor Fengshui & Divination',
+        'site-subtitle': 'Victor 專業風水師',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>首頁',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>留言版',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>風水收費服務',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們',
+        
+        // 服務菜單
+        'service1': '超準易占',
+        'service2': '電話問事',
+        'service3': '2人愛情占星術',
+        'service4': '命理套餐',
+        'service5': '手機號碼占卜',
+        'service6': '轉手機號碼改運',
+        'service7': '專業風水佈局',
+        'service8': '其他服務',
+        'service9': '擇吉日',
+        'service10': '改名',
+        'service11': '大氣改運',
+        'service12': '流年運程預測',
+        'service13': '租買樓宇評級',
+        'service14': '微訊whatapps命理',
+        'service15': '微訊whatapps起卦',
+        'service16': '結 緣 區',
+        
+        // 頁面內容
+        'title-main': '八 字 大 批',
+        'title-free': '基本是免費',
+        'desc-text1': '結緣區是把有限的資源分給有緣人，各人都有自己極強的一面，能分享給有緣人，就是助人自助。',
+        'desc-text2': '歡迎任何有緣人參與，希望大家籍此增加善緣及貴人。',
+        'instruction-text': '免費電腦八字大批，有興趣人士透過微訊(victor3889)或whatapps(61883889)，輸入自己的出生年月日時，約一天內可收到大批檔案，以下是以香港回歸時的八字作例子。',
+        'example-word': '<span class="example-icon"><i class="fas fa-file-word"></i></span>Word文檔',
+        'example-pdf': '<span class="example-icon"><i class="fas fa-file-pdf"></i></span>PDF文檔',
+        'features-title': '八字大批優勢',
+        'feature1-title': '穿越時空',
+        'feature1-desc': '八字能跨越時空，揭示您的過去、現在和未來，提供全生命週期的洞察。',
+        'feature2-title': '精準分析',
+        'feature2-desc': '透過系統化的八字計算，精準分析您的命盤結構，揭示命運運行規律。',
+        'feature3-title': '人生指南',
+        'feature3-desc': '不僅提供命運預測，更為您指明發展方向，助您趨吉避凶，把握人生機遇。',
+        'contact-title': '聯繫方式',
+        'whatsapp-text': '<strong>WhatsApp</strong><span class="contact-highlight">6188 3889</span>',
+        'wechat-text': '<strong>微信ID</strong><span class="contact-highlight">victor3889</span>',
+        
+        // 頁腳
+        'copyright': '版權所有 © 2002-2026',
+        'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
+        'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
+    },
+    'en': {
+    'site-title': 'Daily Observation of Heaven',
+    'site-subtitle': 'Victor Professional Feng Shui Master',
+    'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>Home',
+    'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>Forum',
+    'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>Online Divination',
+    'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>Feng Shui Services',
+    'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>Online Shop',
+    'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>Banking & Transfer',
+    'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>Contact Us',
+    
+    // 服務菜單
+    'service1': 'Yi Divination',
+    'service2': 'Phone Consultation',
+    'service3': 'Love Astrology',
+    'service4': 'Destiny Package',
+    'service5': 'Phone Number Divination',
+    'service6': 'Phone Number Transformation',
+    'service7': 'Feng Shui Arrangement',
+    'service8': 'Other Services',
+    'service9': 'Auspicious Date Selection',
+    'service10': 'Name Change',
+    'service11': 'Energy Transformation',
+    'service12': 'Annual Forecast',
+    'service13': 'Property Rating',
+    'service14': 'WeChat/WhatsApp Consultation',
+    'service15': 'WeChat/WhatsApp Divination',
+    'service16': 'Free Services',
+    
+    // 頁面內容
+    'title-main': 'BaZi Reading',
+    'title-free': 'Basically Free',
+    'desc-text1': 'The Free Services section shares limited resources with those who have affinity with us. Each person has their own strengths, and sharing with those with whom we have a connection is a way to help others while helping ourselves.',
+    'desc-text2': 'We welcome anyone with affinity to participate, hoping that everyone can increase their good connections and benefactors through this.',
+    'instruction-text': 'For free computerized BaZi reading, interested individuals can contact us via WeChat (victor3889) or WhatsApp (61883889). Simply provide your date and time of birth, and you will receive the reading file within approximately one day. Below is an example using Hong Kong\'s handover time.',
+    'example-word': '<span class="example-icon"><i class="fas fa-file-word"></i></span>Word Document',
+    'example-pdf': '<span class="example-icon"><i class="fas fa-file-pdf"></i></span>PDF Document',
+    'features-title': 'Advantages of BaZi Reading',
+    'feature1-title': 'Transcends Time',
+    'feature1-desc': 'BaZi can transcend time and space, revealing your past, present, and future, providing insights into your entire life cycle.',
+    'feature2-title': 'Precise Analysis',
+    'feature2-desc': 'Through systematic BaZi calculations, we precisely analyze your destiny chart structure, revealing the patterns of fate.',
+    'feature3-title': 'Life Guide',
+    'feature3-desc': 'Not only does it provide destiny predictions, but it also points out directions for development, helping you attract good fortune and seize life opportunities.',
+    'contact-title': 'Contact Information',
+    'whatsapp-text': '<strong>WhatsApp</strong><span class="contact-highlight">6188 3889</span>',
+    'wechat-text': '<strong>WeChat ID</strong><span class="contact-highlight">victor3889</span>',
+    
+    // 頁腳
+    'copyright': 'Copyright © 2002-2026',
+    'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
+    'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
+}
+};
+// 切換語言函數
+function switchLanguage(lang) {
+    // 更新語言按鈕的激活狀態
+    document.querySelector('.lang-btn.zh').classList.remove('active');
+    document.querySelector('.lang-btn.en').classList.remove('active');
+    document.querySelector(`.lang-btn.${lang}`).classList.add('active');
+    
+    // 更新頁面上的所有文本內容
+    for (const [id, text] of Object.entries(translations[lang])) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = text;
+        }
+    }
+    
+    // 確保特定段落的樣式在語言切換時也保持正確
+    if (lang === 'zh') {
+        // 中文版使用中文的斷行規則（可以在任何字符處斷行）
+        const introParaEl = document.getElementById('intro-para1');
+        const methodDescEl = document.getElementById('method-description');
+        
+        if (introParaEl) {
+            introParaEl.setAttribute('style', 'max-width:100%; word-wrap:break-word !important; overflow-wrap:break-word !important; word-break:break-all !important;');
+        }
+        
+        if (methodDescEl) {
+            methodDescEl.setAttribute('style', 'max-width:100%; word-wrap:break-word !important; overflow-wrap:break-word !important; word-break:break-all !important;');
+        }
+    } else {
+        // 英文版只在單詞間斷行，絕不斷詞
+        const introParaEl = document.getElementById('intro-para1');
+        const methodDescEl = document.getElementById('method-description');
+        
+        if (introParaEl) {
+            // 移除 word-break:break-all，確保單詞完整性
+            introParaEl.setAttribute('style', 'max-width:100%; word-wrap:break-word !important; overflow-wrap:break-word !important; hyphens:none !important;');
+        }
+        
+        if (methodDescEl) {
+            // 移除 word-break:break-all，確保單詞完整性
+            methodDescEl.setAttribute('style', 'max-width:100%; word-wrap:break-word !important; overflow-wrap:break-word !important; hyphens:none !important;');
+        }
+    }
+    
+    // 特別處理 - 更新網上購物的URL
+    const shopLink = document.getElementById('nav-shop');
+    if (shopLink) {
+        shopLink.href = lang === 'zh' ? 'https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/' : 'https://victor-fengshui.vercel.app/prestashop/metaphysics/en/';
+    }
+    
+    // 存儲用戶的語言偏好
+    try { window['localStorage'].setItem('preferredLanguage', lang); } catch(e) { /* ignore */ }
+    
+    // 更新頁面標題
+    document.title = lang === 'zh' ? 'Victor 專業風水師 - 微訊WhatsApp起卦' : 'Victor Professional Feng Shui Master - WeChat/WhatsApp Divination';
+
+}
+
+// 頁面加載時檢查用戶的語言偏好
+document.addEventListener('DOMContentLoaded', function() {
+    var preferredLanguage = 'zh';
+    try { preferredLanguage = window['localStorage'].getItem('preferredLanguage') || 'zh'; } catch(e) { /* ignore */ }
+    switchLanguage(preferredLanguage);
+    
+    // 處理深色模式
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    });
+});
+</script>
+<!-- Victor AI 聊天助手 -->
+<script src="victor-ai-chat.js"></script>
+</BODY>
+</HTML>

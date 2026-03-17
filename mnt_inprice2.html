@@ -1,0 +1,1610 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-HK">
+<HEAD>
+    <TITLE>Victor 專業風水師 - 電話問事</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    
+
+    <!-- 加載字體和圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <STYLE type=text/css>
+    :root {
+        --primary-color: #5D5CDE;
+        --secondary-color: #336633;
+        --accent-color: #ff9900;
+        --wisdom-color: #9c27b0;
+        --wisdom-light: #e1bee7;
+        --wisdom-dark: #6a1b9a;
+        --light-bg: #f8f8f8;
+        --dark-bg: #2c3e50;
+        --text-dark: #333;
+        --text-light: #fff;
+        --border-radius: 12px;
+        --box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+    }
+    
+    /* 深色模式變量 */
+    .dark-mode {
+        --light-bg: #1a1a2e;
+        --dark-bg: #121212;
+        --text-dark: #f1f1f1;
+        --accent-color: #ff9e00;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    body {
+        font-family: 'Noto Sans TC', Arial, "Microsoft JhengHei", sans-serif;
+        background-color: #f5f1e6;
+        background-image: url('https://victor-fengshui.vercel.app/backpaper.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 防止水平滾動 */
+        width: 100%;
+    }
+    
+    /* 頁面容器 - 與inprice7.htm保持一致 */
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        width: 100%;
+    }
+    
+    /* 頂部區域樣式 - 與inprice7.htm保持一致 */
+    .header {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* 太極圖案替代 - 使用背景圖像 */
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://victor-fengshui.vercel.app/taichi.webp');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 300px;
+        opacity: 0.1;
+        z-index: 0;
+        animation: pulse 8s infinite ease-in-out;
+    }
+    
+    /* 太極背景元素 - 使用圖像而不是CSS */
+    .taichi-bg {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background-image: url('https://victor-fengshui.vercel.app/taichi.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+    }
+    
+    .taichi-bg.left {
+        top: -30px;
+        left: -30px;
+    }
+    
+    .taichi-bg.right {
+        bottom: -30px;
+        right: -30px;
+    }
+    
+    .header-text {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .header-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header-subtitle {
+        font-size: 28px;
+        font-weight: normal;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* 內容區域 */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    /* 側邊欄 - 確保背景為白色，與inprice7.htm保持一致 */
+    .sidebar {
+        flex: 0 0 280px;
+        background-color: #ffffff;
+        padding: 30px 20px;
+    }
+    
+    /* 主內容 */
+    .main-content {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #fff, #f8f8f8);
+        overflow-x: hidden; /* 防止內容溢出 */
+    }
+    
+    /* 導航菜單 */
+    .nav-menu {
+        list-style: none;
+        margin-top: 20px;
+    }
+    
+    .nav-item {
+        margin-bottom: 12px;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, #ffd280, #ffb84d);
+        color: #333;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link:hover {
+        background: linear-gradient(to bottom, #ffb84d, #ff9900);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-color: rgba(255,153,0,0.5);
+    }
+    
+    .nav-link .icon {
+        margin-right: 10px;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* 服務網格 - 改善手機顯示，與inprice7.htm保持一致 */
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .service-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-item.active {
+        background-color: #FFCC66;
+        box-shadow: 0 0 0 2px var(--primary-color), 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        background-color: #fff8e6;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        transition: var(--transition);
+        height: 100%;
+        font-size: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+    }
+    
+    .service-item.active .service-link {
+        background-color: #FFCC66;
+    }
+    
+    .service-link:hover {
+        background-color: #FFCC66;
+    }
+    
+    /* 主要內容樣式 - 與inprice7.htm保持一致 */
+    .content-section {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 25px 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: visible;
+        width: 100%;
+    }
+    
+    /* 奇門遁甲背景 - 修改為CSS生成的漸變圖案，避免出現英文文字 */
+    .wisdom-bg {
+        position: absolute;
+        top: 50px;
+        right: -50px;
+        width: 280px;
+        height: 280px;
+        /* 移除外部圖像，改用CSS生成的漸變和形狀 */
+        background: radial-gradient(circle at center, rgba(156, 39, 176, 0.02) 0%, rgba(156, 39, 176, 0.01) 70%);
+        opacity: 0.5;
+        transform: rotate(15deg);
+        z-index: 0;
+    }
+    
+    /* 添加神秘圖案效果 */
+    .wisdom-bg::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 70%;
+        transform: translate(-50%, -50%);
+        background: 
+            radial-gradient(circle at 30% 30%, var(--wisdom-light) 0%, transparent 20%),
+            radial-gradient(circle at 70% 30%, var(--wisdom-light) 0%, transparent 20%),
+            radial-gradient(circle at 30% 70%, var(--wisdom-light) 0%, transparent 20%),
+            radial-gradient(circle at 70% 70%, var(--wisdom-light) 0%, transparent 20%),
+            radial-gradient(circle at 50% 50%, var(--wisdom-light) 0%, transparent 40%);
+        border-radius: 50%;
+        opacity: 0.03;
+    }
+    
+    /* 添加點陣圖效果 */
+    .wisdom-bg::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(var(--wisdom-color) 1px, transparent 1px),
+            radial-gradient(var(--wisdom-color) 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+        opacity: 0.02;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .section-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 28px;
+        color: var(--wisdom-color);
+        display: inline-block;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--wisdom-color), transparent);
+    }
+    
+    .title-icon {
+        margin-right: 10px;
+        color: var(--wisdom-color);
+    }
+    
+    .service-price {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 20px;
+        background: linear-gradient(135deg, #FFB347 0%, #FFCC80 100%);
+        border-radius: 30px;
+        color: #7E5109;
+        font-weight: bold;
+        font-size: 18px;
+        box-shadow: 0 3px 10px rgba(255, 179, 71, 0.3);
+        animation: pulse 2s infinite ease-in-out;
+        margin-top: 15px;
+    }
+    
+    .service-price .price-icon {
+        margin-right: 8px;
+    }
+    
+    /* 視頻連結 */
+    .video-container {
+        margin: 30px 0;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .video-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, var(--wisdom-color), var(--wisdom-dark));
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+    }
+    
+    .video-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+    }
+    
+    .video-icon {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    
+    /* 服務描述 */
+    .description-container {
+        background-color: #F3E5F5;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-top: 30px;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .description-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #6a0dad;
+        margin-bottom: 20px;
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+    }
+    
+    .description-text:last-child {
+        margin-bottom: 0;
+    }
+    
+    .description-highlight {
+        font-weight: bold;
+        color: var(--wisdom-dark);
+    }
+    
+    /* 術數系統部分 */
+    .divination-section {
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .divination-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--wisdom-color);
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid rgba(156, 39, 176, 0.1);
+    }
+    
+    .divination-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .divination-card {
+        background: linear-gradient(135deg, #ffffff 0%, #F3E5F5 100%);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+    }
+    
+    .divination-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .divination-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--wisdom-color), transparent);
+    }
+    
+    .divination-icon {
+        color: var(--wisdom-color);
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+    
+    .divination-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .divination-desc {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.6;
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+    }
+    /* 大六壬占卜示範樣式 */
+    .demo-section {
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .demo-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--wisdom-color);
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid rgba(156, 39, 176, 0.1);
+    }
+    
+    .demo-card {
+        background: linear-gradient(135deg, #fff8e1 0%, #f3e5f5 100%);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(156, 39, 176, 0.1);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid rgba(156, 39, 176, 0.2);
+    }
+    
+    .demo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--wisdom-color), var(--accent-color));
+    }
+    
+    .demo-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .demo-icon {
+        color: var(--wisdom-color);
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .demo-question {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--wisdom-dark);
+        margin-bottom: 8px;
+    }
+    
+    .demo-date {
+        color: #666;
+        font-size: 14px;
+        font-style: italic;
+    }
+    
+    .demo-content {
+        text-align: left;
+    }
+    
+    .demo-description {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+    }
+    
+    .demo-link-container {
+        text-align: center;
+        margin: 25px 0;
+    }
+    
+    .demo-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, var(--wisdom-color), var(--wisdom-dark));
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+    }
+    
+    .demo-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4);
+        color: white;
+    }
+    
+    .demo-link-icon {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+    
+    .demo-highlight {
+        background-color: rgba(156, 39, 176, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        color: var(--wisdom-dark);
+        font-style: italic;
+        text-align: center;
+        border-left: 4px solid var(--wisdom-color);
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+    }
+    
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+        .demo-card {
+            padding: 20px 15px;
+        }
+        
+        .demo-question {
+            font-size: 20px;
+        }
+        
+        .demo-description, .demo-highlight {
+            font-size: 15px;
+        }
+        
+        .demo-link {
+            padding: 12px 25px;
+            font-size: 15px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .demo-question {
+            font-size: 18px;
+        }
+        
+        .demo-description, .demo-highlight {
+            font-size: 14px;
+        }
+        
+        .demo-link {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+    }
+    /* 常見問題部分 */
+    .faq-section {
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .faq-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--wisdom-color);
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid rgba(156, 39, 176, 0.1);
+    }
+    
+    .faq-item {
+        background-color: #fff;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 15px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        transition: var(--transition);
+    }
+    
+    .faq-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    
+    .faq-question {
+        font-weight: bold;
+        color: var(--wisdom-color);
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .faq-question i {
+        margin-right: 10px;
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+    
+    .faq-answer {
+        color: #555;
+        line-height: 1.6;
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+    }
+    
+    /* 實際案例部分 */
+    .testimonial-section {
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+    
+    .testimonial-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--wisdom-color);
+        margin-bottom: 20px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid rgba(156, 39, 176, 0.1);
+    }
+    
+    .testimonial-card {
+        background-color: #f8f9fa;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 20px;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .testimonial-card::before {
+        content: """;
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        font-size: 60px;
+        color: rgba(156, 39, 176, 0.1);
+        font-family: Georgia, serif;
+    }
+    
+    .testimonial-content {
+        font-style: italic;
+        color: #555;
+        margin-bottom: 15px;
+        padding-left: 20px;
+        position: relative;
+        z-index: 1;
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+    }
+    
+    .testimonial-author {
+        font-weight: bold;
+        color: var(--wisdom-dark);
+        text-align: right;
+    }
+    
+    /* 語言切換按鈕 */
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .lang-btn {
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        opacity: 0.7;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
+        opacity: 1;
+        border-color: white;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+    
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
+    }
+    
+    /* 底部區域 */
+    .footer {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF9900, #FFCC66, #FF9900);
+    }
+    
+    .footer p {
+        margin: 8px 0;
+        letter-spacing: 0.5px;
+        font-size: 14px;
+    }
+    
+    .footer a {
+        color: white;
+        text-decoration: underline;
+        transition: var(--transition);
+    }
+    
+    .footer a:hover {
+        color: #ffd280;
+        text-decoration: none;
+    }
+    
+    /* 動畫效果 */
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    /* 響應式設計 - 確保手機版顯示一致性，與inprice7.htm保持一致 */
+    @media (max-width: 1200px) {
+        .page-container {
+            margin: 0;
+            border-radius: 0;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .content-container {
+            flex-direction: column;
+        }
+        
+        .sidebar {
+            flex: 0 0 100%;
+        }
+        
+        .header-title {
+            font-size: 36px;
+        }
+        
+        .header-subtitle {
+            font-size: 22px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* 確保在手機上顯示為兩列 */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .divination-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .video-link {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .content-section {
+            padding: 20px 15px;
+        }
+        
+        .divination-card {
+            padding: 15px;
+        }
+        
+        .divination-desc, 
+        .description-text {
+            font-size: 15px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+        }
+        
+        .faq-item {
+            padding: 15px;
+        }
+        
+        .faq-question {
+            font-size: 17px;
+        }
+        
+        .testimonial-card {
+            padding: 20px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+        }
+        
+        .service-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        
+        .faq-item {
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .faq-question {
+            font-size: 16px;
+        }
+        
+        .faq-answer {
+            font-size: 14px;
+        }
+        
+        .divination-card, 
+        .testimonial-card {
+            padding: 15px 12px;
+        }
+        
+        .divination-desc, 
+        .description-text, 
+        .testimonial-content {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    }
+    
+    /* 手機極小螢幕適配 - 保持兩列布局 */
+    @media (max-width: 480px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        
+        .service-link {
+            font-size: 12px;
+            padding: 8px 4px;
+            letter-spacing: -0.03em;
+        }
+        
+        .divination-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .divination-name {
+            font-size: 16px;
+        }
+        
+        .divination-desc {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .faq-item {
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .faq-question {
+            font-size: 16px;
+        }
+        
+        .faq-answer {
+            font-size: 14px;
+        }
+        
+        .testimonial-card {
+            padding: 15px 15px 15px 20px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-content {
+            font-size: 14px;
+            padding-left: 15px;
+        }
+        
+        .testimonial-author {
+            font-size: 14px;
+        }
+        
+        .video-link {
+            padding: 12px 20px;
+            width: 100%;
+            font-size: 15px;
+        }
+        
+        .video-icon {
+            font-size: 20px;
+        }
+        
+        #service14, #service15 {
+            font-size: 11px;
+            letter-spacing: -0.05em;
+        }
+    }
+    
+    /* 超小螢幕設備 */
+    @media (max-width: 360px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 4px;
+        }
+        
+        .service-link {
+            font-size: 11px;
+            padding: 6px 3px;
+            letter-spacing: -0.05em;
+        }
+        
+        #service14, #service15 {
+            font-size: 10px;
+            letter-spacing: -0.08em;
+        }
+        
+        .faq-question {
+            font-size: 15px;
+        }
+        
+        .faq-answer {
+            font-size: 13px;
+        }
+    }
+    
+    /* Android 設備專用修復 */
+    @supports (-webkit-touch-callout: none) and (not (contain: paint)) {
+        /* 僅安卓設備適用的樣式（排除iOS） */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        
+        .service-link {
+            font-size: 11px !important;
+            padding: 8px 4px !important;
+            letter-spacing: -0.05em !important;
+        }
+        
+        /* 微信服務特別處理 */
+        #service14, #service15 {
+            font-size: 10px !important;
+            letter-spacing: -0.08em !important;
+        }
+        
+        /* 確保所有文字都可見 */
+        .description-text, 
+        .divination-desc,
+        .faq-answer,
+        .testimonial-content {
+            overflow: visible !important;
+            max-height: none !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            line-height: 1.5 !important;
+            position: relative !important;
+            z-index: 5 !important;
+        }
+    }
+    
+    /* 特別處理可見性 */
+    .force-visible {
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+    </STYLE>
+</HEAD>
+
+<BODY>
+<div class="page-container">
+    <!-- 頂部區域 - 與inprice7.htm保持一致 -->
+    <header class="header">
+        <!-- 語言切換按鈕 -->
+        <div class="language-switcher">
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
+        </div>
+        
+        <!-- 太極背景元素 - 使用與inprice7.htm相同的實現方式 -->
+        <div class="taichi-bg left"></div>
+        <div class="taichi-bg right"></div>
+        
+        <div class="header-text">
+            <h1 class="header-title" id="site-title">Victor Fengshui & Divination</h1>
+            <h2 class="header-subtitle" id="site-subtitle">Victor 專業風水師</h2>
+        </div>
+    </header>
+
+    <!-- 內容區域 -->
+    <div class="content-container">
+        <!-- 側邊欄 - 確保背景為白色，與inprice7.htm保持一致 -->
+        <div class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link" id="nav-home"><span class="icon"><i class="fas fa-home"></i></span>首頁</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/phpbb" class="nav-link" id="nav-forum"><span class="icon"><i class="fas fa-comments"></i></span>留言版</a></li>
+                    <li class="nav-item"><a href="https://hexagram-api.vercel.app/" class="nav-link" id="nav-hexagram" target="_blank"><span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦</a></li>
+                    <li class="nav-item"><a href="inprice1.html" class="nav-link" id="nav-services"><span class="icon"><i class="fas fa-compass"></i></span>風水收費服務</a></li>
+                    <li class="nav-item"><a href="https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/" class="nav-link" id="nav-shop"><span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物</a></li>
+                    <li class="nav-item"><a href="bank.html" class="nav-link" id="nav-bank"><span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" id="nav-contact"><span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- 主內容區域 -->
+        <div class="main-content">
+            <!-- 服務菜單 - 確保手機上顯示為兩列，與inprice7.htm保持一致 -->
+            <div class="service-grid">
+                <div class="service-item"><a href="inprice1.html" class="service-link" id="service1">超準易占</a></div>
+                <div class="service-item active"><a href="inprice2.html" class="service-link" id="service2">電話問事</a></div>
+                <div class="service-item"><a href="inprice3.html" class="service-link" id="service3">2人愛情占星術</a></div>
+                <div class="service-item"><a href="inprice4.html" class="service-link" id="service4">命理套餐</a></div>
+                
+                <div class="service-item"><a href="inprice5.html" class="service-link" id="service5">手機號碼占卜</a></div>
+                <div class="service-item"><a href="inprice6.html" class="service-link" id="service6">轉手機號碼改運</a></div>
+                <div class="service-item"><a href="inprice7.html" class="service-link" id="service7">專業風水佈局</a></div>
+                <div class="service-item"><a href="inprice9.html" class="service-link" id="service9">擇吉日</a></div>
+                
+                <div class="service-item"><a href="inprice10.html" class="service-link" id="service10">改名</a></div>
+                <div class="service-item"><a href="inprice11.html" class="service-link" id="service11">大氣改運</a></div>
+                <div class="service-item"><a href="inprice13.html" class="service-link" id="service13">租買樓宇評級</a></div>
+                <div class="service-item"><a href="inprice8.html" class="service-link" id="service8">其他服務</a></div>
+                
+                <div class="service-item"><a href="inprice12.html" class="service-link" id="service12">流年運程預測</a></div>
+                <div class="service-item"><a href="inprice14.html" class="service-link" id="service14">微信whatapps命理</a></div>
+                <div class="service-item"><a href="inprice15.html" class="service-link" id="service15">微信whatapps起卦</a></div>
+                <div class="service-item"><a href="inprice16.html" class="service-link" id="service16">結 緣 區</a></div>
+            </div>
+            
+            <!-- 主要內容 - 使用與inprice7.htm相同的容器結構 -->
+            <div class="content-section">
+                <!-- 奇門遁甲背景 - 已改為純CSS實現 -->
+                <div class="wisdom-bg"></div>
+                
+                <!-- 服務標題與價格 -->
+                <div class="section-header">
+                    <h2 class="section-title" id="service-title">
+                        <i class="fas fa-phone-alt title-icon"></i>電話問事 - 時空占卜及化解方法
+                    </h2>
+                    <div class="service-price" id="price-info">
+                        <span class="price-icon"><i class="fas fa-dollar-sign"></i></span>
+                        首小時或不足 $1000
+                    </div>
+                </div>
+                
+                <!-- 視頻連結 -->
+                <div class="video-container">
+                    <a onclick="window.open('https://victor-fengshui.vercel.app/sun/telephone.mp4','電話問事','');return false;" href="https://victor-fengshui.vercel.app/sun/telephone.mp4" class="video-link">
+                        <span class="video-icon"><i class="fas fa-play-circle"></i></span>
+                        <span id="video-text">按此觀看影片介紹</span>
+                    </a>
+                </div>
+                
+                <!-- 服務描述 -->
+                <div class="description-container">
+                    <p class="description-text" id="description1">
+                        運用時空八字、盲派系統、易卜、奇門、六壬、及當時天文實時星體之七政實時直段，可以把任何事情都活靈活現說出來。
+                    </p>
+                    
+                    <p class="description-text" id="description2">
+                        顧客可以無須任何資料或到會，也可問出任何事情的始未，以及化解方法。
+                    </p>
+                    
+                    <p class="description-text description-highlight" id="description3">
+                        此為最多人常用之服務，當事情發問時，其實答案就馬上印了在發問當時的時空，服務是最優質占卜項目，請勿議價。
+                    </p>
+                    
+                    <p class="description-text" id="description4">
+                        電話問事的獨特之處在於，無論您身在何處，都能獲得專業的玄學指導。這種便捷性尤其適合忙碌的現代人，或是因地理距離無法親自前來的顧客。通過電話，我能夠感應發問的能量場，並將其與宇宙時空的訊息結合，提供準確的分析與建議。
+                    </p>
+                </div>
+                
+                <!-- 所使用的術數系統 -->
+                <div class="divination-section">
+                    <h2 class="divination-title" id="systems-title">專業術數系統</h2>
+                    
+                    <div class="divination-grid">
+                        <!-- 系統1 -->
+                        <div class="divination-card">
+                            <div class="divination-icon"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="divination-name" id="system1-title">時空八字</div>
+                            <div class="divination-desc" id="system1-desc">分析提問時刻的天干地支組合，通過時間的能量場解讀問題的本質，這是占卜準確性的基礎。</div>
+                        </div>
+                        
+                        <!-- 系統2 -->
+                        <div class="divination-card">
+                            <div class="divination-icon"><i class="fas fa-yin-yang"></i></div>
+                            <div class="divination-name" id="system2-title">奇門遁甲</div>
+                            <div class="divination-desc" id="system2-desc">中國最高深的戰略預測系統，能預測事情的轉機與變化，特別善於分析複雜情況的關鍵點與時機。</div>
+                        </div>
+                        
+                        <!-- 系統3 -->
+                        <div class="divination-card">
+                            <div class="divination-icon"><i class="fas fa-moon"></i></div>
+                            <div class="divination-name" id="system3-title">六壬神課</div>
+                            <div class="divination-desc" id="system3-desc">古老的時間預測系統，能準確預測事件的時間節點，對於把握機會與避開風險特別有效。</div>
+                        </div>
+                        
+                        <!-- 系統4 -->
+                        <div class="divination-card">
+                            <div class="divination-icon"><i class="fas fa-star"></i></div>
+                            <div class="divination-name" id="system4-title">天文七政</div>
+                            <div class="divination-desc" id="system4-desc">分析提問時刻的星體位置，將天上的能量場與地上的問題對應，從宇宙層面提供解讀。</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 大六壬占卜示範 -->
+                <div class="demo-section">
+                    <h2 class="demo-title" id="demo-title">最新大六壬占卜示範</h2>
+                    
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <div class="demo-icon"><i class="fas fa-crystal-ball"></i></div>
+                            <h3 class="demo-question" id="demo-question">2025年尾香港的經濟情況</h3>
+                            <div class="demo-date" id="demo-date">占卜時間：2025年10月7日</div>
+                        </div>
+                        
+                        <div class="demo-content">
+                            <p class="demo-description" id="demo-description">
+                                運用大六壬神課結合時空八字，深入分析香港2025年底的經濟走勢。
+                                此次占卜展示了專業術數系統如何準確預測經濟變化的轉機與關鍵時點。
+                            </p>
+                            
+                            <div class="demo-link-container">
+                                <a href="https://victor-fengshui.vercel.app/6y/LRBW1AK4KA_202510071156.html" 
+                                   target="_blank" 
+                                   class="demo-link" 
+                                   id="demo-link">
+                                    <span class="demo-link-icon"><i class="fas fa-external-link-alt"></i></span>
+                                    <span id="demo-link-text">查看完整占卜分析報告</span>
+                                </a>
+                            </div>
+                            
+                            <div class="demo-highlight" id="demo-highlight">
+                                此為電話問事的實際應用示範，展現了無需任何背景資料，
+                                僅憑問題本身就能獲得深度分析的專業能力。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 常見問題 -->
+                <div class="faq-section">
+                    <h2 class="faq-title" id="faq-title">常見問題</h2>
+                    
+                    <!-- 問題1 -->
+                    <div class="faq-item">
+                        <div class="faq-question" id="faq1-question">
+                            <i class="fas fa-question-circle"></i>
+                            電話問事需要提供什麼資料?
+                        </div>
+                        <div class="faq-answer" id="faq1-answer">
+                            這是電話問事的獨特優勢 - 您無需提供任何個人資料，只需直接提出您的問題即可。占卜的答案將從提問時刻的時空能量中直接獲取，不依賴於個人出生資料。
+                        </div>
+                    </div>
+                    
+                    <!-- 問題2 -->
+                    <div class="faq-item">
+                        <div class="faq-question" id="faq2-question">
+                            <i class="fas fa-question-circle"></i>
+                            可以詢問什麼類型的問題?
+                        </div>
+                        <div class="faq-answer" id="faq2-answer">
+                            幾乎所有類型的問題都可以諮詢，包括但不限於：感情關係、事業發展、財務狀況、健康問題、人際關係、重大決策等。只要您能明確表達問題，我就能提供準確的解讀與指導。
+                        </div>
+                    </div>
+                    
+                    <!-- 問題3 -->
+                    <div class="faq-item">
+                        <div class="faq-question" id="faq3-question">
+                            <i class="fas fa-question-circle"></i>
+                            如何預約電話問事?
+                        </div>
+                        <div class="faq-answer" id="faq3-answer">
+                            您可以通過我們的聯繫電話 6188 3889 或 WhatsApp 預約。建議您提前準備好具體問題，這樣在電話諮詢時可以更有效地利用時間獲取最準確的指導。
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 客戶評價 -->
+                <div class="testimonial-section">
+                    <h2 class="testimonial-title" id="testimonial-title">客戶真實評價</h2>
+                    
+                    <!-- 評價1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content" id="testimonial1-content">
+                            非常驚訝Victor先生能夠僅通過電話就準確描述出我的工作處境和同事關係。他預測的未來發展也完全符合實際情況，而且他建議的解決方法確實幫助我扭轉了困境。電話問事真的很方便，尤其是對我這種工作繁忙的人來說。
+                        </div>
+                        <div class="testimonial-author" id="testimonial1-author">— 張先生，金融業從業者</div>
+                    </div>
+                    
+                    <!-- 評價2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content" id="testimonial2-content">
+                            我在海外工作，因為房產投資問題很迷惘，朋友推薦了Victor的電話問事服務。他不僅準確說出了我考慮的幾個房產的潛在問題，還幫我分析了最佳的購買時機。按照他的建議操作後，現在房產已經升值了15%。非常感謝！
+                        </div>
+                        <div class="testimonial-author" id="testimonial2-author">— 李女士，海外客戶</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部區域 -->
+    <footer class="footer">
+        <p id="copyright">版權所有 © 2002-2026</p>
+        <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#07716e646b6672333647606a666e6b2964686a"><span class="__cf_email__" data-cfemail="6b1d0208070a1e5f5a2b0c060a020745080406">[email&#160;protected]</span></a></p>
+    </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// 儲存中英文對照資料
+const translations = {
+    'zh': {
+        'site-title': 'Victor Fengshui & Divination',
+        'site-subtitle': 'Victor 專業風水師',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>首頁',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>留言版',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>風水收費服務',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們',
+        
+        // 服務菜單
+        'service1': '超準易占',
+        'service2': '電話問事',
+        'service3': '2人愛情占星術',
+        'service4': '命理套餐',
+        'service5': '手機號碼占卜',
+        'service6': '轉手機號碼改運',
+        'service7': '專業風水佈局',
+        'service8': '其他服務',
+        'service9': '擇吉日',
+        'service10': '改名',
+        'service11': '大氣改運',
+        'service12': '流年運程預測',
+        'service13': '租買樓宇評級',
+        'service14': '微信whatapps命理',
+        'service15': '微信whatapps起卦',
+        'service16': '結 緣 區',
+        
+        // 頁面內容
+        'service-title': '<i class="fas fa-phone-alt title-icon"></i>電話問事 - 時空占卜及化解方法',
+        'price-info': '<span class="price-icon"><i class="fas fa-dollar-sign"></i></span>首小時或不足 $1000',
+        'video-text': '按此觀看影片介紹',
+        'description1': '運用時空八字、盲派系統、易卜、奇門、六壬、及當時天文實時星體之七政實時直段，可以把任何事情都活靈活現說出來。',
+        'description2': '顧客可以無須任何資料或到會，也可問出任何事情的始未，以及化解方法。',
+        'description3': '此為最多人常用之服務，當事情發問時，其實答案就馬上印了在發問當時的時空，服務是最優質占卜項目，請勿議價。',
+        'description4': '電話問事的獨特之處在於，無論您身在何處，都能獲得專業的玄學指導。這種便捷性尤其適合忙碌的現代人，或是因地理距離無法親自前來的顧客。通過電話，我能夠感應發問的能量場，並將其與宇宙時空的訊息結合，提供準確的分析與建議。',
+        
+        // 術數系統
+        'systems-title': '專業術數系統',
+        'system1-title': '時空八字',
+        'system1-desc': '分析提問時刻的天干地支組合，通過時間的能量場解讀問題的本質，這是占卜準確性的基礎。',
+        'system2-title': '奇門遁甲',
+        'system2-desc': '中國最高深的戰略預測系統，能預測事情的轉機與變化，特別善於分析複雜情況的關鍵點與時機。',
+        'system3-title': '六壬神課',
+        'system3-desc': '古老的時間預測系統，能準確預測事件的時間節點，對於把握機會與避開風險特別有效。',
+        'system4-title': '天文七政',
+        'system4-desc': '分析提問時刻的星體位置，將天上的能量場與地上的問題對應，從宇宙層面提供解讀。',
+        
+		// 在現有的 'zh' 翻譯中添加（大約第700行左右，在 'faq-title' 之前）：
+'demo-title': '最新大六壬占卜示範',
+'demo-question': '2025年尾香港的經濟情況',
+'demo-date': '占卜時間：2025年10月7日',
+'demo-description': '運用大六壬神課結合時空八字，深入分析香港2025年底的經濟走勢。此次占卜展示了專業術數系統如何準確預測經濟變化的轉機與關鍵時點。',
+'demo-link-text': '查看完整占卜分析報告',
+'demo-highlight': '此為電話問事的實際應用示範，展現了無需任何背景資料，僅憑問題本身就能獲得深度分析的專業能力。',
+        // 常見問題
+        'faq-title': '常見問題',
+        'faq1-question': '<i class="fas fa-question-circle"></i>電話問事需要提供什麼資料?',
+        'faq1-answer': '這是電話問事的獨特優勢 - 您無需提供任何個人資料，只需直接提出您的問題即可。占卜的答案將從提問時刻的時空能量中直接獲取，不依賴於個人出生資料。',
+        'faq2-question': '<i class="fas fa-question-circle"></i>可以詢問什麼類型的問題?',
+        'faq2-answer': '幾乎所有類型的問題都可以諮詢，包括但不限於：感情關係、事業發展、財務狀況、健康問題、人際關係、重大決策等。只要您能明確表達問題，我就能提供準確的解讀與指導。',
+        'faq3-question': '<i class="fas fa-question-circle"></i>如何預約電話問事?',
+        'faq3-answer': '您可以通過我們的聯繫電話 6188 3889 或 WhatsApp 預約。建議您提前準備好具體問題，這樣在電話諮詢時可以更有效地利用時間獲取最準確的指導。',
+        
+        // 客戶評價
+        'testimonial-title': '客戶真實評價',
+        'testimonial1-content': '非常驚訝Victor先生能夠僅通過電話就準確描述出我的工作處境和同事關係。他預測的未來發展也完全符合實際情況，而且他建議的解決方法確實幫助我扭轉了困境。電話問事真的很方便，尤其是對我這種工作繁忙的人來說。',
+        'testimonial1-author': '— 張先生，金融業從業者',
+        'testimonial2-content': '我在海外工作，因為房產投資問題很迷惘，朋友推薦了Victor的電話問事服務。他不僅準確說出了我考慮的幾個房產的潛在問題，還幫我分析了最佳的購買時機。按照他的建議操作後，現在房產已經升值了15%。非常感謝！',
+        'testimonial2-author': '— 李女士，海外客戶',
+        
+        // 頁腳
+        'copyright': '版權所有 © 2002-2026',
+        'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
+        'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
+    },
+    'en': {
+        'site-title': 'Daily Observation of Heaven',
+        'site-subtitle': 'Victor Professional Feng Shui Master',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>Home',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>Forum',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>Online Divination',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>Feng Shui Services',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>Online Shop',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>Banking & Transfer',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>Contact Us',
+        
+        // 服務菜單
+        'service1': 'Yi Divination',
+        'service2': 'Phone Consultation',
+        'service3': 'Love Astrology',
+        'service4': 'Destiny Package',
+        'service5': 'Phone Number Divination',
+        'service6': 'Phone Number Transformation',
+        'service7': 'Feng Shui Arrangement',
+        'service8': 'Other Services',
+        'service9': 'Auspicious Date Selection',
+        'service10': 'Name Change',
+        'service11': 'Energy Transformation',
+        'service12': 'Annual Forecast',
+        'service13': 'Property Rating',
+        'service14': 'WeChat/WhatsApp Consultation',
+        'service15': 'WeChat/WhatsApp Divination',
+        'service16': 'Free Services',
+        
+        // 頁面內容
+        'service-title': '<i class="fas fa-phone-alt title-icon"></i>Phone Consultation - Spacetime Divination & Solutions',
+        'price-info': '<span class="price-icon"><i class="fas fa-dollar-sign"></i></span>First hour or less: HK$1000',
+        'video-text': 'Click to watch video introduction',
+        'description1': 'Using spacetime Bazi, the Blind Method system, Yi divination, Qi Men, Liu Ren, and real-time astronomical planetary positions, I can vividly reveal any situation with remarkable accuracy.',
+        'description2': 'Clients do not need to provide any information or attend in person, yet can still receive complete insights about any matter, from beginning to end, along with solutions.',
+        'description3': 'This is our most popular service. When a question is asked, the answer is immediately imprinted in the spacetime of that moment. This premium divination service is non-negotiable in price.',
+        'description4': 'The unique aspect of phone consultation is that you can receive professional metaphysical guidance regardless of your location. This convenience is especially suitable for busy modern individuals or customers who cannot visit in person due to geographical distance. Through the phone, I can sense the energy field of your inquiry and combine it with messages from the cosmic spacetime to provide accurate analysis and advice.',
+        
+        // 術數系統
+        'systems-title': 'Professional Divination Systems',
+        'system1-title': 'Spacetime Bazi',
+        'system1-desc': 'Analyzes the Heavenly Stems and Earthly Branches of the moment of inquiry, interpreting the essence of the question through the energy field of time - the foundation of accurate divination.',
+        'system2-title': 'Qi Men Dun Jia',
+        'system2-desc': 'China\'s most profound strategic prediction system, capable of forecasting turning points and changes in situations, particularly skilled at analyzing critical points and timing in complex scenarios.',
+        'system3-title': 'Liu Ren Divine Art',
+        'system3-desc': 'An ancient time prediction system that can accurately forecast the timing of events, especially effective for seizing opportunities and avoiding risks.',
+        'system4-title': 'Astronomical Seven Governors',
+        'system4-desc': 'Analyzes the celestial body positions at the time of inquiry, correlating cosmic energy fields with earthly questions to provide interpretations from a universal perspective.',
+        
+		// 在現有的 'en' 翻譯中添加（大約第800行左右，在 'faq-title' 之前）：
+'demo-title': 'Latest Liu Ren Divination Demonstration',
+'demo-question': 'Hong Kong\'s Economic Situation at End of 2025',
+'demo-date': 'Divination Date: October 7, 2025',
+'demo-description': 'Using Liu Ren Divine Course combined with Spacetime Bazi to deeply analyze Hong Kong\'s economic trends at the end of 2025. This divination demonstrates how professional metaphysical systems can accurately predict economic turning points and critical timing.',
+'demo-link-text': 'View Complete Divination Analysis Report',
+'demo-highlight': 'This is a practical demonstration of phone consultation services, showing the professional ability to obtain in-depth analysis based solely on the question itself, without requiring any background information.',
+        // 常見問題
+        'faq-title': 'Frequently Asked Questions',
+        'faq1-question': '<i class="fas fa-question-circle"></i>What information is needed for a phone consultation?',
+        'faq1-answer': 'This is the unique advantage of phone consultation - you don\'t need to provide any personal information, just directly state your question. The answers will be obtained directly from the spacetime energy at the moment of inquiry, not relying on personal birth data.',
+        'faq2-question': '<i class="fas fa-question-circle"></i>What types of questions can I ask?',
+        'faq2-answer': 'Almost all types of questions can be addressed, including but not limited to: romantic relationships, career development, financial situations, health issues, interpersonal relationships, and major decisions. As long as you can clearly express your question, I can provide accurate interpretation and guidance.',
+        'faq3-question': '<i class="fas fa-question-circle"></i>How do I book a phone consultation?',
+        'faq3-answer': 'You can book through our contact number 6188 3889 or WhatsApp. It is recommended that you prepare specific questions in advance so that you can make the most effective use of your time during the consultation to get the most accurate guidance.',
+        
+        // 客戶評價
+        'testimonial-title': 'Client Testimonials',
+        'testimonial1-content': 'I was amazed that Mr. Victor could accurately describe my work situation and colleague relationships just through the phone. His prediction of future developments also completely matched the actual situation, and the solutions he suggested truly helped me turn around a difficult situation. Phone consultation is really convenient, especially for someone like me with a busy work schedule.',
+        'testimonial1-author': '— Mr. Zhang, Financial Professional',
+        'testimonial2-content': 'I work overseas and was confused about real estate investment. A friend recommended Victor\'s phone consultation service. He not only accurately pointed out the potential issues with the properties I was considering but also helped me analyze the best timing for purchase. Following his advice, the property has now appreciated by 15%. Many thanks!',
+        'testimonial2-author': '— Ms. Li, Overseas Client',
+        
+        // 頁腳
+        'copyright': 'Copyright © 2002-2026',
+        'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
+        'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
+    }
+};
+
+// 切換語言函數
+function switchLanguage(lang) {
+    // 更新語言按鈕的激活狀態
+    document.querySelector('.lang-btn.zh').classList.remove('active');
+    document.querySelector('.lang-btn.en').classList.remove('active');
+    document.querySelector(`.lang-btn.${lang}`).classList.add('active');
+    
+    // 更新頁面上的所有文本內容
+    for (const [id, text] of Object.entries(translations[lang])) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = text;
+            element.classList.add('force-visible');
+        }
+    }
+    
+    // 特別處理 - 更新網上購物的URL
+    const shopLink = document.getElementById('nav-shop');
+    if (shopLink) {
+        shopLink.href = lang === 'zh' 
+            ? 'https://victor-fengshui.vercel.app/prestashop/metaphysics/tw/' 
+            : 'https://victor-fengshui.vercel.app/prestashop/metaphysics/en/';
+    }
+    
+    // 存儲用戶的語言偏好
+    localStorage.setItem('preferredLanguage', lang);
+    
+    // 更新頁面標題
+    document.title = lang === 'zh' ? 'Victor 專業風水師 - 電話問事' : 'Victor Professional Feng Shui Master - Phone Consultation';
+    
+    // 執行修復文字顯示的函數
+    setTimeout(ensureTextVisibility, 100);
+}
+
+// 確保文字正確顯示的增強函數
+function ensureTextVisibility() {
+    // 設置所有可能隱藏的文字容器為可見
+    const textElements = document.querySelectorAll('.description-text, .divination-desc, .faq-answer, .testimonial-content');
+    textElements.forEach(el => {
+        if (el) {
+            el.style.overflow = 'visible';
+            el.style.display = 'block';
+            el.style.visibility = 'visible';
+            el.style.opacity = '1';
+            el.style.maxHeight = 'none';
+            el.style.position = 'relative';
+            el.style.zIndex = '5';
+        }
+    });
+    
+    // 特別處理長服務名在小螢幕上的字體大小
+    const longServices = document.querySelectorAll('#service14, #service15');
+    longServices.forEach(el => {
+        if (el) {
+            if (window.innerWidth <= 360) {
+                el.style.fontSize = '10px';
+                el.style.letterSpacing = '-0.08em';
+            } else if (window.innerWidth <= 480) {
+                el.style.fontSize = '11px';
+                el.style.letterSpacing = '-0.05em';
+            }
+        }
+    });
+}
+
+// 頁面加載時檢查用戶的語言偏好並修復文字顯示
+document.addEventListener('DOMContentLoaded', function() {
+    const preferredLanguage = localStorage.getItem('preferredLanguage') || 'zh';
+    switchLanguage(preferredLanguage);
+    
+    // 處理深色模式
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    });
+    
+    // 修復文字顯示
+    ensureTextVisibility();
+    
+    // 窗口大小變化時重新修復
+    window.addEventListener('resize', ensureTextVisibility);
+    
+    // 頁面完全加載後再次確保文字可見
+    window.addEventListener('load', function() {
+        setTimeout(ensureTextVisibility, 500);
+    });
+});
+</script>
+<!-- Victor AI 聊天助手 -->
+<script src="victor-ai-chat.js"></script>
+</BODY>
+</HTML>
