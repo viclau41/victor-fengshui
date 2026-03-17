@@ -5,33 +5,37 @@
     'use strict';
 
     // ========== Language Detection & i18n ==========
+    var LANG_STORAGE_KEY = 'victorAI_language';
+
     function detectLanguage() {
-        // 1. Check HTML lang attribute
-        var htmlLang = (document.documentElement.lang || '').toLowerCase();
-        if (htmlLang.startsWith('ko')) return 'ko';
-        if (htmlLang.startsWith('ja')) return 'ja';
-        if (htmlLang.startsWith('en')) return 'en';
-        if (htmlLang.startsWith('zh')) return 'zh-TW';
+        // 1. Check saved preference
+        try {
+            var saved = localStorage.getItem(LANG_STORAGE_KEY);
+            if (saved === 'en' || saved === 'zh-TW') return saved;
+        } catch (e) { /* ignore */ }
 
         // 2. Check browser language
         var navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-        if (navLang.startsWith('ko')) return 'ko';
-        if (navLang.startsWith('ja')) return 'ja';
         if (navLang.startsWith('en')) return 'en';
-        if (navLang.startsWith('zh-cn') || navLang === 'zh-hans') return 'zh-CN';
 
-        return 'zh-TW'; // default
+        return 'zh-TW'; // default Chinese
     }
 
     var currentLang = detectLanguage();
 
-    // UI text translations
+    function saveLangPreference(lang) {
+        try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch (e) { /* ignore */ }
+    }
+
+    // UI text translations (Chinese + English)
     var LANG_UI = {
         'zh-TW': {
             chatTitle: 'Victor 玄學助手',
             statusOnline: '在線為您服務',
             clearBtn: '清除',
             clearTitle: '清除對話',
+            langToggle: 'EN',
+            langToggleTitle: 'Switch to English',
             welcomeText: '您好！我是 Victor 的智能助手<br>專門解答風水玄學問題，並推薦合適的專業服務',
             placeholder: '輸入您的問題...',
             quickQ1: '如何改善家居風水？',
@@ -42,26 +46,13 @@
             errorNetwork: '無法連接到 API 服務器。請檢查網絡連接或稍後再試。',
             errorContact: '\n\n請聯絡 Victor：\nWhatsApp: 6188 3889 / 66381789\n微信: victor3889'
         },
-        'zh-CN': {
-            chatTitle: 'Victor 玄学助手',
-            statusOnline: '在线为您服务',
-            clearBtn: '清除',
-            clearTitle: '清除对话',
-            welcomeText: '您好！我是 Victor 的智能助手<br>专门解答风水玄学问题，并推荐合适的专业服务',
-            placeholder: '输入您的问题...',
-            quickQ1: '如何改善家居风水？',
-            quickQ2: '如何预约命理分析？',
-            quickQ3: '办公室风水要注意什么？',
-            quickQ4: 'Victor 提供什么服务？',
-            errorGeneric: '抱歉，系统出现错误。',
-            errorNetwork: '无法连接到 API 服务器。请检查网络连接或稍后再试。',
-            errorContact: '\n\n请联系 Victor：\nWhatsApp: 6188 3889 / 66381789\n微信: victor3889'
-        },
         'en': {
             chatTitle: 'Victor AI Assistant',
             statusOnline: 'Online - Ready to help',
             clearBtn: 'Clear',
             clearTitle: 'Clear conversation',
+            langToggle: '中',
+            langToggleTitle: '切換至中文',
             welcomeText: 'Hello! I\'m Victor\'s AI assistant.<br>I specialize in Feng Shui, divination, and metaphysical consultations.',
             placeholder: 'Type your question...',
             quickQ1: 'How to improve home Feng Shui?',
@@ -71,36 +62,6 @@
             errorGeneric: 'Sorry, a system error occurred.',
             errorNetwork: 'Unable to connect to the server. Please check your network or try again later.',
             errorContact: '\n\nContact Victor:\nWhatsApp: +852 6188 3889 / +852 6638 1789\nWeChat: victor3889'
-        },
-        'ko': {
-            chatTitle: 'Victor AI 어시스턴트',
-            statusOnline: '온라인 - 상담 가능',
-            clearBtn: '삭제',
-            clearTitle: '대화 삭제',
-            welcomeText: '안녕하세요! Victor의 AI 어시스턴트입니다.<br>풍수, 점술, 사주 등 전문 상담을 도와드립니다.',
-            placeholder: '질문을 입력하세요...',
-            quickQ1: '집 풍수를 개선하는 방법은?',
-            quickQ2: '상담 예약은 어떻게 하나요?',
-            quickQ3: '사무실 풍수 주의사항은?',
-            quickQ4: 'Victor의 서비스는 무엇인가요?',
-            errorGeneric: '죄송합니다, 시스템 오류가 발생했습니다.',
-            errorNetwork: '서버에 연결할 수 없습니다. 네트워크를 확인하거나 나중에 다시 시도해 주세요.',
-            errorContact: '\n\nVictor 연락처:\nWhatsApp: +852 6188 3889 / +852 6638 1789\nWeChat: victor3889'
-        },
-        'ja': {
-            chatTitle: 'Victor AI アシスタント',
-            statusOnline: 'オンライン - ご相談承ります',
-            clearBtn: 'クリア',
-            clearTitle: '会話をクリア',
-            welcomeText: 'こんにちは！Victorの AIアシスタントです。<br>風水・占い・運命学のご相談を承ります。',
-            placeholder: 'ご質問を入力してください...',
-            quickQ1: '自宅の風水を改善するには？',
-            quickQ2: '鑑定の予約方法は？',
-            quickQ3: 'オフィスの風水で注意すべき点は？',
-            quickQ4: 'Victorのサービス内容は？',
-            errorGeneric: '申し訳ございません、システムエラーが発生しました。',
-            errorNetwork: 'サーバーに接続できません。ネットワークをご確認いただくか、後ほどお試しください。',
-            errorContact: '\n\nVictor連絡先:\nWhatsApp: +852 6188 3889 / +852 6638 1789\nWeChat: victor3889'
         }
     };
 
@@ -115,29 +76,20 @@
         botName: 'Gemini-2.5-Flash-Lite',
 
         promptTemplate: function(userMessage) {
-            // Detect response language instruction
+            // Language-specific instructions
             var langInstruction = {
                 'zh-TW': '請使用繁體中文回答。語氣親切熱情，像朋友聊天。',
-                'zh-CN': '请使用简体中文回答。语气亲切热情，像朋友聊天。',
-                'en': 'Please respond in English. Be warm, friendly, and professional.',
-                'ko': '한국어로 답변해 주세요. 따뜻하고 친절하며 전문적으로 답변해 주세요.',
-                'ja': '日本語でお答えください。丁寧で親しみやすい口調でお願いします。'
+                'en': 'Please respond in English. Be warm, friendly, and professional.'
             };
 
             var closingLine = {
                 'zh-TW': '「想了解更多？歡迎繼續問我，或 WhatsApp 6188 3889 預約 Victor 師傅親自解答！」',
-                'zh-CN': '"想了解更多？欢迎继续问我，或 WhatsApp 6188 3889 预约 Victor 师傅亲自解答！"',
-                'en': '"Want to learn more? Feel free to ask, or WhatsApp +852 6188 3889 to book a personal consultation with Master Victor!"',
-                'ko': '"더 알고 싶으시면 계속 질문하시거나, WhatsApp +852 6188 3889로 Victor 선생님과 직접 상담을 예약하세요!"',
-                'ja': '"詳しくはお気軽にご質問ください。WhatsApp +852 6188 3889 でVictor先生との直接鑑定をご予約いただけます！"'
+                'en': '"Want to learn more? Feel free to ask, or WhatsApp +852 6188 3889 to book a personal consultation with Master Victor!"'
             };
 
             var freeTrialTexts = {
                 'zh-TW': '當客人問「有冇免費」「有冇優惠」「可唔可以試下」「免費試用」等時，才告訴他們：\n🎁 首次使用智慧起卦服務，可獲得 **3次免費起卦碼** 試用！\n- 只需 WhatsApp 6188 3889 說明想試用\n- 體驗網址：https://hexagram-api.vercel.app/\n- 此優惠只限首次使用的新客人\n⚠️ 如果客人沒有主動問免費/優惠，不要主動提及！',
-                'zh-CN': '当客人问"有没有免费""有没有优惠""可以试试吗""免费试用"等时，才告诉他们：\n🎁 首次使用智慧起卦服务，可获得 **3次免费起卦码** 试用！\n- 只需 WhatsApp 6188 3889 说明想试用\n- 体验网址：https://hexagram-api.vercel.app/\n- 此优惠仅限首次使用的新客人\n⚠️ 如果客人没有主动问免费/优惠，不要主动提及！',
-                'en': 'Only when the client asks about "free", "trial", "discount", "promotion", etc., tell them:\n🎁 First-time users can get **3 free divination codes** to try!\n- Just WhatsApp +852 6188 3889 to request a trial\n- Try it at: https://hexagram-api.vercel.app/\n- This offer is for first-time users only\n⚠️ Do NOT mention this offer unless the client asks about free/discounts!',
-                'ko': '고객이 "무료", "할인", "체험" 등을 물어볼 때만 알려주세요:\n🎁 첫 이용 시 **무료 점괘 코드 3회** 제공!\n- WhatsApp +852 6188 3889로 체험 요청\n- 체험: https://hexagram-api.vercel.app/\n- 첫 이용 고객만 해당\n⚠️ 고객이 먼저 무료/할인을 묻지 않으면 언급하지 마세요!',
-                'ja': 'お客様が「無料」「割引」「お試し」等を聞いた場合のみお伝えください：\n🎁 初回利用で**無料占いコード3回分**をプレゼント！\n- WhatsApp +852 6188 3889 でお試し申込\n- 体験: https://hexagram-api.vercel.app/\n- 初回のお客様限定\n⚠️ お客様が聞かない限り、この特典に触れないでください！'
+                'en': 'Only when the client asks about "free", "trial", "discount", "promotion", etc., tell them:\n🎁 First-time users can get **3 free divination codes** to try!\n- Just WhatsApp +852 6188 3889 to request a trial\n- Try it at: https://hexagram-api.vercel.app/\n- This offer is for first-time users only\n⚠️ Do NOT mention this offer unless the client asks about free/discounts!'
             };
 
             var li = langInstruction[currentLang] || langInstruction['en'];
@@ -355,6 +307,40 @@
 
         .victor-chat-info {
             flex: 1;
+        }
+
+        .victor-header-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .victor-lang-btn {
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+            touch-action: manipulation;
+        }
+
+        .victor-lang-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .victor-lang-btn:active {
+            transform: scale(0.95);
         }
 
         .victor-clear-btn {
@@ -772,10 +758,15 @@
                         '<span>' + t('statusOnline') + '</span>' +
                     '</div>' +
                 '</div>' +
-                '<button id="victorClearBtn" class="victor-clear-btn" title="' + t('clearTitle') + '">' +
-                    '<span>🗑️</span>' +
-                    '<span>' + t('clearBtn') + '</span>' +
-                '</button>' +
+                '<div class="victor-header-buttons">' +
+                    '<button id="victorLangBtn" class="victor-lang-btn" title="' + t('langToggleTitle') + '">' +
+                        t('langToggle') +
+                    '</button>' +
+                    '<button id="victorClearBtn" class="victor-clear-btn" title="' + t('clearTitle') + '">' +
+                        '<span>🗑️</span>' +
+                        '<span>' + t('clearBtn') + '</span>' +
+                    '</button>' +
+                '</div>' +
             '</div>' +
             '<div class="victor-chat-messages" id="victorChatMessages">' +
                 buildWelcomeHTML() +
@@ -1016,6 +1007,39 @@
 
         // Send button
         document.getElementById('victorSendBtn').addEventListener('click', sendMessage);
+
+        // Language toggle button
+        document.getElementById('victorLangBtn').addEventListener('click', function() {
+            // Toggle language
+            currentLang = (currentLang === 'zh-TW') ? 'en' : 'zh-TW';
+            saveLangPreference(currentLang);
+
+            // Update header
+            document.querySelector('.victor-chat-title').textContent = t('chatTitle');
+            document.querySelector('.victor-chat-status span:last-child').textContent = t('statusOnline');
+
+            // Update language button
+            var langBtn = document.getElementById('victorLangBtn');
+            langBtn.textContent = t('langToggle');
+            langBtn.title = t('langToggleTitle');
+
+            // Update clear button
+            var clearBtn = document.getElementById('victorClearBtn');
+            clearBtn.title = t('clearTitle');
+            clearBtn.querySelector('span:last-child').textContent = t('clearBtn');
+
+            // Update input placeholder
+            document.getElementById('victorUserInput').placeholder = t('placeholder');
+
+            // Update welcome message if visible
+            var welcome = document.querySelector('.victor-welcome-message');
+            if (welcome) {
+                var messagesContainer = document.getElementById('victorChatMessages');
+                messagesContainer.innerHTML = buildWelcomeHTML();
+            }
+
+            console.log('[Victor AI] Language switched to:', currentLang);
+        });
 
         // Clear button
         document.getElementById('victorClearBtn').addEventListener('click', function() {
