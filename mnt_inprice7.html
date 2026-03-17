@@ -1,0 +1,1605 @@
+<!DOCTYPE HTML>
+<HTML lang="zh-HK">
+<HEAD>
+    <TITLE>Victor 專業風水師 - 專業風水佈局</TITLE>
+    <META http-equiv=Content-Type content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!-- 加載字體和圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <STYLE type=text/css>
+    :root {
+        --primary-color: #5D5CDE;
+        --secondary-color: #336633;
+        --accent-color: #ff9900;
+        --light-bg: #f8f8f8;
+        --dark-bg: #2c3e50;
+        --text-dark: #333;
+        --text-light: #fff;
+        --border-radius: 12px;
+        --box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+        
+        /* 風水專用配色 */
+        --feng-red: #e63946;
+        --feng-blue: #457b9d;
+        --feng-green: #2a9d8f;
+        --feng-yellow: #fcbf49;
+        --feng-wood: #606c38;
+        --feng-fire: #bc6c25;
+        --feng-earth: #dda15e;
+        --feng-metal: #a8dadc;
+        --feng-water: #1d3557;
+    }
+    
+    /* 深色模式變量 */
+    .dark-mode {
+        --light-bg: #1a1a2e;
+        --dark-bg: #121212;
+        --text-dark: #f1f1f1;
+        --accent-color: #ff9e00;
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    body {
+        font-family: 'Noto Sans TC', Arial, "Microsoft JhengHei", sans-serif;
+        background-color: #f5f1e6;
+        background-image: url('https://victorlau.myqnapcloud.com/backpaper.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* 防止水平滾動 */
+        width: 100%;
+    }
+    
+    /* 頁面容器 */
+    .page-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        width: 100%;
+    }
+    
+    /* 頂部區域改善 - 參考inprice13.htm和inprice4.htm修復太極圖案 */
+    .header {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* 太極圖案替代 - 使用背景圖像 */
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('https://victorlau.myqnapcloud.com/taichi.webp');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: 300px;
+        opacity: 0.1;
+        z-index: 0;
+        animation: pulse 8s infinite ease-in-out;
+    }
+    
+    /* 太極背景元素 - 使用圖像而不是CSS */
+    .taichi-bg {
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        background-image: url('https://victorlau.myqnapcloud.com/taichi.webp');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.15;
+        z-index: 1;
+        animation: rotate 20s linear infinite;
+    }
+    
+    .taichi-bg.left {
+        top: -30px;
+        left: -30px;
+    }
+    
+    .taichi-bg.right {
+        bottom: -30px;
+        right: -30px;
+    }
+    
+    .header-text {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .header-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header-subtitle {
+        font-size: 28px;
+        font-weight: normal;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    /* 內容區域 */
+    .content-container {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    /* 側邊欄 - 確保背景為白色 */
+    .sidebar {
+        flex: 0 0 280px;
+        background-color: #ffffff;
+        padding: 30px 20px;
+    }
+    
+    /* 主內容 */
+    .main-content {
+        flex: 1;
+        min-width: 300px;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #fff, #f8f8f8);
+        overflow-x: hidden; /* 防止內容溢出 */
+    }
+    
+    /* 導航菜單 */
+    .nav-menu {
+        list-style: none;
+        margin-top: 20px;
+    }
+    
+    .nav-item {
+        margin-bottom: 12px;
+    }
+    
+    .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        background: linear-gradient(to bottom, #ffd280, #ffb84d);
+        color: #333;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: bold;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link:hover {
+        background: linear-gradient(to bottom, #ffb84d, #ff9900);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        border-color: rgba(255,153,0,0.5);
+    }
+    
+    .nav-link .icon {
+        margin-right: 10px;
+        width: 24px;
+        text-align: center;
+    }
+    
+    /* 服務網格 - 改善手機顯示 */
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .service-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .service-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-item.active {
+        background-color: #FFCC66;
+        box-shadow: 0 0 0 2px var(--primary-color), 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        background-color: #fff8e6;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        transition: var(--transition);
+        height: 100%;
+        font-size: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.3;
+    }
+    
+    .service-item.active .service-link {
+        background-color: #FFCC66;
+    }
+    
+    .service-link:hover {
+        background-color: #FFCC66;
+    }
+    
+    /* 主要內容樣式 */
+    .content-section {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 25px 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        position: relative;
+        overflow: visible;
+        width: 100%;
+    }
+    
+    .section-header {
+        margin-bottom: 30px;
+        position: relative;
+    }
+    
+    .section-title {
+        font-family: 'Noto Serif TC', serif;
+        font-size: 28px;
+        color: var(--feng-water);
+        display: inline-block;
+        margin-bottom: 15px;
+        position: relative;
+    }
+    
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--feng-water), transparent);
+    }
+    
+    .badge-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 15px;
+        background-color: var(--feng-yellow);
+        color: #7E5109;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 14px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    
+    .badge i {
+        margin-right: 8px;
+    }
+    
+    .price-card {
+        background: linear-gradient(135deg, #f9f9f9, #ffffff);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        border-left: 5px solid var(--feng-yellow);
+        width: 100%;
+    }
+    
+    .price-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: var(--feng-wood);
+    }
+    
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    .price-item {
+        background-color: #f8f8f8;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+        transition: var(--transition);
+    }
+    
+    .price-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    
+    .price-amount {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--feng-red);
+        margin-bottom: 5px;
+    }
+    
+    .price-label {
+        font-size: 14px;
+        color: #666;
+    }
+    
+    .contact-banner {
+        background: linear-gradient(135deg, var(--feng-green), var(--feng-blue));
+        color: white;
+        padding: 20px;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        flex-wrap: wrap; /* 允許在小螢幕上換行 */
+    }
+    
+    .contact-icon {
+        font-size: 36px;
+        margin-right: 20px;
+    }
+    
+    .contact-text {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    /* 視頻連結改進 */
+    .video-container {
+        margin: 30px 0;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .video-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 30px;
+        background: linear-gradient(135deg, var(--feng-red), #b91d32);
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+    }
+    
+    .video-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(230, 57, 70, 0.4);
+    }
+    
+    .video-icon {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    
+    .additional-services {
+        background-color: #FFF8DC;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        width: 100%;
+    }
+    
+    .additional-title {
+        font-size: 18px;
+        color: var(--feng-fire);
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 2px dashed var(--feng-yellow);
+    }
+    
+    .service-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+        overflow: visible;
+    }
+    
+    .service-name {
+        font-weight: bold;
+        color: var(--feng-wood);
+        margin-bottom: 5px;
+    }
+    
+    .service-price {
+        color: var(--feng-red);
+        font-weight: bold;
+        overflow: visible;
+        word-break: normal;
+        display: block;
+    }
+    
+    /* 風水學派部分 - 修復圖標背景 */
+    .feng-shui-schools {
+        margin-top: 40px;
+        width: 100%;
+    }
+    
+    .schools-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .school-card {
+        background: linear-gradient(135deg, #ffffff, #f9f9f9);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        border-left: 4px solid;
+        overflow: visible;
+    }
+    
+    .school-card:nth-child(1) { border-color: var(--feng-water); }
+    .school-card:nth-child(2) { border-color: var(--feng-wood); }
+    .school-card:nth-child(3) { border-color: var(--feng-fire); }
+    .school-card:nth-child(4) { border-color: var(--feng-earth); }
+    .school-card:nth-child(5) { border-color: var(--feng-metal); }
+    .school-card:nth-child(6) { border-color: var(--feng-red); }
+    .school-card:nth-child(7) { border-color: var(--feng-blue); }
+    .school-card:nth-child(8) { border-color: var(--feng-green); }
+    
+    .school-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    
+    .school-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: var(--light-bg);
+        color: var(--feng-water);
+        font-size: 20px;
+    }
+    
+    .school-card:nth-child(1) .school-icon { color: var(--feng-water); background-color: #f0f8ff; }
+    .school-card:nth-child(2) .school-icon { color: var(--feng-wood); background-color: #f0fff0; }
+    .school-card:nth-child(3) .school-icon { color: var(--feng-fire); background-color: #fff0f0; }
+    .school-card:nth-child(4) .school-icon { color: var(--feng-earth); background-color: #fff8e6; }
+    .school-card:nth-child(5) .school-icon { color: var(--feng-metal); background-color: #f5f5f5; }
+    .school-card:nth-child(6) .school-icon { color: var(--feng-red); background-color: #fff0f0; }
+    .school-card:nth-child(7) .school-icon { color: var(--feng-blue); background-color: #f0f8ff; }
+    .school-card:nth-child(8) .school-icon { color: var(--feng-green); background-color: #f0fff0; }
+    
+    .school-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .school-description {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.6;
+        overflow: visible !important;
+        word-break: normal;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    /* 風水解釋部分 */
+    .feng-shui-explanation {
+        margin-top: 40px;
+        width: 100%;
+    }
+    
+    .explanation-container {
+        background-color: #f9f9f9;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-top: 20px;
+        overflow: visible;
+    }
+    
+    .explanation-text {
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: #444;
+        overflow: visible;
+        display: block;
+    }
+    
+    .explanation-text:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* 語言切換按鈕 */
+    .language-switcher {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
+    
+    .lang-btn {
+        width: 30px;
+        height: 20px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        opacity: 0.7;
+    }
+    
+    .lang-btn:hover, .lang-btn.active {
+        transform: scale(1.1);
+        opacity: 1;
+        border-color: white;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .lang-btn.zh {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2000px-Flag_of_the_People%27s_Republic_of_China.svg.png');
+    }
+    
+    .lang-btn.en {
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/1280px-Flag_of_the_United_Kingdom_%283-5%29.svg.png');
+    }
+    
+    /* 底部區域 */
+    .footer {
+        background-color: var(--secondary-color);
+        background-image: linear-gradient(120deg, #336633, #2f4f4f);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        width: 100%;
+    }
+    
+    .footer::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #FF9900, #FFCC66, #FF9900);
+    }
+    
+    .footer p {
+        margin: 8px 0;
+        letter-spacing: 0.5px;
+        font-size: 14px;
+    }
+    
+    .footer a {
+        color: white;
+        text-decoration: underline;
+        transition: var(--transition);
+    }
+    
+    .footer a:hover {
+        color: #ffd280;
+        text-decoration: none;
+    }
+    
+    /* 八卦圖部分改進 - 使用CSS生成清晰的八卦符號 */
+    .ba-gua-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    /* 八卦說明文字強制顯示 */
+    #bagua-description {
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 16px;
+        line-height: 1.6;
+        position: relative;
+        z-index: 10;
+    }
+    
+    .ba-gua-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding: 15px 10px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        transition: var(--transition);
+        overflow: visible;
+    }
+    
+    .ba-gua-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .ba-gua-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; /* 更好的間距 */
+        background-color: #000;
+        padding: 8px 5px;
+        border-radius: 5px;
+    }
+    
+    .ba-gua-icon .line {
+        width: 100%;
+        height: 4px; /* 減小爻線高度 */
+        background-color: #fff;
+        border-radius: 2px;
+    }
+    
+    .ba-gua-icon .broken-line {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 4px; /* 減小爻線高度 */
+    }
+    
+    .ba-gua-icon .broken-line span {
+        width: 46%;
+        height: 4px; /* 減小爻線高度 */
+        background-color: #fff;
+        border-radius: 2px;
+    }
+    
+    .ba-gua-name {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        color: var(--feng-water);
+        overflow: visible;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    /* 動畫效果 */
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    /* 響應式設計 - 確保手機版顯示一致性 */
+    @media (max-width: 1200px) {
+        .page-container {
+            margin: 0;
+            border-radius: 0;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .content-container {
+            flex-direction: column;
+        }
+        
+        .sidebar {
+            flex: 0 0 100%;
+        }
+        
+        .header-title {
+            font-size: 36px;
+        }
+        
+        .header-subtitle {
+            font-size: 22px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* 確保在手機上顯示為兩列 */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .price-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .schools-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .contact-banner {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .contact-icon {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+        
+        .video-link {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .content-section {
+            padding: 20px 15px;
+        }
+        
+        .service-card, 
+        .school-card, 
+        .explanation-container {
+            padding: 15px;
+        }
+        
+        .service-price, 
+        .school-description, 
+        .explanation-text {
+            font-size: 14px;
+        }
+        
+        .ba-gua-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        
+        .badge-container {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .section-title {
+            font-size: 24px;
+        }
+        
+        .ba-gua-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .service-link {
+            font-size: 13px;
+            padding: 10px 5px;
+        }
+        
+        .school-card, 
+        .service-card {
+            padding: 15px 12px;
+        }
+        
+        .explanation-container {
+            padding: 15px 12px;
+        }
+        
+        .school-description, 
+        .explanation-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    }
+    
+    /* 手機極小螢幕適配 - 保持兩列布局 */
+    @media (max-width: 480px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+        }
+        
+        .service-link {
+            font-size: 12px;
+            padding: 8px 4px;
+            letter-spacing: -0.03em;
+        }
+        
+        .ba-gua-grid {
+            gap: 8px;
+        }
+        
+        .ba-gua-item {
+            padding: 10px 5px;
+        }
+        
+        .ba-gua-icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .ba-gua-name {
+            font-size: 12px;
+        }
+        
+        #service14, #service15 {
+            font-size: 11px;
+            letter-spacing: -0.05em;
+        }
+    }
+    
+    /* 超小螢幕設備 */
+    @media (max-width: 360px) {
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 4px;
+        }
+        
+        .service-link {
+            font-size: 11px;
+            padding: 6px 3px;
+            letter-spacing: -0.05em;
+        }
+        
+        #service14, #service15 {
+            font-size: 10px;
+            letter-spacing: -0.08em;
+        }
+        
+        .ba-gua-item {
+            padding: 8px 4px;
+        }
+        
+        .ba-gua-icon {
+            width: 40px;
+            height: 40px;
+            padding: 6px 3px;
+        }
+        
+        .ba-gua-icon .line {
+            height: 3px;
+        }
+        
+        .ba-gua-icon .broken-line {
+            height: 3px;
+        }
+        
+        .ba-gua-icon .broken-line span {
+            height: 3px;
+        }
+        
+        .ba-gua-name {
+            font-size: 11px;
+        }
+        
+        .explanation-text {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+    }
+    
+    /* Android 設備專用修復 */
+    @supports (-webkit-touch-callout: none) and (not (contain: paint)) {
+        /* 僅安卓設備適用的樣式（排除iOS） */
+        .service-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+        
+        .service-link {
+            font-size: 11px !important;
+            padding: 8px 4px !important;
+            letter-spacing: -0.05em !important;
+        }
+        
+        /* 微信服務特別處理 */
+        #service14, #service15 {
+            font-size: 10px !important;
+            letter-spacing: -0.08em !important;
+        }
+        
+        /* 確保所有文字都可見 */
+        .explanation-text, 
+        .service-price, 
+        .school-description,
+        .ba-gua-name,
+        #bagua-description {
+            overflow: visible !important;
+            max-height: none !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            line-height: 1.5 !important;
+            position: relative !important;
+            z-index: 5 !important;
+        }
+    }
+    
+    /* 特別處理八卦說明和八卦名稱的可見性 */
+    #bagua-description, 
+    .ba-gua-name {
+        display: block !important;
+        visibility: visible !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+    </STYLE>
+</HEAD>
+
+<BODY>
+<div class="page-container">
+    <!-- 頂部區域改進 - 修復太極圖案及保持白色底色 -->
+    <header class="header">
+        <!-- 語言切換按鈕 -->
+        <div class="language-switcher">
+            <div class="lang-btn zh active" onclick="switchLanguage('zh')" title="中文"></div>
+            <div class="lang-btn en" onclick="switchLanguage('en')" title="English"></div>
+        </div>
+        
+        <!-- 太極背景元素 - 使用inprice13和inprice4的圖像方式實現 -->
+        <div class="taichi-bg left"></div>
+        <div class="taichi-bg right"></div>
+        
+        <div class="header-text">
+            <h1 class="header-title" id="site-title">日 觀 天 象</h1>
+            <h2 class="header-subtitle" id="site-subtitle">Victor 專業風水師</h2>
+        </div>
+    </header>
+
+    <!-- 內容區域 -->
+    <div class="content-container">
+        <!-- 側邊欄 - 確保背景為白色 -->
+        <div class="sidebar">
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html" class="nav-link" id="nav-home"><span class="icon"><i class="fas fa-home"></i></span>首頁</a></li>
+                    <li class="nav-item"><a href="https://victorlau.myqnapcloud.com/phpbb" class="nav-link" id="nav-forum"><span class="icon"><i class="fas fa-comments"></i></span>留言版</a></li>
+                    <li class="nav-item"><a href="https://hexagram-api.vercel.app/" class="nav-link" id="nav-hexagram" target="_blank"><span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦</a></li>
+                    <li class="nav-item"><a href="inprice1.html" class="nav-link" id="nav-services"><span class="icon"><i class="fas fa-compass"></i></span>風水收費服務</a></li>
+                    <li class="nav-item"><a href="https://victorlau.myqnapcloud.com/prestashop/metaphysics/tw/" class="nav-link" id="nav-shop"><span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物</a></li>
+                    <li class="nav-item"><a href="bank.html" class="nav-link" id="nav-bank"><span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link" id="nav-contact"><span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- 主內容區域 -->
+        <div class="main-content">
+            <!-- 服務菜單 - 確保手機上顯示為兩列 -->
+            <div class="service-grid">
+                <div class="service-item"><a href="inprice1.html" class="service-link" id="service1">超準易占</a></div>
+                <div class="service-item"><a href="inprice2.html" class="service-link" id="service2">電話問事</a></div>
+                <div class="service-item"><a href="inprice3.html" class="service-link" id="service3">2人愛情占星術</a></div>
+                <div class="service-item"><a href="inprice4.html" class="service-link" id="service4">命理套餐</a></div>
+                
+                <div class="service-item"><a href="inprice5.html" class="service-link" id="service5">手機號碼占卜</a></div>
+                <div class="service-item"><a href="inprice6.html" class="service-link" id="service6">轉手機號碼改運</a></div>
+                <div class="service-item active"><a href="inprice7.html" class="service-link" id="service7">專業風水佈局</a></div>
+                <div class="service-item"><a href="inprice9.html" class="service-link" id="service9">擇吉日</a></div>
+                
+                <div class="service-item"><a href="inprice10.html" class="service-link" id="service10">改名</a></div>
+                <div class="service-item"><a href="inprice11.html" class="service-link" id="service11">大氣改運</a></div>
+                <div class="service-item"><a href="inprice13.html" class="service-link" id="service13">租買樓宇評級</a></div>
+                <div class="service-item"><a href="inprice8.html" class="service-link" id="service8">其他服務</a></div>
+                
+                <div class="service-item"><a href="inprice12.html" class="service-link" id="service12">流年運程預測</a></div>
+                <div class="service-item"><a href="inprice14.html" class="service-link" id="service14">微信whatapps命理</a></div>
+                <div class="service-item"><a href="inprice15.html" class="service-link" id="service15">微信whatapps起卦</a></div>
+                <div class="service-item"><a href="inprice16.html" class="service-link" id="service16">結 緣 區</a></div>
+            </div>
+            
+            <!-- 主要內容 -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2 class="section-title" id="service-title">家居、寫字樓、廠房專業風水佈局</h2>
+                    
+                    <div class="badge-container">
+                        <div class="badge" id="badge-home"><i class="fas fa-home"></i>家居風水</div>
+                        <div class="badge" id="badge-office"><i class="fas fa-building"></i>寫字樓風水</div>
+                        <div class="badge" id="badge-factory"><i class="fas fa-industry"></i>廠房風水</div>
+                        <div class="badge" id="badge-shop"><i class="fas fa-store"></i>商舖風水</div>
+                    </div>
+                </div>
+                
+                <!-- 價格卡片 -->
+                <div class="price-card">
+                    <h3 class="price-title" id="price-title">服務收費標準</h3>
+                    
+                    <div class="price-grid">
+                        <div class="price-item">
+                            <div class="price-amount" id="price-sqft">HK$15/平方尺</div>
+                            <div class="price-label" id="price-sqft-label">按照面積計算</div>
+                        </div>
+                        
+                        <div class="price-item">
+                            <div class="price-amount" id="price-time">3-4小時</div>
+                            <div class="price-label" id="price-time-label">一般所需時間</div>
+                        </div>
+                        
+                        <div class="price-item">
+                            <div class="price-amount" id="price-min">$8,800起</div>
+                            <div class="price-label" id="price-min-label">最低起價 (含圖則設計)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 聯繫橫幅 -->
+                <div class="contact-banner">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div class="contact-text" id="contact-info-banner">詳情請致電：6188 3889 報價</div>
+                </div>
+                
+                <!-- 視頻鏈接 - 統一風格並居中顯示 -->
+                <div class="video-container">
+                    <a onclick="window.open('https://victorlau.myqnapcloud.com/sun/fengshui.mp4','專業風水佈局','');return false;" href="https://victorlau.myqnapcloud.com/sun/fengshui.mp4" class="video-link" id="video-link">
+                        <span class="video-icon"><i class="fas fa-play-circle"></i></span>
+                        <span id="video-text">按此觀看影片介紹</span>
+                    </a>
+                </div>
+                
+                <!-- 其他服務 -->
+                <div class="additional-services">
+                    <h3 class="additional-title" id="additional-title">其他相關服務</h3>
+                    
+                    <div class="service-card">
+                        <div class="service-name" id="service-outdoor">陽宅/陰宅初探及比較</div>
+                        <div class="service-price" id="service-outdoor-price">首2小時 $4800 (以後每小時為$2000) 或 港外日計 $10800</div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-name" id="service-yin">陰宅的專業風水堪造</div>
+                        <div class="service-price" id="service-yin-price">整體之20%為潤金 或 $16800起</div>
+                    </div>
+                </div>
+                
+                <!-- 八卦圖展示 - 使用CSS生成代替SVG - 改進版更清晰 -->
+                <div>
+                    <h3 class="section-title" id="bagua-title">八卦與五行能量布局</h3>
+                    <p id="bagua-description">風水佈局依據八卦方位和五行相生相剋原理，為空間注入和諧能量循環。</p>
+                    
+                    <div class="ba-gua-grid">
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua1">乾 - 西北</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua2">坤 - 西南</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua3">震 - 東</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="line"></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua5">巽 - 東南</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="line"></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua6">坎 - 北</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua8">離 - 南</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="line"></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua7">艮 - 東北</div>
+                        </div>
+                        <div class="ba-gua-item">
+                            <div class="ba-gua-icon">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="broken-line"><span></span><span></span></div>
+                            </div>
+                            <div class="ba-gua-name" id="bagua4">兌 - 西</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 風水學派 - 修復圖標背景顏色 -->
+                <div class="feng-shui-schools">
+                    <h3 class="section-title" id="schools-title">風水派系</h3>
+                    
+                    <div class="schools-container">
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-star"></i></div>
+                            <h4 class="school-name" id="school1">三元家-玄空飛星</h4>
+                            <p class="school-description" id="school1-desc">運用九宮飛星，計算吉凶方位，適合現代高層建築風水。透過精準的數理計算，分析建築物內部能量流動。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-mountain"></i></div>
+                            <h4 class="school-name" id="school2">三合家-龍山向水</h4>
+                            <p class="school-description" id="school2-desc">注重環境整體佈局，強調龍脈、山勢與水流方向的和諧，以玄關通竅、滿局生旺為目標，塑造完美氣場。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-yin-yang"></i></div>
+                            <h4 class="school-name" id="school3">玄空大卦、些子法</h4>
+                            <p class="school-description" id="school3-desc">結合易經與天文地理學，深入分析環境與人的互動關係，平衡陰陽五行，達到天人合一。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-user-friends"></i></div>
+                            <h4 class="school-name" id="school4">九星尋龍、獨發一人/房</h4>
+                            <p class="school-description" id="school4-desc">針對個人命盤特性，為特定房間或使用者設計專屬風水佈局，強化個人運勢與空間能量的匹配度。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-compass"></i></div>
+                            <h4 class="school-name" id="school5">奇門大氣改運風水</h4>
+                            <p class="school-description" id="school5-desc">利用奇門遁甲學說，配合特定時間點，通過空間佈局引導宇宙能量，快速改變運勢，效果顯著。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-user-alt"></i></div>
+                            <h4 class="school-name" id="school6">紫微個人風水佈局</h4>
+                            <p class="school-description" id="school6-desc">結合紫微斗數命盤，為個人量身定制風水佈局，精確匹配個人命格與居住環境，最大化提升運勢。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-calendar"></i></div>
+                            <h4 class="school-name" id="school7">七政四餘皇曆天星風水佈局</h4>
+                            <p class="school-description" id="school7-desc">基於古代天文曆法，結合七政四餘學說，分析天體運行對地理環境的影響，創造與宇宙節律共振的空間。</p>
+                        </div>
+                        
+                        <div class="school-card">
+                            <div class="school-icon"><i class="fas fa-coins"></i></div>
+                            <h4 class="school-name" id="school8">甲子易占河洛佈局</h4>
+                            <p class="school-description" id="school8-desc">專注於特定運勢改善，如催財、和合、桃花、發貴人，並結合流年流月能量變化，追蹤星宿運行，達到精準的運勢調整。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 風水解釋部分 - 修改標題和內容 -->
+                <div class="feng-shui-explanation">
+                    <h3 class="section-title" id="explanation-title">超越迷思，活用環境能量的智慧</h3>
+                    
+                    <div class="explanation-container">
+                        <p class="explanation-text" id="explanation1">
+                            許多人對風水存有誤解，尤其在寸土寸金的香港，常認為風水調整必然涉及大規模的格局改動，並擔心勘察後無力承擔相應工程。事實上，風水學是一門精深的環境能量科學，其應用方式遠比一般想像更為靈活。它旨在透過善用自然環境的力量來優化個人及空間的運勢。風水佈局並非一成不變，而是可以根據實際情況和個人命格，巧妙區分並運用「靜態」（如空間佈局、色彩材質）與「動態」（如氣流引導、特定風水物品或時間要素）的策略。恰當的動態調整，有時確實能較快地激發環境的正面能量，有助於改善運程。
+                        </p>
+                        
+                        <p class="explanation-text" id="explanation2">
+                            針對現代都市環境，「三元玄空」風水是一套廣泛應用於高層建築勘察的精密系統。它主要透過分析建築物的「坐」（背靠方位）與「向」（朝向方位），結合時間因素（元運），來精確評估該空間（宅）及其居住者（主）的能量狀態與潛在運程。其理想目標是實現「旺山旺向」（或稱「到山到向」），即空間佈局能接收當前元運的生旺之氣，並力求達到「一卦清純」的和諧能量格局。因其系統性與對時間維度的重視，三元玄空成為當代城市風水實踐中極為普及的方法之一。
+                        </p>
+                        
+                        <p class="explanation-text" id="explanation3">
+                            與此同時，「三合風水」則是一套更側重於地理形態與水法應用的傳統風水體系，其分析層次往往更為深入細緻。它特別適用於地形影響顯著的環境，例如獨立屋宇（村屋、豪宅）、商業店鋪（地舖、酒樓、商場部分區域）、廠房，以及一般五層以下的建築。三合風水重點考察「來龍」（山脈或地勢走向）、「水口」（水流的入口與出口）以及「宅向」（建築朝向）這三大核心要素的相互關係與配合。其目標在於通過精確佈局，實現「玄關通竅」（關鍵氣口暢通無阻）並達到「全局生旺」的理想效果，即讓整個空間充滿生機與活力。
+                        </p>
+                        
+                        <p class="explanation-text" id="explanation4">
+                            為了提供最全面而精準的專業風水服務，我們的佈局方案不僅基於上述主流理論，更會整合運用多種高階輔助技術，例如：「六壬」神課（用於預測與決策）、「扶山補龍」（強化靠山與龍脈能量）、「太陰太陽」到山到向擇日（選擇最佳時機）、「神煞」分析（趨吉避凶）、「奇門遁甲」（時空能量佈局）以及「七政四餘」（星曜影響分析）等。這些技術與嚴謹的吉課擇日相結合，旨在為客戶的入伙、安神、裝修（修方）等重要事宜提供時空上的最佳配合，從而確保空間能量得到全面而深入的優化。
+                        </p>
+                        
+                        <p class="explanation-text" id="explanation-benefits">
+                            一個經過專業設計的風水佈局，其潛在效益是多方面的，通常旨在：改善家居氛圍，促進家庭和諧；輔助事業發展，提升工作機遇；增進身心健康，營造頤養福祉的環境；助力財運暢旺，穩定經濟基礎；以及優化人際互動，建立良好的社會關係。我們的服務始終堅持以客戶的具體需求和場所的獨特條件為出發點，致力於提供最貼切、最有效的個性化風水解決方案。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部區域 -->
+    <footer class="footer">
+        <p id="copyright">版權所有 © 2002-2026</p>
+        <p id="address">公司地址: 銅鑼灣希慎道8號裕景商業中心3樓</p>
+        <p id="contact-info">電話: 6188 3889 電子郵件: <a href="/cdn-cgi/l/email-protection#215748424d4054151061464c40484d0f424e4c"><span class="__cf_email__" data-cfemail="582e313b34392d6c69183f35393134763b3735">[email&#160;protected]</span></a></p>
+    </footer>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// 儲存中英文對照資料
+const translations = {
+    'zh': {
+        'site-title': '日 觀 天 象',
+        'site-subtitle': 'Victor 專業風水師',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>首頁',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>留言版',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>網上起卦',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>風水收費服務',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>網上購物',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>銀行及轉帳',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>聯繫我們',
+        
+        // 服務菜單
+        'service1': '超準易占',
+        'service2': '電話問事',
+        'service3': '2人愛情占星術',
+        'service4': '命理套餐',
+        'service5': '手機號碼占卜',
+        'service6': '轉手機號碼改運',
+        'service7': '專業風水佈局',
+        'service8': '其他服務',
+        'service9': '擇吉日',
+        'service10': '改名',
+        'service11': '大氣改運',
+        'service12': '流年運程預測',
+        'service13': '租買樓宇評級',
+        'service14': '微信whatapps命理',
+        'service15': '微信whatapps起卦',
+        'service16': '結 緣 區',
+        
+        // 頁面內容
+        'service-title': '家居、寫字樓、廠房專業風水佈局',
+        'badge-home': '<i class="fas fa-home"></i>家居風水',
+        'badge-office': '<i class="fas fa-building"></i>寫字樓風水',
+        'badge-factory': '<i class="fas fa-industry"></i>廠房風水',
+        'badge-shop': '<i class="fas fa-store"></i>商舖風水',
+        
+        // 價格卡片
+        'price-title': '服務收費標準',
+        'price-sqft': 'HK$15/平方尺',
+        'price-sqft-label': '按照面積計算',
+        'price-time': '3-4小時',
+        'price-time-label': '一般所需時間',
+        'price-min': '$8,800起',
+        'price-min-label': '最低起價 (含圖則設計)',
+        
+        // 其他內容
+        'contact-info-banner': '詳情請致電：6188 3889 報價',
+        'video-text': '按此觀看影片介紹',
+        'additional-title': '其他相關服務',
+        'service-outdoor': '陽宅/陰宅初探及比較',
+        'service-outdoor-price': '首2小時 $4800 (以後每小時為$2000) 或 港外日計 $10800',
+        'service-yin': '陰宅的專業風水堪造',
+        'service-yin-price': '整體之20%為潤金 或 $16800起',
+        
+        // 八卦
+        'bagua-title': '八卦與五行能量布局',
+        'bagua-description': '風水佈局依據八卦方位和五行相生相剋原理，為空間注入和諧能量循環。',
+        'bagua1': '乾 - 西北',
+        'bagua2': '坤 - 西南',
+        'bagua3': '震 - 東',
+        'bagua4': '巽 - 東南',
+        'bagua5': '坎 - 北',
+        'bagua6': '離 - 南',
+        'bagua7': '艮 - 東北',
+        'bagua8': '兌 - 西',
+        
+        // 風水學派
+        'schools-title': '風水派系',
+        'school1': '三元家-玄空飛星',
+        'school1-desc': '運用九宮飛星，計算吉凶方位，適合現代高層建築風水。透過精準的數理計算，分析建築物內部能量流動。',
+        'school2': '三合家-龍山向水',
+        'school2-desc': '注重環境整體佈局，強調龍脈、山勢與水流方向的和諧，以玄關通竅、滿局生旺為目標，塑造完美氣場。',
+        'school3': '玄空大卦、些子法',
+        'school3-desc': '結合易經與天文地理學，深入分析環境與人的互動關係，平衡陰陽五行，達到天人合一。',
+        'school4': '九星尋龍、獨發一人/房',
+        'school4-desc': '針對個人命盤特性，為特定房間或使用者設計專屬風水佈局，強化個人運勢與空間能量的匹配度。',
+        'school5': '奇門大氣改運風水',
+        'school5-desc': '利用奇門遁甲學說，配合特定時間點，通過空間佈局引導宇宙能量，快速改變運勢，效果顯著。',
+        'school6': '紫微個人風水佈局',
+        'school6-desc': '結合紫微斗數命盤，為個人量身定制風水佈局，精確匹配個人命格與居住環境，最大化提升運勢。',
+        'school7': '七政四餘皇曆天星風水佈局',
+        'school7-desc': '基於古代天文曆法，結合七政四餘學說，分析天體運行對地理環境的影響，創造與宇宙節律共振的空間。',
+        'school8': '甲子易占河洛佈局',
+        'school8-desc': '專注於特定運勢改善，如催財、和合、桃花、發貴人，並結合流年流月能量變化，追蹤星宿運行，達到精準的運勢調整。',
+        
+        // 風水解釋
+        'explanation-title': '超越迷思，活用環境能量的智慧',
+        'explanation1': '許多人對風水存有誤解，尤其在寸土寸金的香港，常認為風水調整必然涉及大規模的格局改動，並擔心勘察後無力承擔相應工程。事實上，風水學是一門精深的環境能量科學，其應用方式遠比一般想像更為靈活。它旨在透過善用自然環境的力量來優化個人及空間的運勢。風水佈局並非一成不變，而是可以根據實際情況和個人命格，巧妙區分並運用「靜態」（如空間佈局、色彩材質）與「動態」（如氣流引導、特定風水物品或時間要素）的策略。恰當的動態調整，有時確實能較快地激發環境的正面能量，有助於改善運程。',
+        'explanation2': '針對現代都市環境，「三元玄空」風水是一套廣泛應用於高層建築勘察的精密系統。它主要透過分析建築物的「坐」（背靠方位）與「向」（朝向方位），結合時間因素（元運），來精確評估該空間（宅）及其居住者（主）的能量狀態與潛在運程。其理想目標是實現「旺山旺向」（或稱「到山到向」），即空間佈局能接收當前元運的生旺之氣，並力求達到「一卦清純」的和諧能量格局。因其系統性與對時間維度的重視，三元玄空成為當代城市風水實踐中極為普及的方法之一。',
+        'explanation3': '與此同時，「三合風水」則是一套更側重於地理形態與水法應用的傳統風水體系，其分析層次往往更為深入細緻。它特別適用於地形影響顯著的環境，例如獨立屋宇（村屋、豪宅）、商業店鋪（地舖、酒樓、商場部分區域）、廠房，以及一般五層以下的建築。三合風水重點考察「來龍」（山脈或地勢走向）、「水口」（水流的入口與出口）以及「宅向」（建築朝向）這三大核心要素的相互關係與配合。其目標在於通過精確佈局，實現「玄關通竅」（關鍵氣口暢通無阻）並達到「全局生旺」的理想效果，即讓整個空間充滿生機與活力。',
+        'explanation4': '為了提供最全面而精準的專業風水服務，我們的佈局方案不僅基於上述主流理論，更會整合運用多種高階輔助技術，例如：「六壬」神課（用於預測與決策）、「扶山補龍」（強化靠山與龍脈能量）、「太陰太陽」到山到向擇日（選擇最佳時機）、「神煞」分析（趨吉避凶）、「奇門遁甲」（時空能量佈局）以及「七政四餘」（星曜影響分析）等。這些技術與嚴謹的吉課擇日相結合，旨在為客戶的入伙、安神、裝修（修方）等重要事宜提供時空上的最佳配合，從而確保空間能量得到全面而深入的優化。',
+        'explanation-benefits': '一個經過專業設計的風水佈局，其潛在效益是多方面的，通常旨在：改善家居氛圍，促進家庭和諧；輔助事業發展，提升工作機遇；增進身心健康，營造頤養福祉的環境；助力財運暢旺，穩定經濟基礎；以及優化人際互動，建立良好的社會關係。我們的服務始終堅持以客戶的具體需求和場所的獨特條件為出發點，致力於提供最貼切、最有效的個性化風水解決方案。',
+        
+        // 頁腳
+        'copyright': '版權所有 © 2002-2026',
+        'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
+        'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
+    },
+    'en': {
+        'site-title': 'Daily Observation of Heaven',
+        'site-subtitle': 'Victor Professional Feng Shui Master',
+        'nav-home': '<span class="icon"><i class="fas fa-home"></i></span>Home',
+        'nav-forum': '<span class="icon"><i class="fas fa-comments"></i></span>Forum',
+        'nav-hexagram': '<span class="icon"><i class="fas fa-yin-yang"></i></span>Online Divination',
+        'nav-services': '<span class="icon"><i class="fas fa-compass"></i></span>Feng Shui Services',
+        'nav-shop': '<span class="icon"><i class="fas fa-shopping-cart"></i></span>Online Shop',
+        'nav-bank': '<span class="icon"><i class="fas fa-credit-card"></i></span>Banking & Transfer',
+        'nav-contact': '<span class="icon"><i class="fas fa-envelope"></i></span>Contact Us',
+        
+        // 服務菜單
+        'service1': 'Yi Divination',
+        'service2': 'Phone Consultation',
+        'service3': 'Love Astrology',
+        'service4': 'Destiny Package',
+        'service5': 'Phone Number Divination',
+        'service6': 'Phone Number Transformation',
+        'service7': 'Feng Shui Arrangement',
+        'service8': 'Other Services',
+        'service9': 'Auspicious Date Selection',
+        'service10': 'Name Change',
+        'service11': 'Energy Transformation',
+        'service12': 'Annual Forecast',
+        'service13': 'Property Rating',
+        'service14': 'WeChat/WhatsApp Consultation',
+        'service15': 'WeChat/WhatsApp Divination',
+        'service16': 'Free Services',
+        
+        // 頁面內容
+        'service-title': 'Professional Feng Shui for Homes, Offices & Factories',
+        'badge-home': '<i class="fas fa-home"></i>Residential Feng Shui',
+        'badge-office': '<i class="fas fa-building"></i>Office Feng Shui',
+        'badge-factory': '<i class="fas fa-industry"></i>Factory Feng Shui',
+        'badge-shop': '<i class="fas fa-store"></i>Retail Feng Shui',
+        
+        // 價格卡片
+        'price-title': 'Service Fee Standards',
+        'price-sqft': 'HK$15/sq.ft',
+        'price-sqft-label': 'Based on area',
+        'price-time': '3-4 hours',
+        'price-time-label': 'Average time required',
+        'price-min': 'From $8,800',
+        'price-min-label': 'Minimum fee (incl. floor plans)',
+        
+        // 其他內容
+        'contact-info-banner': 'For details, please call: 6188 3889',
+        'video-text': 'Click to watch video introduction',
+        'additional-title': 'Related Services',
+        'service-outdoor': 'Yang/Yin Dwelling Site Assessment',
+        'service-outdoor-price': 'First 2 hours $4800 (additional $2000/hour) or $10800/day outside Hong Kong',
+        'service-yin': 'Professional Feng Shui for Cemetery Plots',
+        'service-yin-price': '20% of total cost or starting from $16800',
+        
+        // 八卦
+        'bagua-title': 'Bagua & Five Elements Energy Layout',
+        'bagua-description': 'Feng Shui arrangements are based on the Bagua positions and Five Elements principles to create harmonious energy flow throughout the space.',
+        'bagua1': 'Qian - Northwest',
+        'bagua2': 'Kun - Southwest',
+        'bagua3': 'Zhen - East',
+        'bagua4': 'Xun - Southeast',
+        'bagua5': 'Kan - North',
+        'bagua6': 'Li - South',
+        'bagua7': 'Gen - Northeast',
+        'bagua8': 'Dui - West',
+        
+        // 風水學派
+        'schools-title': 'Feng Shui Schools',
+        'school1': 'San Yuan - Flying Stars',
+        'school1-desc': 'Uses the Nine Palace Flying Stars to calculate auspicious and inauspicious positions, ideal for modern high-rise buildings. Through precise numerical calculations, it analyzes energy flow within buildings.',
+        'school2': 'San He - Dragon, Mountain & Water',
+        'school2-desc': 'Focuses on overall environmental layout, emphasizing harmony between dragon veins, mountain formations, and water flow directions. Aims to create perfect energy fields through proper entrance configuration and abundant energy.',
+        'school3': 'Xuan Kong Da Gua & Subsidiary Methods',
+        'school3-desc': 'Combines I Ching with astronomical geography to deeply analyze the interaction between environment and people, balancing yin-yang and the five elements to achieve harmony between heaven and humanity.',
+        'school4': 'Nine Star & Individual Room Analysis',
+        'school4-desc': 'Targets personal destiny chart characteristics to design exclusive feng shui arrangements for specific rooms or users, enhancing the compatibility between personal fortune and spatial energy.',
+        'school5': 'Qi Men Energy Transformation',
+        'school5-desc': 'Uses Qi Men Dun Jia principles, combined with specific time points, to guide cosmic energy through spatial arrangement for rapid fortune changes with significant effects.',
+        'school6': 'Purple Star Personal Feng Shui',
+        'school6-desc': 'Combines Zi Wei Dou Shu destiny charts to create custom feng shui arrangements, precisely matching personal destiny with living environments to maximize fortune enhancement.',
+        'school7': 'Imperial Calendar Astronomy Feng Shui',
+        'school7-desc': 'Based on ancient astronomical calendars, combined with celestial influence theories, it analyzes the impact of celestial movements on geographical environments to create spaces that resonate with cosmic rhythms.',
+        'school8': 'Jia Zi Yi & He Luo Methods',
+        'school8-desc': 'Focuses on specific fortune improvements such as wealth attraction, harmony, romance, and benefactor enhancement, combined with annual and monthly energy changes to track celestial movements for precise fortune adjustments.',
+        
+        // 風水解釋 - 更新英文版本與中文保持一致
+        'explanation-title': 'Beyond Myths: Harnessing Environmental Energy Wisdom',
+        'explanation1': 'Many people misunderstand Feng Shui, especially in space-constrained Hong Kong, often believing that Feng Shui adjustments necessarily involve large-scale layout modifications and worrying about being unable to afford such renovations after consultation. In reality, Feng Shui is a profound environmental energy science with applications far more flexible than commonly imagined. It aims to optimize personal and spatial fortune by skillfully utilizing natural environmental forces. Feng Shui arrangements are not fixed but can be cleverly categorized and applied as "static" (such as spatial layout, colors, and materials) and "dynamic" (such as airflow guidance, specific Feng Shui objects, or timing elements) strategies based on actual conditions and personal destiny charts. Appropriate dynamic adjustments can sometimes more quickly stimulate positive environmental energy, helping to improve fortune.',
+        'explanation2': 'For modern urban environments, "San Yuan Xuan Kong" Feng Shui is a precise system widely applied to high-rise building surveys. It primarily evaluates the energy state and potential fortune of a space (dwelling) and its occupants (master) by analyzing the building\'s "sitting" (backing direction) and "facing" (fronting direction), combined with time factors (elemental cycles). Its ideal goal is to achieve "prosperous mountain and facing" (or "reaching mountain and water"), meaning the spatial arrangement can receive the vital energy of the current elemental cycle, and strives to achieve a "pure hexagram" harmonic energy pattern. Due to its systematic approach and emphasis on the time dimension, San Yuan Xuan Kong has become one of the most popular methods in contemporary urban Feng Shui practice.',
+        'explanation3': 'Meanwhile, "San He Feng Shui" is a traditional Feng Shui system that focuses more on geographical formations and water applications, with analysis levels often more in-depth and detailed. It is particularly suitable for environments where topography has a significant influence, such as independent houses (village houses, luxury homes), commercial shops (ground-floor shops, restaurants, certain areas of shopping malls), factories, and buildings generally below five stories. San He Feng Shui examines the interrelationships and configurations of three core elements: "incoming dragon" (mountain range or terrain orientation), "water mouths" (water flow entry and exit points), and "dwelling orientation" (building facing). Its goal is to achieve "clear entrance flow" (unobstructed key energy points) and "overall prosperity" through precise layout, creating a space full of vitality and energy.',
+        'explanation4': 'To provide the most comprehensive and precise professional Feng Shui services, our layout solutions are not only based on the above mainstream theories but also integrate various advanced auxiliary techniques, such as: "Liu Ren" divination (for prediction and decision-making), "Supporting Mountain and Dragon" (enhancing backing and dragon vein energies), "Yin-Yang" timing selection (choosing optimal timing), "Spirit Influences" analysis (attracting good fortune and avoiding misfortune), "Qi Men Dun Jia" (spacetime energy arrangement), and "Seven Governance Four Remainders" (celestial influence analysis). These techniques, combined with rigorous auspicious timing selection, aim to provide optimal spatiotemporal coordination for clients\' important matters such as moving in, spiritual cleansing, renovation (directional adjustments), ensuring comprehensive and in-depth optimization of spatial energy.',
+        'explanation-benefits': 'A professionally designed Feng Shui arrangement offers multi-faceted potential benefits, typically aiming to: improve home atmosphere and promote family harmony; support career development and enhance work opportunities; improve physical and mental health, creating an environment that nurtures well-being; facilitate financial prosperity and stabilize economic foundations; and optimize interpersonal interactions, establishing good social relationships. Our services consistently adhere to clients\' specific needs and the unique conditions of their spaces as starting points, committed to providing the most appropriate and effective personalized Feng Shui solutions.',
+        
+        // 頁腳
+        'copyright': 'Copyright © 2002-2026',
+        'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
+        'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
+    }
+};
+
+// 切換語言函數
+function switchLanguage(lang) {
+    // 更新語言按鈕的激活狀態
+    document.querySelector('.lang-btn.zh').classList.remove('active');
+    document.querySelector('.lang-btn.en').classList.remove('active');
+    document.querySelector(`.lang-btn.${lang}`).classList.add('active');
+    
+    // 更新頁面上的所有文本內容
+    for (const [id, text] of Object.entries(translations[lang])) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.innerHTML = text;
+        }
+    }
+    
+    // 特別處理 - 更新網上購物的URL
+    const shopLink = document.getElementById('nav-shop');
+    if (shopLink) {
+        shopLink.href = lang === 'zh' ? 'https://victorlau.myqnapcloud.com/prestashop/metaphysics/tw/' : 'https://victorlau.myqnapcloud.com/prestashop/metaphysics/en/';
+    }
+    
+    // 存儲用戶的語言偏好
+    try { localStorage.setItem('preferredLanguage', lang); } catch(e) {} // eslint-disable-line no-restricted-globals
+    
+    // 更新頁面標題
+    document.title = lang === 'zh' ? 'Victor 專業風水師 - 專業風水佈局' : 'Victor Professional Feng Shui Master - Feng Shui Arrangement';
+    
+    // 執行修復文字顯示的函數
+    setTimeout(ensureTextVisibility, 100);
+}
+
+// 確保文字正確顯示的增強函數
+function ensureTextVisibility() {
+    // 設置所有可能隱藏的文字容器為可見
+    const textElements = document.querySelectorAll('.service-price, .school-description, .explanation-text, .ba-gua-name, #bagua-description');
+    textElements.forEach(el => {
+        if (el) {
+            el.style.overflow = 'visible';
+            el.style.display = 'block';
+            el.style.visibility = 'visible';
+            el.style.opacity = '1';
+            el.style.maxHeight = 'none';
+            el.style.position = 'relative';
+            el.style.zIndex = '5';
+        }
+    });
+    
+    // 特別處理八卦說明文字
+    const baguaDesc = document.getElementById('bagua-description');
+    if (baguaDesc) {
+        baguaDesc.setAttribute('style', 'display: block !important; visibility: visible !important; overflow: visible !important; color: #333; font-size: 16px; line-height: 1.6; margin: 10px 0 20px 0; position: relative; z-index: 10;');
+    }
+    
+    // 特別處理八卦名稱
+    const baguaNames = document.querySelectorAll('.ba-gua-name');
+    baguaNames.forEach(el => {
+        if (el) {
+            el.setAttribute('style', 'display: block !important; visibility: visible !important; overflow: visible !important; font-size: 14px; font-weight: bold; text-align: center; color: #1d3557; margin-top: 8px; position: relative; z-index: 5;');
+        }
+    });
+    
+    // 特別處理長服務名
+    const longServices = document.querySelectorAll('#service14, #service15');
+    longServices.forEach(el => {
+        if (el) {
+            if (window.innerWidth <= 360) {
+                el.style.fontSize = '10px';
+                el.style.letterSpacing = '-0.08em';
+            } else if (window.innerWidth <= 480) {
+                el.style.fontSize = '11px';
+                el.style.letterSpacing = '-0.05em';
+            }
+        }
+    });
+    
+    // 特別處理派系文字描述
+    const schoolDescs = document.querySelectorAll('.school-description');
+    schoolDescs.forEach(el => {
+        if (el) {
+            el.setAttribute('style', 'display: block !important; visibility: visible !important; overflow: visible !important; color: #666; font-size: 14px; line-height: 1.6; margin-top: 8px; position: relative; z-index: 5;');
+        }
+    });
+}
+
+// 頁面加載時檢查用戶的語言偏好並修復文字顯示
+document.addEventListener('DOMContentLoaded', function() {
+    var preferredLanguage = 'zh'; try { preferredLanguage = localStorage.getItem('preferredLanguage') || 'zh'; } catch(e) {} // eslint-disable-line no-restricted-globals
+    switchLanguage(preferredLanguage);
+    
+    // 處理深色模式
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    });
+    
+    // 修復文字顯示
+    ensureTextVisibility();
+    
+    // 窗口大小變化時重新修復
+    window.addEventListener('resize', ensureTextVisibility);
+    
+    // 頁面完全加載後再次確保文字可見
+    window.addEventListener('load', function() {
+        setTimeout(ensureTextVisibility, 500);
+    });
+});
+</script>
+<!-- Victor AI 聊天助手 -->
+<script src="victor-ai-chat.js"></script>
+</BODY>
+</HTML>
