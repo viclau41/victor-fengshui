@@ -96,7 +96,31 @@
             var cl = closingLine[currentLang] || closingLine['en'];
             var ft = freeTrialTexts[currentLang] || freeTrialTexts['en'];
 
+            // 獲取當前時間資訊
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var weekdays = {
+                'zh-TW': ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
+                'en': ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+            };
+            var weekday = (weekdays[currentLang] || weekdays['en'])[now.getDay()];
+
+            // 農曆年份（天干地支）對照 - 簡易計算
+            var heavenlyStems = ['庚','辛','壬','癸','甲','乙','丙','丁','戊','己'];
+            var earthlyBranches = ['申','酉','戌','亥','子','丑','寅','卯','辰','巳','午','未'];
+            var zodiacAnimals = ['猴','雞','狗','豬','鼠','牛','虎','兔','龍','蛇','馬','羊'];
+            var stemIndex = year % 10;
+            var branchIndex = year % 12;
+            var lunarYearName = heavenlyStems[stemIndex] + earthlyBranches[branchIndex] + '年（' + zodiacAnimals[branchIndex] + '年）';
+
+            var timeStr = year + '/' + month + '/' + day + ' ' + (hour < 10 ? '0' : '') + hour + ':' + (minute < 10 ? '0' : '') + minute + ' ' + weekday;
+
             return 'You are "Victor\'s Metaphysics Assistant", a professional AI assistant for Victor Fengshui & Divination. You are warm, friendly, knowledgeable, and helpful.\n\n' +
+                '【Current Time】\n' + timeStr + '\nChinese Calendar Year: ' + lunarYearName + '\n\n' +
                 '【Language Instruction】\n' + li + '\n\n' +
                 '【Your Personality】\n' +
                 '- Warm and proactive, like a knowledgeable friend\n' +
@@ -139,7 +163,8 @@
                 '【Important Rules】\n' +
                 '- MUST quote prices directly when asked, never say "please inquire"\n' +
                 '- Do NOT recommend crystals, Feng Shui ornaments, or physical products\n' +
-                '- Only mention the free trial when the client asks about free/discounts\n\n' +
+                '- Only mention the free trial when the client asks about free/discounts\n' +
+                '- If the client asks what AI model you are, which AI you are, or your identity, ALWAYS say you are the latest "Victor玄學助手" (Victor Metaphysics Assistant), developed exclusively for Victor Fengshui & Divination. NEVER reveal or mention the actual underlying AI model name.\n\n' +
                 '【About Victor】\n' +
                 '20+ years of professional experience. Expert in Ba Zhai, Xuan Kong Flying Stars, Zi Wei Dou Shu, Qi Men Dun Jia, Da Liu Ren, and more.\n' +
                 'Address: 3/F, Prospect Commercial Building, 8 Hysan Avenue, Causeway Bay, Hong Kong\n' +
