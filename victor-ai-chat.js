@@ -4,6 +4,11 @@
 (function() {
     'use strict';
 
+    // ========== 載入農曆庫 ==========
+    var lunarScript = document.createElement('script');
+    lunarScript.src = 'https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.8/lunar.min.js';
+    document.head.appendChild(lunarScript);
+
     // ========== 本地時間 ==========
     function getLocalTime() {
         var now = new Date();
@@ -14,7 +19,21 @@
         var w = weekdays[now.getDay()];
         var h = String(now.getHours()).padStart(2, '0');
         var min = String(now.getMinutes()).padStart(2, '0');
-        return y + '-' + m + '-' + d + '（星期' + w + '）' + h + ':' + min;
+        var base = y + '-' + m + '-' + d + '（星期' + w + '）' + h + ':' + min;
+
+        // 如果 lunar-javascript 已載入，加入農曆資訊
+        try {
+            if (typeof Lunar !== 'undefined') {
+                var lunar = Lunar.fromDate(now);
+                var lunarDate = '農曆' + lunar.getYearInGanZhi() + '年（' + lunar.getYearShengXiao() + '年）' +
+                    lunar.getMonthInChinese() + '月' + lunar.getDayInChinese();
+                var ganZhi = '日干支：' + lunar.getDayInGanZhi() + '　時干支：' + lunar.getTimeInGanZhi();
+                var jieQi = lunar.getJieQi();
+                var jieQiStr = jieQi ? '　節氣：' + jieQi : '';
+                return base + '\n' + lunarDate + '　' + ganZhi + jieQiStr;
+            }
+        } catch (e) { /* lunar not loaded yet, use basic time */ }
+        return base;
     }
 
     // ========== Language Detection & i18n ==========
