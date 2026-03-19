@@ -1,15 +1,84 @@
-// Victor AI Chat Assistant - Multilingual Embedded Version
+// Victor AI Chat Assistant - Multilingual Embedded Version v2.1
 // Usage: Add <script src="victor-ai-chat.js"></script> before </body>
+// Also place lunar.min.js in the same directory
 
 (function() {
     'use strict';
 
-    // ========== 載入農曆庫 ==========
-    var lunarScript = document.createElement('script');
-    lunarScript.src = 'https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.8/lunar.min.js';
-    document.head.appendChild(lunarScript);
+    // ========== 版本資訊 ==========
+    var VICTOR_AI_VERSION = '2.1';
+    console.log('[Victor AI] 版本 ' + VICTOR_AI_VERSION + ' 開始載入...');
 
-    // ========== 本地時間 ==========
+    // ========== 載入農曆庫 ==========
+    var lunarLoaded = false;
+    var lunarLoadAttempted = false;
+
+    function loadLunarLibrary() {
+        if (lunarLoadAttempted) return;
+        lunarLoadAttempted = true;
+
+        var lunarScript = document.createElement('script');
+        var currentScript = document.currentScript || document.querySelector('script[src*="victor-ai-chat"]');
+        var scriptBase = currentScript ? currentScript.src.substring(0, currentScript.src.lastIndexOf('/') + 1) : '';
+        var localUrl = scriptBase + 'lunar.min.js';
+
+        console.log('[Victor AI] 嘗試從同服務器載入農曆庫:', localUrl);
+        lunarScript.src = localUrl;
+
+        lunarScript.onload = function() {
+            if (typeof Lunar !== 'undefined') {
+                lunarLoaded = true;
+                console.log('[Victor AI] ✅ 農曆庫從同服務器載入成功！');
+                testLunarLibrary();
+            } else {
+                console.warn('[Victor AI] ⚠️ 農曆庫載入但 Lunar 對象不存在，嘗試 CDN...');
+                loadLunarFromCDN();
+            }
+        };
+
+        lunarScript.onerror = function() {
+            console.warn('[Victor AI] ⚠️ 同服務器載入農曆庫失敗，嘗試 CDN...');
+            loadLunarFromCDN();
+        };
+
+        document.head.appendChild(lunarScript);
+    }
+
+    function loadLunarFromCDN() {
+        var cdnScript = document.createElement('script');
+        cdnScript.src = 'https://cdn.jsdelivr.net/npm/lunar-javascript@1.6.8/lunar.min.js';
+
+        cdnScript.onload = function() {
+            if (typeof Lunar !== 'undefined') {
+                lunarLoaded = true;
+                console.log('[Victor AI] ✅ 農曆庫從 CDN 載入成功！');
+                testLunarLibrary();
+            } else {
+                console.error('[Victor AI] ❌ CDN 載入完成但 Lunar 對象不存在');
+            }
+        };
+
+        cdnScript.onerror = function() {
+            console.error('[Victor AI] ❌ CDN 載入農曆庫也失敗了！農曆和八字功能將不可用。');
+        };
+
+        document.head.appendChild(cdnScript);
+    }
+
+    function testLunarLibrary() {
+        try {
+            var now = new Date();
+            var lunar = Lunar.fromDate(now);
+            console.log('[Victor AI] 農曆測試 - 今天農曆:', lunar.getYearInGanZhi() + '年 ' + lunar.getMonthInChinese() + '月' + lunar.getDayInChinese());
+            console.log('[Victor AI] 農曆測試 - 日干支:', lunar.getDayInGanZhi(), '時干支:', lunar.getTimeInGanZhi());
+        } catch (e) {
+            console.error('[Victor AI] 農曆測試失敗:', e);
+        }
+    }
+
+    loadLunarLibrary();
+
+    // ========== 本地時間函數 ==========
     function getLocalTime() {
         var now = new Date();
         var y = now.getFullYear();
@@ -19,7 +88,7 @@
         var w = weekdays[now.getDay()];
         var h = String(now.getHours()).padStart(2, '0');
         var min = String(now.getMinutes()).padStart(2, '0');
-        var base = y + '-' + m + '-' + d + '（星期' + w + '）' + h + ':' + min;
+        var base = y + '年' + m + '月' + d + '日（星期' + w + '）' + h + ':' + min;
 
         // 如果 lunar-javascript 已載入，加入農曆資訊
         try {
@@ -30,10 +99,36 @@
                 var ganZhi = '日干支：' + lunar.getDayInGanZhi() + '　時干支：' + lunar.getTimeInGanZhi();
                 var jieQi = lunar.getJieQi();
                 var jieQiStr = jieQi ? '　節氣：' + jieQi : '';
-                return base + '\n' + lunarDate + '　' + ganZhi + jieQiStr;
+                return base + '\n' + lunarDate + '\n' + ganZhi + jieQiStr;
             }
-        } catch (e) { /* lunar not loaded yet, use basic time */ }
+        } catch (e) {
+            console.error('[Victor AI] getLocalTime 農曆部分出錯:', e);
+        }
         return base;
+    }
+
+    // ========== 西曆轉八字函數 ==========
+    function getBaziFromDate(dateStr, timeHour) {
+        try {
+            if (typeof Lunar === 'undefined') {
+                console.warn('[Victor AI] getBaziFromDate: Lunar 庫未載入，無法計算八字');
+                return null;
+            }
+            var parts = dateStr.split('-');
+            var solar = Solar.fromYmd(parseInt(parts[0]), parseInt(parts[1]), parseInt(parts[2]));
+            var lunar = solar.getLunar();
+            var eightChar = lunar.getEightChar();
+            var result = '四柱八字：' + eightChar.getYear() + '年　' + eightChar.getMonth() + '月　' + eightChar.getDay() + '日';
+            if (typeof timeHour === 'number' && timeHour >= 0) {
+                result += '　' + eightChar.getTime() + '時';
+            }
+            result += '\n農曆：' + lunar.getYearInGanZhi() + '年（' + lunar.getYearShengXiao() + '年）' +
+                lunar.getMonthInChinese() + '月' + lunar.getDayInChinese();
+            return result;
+        } catch (e) {
+            console.error('[Victor AI] getBaziFromDate 出錯:', e);
+            return null;
+        }
     }
 
     // ========== Language Detection & i18n ==========
@@ -128,12 +223,33 @@
             var cl = closingLine[currentLang] || closingLine['en'];
             var ft = freeTrialTexts[currentLang] || freeTrialTexts['en'];
 
-            // 獲取當前時間（每次發送訊息時即時取得）
+            // 每次發送消息時重新獲取當前時間
             var localTime = getLocalTime();
+            console.log('[Victor AI] 當前時間資訊:\n' + localTime);
+
+            // 嘗試解析用戶輸入中的日期，計算八字
+            var baziInfo = '';
+            var dateMatch = userMessage.match(/(\d{4})[年\-\/](\d{1,2})[月\-\/](\d{1,2})/);
+            if (dateMatch) {
+                var timeMatch = userMessage.match(/(\d{1,2})[時點:：]/);
+                var hour = timeMatch ? parseInt(timeMatch[1]) : -1;
+                var dateString = dateMatch[1] + '-' + dateMatch[2] + '-' + dateMatch[3];
+                console.log('[Victor AI] 偵測到日期:', dateString, '時辰:', hour);
+                var bazi = getBaziFromDate(dateString, hour);
+                if (bazi) {
+                    baziInfo = '\n【系統已計算該日期的八字資料 / System-calculated Bazi for the given date】\n' + bazi + '\n⚠️ Please use the above Bazi data directly. Do not calculate it yourself.\n';
+                    console.log('[Victor AI] 八字計算結果:\n' + bazi);
+                }
+            }
 
             return 'You are "Victor\'s Metaphysics Assistant", a professional AI assistant for Victor Fengshui & Divination. You are warm, friendly, knowledgeable, and helpful.\n\n' +
-                '【客人當地時間】' + localTime + '\n' +
-                '【時間規則】當客人問到與時間相關的問題時（例如「幾時」「今日」「這星期」「今年」等），請在回覆中自然地提及現在的日期和時間，讓客人知道你掌握準確的時間資訊。2025年是蛇年，2026年是馬年，2027年是羊年。\n\n' +
+                '【IMPORTANT: Current Date and Time / 重要：今天的日期和時間】\n' +
+                'Now is: ' + localTime + '\n' +
+                'You MUST remember the above as the exact current date and time. When the client asks "what date is today", "what time is it", "what year is this" or any time-related question, you MUST use the specific date and time shown above to answer.\n' +
+                'For example: if above shows "2026年03月19日", answer "Today is March 19, 2026" (or the Chinese equivalent).\n' +
+                'NEVER say "I don\'t know the date" or use any placeholder.\n' +
+                '2025 is the Year of the Snake (蛇年), 2026 is the Year of the Horse (馬年), 2027 is the Year of the Goat (羊年).\n' +
+                baziInfo + '\n' +
                 '【Language Instruction】\n' + li + '\n\n' +
                 '【Your Personality】\n' +
                 '- Warm and proactive, like a knowledgeable friend\n' +
@@ -832,6 +948,9 @@
     function initVictorAI() {
         var isProcessing = false;
 
+        console.log('[Victor AI] v' + VICTOR_AI_VERSION + ' 初始化中...');
+        console.log('[Victor AI] 當前時間測試:', getLocalTime());
+
         // Storage config
         var STORAGE_KEY = 'victorAI_conversation';
         var STORAGE_EXPIRY_DAYS = 30;
@@ -1079,15 +1198,27 @@
             console.log('[Victor AI] Language switched to:', currentLang);
         });
 
-        // Clear button
-        document.getElementById('victorClearBtn').addEventListener('click', function() {
+        // Clear button - 同時支援 click 和 touch
+        var clearBtnEl = document.getElementById('victorClearBtn');
+        var clearDebounce = false;
+        function doClearChat() {
+            if (clearDebounce) return;
+            clearDebounce = true;
+            setTimeout(function() { clearDebounce = false; }, 300);
+
             conversationHistory = [];
-            localStorage.removeItem(STORAGE_KEY);
+            try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
 
             var messagesContainer = document.getElementById('victorChatMessages');
             messagesContainer.innerHTML = buildWelcomeHTML();
 
+            isProcessing = false;
             console.log('[Victor AI] Conversation cleared');
+        }
+        clearBtnEl.addEventListener('click', doClearChat);
+        clearBtnEl.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            doClearChat();
         });
 
         // Input field
@@ -1105,7 +1236,7 @@
         });
 
         // Send message function
-        async function sendMessage() {
+        function sendMessage() {
             var input = document.getElementById('victorUserInput');
             var message = input.value.trim();
 
@@ -1119,44 +1250,46 @@
             updateSendButton(true);
             displayLoadingMessage();
 
-            try {
-                var contextPrompt = '';
-                if (conversationHistory.length > 0) {
-                    contextPrompt = 'Conversation history:\n';
-                    conversationHistory.forEach(function(item) {
-                        contextPrompt += (item.role === 'user' ? 'Client' : 'Assistant') + ': ' + item.content + '\n';
-                    });
-                    contextPrompt += '\n';
+            var contextPrompt = '';
+            if (conversationHistory.length > 0) {
+                contextPrompt = 'Conversation history:\n';
+                for (var i = 0; i < conversationHistory.length; i++) {
+                    var item = conversationHistory[i];
+                    contextPrompt += (item.role === 'user' ? 'Client' : 'Assistant') + ': ' + item.content + '\n';
                 }
+                contextPrompt += '\n';
+            }
 
-                var prompt = CONFIG.promptTemplate(message);
-                var fullPrompt = contextPrompt + prompt;
+            var prompt = CONFIG.promptTemplate(message);
+            var fullPrompt = contextPrompt + prompt;
 
-                console.log('[Victor AI] Sending to:', CONFIG.apiBackend + '/api/chat');
-                console.log('[Victor AI] Model:', CONFIG.botName);
-                console.log('[Victor AI] History count:', conversationHistory.length);
+            console.log('[Victor AI] 發送請求到:', CONFIG.apiBackend + '/api/chat');
+            console.log('[Victor AI] 使用模型:', CONFIG.botName);
+            console.log('[Victor AI] 對話歷史數量:', conversationHistory.length);
+            console.log('[Victor AI] 提示詞前300字:', fullPrompt.substring(0, 300));
 
-                var response = await fetch(CONFIG.apiBackend + '/api/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        model: CONFIG.botName,
-                        message: fullPrompt
-                    })
-                });
-
-                console.log('[Victor AI] Response status:', response.status);
-
+            fetch(CONFIG.apiBackend + '/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: CONFIG.botName,
+                    message: fullPrompt
+                })
+            })
+            .then(function(response) {
+                console.log('[Victor AI] API 響應狀態:', response.status);
                 if (!response.ok) {
-                    var errorText = await response.text();
-                    console.error('[Victor AI] API error:', errorText);
-                    throw new Error('API request failed (' + response.status + '): ' + errorText.substring(0, 100));
+                    return response.text().then(function(errorText) {
+                        console.error('[Victor AI] API 錯誤響應:', errorText);
+                        throw new Error('API request failed (' + response.status + '): ' + errorText.substring(0, 100));
+                    });
                 }
-
-                var data = await response.json();
-                console.log('[Victor AI] Data received');
+                return response.json();
+            })
+            .then(function(data) {
+                console.log('[Victor AI] 收到回應');
                 removeLoadingMessage();
 
                 var assistantResponse = '';
@@ -1167,30 +1300,31 @@
                     assistantResponse = data.text;
                     displayAssistantMessage(data.text);
                 } else {
-                    console.error('[Victor AI] Invalid response format');
-                    throw new Error('Invalid response format. API returned: ' + JSON.stringify(data).substring(0, 100));
+                    console.error('[Victor AI] 無效的響應格式:', JSON.stringify(data));
+                    throw new Error('Invalid response format');
                 }
 
                 conversationHistory.push({ role: 'user', content: message });
                 conversationHistory.push({ role: 'assistant', content: assistantResponse });
-
                 saveConversationHistory(conversationHistory);
-            } catch (error) {
-                console.error('[Victor AI] Error:', error);
+            })
+            .catch(function(error) {
+                console.error('[Victor AI] 完整錯誤:', error);
                 removeLoadingMessage();
 
                 var errorMessage = t('errorGeneric');
-                if (error.message.indexOf('Failed to fetch') >= 0) {
+                if (error.message && error.message.indexOf('Failed to fetch') !== -1) {
                     errorMessage = t('errorNetwork');
-                } else {
+                } else if (error.message) {
                     errorMessage = error.message;
                 }
 
                 displayError(errorMessage + t('errorContact'));
-            } finally {
+            })
+            .finally(function() {
                 isProcessing = false;
                 updateSendButton(false);
-            }
+            });
         }
 
         function displayUserMessage(text) {
@@ -1273,5 +1407,7 @@
                 sendMessage();
             }
         };
+
+        console.log('[Victor AI] v' + VICTOR_AI_VERSION + ' 初始化完成 ✅');
     }
 })();
