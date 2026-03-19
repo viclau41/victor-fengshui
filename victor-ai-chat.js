@@ -6,7 +6,7 @@
     'use strict';
 
     // ========== 版本資訊 ==========
-    var VICTOR_AI_VERSION = '2.3';
+    var VICTOR_AI_VERSION = '2.4';
     console.log('[Victor AI] 版本 ' + VICTOR_AI_VERSION + ' 開始載入...');
 
     // ========== 載入農曆庫 ==========
@@ -429,10 +429,10 @@
         .victor-chat-header {
             background: linear-gradient(135deg, var(--victor-primary) 0%, var(--victor-primary-light) 100%);
             color: white;
-            padding: 1.25rem 1.5rem;
+            padding: 0.6rem 0.75rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
             position: relative;
             overflow: hidden;
             cursor: move;
@@ -453,25 +453,26 @@
         }
 
         .victor-chat-avatar {
-            width: 48px;
-            height: 48px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 18px;
             flex-shrink: 0;
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .victor-chat-info {
             flex: 1;
+            min-width: 0;
         }
 
         .victor-header-buttons {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.35rem;
             flex-shrink: 0;
             align-items: center;
         }
@@ -480,19 +481,19 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 300;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            min-height: 44px;
-            min-width: 44px;
+            min-height: 36px;
+            min-width: 36px;
             -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
             touch-action: manipulation;
             pointer-events: auto;
@@ -513,11 +514,11 @@
             background: rgba(255, 255, 255, 0.25);
             border: 2px solid rgba(255, 255, 255, 0.4);
             color: white;
-            width: 42px;
-            height: 42px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 700;
             transition: all 0.2s;
             display: flex;
@@ -541,25 +542,24 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 0.75rem 1.25rem;
-            border-radius: 10px;
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 500;
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             flex-shrink: 0;
-            min-height: 48px;
-            min-width: 90px;
+            min-height: 36px;
             -webkit-tap-highlight-color: rgba(255, 87, 87, 0.3);
             touch-action: manipulation;
         }
 
         .victor-clear-btn:hover {
             background: rgba(255, 87, 87, 0.9);
-            transform: scale(1.08);
+            transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
@@ -571,17 +571,20 @@
         }
 
         .victor-chat-title {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .victor-chat-status {
-            font-size: 13px;
+            font-size: 11px;
             opacity: 0.9;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.35rem;
         }
 
         .victor-status-dot {
