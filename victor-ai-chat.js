@@ -4,6 +4,19 @@
 (function() {
     'use strict';
 
+    // ========== 本地時間 ==========
+    function getLocalTime() {
+        var now = new Date();
+        var y = now.getFullYear();
+        var m = String(now.getMonth() + 1).padStart(2, '0');
+        var d = String(now.getDate()).padStart(2, '0');
+        var weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+        var w = weekdays[now.getDay()];
+        var h = String(now.getHours()).padStart(2, '0');
+        var min = String(now.getMinutes()).padStart(2, '0');
+        return y + '-' + m + '-' + d + '（星期' + w + '）' + h + ':' + min;
+    }
+
     // ========== Language Detection & i18n ==========
     var LANG_STORAGE_KEY = 'victorAI_language';
 
@@ -96,31 +109,12 @@
             var cl = closingLine[currentLang] || closingLine['en'];
             var ft = freeTrialTexts[currentLang] || freeTrialTexts['en'];
 
-            // 獲取當前時間資訊
-            var now = new Date();
-            var year = now.getFullYear();
-            var month = now.getMonth() + 1;
-            var day = now.getDate();
-            var hour = now.getHours();
-            var minute = now.getMinutes();
-            var weekdays = {
-                'zh-TW': ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
-                'en': ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-            };
-            var weekday = (weekdays[currentLang] || weekdays['en'])[now.getDay()];
-
-            // 農曆年份（天干地支）對照 - 簡易計算
-            var heavenlyStems = ['庚','辛','壬','癸','甲','乙','丙','丁','戊','己'];
-            var earthlyBranches = ['申','酉','戌','亥','子','丑','寅','卯','辰','巳','午','未'];
-            var zodiacAnimals = ['猴','雞','狗','豬','鼠','牛','虎','兔','龍','蛇','馬','羊'];
-            var stemIndex = year % 10;
-            var branchIndex = year % 12;
-            var lunarYearName = heavenlyStems[stemIndex] + earthlyBranches[branchIndex] + '年（' + zodiacAnimals[branchIndex] + '年）';
-
-            var timeStr = year + '/' + month + '/' + day + ' ' + (hour < 10 ? '0' : '') + hour + ':' + (minute < 10 ? '0' : '') + minute + ' ' + weekday;
+            // 獲取當前時間（每次發送訊息時即時取得）
+            var localTime = getLocalTime();
 
             return 'You are "Victor\'s Metaphysics Assistant", a professional AI assistant for Victor Fengshui & Divination. You are warm, friendly, knowledgeable, and helpful.\n\n' +
-                '【Current Time】\n' + timeStr + '\nChinese Calendar Year: ' + lunarYearName + '\n\n' +
+                '【客人當地時間】' + localTime + '\n' +
+                '【時間規則】當客人問到與時間相關的問題時（例如「幾時」「今日」「這星期」「今年」等），請在回覆中自然地提及現在的日期和時間，讓客人知道你掌握準確的時間資訊。2025年是蛇年，2026年是馬年，2027年是羊年。\n\n' +
                 '【Language Instruction】\n' + li + '\n\n' +
                 '【Your Personality】\n' +
                 '- Warm and proactive, like a knowledgeable friend\n' +
