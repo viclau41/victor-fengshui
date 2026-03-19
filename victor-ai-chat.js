@@ -6,7 +6,7 @@
     'use strict';
 
     // ========== 版本資訊 ==========
-    var VICTOR_AI_VERSION = '2.4';
+    var VICTOR_AI_VERSION = '2.6';
     console.log('[Victor AI] 版本 ' + VICTOR_AI_VERSION + ' 開始載入...');
 
     // ========== 載入農曆庫 ==========
@@ -78,7 +78,7 @@
 
     loadLunarLibrary();
 
-    // ========== 本地時間函數 ==========
+    // ========== 本地時間函數（含進階農曆資訊）==========
     function getLocalTime() {
         var now = new Date();
         var y = now.getFullYear();
@@ -90,16 +90,77 @@
         var min = String(now.getMinutes()).padStart(2, '0');
         var base = y + '年' + m + '月' + d + '日（星期' + w + '）' + h + ':' + min;
 
-        // 如果 lunar-javascript 已載入，加入農曆資訊
         try {
             if (typeof Lunar !== 'undefined') {
                 var lunar = Lunar.fromDate(now);
+                var solar = Solar.fromDate(now);
+
+                // 基本農曆
                 var lunarDate = '農曆' + lunar.getYearInGanZhi() + '年（' + lunar.getYearShengXiao() + '年）' +
                     lunar.getMonthInChinese() + '月' + lunar.getDayInChinese();
                 var ganZhi = '日干支：' + lunar.getDayInGanZhi() + '　時干支：' + lunar.getTimeInGanZhi();
+
+                // 節氣
                 var jieQi = lunar.getJieQi();
-                var jieQiStr = jieQi ? '　節氣：' + jieQi : '';
-                return base + '\n' + lunarDate + '\n' + ganZhi + jieQiStr;
+                var jieQiStr = jieQi ? '\n節氣：' + jieQi : '';
+
+                // 節日
+                var festivals = [];
+                try {
+                    var lunarFests = lunar.getFestivals();
+                    if (lunarFests && lunarFests.length > 0) festivals = festivals.concat(lunarFests);
+                    var solarFests = solar.getFestivals();
+                    if (solarFests && solarFests.length > 0) festivals = festivals.concat(solarFests);
+                    var otherFests = lunar.getOtherFestivals();
+                    if (otherFests && otherFests.length > 0) festivals = festivals.concat(otherFests);
+                } catch (e) { /* ignore */ }
+                var festivalStr = festivals.length > 0 ? '\n節日：' + festivals.join('、') : '';
+
+                // 宜忌
+                var yiStr = '', jiStr = '';
+                try {
+                    var yi = lunar.getDayYi();
+                    var ji = lunar.getDayJi();
+                    if (yi && yi.length > 0) yiStr = '\n今日宜：' + yi.join('、');
+                    if (ji && ji.length > 0) jiStr = '\n今日忌：' + ji.join('、');
+                } catch (e) { /* ignore */ }
+
+                // 沖煞
+                var chongSha = '';
+                try {
+                    chongSha = '\n沖煞：沖' + lunar.getDayChongDesc() + '　煞' + lunar.getDaySha();
+                } catch (e) { /* ignore */ }
+
+                // 吉神方位
+                var positions = '';
+                try {
+                    positions = '\n財神方位：' + lunar.getDayPositionCaiDesc() +
+                        '　喜神方位：' + lunar.getDayPositionXiDesc() +
+                        '　福神方位：' + lunar.getDayPositionFuDesc();
+                } catch (e) { /* ignore */ }
+
+                // 彭祖百忌
+                var pengZu = '';
+                try {
+                    pengZu = '\n彭祖百忌：' + lunar.getPengZuGan() + '　' + lunar.getPengZuZhi();
+                } catch (e) { /* ignore */ }
+
+                // 納音
+                var naYin = '';
+                try {
+                    var eightChar = lunar.getEightChar();
+                    naYin = '\n日納音：' + eightChar.getDayNaYin() + '　年納音：' + eightChar.getYearNaYin();
+                } catch (e) { /* ignore */ }
+
+                // 值日星宿
+                var xiu = '';
+                try {
+                    xiu = '\n值日星宿：' + lunar.getXiu() + '（' + lunar.getAnimal() + '）' + lunar.getGong() + '宮';
+                } catch (e) { /* ignore */ }
+
+                return base + '\n' + lunarDate + '\n' + ganZhi +
+                    jieQiStr + festivalStr + naYin + positions + chongSha +
+                    yiStr + jiStr + pengZu + xiu;
             }
         } catch (e) {
             console.error('[Victor AI] getLocalTime 農曆部分出錯:', e);
@@ -107,7 +168,7 @@
         return base;
     }
 
-    // ========== 西曆轉八字函數 ==========
+    // ========== 西曆轉八字函數（含進階資料）==========
     function getBaziFromDate(dateStr, timeHour) {
         try {
             if (typeof Lunar === 'undefined') {
@@ -118,12 +179,45 @@
             var solar = Solar.fromYmd(parseInt(parts[0]), parseInt(parts[1]), parseInt(parts[2]));
             var lunar = solar.getLunar();
             var eightChar = lunar.getEightChar();
+
+            // 四柱八字
             var result = '四柱八字：' + eightChar.getYear() + '年　' + eightChar.getMonth() + '月　' + eightChar.getDay() + '日';
             if (typeof timeHour === 'number' && timeHour >= 0) {
                 result += '　' + eightChar.getTime() + '時';
             }
+
+            // 納音
+            try {
+                result += '\n納音：' + eightChar.getYearNaYin() + '（年）　' + eightChar.getMonthNaYin() + '（月）　' + eightChar.getDayNaYin() + '（日）';
+                if (typeof timeHour === 'number' && timeHour >= 0) {
+                    result += '　' + eightChar.getTimeNaYin() + '（時）';
+                }
+            } catch (e) { /* ignore */ }
+
+            // 農曆
             result += '\n農曆：' + lunar.getYearInGanZhi() + '年（' + lunar.getYearShengXiao() + '年）' +
                 lunar.getMonthInChinese() + '月' + lunar.getDayInChinese();
+
+            // 該日宜忌
+            try {
+                var yi = lunar.getDayYi();
+                var ji = lunar.getDayJi();
+                if (yi && yi.length > 0) result += '\n該日宜：' + yi.join('、');
+                if (ji && ji.length > 0) result += '\n該日忌：' + ji.join('、');
+            } catch (e) { /* ignore */ }
+
+            // 沖煞
+            try {
+                result += '\n沖煞：沖' + lunar.getDayChongDesc() + '　煞' + lunar.getDaySha();
+            } catch (e) { /* ignore */ }
+
+            // 吉神方位
+            try {
+                result += '\n財神：' + lunar.getDayPositionCaiDesc() +
+                    '　喜神：' + lunar.getDayPositionXiDesc() +
+                    '　福神：' + lunar.getDayPositionFuDesc();
+            } catch (e) { /* ignore */ }
+
             return result;
         } catch (e) {
             console.error('[Victor AI] getBaziFromDate 出錯:', e);
