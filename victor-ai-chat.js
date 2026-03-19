@@ -6,7 +6,7 @@
     'use strict';
 
     // ========== 版本資訊 ==========
-    var VICTOR_AI_VERSION = '2.2';
+    var VICTOR_AI_VERSION = '2.3';
     console.log('[Victor AI] 版本 ' + VICTOR_AI_VERSION + ' 開始載入...');
 
     // ========== 載入農曆庫 ==========
@@ -161,6 +161,7 @@
             statusOnline: '在線為您服務',
             clearBtn: '清除',
             clearTitle: '清除對話',
+            closeTitle: '關閉',
             langToggle: 'EN',
             langToggleTitle: 'Switch to English',
             welcomeText: '您好！我是 Victor 的智能助手<br>專門解答風水玄學問題，並推薦合適的專業服務',
@@ -178,6 +179,7 @@
             statusOnline: 'Online - Ready to help',
             clearBtn: 'Clear',
             clearTitle: 'Clear conversation',
+            closeTitle: 'Close',
             langToggle: '中',
             langToggleTitle: '切換至中文',
             welcomeText: 'Hello! I\'m Victor\'s AI assistant.<br>I specialize in Feng Shui, divination, and metaphysical consultations.',
@@ -359,12 +361,11 @@
             display: none;
         }
 
-        .victor-chat-trigger.active .icon-open {
-            display: none;
-        }
-
-        .victor-chat-trigger.active .icon-close {
-            display: block;
+        .victor-chat-trigger.active {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0);
+            transition: all 0.3s ease;
         }
 
         .victor-chat-badge {
@@ -434,6 +435,10 @@
             gap: 1rem;
             position: relative;
             overflow: hidden;
+            cursor: move;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
         }
 
         .victor-chat-header::before {
@@ -468,6 +473,40 @@
             display: flex;
             gap: 0.5rem;
             flex-shrink: 0;
+            align-items: center;
+        }
+
+        .victor-close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 300;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            min-height: 44px;
+            min-width: 44px;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+            touch-action: manipulation;
+            pointer-events: auto;
+            line-height: 1;
+        }
+
+        .victor-close-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.1);
+        }
+
+        .victor-close-btn:active {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0.9);
         }
 
         .victor-lang-btn {
@@ -904,7 +943,7 @@
             '<div class="victor-chat-badge">AI</div>' +
         '</div>' +
         '<div class="victor-chat-window" id="victorChatWindow">' +
-            '<div class="victor-chat-header">' +
+            '<div class="victor-chat-header" id="victorChatHeader">' +
                 '<div class="victor-chat-avatar">🔮</div>' +
                 '<div class="victor-chat-info">' +
                     '<div class="victor-chat-title">' + t('chatTitle') + '</div>' +
@@ -914,6 +953,7 @@
                     '</div>' +
                 '</div>' +
                 '<div class="victor-header-buttons">' +
+                    '<button id="victorCloseBtn" class="victor-close-btn" title="' + t('closeTitle') + '">✕</button>' +
                     '<button id="victorLangBtn" class="victor-lang-btn" title="' + t('langToggleTitle') + '">' +
                         t('langToggle') +
                     '</button>' +
@@ -1146,22 +1186,135 @@
             }
         }
 
+        function openChatWindow() {
+            var chatWindow = document.getElementById('victorChatWindow');
+            if (chatWindow.classList.contains('active')) return;
+
+            // 重置視窗位置到預設居中
+            chatWindow.style.top = '50%';
+            chatWindow.style.left = '';
+            chatWindow.style.right = '100px';
+            chatWindow.style.transform = 'translateY(-50%)';
+
+            chatWindow.classList.add('active');
+            trigger.classList.add('active');  // 隱藏觸發按鈕
+
+            setTimeout(function() {
+                document.getElementById('victorUserInput').focus();
+            }, 100);
+        }
+
+        function closeChatWindow() {
+            var chatWindow = document.getElementById('victorChatWindow');
+            if (!chatWindow.classList.contains('active')) return;
+
+            chatWindow.classList.remove('active');
+            trigger.classList.remove('active');  // 顯示觸發按鈕
+
+            // 重置視窗位置
+            chatWindow.style.top = '50%';
+            chatWindow.style.left = '';
+            chatWindow.style.right = '100px';
+            chatWindow.style.transform = 'translateY(-50%)';
+
+            console.log('[Victor AI] Chat window closed');
+        }
+
         function toggleChatWindow() {
             var chatWindow = document.getElementById('victorChatWindow');
-            chatWindow.classList.toggle('active');
-            trigger.classList.toggle('active');
-
             if (chatWindow.classList.contains('active')) {
-                document.getElementById('victorUserInput').focus();
+                closeChatWindow();
+            } else {
+                openChatWindow();
             }
         }
 
+        // === 觸發按鈕拖動 ===
         trigger.addEventListener('mousedown', onDragStart);
         trigger.addEventListener('touchstart', onDragStart, {passive: false});
         document.addEventListener('mousemove', onDragMove);
         document.addEventListener('touchmove', onDragMove, {passive: false});
         document.addEventListener('mouseup', onDragEnd);
         document.addEventListener('touchend', onDragEnd);
+
+        // === 助手視窗拖動（拖動 header） ===
+        var chatHeader = document.getElementById('victorChatHeader');
+        var chatWindow = document.getElementById('victorChatWindow');
+        var winDragging = false;
+        var winStartX, winStartY, winStartTop, winStartLeft;
+
+        function onWindowDragStart(e) {
+            // 不攔截按鈕點擊
+            if (e.target.closest('button')) return;
+
+            winDragging = true;
+            chatHeader.style.cursor = 'grabbing';
+
+            var clientX = e.type.indexOf('touch') !== -1 ? e.touches[0].clientX : e.clientX;
+            var clientY = e.type.indexOf('touch') !== -1 ? e.touches[0].clientY : e.clientY;
+
+            winStartX = clientX;
+            winStartY = clientY;
+
+            // 取得目前實際像素位置
+            var rect = chatWindow.getBoundingClientRect();
+            winStartTop = rect.top;
+            winStartLeft = rect.left;
+
+            // 切換為像素定位
+            chatWindow.style.top = rect.top + 'px';
+            chatWindow.style.left = rect.left + 'px';
+            chatWindow.style.right = 'auto';
+            chatWindow.style.transform = 'none';
+
+            e.preventDefault();
+        }
+
+        function onWindowDragMove(e) {
+            if (!winDragging) return;
+
+            var clientX = e.type.indexOf('touch') !== -1 ? e.touches[0].clientX : e.clientX;
+            var clientY = e.type.indexOf('touch') !== -1 ? e.touches[0].clientY : e.clientY;
+
+            var deltaX = clientX - winStartX;
+            var deltaY = clientY - winStartY;
+
+            var newTop = Math.max(0, Math.min(window.innerHeight - 80, winStartTop + deltaY));
+            var newLeft = Math.max(-chatWindow.offsetWidth + 80, Math.min(window.innerWidth - 80, winStartLeft + deltaX));
+
+            chatWindow.style.top = newTop + 'px';
+            chatWindow.style.left = newLeft + 'px';
+
+            e.preventDefault();
+        }
+
+        function onWindowDragEnd() {
+            if (winDragging) {
+                winDragging = false;
+                chatHeader.style.cursor = 'move';
+            }
+        }
+
+        chatHeader.addEventListener('mousedown', onWindowDragStart);
+        chatHeader.addEventListener('touchstart', onWindowDragStart, {passive: false});
+
+        document.addEventListener('mousemove', onWindowDragMove);
+        document.addEventListener('touchmove', onWindowDragMove, {passive: false});
+
+        document.addEventListener('mouseup', onWindowDragEnd);
+        document.addEventListener('touchend', onWindowDragEnd);
+
+        // === 關閉按鈕 ===
+        var closeBtnEl = document.getElementById('victorCloseBtn');
+        function doCloseChat() {
+            closeChatWindow();
+        }
+        closeBtnEl.addEventListener('click', doCloseChat);
+        closeBtnEl.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            doCloseChat();
+        }, {passive: false});
 
         // Send button
         document.getElementById('victorSendBtn').addEventListener('click', sendMessage);
@@ -1180,6 +1333,9 @@
             var langBtn = document.getElementById('victorLangBtn');
             langBtn.textContent = t('langToggle');
             langBtn.title = t('langToggleTitle');
+
+            // Update close button
+            document.getElementById('victorCloseBtn').title = t('closeTitle');
 
             // Update clear button
             var clearBtn = document.getElementById('victorClearBtn');
