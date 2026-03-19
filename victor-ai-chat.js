@@ -6,7 +6,7 @@
     'use strict';
 
     // ========== 版本資訊 ==========
-    var VICTOR_AI_VERSION = '2.1';
+    var VICTOR_AI_VERSION = '2.2';
     console.log('[Victor AI] 版本 ' + VICTOR_AI_VERSION + ' 開始載入...');
 
     // ========== 載入農曆庫 ==========
@@ -444,6 +444,7 @@
             right: -30px;
             top: -40px;
             transform: rotate(-15deg);
+            pointer-events: none;
         }
 
         .victor-chat-avatar {
@@ -1204,7 +1205,7 @@
         function doClearChat() {
             if (clearDebounce) return;
             clearDebounce = true;
-            setTimeout(function() { clearDebounce = false; }, 300);
+            setTimeout(function() { clearDebounce = false; }, 150);
 
             conversationHistory = [];
             try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
@@ -1216,10 +1217,11 @@
             console.log('[Victor AI] Conversation cleared');
         }
         clearBtnEl.addEventListener('click', doClearChat);
-        clearBtnEl.addEventListener('touchend', function(e) {
+        clearBtnEl.addEventListener('touchstart', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             doClearChat();
-        });
+        }, {passive: false});
 
         // Input field
         var userInput = document.getElementById('victorUserInput');
