@@ -78,14 +78,18 @@
         .slide-ai { background: linear-gradient(175deg, #0c1125 0%, #1a2a4d 45%, #0f1830 100%); }
         .slide-ai .top-badge { background: linear-gradient(135deg, #3a2872 0%, #5D5CDE 50%, #3a2872 100%); color: #dbd6f4; }
         .sys-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 380px; margin: 12px 0; }
-        .sys-card { border-radius: 14px; padding: 16px 10px; text-align: center; position: relative; transition: transform 0.3s; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
-        .sys-emoji { font-size: 30px; margin-bottom: 6px; }
-        .sys-name { font-weight: 900; font-size: 15px; margin-bottom: 3px; }
-        .sys-desc { font-size: 11px; opacity: 0.7; }
+        .sys-grid .sys-card:nth-child(5) { grid-column: 1 / -1; max-width: 185px; justify-self: center; }
+        .sys-card { border-radius: 14px; padding: 14px 12px 12px; text-align: center; position: relative; transition: transform 0.3s; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
+        .sys-emoji { font-size: 26px; margin-bottom: 4px; }
+        .sys-name { font-weight: 900; font-size: 14px; margin-bottom: 5px; }
+        .sys-desc { font-size: 11px; opacity: 0.7; line-height: 1.55; }
+        .sys-new-badge { display: inline-block; background: linear-gradient(135deg, #ff6b35, #ff3d00); color: #fff; font-size: 9px; font-weight: 900; padding: 2px 7px; border-radius: 8px; position: absolute; top: 8px; right: 8px; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(255,61,0,0.4); animation: new-pulse 2s ease-in-out infinite; }
+        @keyframes new-pulse { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; box-shadow: 0 2px 14px rgba(255,61,0,0.6); } }
         .sys-liuren { background: linear-gradient(150deg, #2a1f08 0%, #3d2f12 100%); color: #f4e4a6; }
         .sys-jiazi { background: linear-gradient(150deg, #082a12 0%, #123d1e 100%); color: #a8e6b8; }
         .sys-tarot { background: linear-gradient(150deg, #2a080f 0%, #3d121a 100%); color: #f4a6b0; }
         .sys-qimen { background: linear-gradient(150deg, #082a2b 0%, #12393d 100%); color: #a6e4e6; }
+        .sys-ziwei { background: linear-gradient(150deg, #1f082a 0%, #30123d 100%); color: #d4a6f4; }
         .ai-box { width: 100%; max-width: 380px; background: rgba(93,92,222,0.1); border: 1px solid rgba(93,92,222,0.3); border-radius: 14px; padding: 16px; margin: 12px 0; display: flex; gap: 14px; }
         .ai-orb { width: 46px; height: 46px; min-width: 46px; background: linear-gradient(135deg, #5D5CDE, #8b89ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 0 18px rgba(93,92,222,0.45); }
         .ai-label { color: #b0aeff; font-size: 15px; font-weight: 700; }
@@ -194,32 +198,39 @@
         </div>
     </div>
 
-    <!-- ========== 第二頁：三式齊備（保持原樣） ========== -->
+    <!-- ========== 第二頁：五術齊備 ========== -->
     <div class="slide slide-ai">
-        <div class="top-badge">🔮 專業傳承 · 智慧玄學平台 🔮</div>
+        <div class="top-badge" id="badge2">🔮 專業傳承 · 智慧玄學平台 🔮</div>
         <div class="slide-inner">
-            <h1 class="section-title">三式齊備</h1>
-            <p class="section-sub">智慧賦能 · 洞悉天機</p>
+            <h1 class="section-title" id="title2">五術齊備</h1>
+            <p class="section-sub" id="sub2">智慧賦能 · 洞悉天機</p>
             <div class="sys-grid">
                 <div class="sys-card sys-liuren">
                     <div class="sys-emoji">🧮</div>
                     <div class="sys-name">大六壬</div>
-                    <div class="sys-desc">智慧排盤</div>
+                    <div class="sys-desc">以課體定性分析<br>掌握問題大環境<br>三傳四課盤解讀</div>
                 </div>
                 <div class="sys-card sys-jiazi">
                     <div class="sys-emoji">☯</div>
                     <div class="sys-name">甲子易</div>
-                    <div class="sys-desc">專業起卦</div>
+                    <div class="sys-desc">陰陽層層推演<br>展開形勢全貌<br>納甲神煞解讀</div>
                 </div>
                 <div class="sys-card sys-tarot">
                     <div class="sys-emoji">🎴</div>
                     <div class="sys-name">易經塔羅</div>
-                    <div class="sys-desc">精準解讀</div>
+                    <div class="sys-desc">融合易經與塔羅智慧<br>加強精準優質解讀<br>承傳玄機指引</div>
                 </div>
                 <div class="sys-card sys-qimen">
+                    <span class="sys-new-badge">NEW</span>
                     <div class="sys-emoji">✨</div>
                     <div class="sys-name">奇門遁甲</div>
-                    <div class="sys-desc">智慧排盤</div>
+                    <div class="sys-desc">三奇六儀排佈<br>天地人神四盤合一<br>八門九星八神解讀</div>
+                </div>
+                <div class="sys-card sys-ziwei">
+                    <span class="sys-new-badge">NEW</span>
+                    <div class="sys-emoji">🌟</div>
+                    <div class="sys-name">紫微斗數</div>
+                    <div class="sys-desc">以刻盤問事技法<br>時辰十二宮為基<br>刻干四化精準觸發</div>
                 </div>
             </div>
             <div class="ai-box">
@@ -283,9 +294,9 @@
     }, { passive: true });
 
     /* ===== 3. 多語言處理 ===== */
-    var promoTextZh = '🔮 正宗術數 · Victor 師傅專業起卦 🔮\n\n⚠️ 坊間「AI 起卦」只是隨機數字配 AI 文字，毫無玄學根基！\n\nVictor 師傅的系統完全不同：\n✅ 正宗術數傳承，每一步都有根有據\n✅ 20 多年實戰經驗親自編寫算法邏輯\n✅ 起卦結果精準專業，真正幫到你決策\n\n━━━━━━━━━━━━━━━\n\n四大正宗系統齊備：\n🧮 大六壬 · 智慧排盤\n☯️ 甲子易 · 專業起卦\n🎴 易經塔羅 · 精準解讀\n✨ 奇門遁甲 · 智慧排盤\n\n📹 需要深入解讀？可預約 Zoom 視像解卦！\n\n━━━━━━━━━━━━━━━\n\n🎁 易經塔羅免費體驗 👇\nhttps://iching-tarot.vercel.app/?lang=zh-TW\n\n🚀 完整專業系統 👇\nhttps://hexagram-api.vercel.app/?lang=zh-TW';
+    var promoTextZh = '🔮 正宗術數 · Victor 師傅專業起卦 🔮\n\n⚠️ 坊間「AI 起卦」只是隨機數字配 AI 文字，毫無玄學根基！\n\nVictor 師傅的系統完全不同：\n✅ 正宗術數傳承，每一步都有根有據\n✅ 20 多年實戰經驗親自編寫算法邏輯\n✅ 起卦結果精準專業，真正幫到你決策\n\n━━━━━━━━━━━━━━━\n\n五大正宗系統齊備：\n🧮 大六壬 · 三傳四課盤解讀\n☯️ 甲子易 · 納甲神煞解讀\n🎴 易經塔羅 · 融合易經與塔羅智慧\n✨ 奇門遁甲 · 八門九星八神解讀 🆕\n🌟 紫微斗數 · 刻干四化精準觸發 🆕\n\n📹 需要深入解讀？可預約 Zoom 視像解卦！\n\n━━━━━━━━━━━━━━━\n\n🎁 易經塔羅免費體驗 👇\nhttps://iching-tarot.vercel.app/?lang=zh-TW\n\n🚀 完整專業系統 👇\nhttps://hexagram-api.vercel.app/?lang=zh-TW';
 
-    var promoTextEn = '🔮 Authentic Divination · Master Victor 🔮\n\n⚠️ Most "AI divination" tools just pair random numbers with AI text — zero metaphysical foundation!\n\nMaster Victor\'s system is different:\n✅ Authentic metaphysical lineage, every step is grounded\n✅ 20+ years of hands-on experience built into every algorithm\n✅ Precise, professional results that truly guide your decisions\n\n━━━━━━━━━━━━━━━\n\n4 Professional Systems:\n🧮 Da Liu Ren · Smart Chart\n☯️ Jia Zi Yi · Pro Divination\n🎴 I Ching Tarot · Precise Reading\n✨ Qi Men Dun Jia · Advanced Chart\n\n📹 Need in-depth interpretation? Book a Zoom session!\n\n━━━━━━━━━━━━━━━\n\n🎁 Free I Ching Tarot Trial 👇\nhttps://iching-tarot.vercel.app/?lang=en\n\n🚀 Full Professional System 👇\nhttps://hexagram-api.vercel.app/?lang=en';
+    var promoTextEn = '🔮 Authentic Divination · Master Victor 🔮\n\n⚠️ Most "AI divination" tools just pair random numbers with AI text — zero metaphysical foundation!\n\nMaster Victor\'s system is different:\n✅ Authentic metaphysical lineage, every step is grounded\n✅ 20+ years of hands-on experience built into every algorithm\n✅ Precise, professional results that truly guide your decisions\n\n━━━━━━━━━━━━━━━\n\n5 Professional Systems:\n🧮 Da Liu Ren · Three Transmissions & Four Pillars\n☯️ Jia Zi Yi · Na Jia & Shen Sha Reading\n🎴 I Ching Tarot · Fusing I Ching & Tarot Wisdom\n✨ Qi Men Dun Jia · Eight Gates & Nine Stars 🆕\n🌟 Zi Wei Dou Shu · Ke Pan Precision Trigger 🆕\n\n📹 Need in-depth interpretation? Book a Zoom session!\n\n━━━━━━━━━━━━━━━\n\n🎁 Free I Ching Tarot Trial 👇\nhttps://iching-tarot.vercel.app/?lang=en\n\n🚀 Full Professional System 👇\nhttps://hexagram-api.vercel.app/?lang=en';
 
     var promoText = promoTextZh;
 
@@ -312,13 +323,17 @@
             document.getElementById('swipeHint').textContent = 'Swipe left for full divination systems →';
 
             /* Slide 2 */
-            document.querySelector('.slide-ai .top-badge').textContent = '🔮 Professional Metaphysics Platform 🔮';
-            document.querySelector('.slide-ai .section-title').textContent = 'Professional';
-            document.querySelector('.slide-ai .section-sub').textContent = 'PRECISION & ANCIENT WISDOM';
+            document.getElementById('badge2').textContent = '🔮 Professional Metaphysics Platform 🔮';
+            document.getElementById('title2').textContent = 'Five Systems';
+            document.getElementById('sub2').textContent = 'PRECISION & ANCIENT WISDOM';
             var sys = document.querySelectorAll('.sys-name');
-            sys[0].textContent = 'Da Liu Ren'; sys[1].textContent = 'Jia Zi Yi'; sys[2].textContent = 'I Ching Tarot'; sys[3].textContent = 'Qi Men Dun Jia';
+            sys[0].textContent = 'Da Liu Ren'; sys[1].textContent = 'Jia Zi Yi'; sys[2].textContent = 'I Ching Tarot'; sys[3].textContent = 'Qi Men Dun Jia'; sys[4].textContent = 'Zi Wei Dou Shu';
             var sds = document.querySelectorAll('.sys-desc');
-            sds[0].textContent = 'Smart Chart'; sds[1].textContent = 'Pro Reading'; sds[2].textContent = 'Interpretation'; sds[3].textContent = 'Advanced';
+            sds[0].innerHTML = 'Case-based qualitative analysis<br>Grasp the big picture<br>3 Transmissions & 4 Pillars';
+            sds[1].innerHTML = 'Yin-Yang layered deduction<br>Unfold the full situation<br>Na Jia & Shen Sha reading';
+            sds[2].innerHTML = 'Fusing I Ching & Tarot wisdom<br>Enhanced precision reading<br>Mystical guidance lineage';
+            sds[3].innerHTML = 'Three Marvels & Six Rites<br>Heaven-Earth-Human-Spirit<br>Eight Gates & Nine Stars';
+            sds[4].innerHTML = 'Ke Pan inquiry technique<br>12 Palaces as foundation<br>Ke Gan Si Hua precision';
             document.querySelector('.ai-label').textContent = 'Victor Assistant';
             document.querySelector('.ai-text').innerHTML = 'Unsure what to ask? The assistant helps <span class="ai-hl">organize your questions</span> and recommends <span class="ai-hl">the best system</span>.';
             document.querySelector('.price-badge').textContent = '💎 Pro Paid System · High Precision';
