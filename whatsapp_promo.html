@@ -360,13 +360,37 @@
             </div>
 
             <!-- CTA 按鈕：主角 + 配角 -->
-            <div class="astro-cta-group fade-up">
+           <div class="astro-cta-group fade-up">
                 <a href="https://astrology-vercel-app.vercel.app/client" target="_blank" class="astro-cta-horary" id="ctaHorary">🔮 立即免費體驗 · 時空卜卦 🔮</a>
                 <div class="astro-cta-row">
                     <a href="https://astrology-vercel-app.vercel.app/client" target="_blank" class="astro-cta-sm blue" id="ctaSingle">👤 單盤模式</a>
                     <a href="https://astrology-vercel-app.vercel.app/client" target="_blank" class="astro-cta-sm purple" id="ctaSynastry">💞 雙人合盤</a>
                 </div>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // 檢查網址有沒有 ?lang=en
+                    var isEnglish = new URLSearchParams(window.location.search).get('lang') === 'en';
+                    var langSuffix = isEnglish ? '?lang=en' : '?lang=zh-TW';
+
+                    var btnHorary = document.getElementById('ctaHorary');
+                    var btnSingle = document.getElementById('ctaSingle');
+                    var btnSynastry = document.getElementById('ctaSynastry');
+
+                    // 1. 自動幫按鈕加上對應的語言網址
+                    if (btnHorary) btnHorary.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
+                    if (btnSingle) btnSingle.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
+                    if (btnSynastry) btnSynastry.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
+
+                    // 2. 如果客人切換到英文版，自動把按鈕文字翻譯成英文
+                    if (isEnglish) {
+                        if (btnHorary) btnHorary.innerText = '🔮 Free Trial · Horary 🔮';
+                        if (btnSingle) btnSingle.innerText = '👤 Natal Chart';
+                        if (btnSynastry) btnSynastry.innerText = '💞 Synastry Chart';
+                    }
+                });
+            </script>
 
             <!-- 信任標記 -->
             <div class="astro-trust fade-up">
