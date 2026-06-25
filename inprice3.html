@@ -301,6 +301,7 @@
     .section-title {
         font-family: 'Noto Serif TC', serif;
         font-size: 28px;
+
         color: var(--love-color);
         display: inline-block;
         margin-bottom: 15px;
@@ -1490,6 +1491,14 @@ function switchLanguage(lang) {
         shopLink.href = lang === 'zh' 
             ? 'https://victorlau.myqnapcloud.com/prestashop/metaphysics/tw/' 
             : 'https://victorlau.myqnapcloud.com/prestashop/metaphysics/en/';
+    }
+
+    // 🔥 新增：特別處理 - 更新星盤系統引流按鈕的 URL
+    const magnetBtn = document.getElementById('magnet-btn');
+    if (magnetBtn) {
+        magnetBtn.href = lang === 'en' 
+            ? 'https://astrology-vercel-app.vercel.app/client.html?lang=en' 
+            : 'https://astrology-vercel-app.vercel.app/client.html?lang=zh-TW';
     }
     
     // 存儲用戶的語言偏好
