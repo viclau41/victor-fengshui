@@ -143,8 +143,16 @@
         .card-horary-features li strong { color: #d1fae5; }
 
         /* 單盤 + 合盤 並排小卡片 */
-        .astro-mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 380px; margin-bottom: 14px; z-index: 1; }
-        .mini-card { border-radius: 12px; padding: 14px; position: relative; overflow: hidden; text-align: center; }
+        /* 修改：改為 3 欄等寬，容納單盤、合盤、七政四餘 */
+.astro-mini-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 380px; margin-bottom: 14px; z-index: 1; }
+
+.mini-card { border-radius: 12px; padding: 14px; position: relative; overflow: hidden; text-align: center; }
+
+/* 新增：七政四餘小卡樣式（採用古風翡翠綠/金調） */
+.mini-qizheng { background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.18); }
+.mini-qizheng::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #10b981, #059669); }
+.mini-qizheng .mini-card-title { color: #34d399; }
+.mini-qizheng .mini-card-desc { color: #86cfa8; }
         .mini-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
         .mini-card-emoji { font-size: 28px; margin-bottom: 6px; }
         .mini-card-title { font-size: 14px; font-weight: 900; margin-bottom: 3px; display: flex; align-items: center; justify-content: center; gap: 6px; }
@@ -177,11 +185,20 @@
         @keyframes ctaSweep { 0% { left: -100%; } 50%, 100% { left: 100%; } }
         .astro-cta-horary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(16,185,129,0.55); }
         /* 次要 CTA — 單盤 + 合盤（並排小按鈕） */
-        .astro-cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .astro-cta-sm { display: block; text-align: center; padding: 11px 12px; border-radius: 12px; font-size: 13px; font-weight: 900; font-family: 'Noto Serif TC', serif; text-decoration: none; color: #fff; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.08); }
-        .astro-cta-sm:hover { transform: translateY(-1px); }
-        .astro-cta-sm.blue { background: linear-gradient(135deg, #1d4ed8, #3b82f6); box-shadow: 0 3px 14px rgba(59,130,246,0.3); }
-        .astro-cta-sm.purple { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 3px 14px rgba(168,85,247,0.3); }
+        /* 修改：由 2 欄改為 3 欄，gap 稍微縮小一點讓間距更緊湊 */
+.astro-cta-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+
+/* 修改：左右 padding 由 12px 縮減至 4px，確保手機畫面上「七政四餘」四個字能完美單行顯示 */
+.astro-cta-sm { display: block; text-align: center; padding: 11px 4px; border-radius: 12px; font-size: 13px; font-weight: 900; font-family: 'Noto Serif TC', serif; text-decoration: none; color: #fff; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.08); }
+
+.astro-cta-sm:hover { transform: translateY(-1px); }
+
+.astro-cta-sm.blue { background: linear-gradient(135deg, #1d4ed8, #3b82f6); box-shadow: 0 3px 14px rgba(59,130,246,0.3); }
+
+.astro-cta-sm.purple { background: linear-gradient(135deg, #7c3aed, #a855f7); box-shadow: 0 3px 14px rgba(168,85,247,0.3); }
+
+/* 新增：七政四餘按鈕專用的古典翡翠綠漸層樣式 */
+.astro-cta-sm.green { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 3px 14px rgba(16,185,129,0.3); }
 
         /* 底部信任 */
         .astro-trust { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 12px; flex-wrap: wrap; z-index: 1; }
@@ -341,12 +358,18 @@
                 <div class="mini-card mini-single" id="miniSingle">
                     <div class="mini-card-emoji">👤</div>
                     <div class="mini-card-title" id="miniSingleTitle">單盤模式 <span class="badge-sm">免費</span></div>
-                    <div class="mini-card-desc" id="miniSingleDesc">精準天體位置計算<br>十二宮位星盤繪製<br>Victor 師傅深度解盤</div>
+                    <div class="mini-card-desc" id="miniSingleDesc">精準天體位置計算<br>十二宮位星盤繪製<br>Victor 師傅解盤</div>
                 </div>
                 <div class="mini-card mini-synastry" id="miniSynastry">
                     <div class="mini-card-emoji">💞</div>
                     <div class="mini-card-title" id="miniSynastryTitle">雙人合盤 <span class="badge-sm">免費</span></div>
-                    <div class="mini-card-desc" id="miniSynastryDesc">Synastry 相位分析<br>多維度匹配解讀<br>AI 深度解讀關係</div>
+                    <div class="mini-card-desc" id="miniSynastryDesc">Synastry 相位分析<br>多維度匹配解讀<br>AI 深度關係解讀</div>
+                </div>
+                <!-- 新增：七政四餘卡片 -->
+                <div class="mini-card mini-qizheng" id="miniQizheng">
+                    <div class="mini-card-emoji">🏮</div>
+                    <div class="mini-card-title" id="miniQizhengTitle">七政四餘 <span class="badge-sm">免費</span></div>
+                    <div class="mini-card-desc" id="miniQizhengDesc">中式古典天星排盤<br>琴堂五星推演心法<br>精準量化生成報告</div>
                 </div>
             </div>
 
@@ -365,29 +388,36 @@
                 <div class="astro-cta-row">
                     <a href="https://astrology-vercel-app.vercel.app/client" target="_blank" class="astro-cta-sm blue" id="ctaSingle">👤 單盤模式</a>
                     <a href="https://astrology-vercel-app.vercel.app/client" target="_blank" class="astro-cta-sm purple" id="ctaSynastry">💞 雙人合盤</a>
+                    <a href="https://astrology-vercel-app.vercel.app/client" target="_blank" class="astro-cta-sm green" id="ctaQizheng">🏮 七政四餘</a>
                 </div>
             </div>
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    // 檢查網址有沒有 ?lang=en
                     var isEnglish = new URLSearchParams(window.location.search).get('lang') === 'en';
                     var langSuffix = isEnglish ? '?lang=en' : '?lang=zh-TW';
 
                     var btnHorary = document.getElementById('ctaHorary');
                     var btnSingle = document.getElementById('ctaSingle');
                     var btnSynastry = document.getElementById('ctaSynastry');
+                    var btnQizheng = document.getElementById('ctaQizheng');
 
-                    // 1. 自動幫按鈕加上對應的語言網址
                     if (btnHorary) btnHorary.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
                     if (btnSingle) btnSingle.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
                     if (btnSynastry) btnSynastry.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
+                    if (btnQizheng) btnQizheng.href = 'https://astrology-vercel-app.vercel.app/client' + langSuffix;
 
-                    // 2. 如果客人切換到英文版，自動把按鈕文字翻譯成英文
+                    // 確保中英文狀態下，按鈕都有正確的預設顯示文字
                     if (isEnglish) {
                         if (btnHorary) btnHorary.innerText = '🔮 Free Trial · Horary 🔮';
                         if (btnSingle) btnSingle.innerText = '👤 Natal Chart';
                         if (btnSynastry) btnSynastry.innerText = '💞 Synastry Chart';
+                        if (btnQizheng) btnQizheng.innerText = '🏮 Qizheng Siyu';
+                    } else {
+                        if (btnHorary) btnHorary.innerText = '🔮 立即免費體驗 · 時空卜卦 🔮';
+                        if (btnSingle) btnSingle.innerText = '👤 單盤模式';
+                        if (btnSynastry) btnSynastry.innerText = '💞 雙人合盤';
+                        if (btnQizheng) btnQizheng.innerText = '🏮 七政四餘';
                     }
                 });
             </script>
@@ -525,9 +555,9 @@
     })();
 
     /* ===== 4. 多語言處理（含新第二頁） ===== */
-    var promoTextZh = '🔮 正宗術數 · Victor 師傅專業起卦 🔮\n\n⚠️ 坊間「AI 起卦」只是隨機數字配 AI 文字，毫無玄學根基！\n\nVictor 師傅的系統完全不同：\n✅ 正宗術數傳承，每一步都有根有據\n✅ 20 多年實戰經驗親自編寫算法邏輯\n✅ 起卦結果精準專業，真正幫到你決策\n\n━━━━━━━━━━━━━━━\n\n🔮 免費占星時空卜卦 (Horary)：\n✨ 自然語言提問，並且自動分析意圖\n⭐ 正宗古典星象推演，精準起卦\n📊 Victor 師傅深度解盤，專屬報告\n💬 感情、財運、事業、健康全範疇\n\n👤 單盤模式 · 精準天體位置 + Victor 師傅深度解盤\n💞 雙人合盤 · Synastry 相位分析 + Victor 師傅解讀\n🎁 三大模式完全免費！\n👉 https://astrology-vercel-app.vercel.app/client\n\n━━━━━━━━━━━━━━━\n\n五大正宗系統齊備：\n🧮 大六壬 · 三傳四課盤解讀\n☯️ 甲子易 · 納甲神煞解讀\n🎴 易經塔羅 · 融合易經與塔羅智慧\n✨ 奇門遁甲 · 八門九星八神解讀 🆕\n🌟 紫微斗數 · 刻干四化精準觸發 🆕\n\n📹 需要深入解讀？可預約 Zoom 視像解卦！\n\n━━━━━━━━━━━━━━━\n\n🎁 易經塔羅免費體驗 👇\nhttps://iching-tarot.vercel.app/?lang=zh-TW\n\n🚀 完整專業系統 👇\nhttps://hexagram-api.vercel.app/?lang=zh-TW';
+    var promoTextZh = '🔮 正宗術數 · Victor 師傅專業起卦 🔮\n\n⚠️ 坊間「AI 起卦」只是隨機數字配 AI 文字，毫無玄學根基！\n\nVictor 師傅的系統完全不同：\n✅ 正宗術數傳承，每一步都有根有據\n✅ 20 多年實戰經驗親自編寫算法邏輯\n✅ 起卦結果精準專業，真正幫到你決策\n\n━━━━━━━━━━━━━━━\n\n🔮 免費占星時空卜卦 (Horary)：\n✨ 自然語言提問，並且自動分析意圖\n⭐ 正宗古典星象推演，精準起卦\n📊 Victor 師傅深度解盤，專屬報告\n💬 感情、財運、事業、健康全範疇\n\n👤 單盤模式 · 精準天體位置 + Victor 師傅深度解盤\n💞 雙人合盤 · Synastry 相位分析 + Victor 師傅解讀\n🏮 七政四餘 · 中式古典天星排盤 + 琴堂五星推演心法\n🎁 四大模式完全免費！\n👉 https://astrology-vercel-app.vercel.app/client\n\n━━━━━━━━━━━━━━━\n\n五大正宗系統齊備：\n🧮 大六壬 · 三傳四課盤解讀\n☯️ 甲子易 · 納甲神煞解讀\n🎴 易經塔羅 · 融合易經與塔羅智慧\n✨ 奇門遁甲 · 八門九星八神解讀 🆕\n🌟 紫微斗數 · 刻干四化精準觸發 🆕\n\n📹 需要深入解讀？可預約 Zoom 視像解卦！\n\n━━━━━━━━━━━━━━━\n\n🎁 易經塔羅免費體驗 👇\nhttps://iching-tarot.vercel.app/?lang=zh-TW\n\n🚀 完整專業系統 👇\nhttps://hexagram-api.vercel.app/?lang=zh-TW';
 
-    var promoTextEn = '🔮 Authentic Divination · Master Victor 🔮\n\n⚠️ Most "AI divination" tools just pair random numbers with AI text — zero metaphysical foundation!\n\nMaster Victor\'s system is different:\n✅ Authentic metaphysical lineage, every step is grounded\n✅ 20+ years of hands-on experience built into every algorithm\n✅ Precise, professional results that truly guide your decisions\n\n━━━━━━━━━━━━━━━\n\n🔮 Free Horary Astrology:\n✨ Natural language questions, AI auto-analysis\n⭐ Authentic classical astrology precision\n📊 AI Master deep reading, personalized report\n💬 Love, wealth, career, health — all covered\n\n👤 Natal Chart · Precision + AI Deep Analysis\n💞 Synastry · Aspect Analysis + AI Reading\n🎁 All 3 modes completely free!\n👉 https://astrology-vercel-app.vercel.app/client\n\n━━━━━━━━━━━━━━━\n\n5 Professional Systems:\n🧮 Da Liu Ren · Three Transmissions & Four Pillars\n☯️ Jia Zi Yi · Na Jia & Shen Sha Reading\n🎴 I Ching Tarot · Fusing I Ching & Tarot Wisdom\n✨ Qi Men Dun Jia · Eight Gates & Nine Stars 🆕\n🌟 Zi Wei Dou Shu · Ke Pan Precision Trigger 🆕\n\n📹 Need in-depth interpretation? Book a Zoom session!\n\n━━━━━━━━━━━━━━━\n\n🎁 Free I Ching Tarot Trial 👇\nhttps://iching-tarot.vercel.app/?lang=en\n\n🚀 Full Professional System 👇\nhttps://hexagram-api.vercel.app/?lang=en';
+    var promoTextEn = '🔮 Authentic Divination · Master Victor 🔮\n\n⚠️ Most "AI divination" tools just pair random numbers with AI text — zero metaphysical foundation!\n\nMaster Victor\'s system is different:\n✅ Authentic metaphysical lineage, every step is grounded\n✅ 20+ years of hands-on experience built into every algorithm\n✅ Precise, professional results that truly guide your decisions\n\n━━━━━━━━━━━━━━━\n\n🔮 Free Horary Astrology:\n✨ Natural language questions, AI auto-analysis\n⭐ Authentic classical astrology precision\n📊 AI Master deep reading, personalized report\n💬 Love, wealth, career, health — all covered\n\n👤 Natal Chart · Precision + AI Deep Analysis\n💞 Synastry · Aspect Analysis + AI Reading\n🏮 Qizheng Siyu · Imperial Chinese Astrology + Qin Tang System\n🎁 All 4 modes completely free!\n👉 https://astrology-vercel-app.vercel.app/client\n\n━━━━━━━━━━━━━━━\n\n5 Professional Systems:\n🧮 Da Liu Ren · Three Transmissions & Four Pillars\n☯️ Jia Zi Yi · Na Jia & Shen Sha Reading\n🎴 I Ching Tarot · Fusing I Ching & Tarot Wisdom\n✨ Qi Men Dun Jia · Eight Gates & Nine Stars 🆕\n🌟 Zi Wei Dou Shu · Ke Pan Precision Trigger 🆕\n\n📹 Need in-depth interpretation? Book a Zoom session!\n\n━━━━━━━━━━━━━━━\n\n🎁 Free I Ching Tarot Trial 👇\nhttps://iching-tarot.vercel.app/?lang=en\n\n🚀 Full Professional System 👇\nhttps://hexagram-api.vercel.app/?lang=en';
 
     var promoText = promoTextZh;
 
@@ -571,6 +601,12 @@
             document.getElementById('ctaSingle').textContent = '👤 Natal Chart';
             document.getElementById('ctaSynastry').textContent = '💞 Synastry';
             document.getElementById('swipeHint2').textContent = 'Swipe left for full divination systems →';
+            /* Slide 2 — 占星時空卜卦頁 */
+// 在該區塊最下方追加以下三行，用作切換英文時的文本轉換：
+document.getElementById('miniQizhengTitle').innerHTML = 'Qizheng Siyu <span class="badge-sm">FREE</span>';
+document.getElementById('miniQizhengDesc').innerHTML = 'Imperial astrology<br>Qin Tang system logic<br>AI deep analysis report';
+document.getElementById('ctaQizheng').textContent = '🏮 Qizheng Siyu';
+            
 
             /* Slide 3 */
             document.getElementById('badge3').textContent = '🔮 Professional Metaphysics Platform 🔮';
