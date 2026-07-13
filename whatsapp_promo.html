@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victor 智慧助手 · 專業玄學起卦</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900...&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,7 +22,19 @@
 
         /* ===== 通用元素 ===== */
         .top-badge { width: 100%; text-align: center; padding: 13px 20px; font-size: 12px; font-weight: 700; letter-spacing: 3px; flex-shrink: 0; }
-        .section-title { font-family: 'Ma Shan Zheng', cursive; font-size: 44px; background: linear-gradient(180deg, #f4e4a6 0%, #d4af37 50%, #9a7b1a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 6px 0; line-height: 1.2; }
+        .section-title { 
+    font-family: 'Noto Serif TC', serif; 
+    font-weight: 900; /* 使用極粗體 */
+    font-size: 34px;  /* 稍微收斂字級，讓字體更顯得凝聚力 */
+    background: linear-gradient(180deg, #f4e4a6 0%, #d4af37 50%, #9a7b1a 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text; 
+    margin: 10px 0 6px; 
+    line-height: 1.2; 
+    letter-spacing: 4px; /* 字距稍微拉開，呈現大氣感 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.25); /* 輕微陰影讓字體更立體 */
+}
         .section-sub { font-family: 'ZCOOL XiaoWei', serif; color: #c9a227; font-size: 15px; letter-spacing: 4px; margin-bottom: 14px; }
         .cta-btn { display: inline-block; padding: 14px 36px; border-radius: 30px; font-size: 16px; font-weight: 900; font-family: 'Noto Serif TC', serif; text-decoration: none; transition: all 0.3s ease; margin: 12px 0; text-align: center; }
         .swipe-hint { color: rgba(212,175,55,0.45); font-size: 12px; margin-top: 14px; animation: hint-bob 2.5s infinite; }
@@ -110,7 +122,20 @@
         @keyframes astroFloat { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-4px) scale(1.05); } }
 
         /* 標題 */
-        .astro-title { font-family: 'Ma Shan Zheng', cursive; font-size: 40px; background: linear-gradient(180deg, #bfdbfe 0%, #60a5fa 50%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 4px 0; line-height: 1.2; z-index: 1; }
+        .astro-title { 
+    font-family: 'Noto Serif TC', serif; 
+    font-weight: 900; 
+    font-size: 34px; 
+    background: linear-gradient(180deg, #bfdbfe 0%, #60a5fa 50%, #3b82f6 100%); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text; 
+    margin: 10px 0 6px; 
+    line-height: 1.2; 
+    z-index: 1; 
+    letter-spacing: 4px; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+}
         .astro-sub { font-family: 'ZCOOL XiaoWei', serif; color: rgba(96,165,250,0.7); font-size: 14px; letter-spacing: 4px; margin-bottom: 10px; z-index: 1; }
 
         /* 免費標籤 */
