@@ -1,4 +1,4 @@
-// Victor AI 聊天助手 - 嵌入式版本 v2.9 (時柱修正 + 玄空飛星完整版)
+// Victor AI 聊天助手 - 嵌入式版本 v2.9 (時柱修正 + 玄空飛星完整版 + Public Chat 架構)
 // 使用方法：在 </body> 前加入 <script src="victor-ai-chat.js"></script>
 // 同時需要將 lunar.min.js 放在同一目錄
 
@@ -6,7 +6,7 @@
     'use strict';
 
     // ========== 版本資訊 ==========
-    var VICTOR_AI_VERSION = '2.9';
+    var VICTOR_AI_VERSION = '2.9.1';
     console.log('[Victor AI] 版本 ' + VICTOR_AI_VERSION + ' 開始載入...');
 
     // ========== 【新增】自動計算本年九宮飛星分佈 ==========
@@ -162,7 +162,7 @@
 
                 var lunarDate = '農曆' + lunar.getYearInGanZhi() + '年（' + lunar.getYearShengXiao() + '年）' +
                     lunar.getMonthInChinese() + '月' + lunar.getDayInChinese();
-                var ganZhi = '日干支：' + lunar.getDayInGanZhi() + '　時干支：' + lunar.getTimeInGanZhi();
+                var ganZhi = '日干支：' + lunar.getDayInGanZhi() + ' 時干支：' + lunar.getTimeInGanZhi();
 
                 var jieQi = lunar.getJieQi();
                 var jieQiStr = jieQi ? '\n節氣：' + jieQi : '';
@@ -188,25 +188,25 @@
 
                 var chongSha = '';
                 try {
-                    chongSha = '\n沖煞：沖' + lunar.getDayChongDesc() + '　煞' + lunar.getDaySha();
+                    chongSha = '\n沖煞：沖' + lunar.getDayChongDesc() + ' 煞' + lunar.getDaySha();
                 } catch (e) {}
 
                 var positions = '';
                 try {
                     positions = '\n財神方位：' + lunar.getDayPositionCaiDesc() +
-                        '　喜神方位：' + lunar.getDayPositionXiDesc() +
-                        '　福神方位：' + lunar.getDayPositionFuDesc();
+                        ' 喜神方位：' + lunar.getDayPositionXiDesc() +
+                        ' 福神方位：' + lunar.getDayPositionFuDesc();
                 } catch (e) {}
 
                 var pengZu = '';
                 try {
-                    pengZu = '\n彭祖百忌：' + lunar.getPengZuGan() + '　' + lunar.getPengZuZhi();
+                    pengZu = '\n彭祖百忌：' + lunar.getPengZuGan() + ' ' + lunar.getPengZuZhi();
                 } catch (e) {}
 
                 var naYin = '';
                 try {
                     var eightChar = lunar.getEightChar();
-                    naYin = '\n日納音：' + eightChar.getDayNaYin() + '　年納音：' + eightChar.getYearNaYin();
+                    naYin = '\n日納音：' + eightChar.getDayNaYin() + ' 年納音：' + eightChar.getYearNaYin();
                 } catch (e) {}
 
                 var xiu = '';
@@ -248,7 +248,6 @@
             hourMatch = match1;
             console.log('[Victor AI] 時間匹配（格式1帶時段）: ampm=' + ampm + ', hour=' + hour + ', min=' + min);
         } else {
-            // 容許年月日間有空格
             var cleanedMsg = userMessage.replace(/\d{4}\s*[年\-\/.]\s*\d{1,2}\s*[月\-\/.]\s*\d{1,2}\s*[日號]?/, '___DATE___');
             var match2 = cleanedMsg.match(timePatterns[1]);
             if (match2) {
@@ -303,7 +302,6 @@
             var min = (typeof timeMin === 'number' && timeMin >= 0) ? timeMin : 0;
             var solar;
             
-            // 判定是否有輸入有效的小時
             var hasTime = (typeof timeHour === 'number' && timeHour >= 0);
             
             if (hasTime) {
@@ -318,7 +316,7 @@
             
             try {
                 if (typeof eightChar.setSect === 'function') {
-                    eightChar.setSect(2); // 確保晚子時日柱算當天
+                    eightChar.setSect(2);
                 }
             } catch(e){}
 
@@ -350,18 +348,18 @@
                 timePillar = ""; 
             }
 
-            var result = '四柱八字：' + yearPillar + '年　' + monthPillar + '月　' + dayPillar + '日';
+            var result = '四柱八字：' + yearPillar + '年 ' + monthPillar + '月 ' + dayPillar + '日';
             if (hasTime) {
-                result += '　' + timePillar + '時'; 
+                result += ' ' + timePillar + '時'; 
             }
 
             try {
-                result += '\n納音：' + eightChar.getYearNaYin() + '（年）　' + eightChar.getMonthNaYin() + '（月）　' + eightChar.getDayNaYin() + '（日）';
+                result += '\n納音：' + eightChar.getYearNaYin() + '（年） ' + eightChar.getMonthNaYin() + '（月） ' + eightChar.getDayNaYin() + '（日）';
                 if (hasTime) {
                     var tNaYin = "";
                     try { tNaYin = eightChar.getTimeNaYin(); } catch(e){}
                     if (tNaYin) {
-                        result += '　' + tNaYin + '（時）';
+                        result += ' ' + tNaYin + '（時）';
                     }
                 }
             } catch (e) { /* ignore */ }
@@ -378,13 +376,13 @@
             } catch (e) { /* ignore */ }
 
             try {
-                result += '\n沖煞：沖' + lunar.getDayChongDesc() + '　煞' + lunar.getDaySha();
+                result += '\n沖煞：沖' + lunar.getDayChongDesc() + ' 煞' + lunar.getDaySha();
             } catch (e) { /* ignore */ }
 
             try {
                 result += '\n財神：' + lunar.getDayPositionCaiDesc() +
-                    '　喜神：' + lunar.getDayPositionXiDesc() +
-                    '　福神：' + lunar.getDayPositionFuDesc();
+                    ' 喜神：' + lunar.getDayPositionXiDesc() +
+                    ' 福神：' + lunar.getDayPositionFuDesc();
             } catch (e) { /* ignore */ }
 
             return result;
@@ -463,10 +461,11 @@
 
     // ========== 配置區域 ==========
     var CONFIG = {
-        apiBackend: 'https://poe-api-backend.vercel.app',
+        // ✅ 替換為使用新的 API 路徑
+        apiBackend: 'https://my-web-api-amber.vercel.app',
         botName: 'Gemini-2.5-Flash',
 
-        // 【v2.9 升級】加入 flyingStarData 參數
+        // 【v2.9 升級】將原本只傳回一個大字串的函數，改為傳回拆分的 { system, message } 物件
         promptTemplate: function(userMessage, systemBazi, flyingStarData) {
             var langInstruction = {
                 'zh-TW': '請使用繁體中文回答。語氣親切熱情，像朋友聊天。',
@@ -531,7 +530,7 @@
                     '========================================\n\n';
             }
 
-            // 【新增】附加飛星風水資料
+            // 附加飛星風水資料
             var fsSection = '';
             if (flyingStarData) {
                  fsSection = '\n========================================\n' +
@@ -543,7 +542,11 @@
                     '========================================\n\n';
             }
 
-            return mainPrompt + baziSection + fsSection + '【Client Question】\n' + userMessage;
+            // ✅ 將原本合併的字串，改為回傳 { system, message } 的物件格式
+            return {
+                system: mainPrompt + baziSection + fsSection,
+                message: '【Client Question】\n' + userMessage
+            };
         }
     };
 
@@ -1437,7 +1440,7 @@
             input.value = '';
             input.style.height = 'auto';
 
-            // ===== 【新增】攔截風水飛星問題 =====
+            // ===== 攔截風水飛星問題 =====
             var flyingStarData = null;
             var fengShuiKeywords = ['流年', '飛星', '中宮', '風水', '今年', '方位', '佈局', '化解', '催旺', '煞氣', '五黃', '二黑', '財位', '桃花', '文昌', '九紫', '八白', '玄空'];
             var hasFengShui = fengShuiKeywords.some(function(kw) { return message.indexOf(kw) !== -1; });
@@ -1446,7 +1449,7 @@
                 flyingStarData = getYearFlyingStars();
             }
 
-            // ===== 攔截八字問題，先直接顯示系統計算結果 =====
+            // ===== 攔截八字問題 =====
             var systemBaziResult = null;
             var dateMatch = message.match(/(\d{4})\s*[年\-\/.]\s*(\d{1,2})\s*[月\-\/.]\s*(\d{1,2})/);
             var isBaziQuery = /八字|四柱|時柱|日柱|月柱|年柱|命盤|命格|生辰/.test(message);
@@ -1458,16 +1461,15 @@
                 systemBaziResult = getBaziFromDate(dateStr, parsed.hour, parsed.min);
 
                 if (systemBaziResult) {
-                    // 直接在聊天視窗顯示系統計算結果（不經 AI）
                     displaySystemBaziMessage(t('systemBaziPrefix') + systemBaziResult + t('systemBaziSuffix'));
                 }
             }
-            // ===== 結束 =====
 
             isProcessing = true;
             updateSendButton(true);
             displayLoadingMessage();
 
+            // 組合對話紀錄
             var contextPrompt = '';
             if (conversationHistory.length > 0) {
                 contextPrompt = '【Conversation History】\n';
@@ -1478,36 +1480,60 @@
                 contextPrompt += '\n';
             }
 
-            // 【v2.9 升級】把 flyingStarData 傳給 promptTemplate
-            var prompt = CONFIG.promptTemplate(message, systemBaziResult, flyingStarData);
-            var fullPrompt = contextPrompt + prompt;
+            // 取得分離的 system 和 message
+            var promptObj = CONFIG.promptTemplate(message, systemBaziResult, flyingStarData);
+            
+            // ✅ 將歷史紀錄加到 system 指令中，避免污染 user message
+            var finalSystem = promptObj.system;
+            if (contextPrompt) {
+                finalSystem += '\n' + contextPrompt;
+            }
+            var finalUserMsg = promptObj.message;
 
             console.log('[Victor AI] 模型:', CONFIG.botName, '| 歷史:', conversationHistory.length, '| 八字:', !!systemBaziResult, '| 飛星:', !!flyingStarData);
 
-            fetch(CONFIG.apiBackend + '/api/chat', {
+            // ✅ 替換為呼叫新的 public-chat API 
+            fetch(CONFIG.apiBackend + '/api/public-chat', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     model: CONFIG.botName,
-                    message: fullPrompt
+                    system: finalSystem,
+                    message: finalUserMsg
                 })
             })
-            .then(function(response) {
+            .then(async function(response) {
+                // ✅ 處理 429 和 403 的詳細錯誤回傳
+                if (response.status === 429 || response.status === 403) {
+                    var errData = {};
+                    try {
+                        errData = await response.json();
+                    } catch(e) {
+                        errData = { text: await response.text() };
+                    }
+                    var customErr = new Error(errData.text || errData.message || '諮詢次數已達上限，請稍後再試。');
+                    customErr.isRateLimit = true;
+                    throw customErr;
+                }
+
                 if (!response.ok) {
-                    return response.text().then(function(errorText) {
-                        throw new Error('API 請求失敗 (' + response.status + '): ' + errorText.substring(0, 100));
-                    });
+                    var errorText = await response.text();
+                    var apiErr = new Error('API 請求失敗 (' + response.status + '): ' + errorText.substring(0, 100));
+                    apiErr.isServerError = true;
+                    throw apiErr;
                 }
                 return response.json();
             })
             .then(function(data) {
                 removeLoadingMessage();
-                var assistantResponse = data.response || data.text || '';
+                
+                // ✅ 適應 public-chat 的多種回傳格式
+                var assistantResponse = data.response || data.text || data.choices?.[0]?.message?.content || '';
                 if (!assistantResponse) throw new Error('無效的回應格式');
 
                 displayAssistantMessage(assistantResponse);
 
-                // 保存歷史時，把系統八字或飛星資料作為「權威來源」一併保存，避免下次被 AI 錯誤答案污染
+                // 保存歷史
                 conversationHistory.push({ role: 'user', content: message });
                 var historyContent = assistantResponse;
                 
@@ -1523,13 +1549,19 @@
             .catch(function(error) {
                 console.error('[Victor AI] 錯誤:', error);
                 removeLoadingMessage();
-                var errorMessage = t('errorGeneric');
-                if (error.message && (error.message.indexOf('Failed to fetch') !== -1 || error.message.indexOf('NetworkError') !== -1)) {
-                    errorMessage = t('errorNetwork');
-                } else if (error.message) {
-                    errorMessage = error.message;
+                
+                // ✅ 如果是 429 上限或 500 系統錯誤，直接顯示給客人看
+                if (error.isRateLimit || error.isServerError) {
+                    displayError(error.message);
+                } else {
+                    var errorMessage = t('errorGeneric');
+                    if (error.message && (error.message.indexOf('Failed to fetch') !== -1 || error.message.indexOf('NetworkError') !== -1)) {
+                        errorMessage = t('errorNetwork');
+                    } else if (error.message) {
+                        errorMessage = error.message;
+                    }
+                    displayError(errorMessage + t('errorContact'));
                 }
-                displayError(errorMessage + t('errorContact'));
             })
             .finally(function() {
                 isProcessing = false;
