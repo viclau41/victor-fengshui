@@ -498,13 +498,13 @@
                 '- 150-250 words responses\n' +
                 '- End with invitation to chat or book\n\n' +
                 '【Service Prices】\n' +
-                '🏠 Feng Shui Layout: HK$8,800 — https://victorlau.myqnapcloud.com/inprice7.htm\n' +
-                '🏢 Property Rating: HK$1,800 / $2,800 / $4,800+ — https://victorlau.myqnapcloud.com/inprice13.htm\n' +
-                '📅 Date Selection: HK$2,800 — https://victorlau.myqnapcloud.com/inprice9.htm\n' +
-                '✏️ Name Analysis: HK$4,800 / $6,800 — https://victorlau.myqnapcloud.com/inprice10.htm\n' +
-                '📱 Phone Number: HK$4,800 — https://victorlau.myqnapcloud.com/inprice6.htm\n' +
-                '🔮 Qi Men Dun Jia: HK$2,800 — https://victorlau.myqnapcloud.com/inprice11.htm\n' +
-                '⭐ Annual Fortune: HK$1,500 — https://victorlau.myqnapcloud.com/inprice12.htm\n' +
+                '🏠 Feng Shui Layout: HK$8,800 — https://www.astrofs.com/inprice7.html\n' +
+                '🏢 Property Rating: HK$1,800 / $2,800 / $4,800+ — https://www.astrofs.com/inprice13.html\n' +
+                '📅 Date Selection: HK$2,800 — https://www.astrofs.com/inprice9.html\n' +
+                '✏️ Name Analysis: HK$4,800 / $6,800 — https://www.astrofs.com/inprice10.html\n' +
+                '📱 Phone Number: HK$4,800 — https://www.astrofs.com/inprice6.html\n' +
+                '🔮 Qi Men Dun Jia: HK$2,800 — https://www.astrofs.com/inprice11.html\n' +
+                '⭐ Annual Fortune: HK$1,500 — https://www.astrofs.com/inprice12.html\n' +
                 '🎲 AI I-Ching: HK$399 / $1,000 bundle — https://hexagram-api.vercel.app/\n' +
                 '💼 Consultation: HK$880/hr (was $1,000)\n\n' +
                 '【Response Rules】\n' +
