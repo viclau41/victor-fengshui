@@ -1063,7 +1063,7 @@ body {
                             <p class="service-card-description" id="service5-desc">
                                 免費易經塔羅占卜服務，融合千年易學智慧與塔羅牌陣。三張牌陣、大衛星牌陣、指引之星牌陣，讓古人智慧照亮您的前路。
                             </p>
-                            <a href="https://iching-tarot.vercel.app/?lang=zh-TW" target="_blank" class="service-card-link" id="service5-link" style="background: linear-gradient(135deg, #8B0000, #DC143C);">立即體驗 <i class="fas fa-arrow-right"></i></a>
+                            <a href="https://iching-tarot.astrofs.com/?lang=zh-TW" target="_blank" class="service-card-link" id="service5-link" style="background: linear-gradient(135deg, #8B0000, #DC143C);">立即體驗 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1276,12 +1276,12 @@ function switchLanguage(lang) {
     // 更新起卦系統連結（傳遞語言參數）
     var hexLang = lang === 'en' ? '?lang=en' : '?lang=zh-TW';
     var hexagramNav = document.getElementById('nav-hexagram');
-    if (hexagramNav) hexagramNav.href = 'https://hexagram-api.vercel.app/' + hexLang;
+    if (hexagramNav) hexagramNav.href = 'https://hexagram.astrofs.com/' + hexLang;
     var hexagramCard = document.getElementById('service4-link');
-    if (hexagramCard) hexagramCard.href = 'https://hexagram-api.vercel.app/' + hexLang;
+    if (hexagramCard) hexagramCard.href = 'https://hexagram.astrofs.com/' + hexLang;
     // 塔羅連結也傳遞語言
     var tarotCard = document.getElementById('service5-link');
-    if (tarotCard) tarotCard.href = 'https://iching-tarot.vercel.app/' + hexLang;
+    if (tarotCard) tarotCard.href = 'https://iching-tarot.astrofs.com/' + hexLang;
 }
 
 // 頁面加載時檢查用戶的語言偏好
@@ -1298,7 +1298,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ========================= //
 // 推廣 Modal 功能
 // ========================= //
-var PROMO_URL = 'https://victor-fengshui.vercel.app/whatsapp_promo.html';
+var PROMO_URL = 'https://www.astrofs.com/whatsapp_promo.html';
 
 // 打開推廣 Modal
 function openPromoModal() {
