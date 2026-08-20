@@ -476,8 +476,8 @@
                 'en': '"Want to learn more? Feel free to ask, or WhatsApp +852 6188 3889 to book a personal consultation with Master Victor!"'
             };
             var freeTrialTexts = {
-                'zh-TW': '當客人問「有冇免費」「有冇優惠」「可唔可以試下」「免費試用」等時，才告訴他們：\n🎁 首次使用智慧起卦服務，可獲得 **3次免費起卦碼** 試用！\n- 只需 WhatsApp 6188 3889 說明想試用\n- 體驗網址：https://hexagram-api.vercel.app/\n- 此優惠只限首次使用的新客人\n⚠️ 如果客人沒有主動問免費/優惠，不要主動提及！',
-                'en': 'Only when the client asks about "free", "trial", "discount", "promotion", etc., tell them:\n🎁 First-time users can get **3 free divination codes** to try!\n- Just WhatsApp +852 6188 3889 to request a trial\n- Try it at: https://hexagram-api.vercel.app/\n- This offer is for first-time users only\n⚠️ Do NOT mention this offer unless the client asks about free/discounts!'
+                'zh-TW': '當客人問「有冇免費」「有冇優惠」「可唔可以試下」「免費試用」等時，才告訴他們：\n🎁 首次使用智慧起卦服務，可獲得 **3次免費起卦碼** 試用！\n- 只需 WhatsApp 6188 3889 說明想試用\n- 體驗網址：https://hexagram.astrofs.com/\n- 此優惠只限首次使用的新客人\n⚠️ 如果客人沒有主動問免費/優惠，不要主動提及！',
+                'en': 'Only when the client asks about "free", "trial", "discount", "promotion", etc., tell them:\n🎁 First-time users can get **3 free divination codes** to try!\n- Just WhatsApp +852 6188 3889 to request a trial\n- Try it at: https://hexagram.astrofs.com/\n- This offer is for first-time users only\n⚠️ Do NOT mention this offer unless the client asks about free/discounts!'
             };
 
             var li = langInstruction[currentLang] || langInstruction['en'];
@@ -505,7 +505,7 @@
                 '📱 Phone Number: HK$4,800 — https://www.astrofs.com/inprice6.html\n' +
                 '🔮 Qi Men Dun Jia: HK$2,800 — https://www.astrofs.com/inprice11.html\n' +
                 '⭐ Annual Fortune: HK$1,500 — https://www.astrofs.com/inprice12.html\n' +
-                '🎲 AI I-Ching: HK$399 / $1,000 bundle — https://hexagram-api.vercel.app/\n' +
+                '🎲 AI I-Ching: HK$399 / $1,000 bundle — https://hexagram.astrofs.com/\n' +
                 '💼 Consultation: HK$880/hr (was $1,000)\n\n' +
                 '【Response Rules】\n' +
                 '1. Quote prices when asked\n' +
