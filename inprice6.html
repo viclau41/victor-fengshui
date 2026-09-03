@@ -1591,6 +1591,10 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    
+    // 動態取得當前年份（跨年自動更新）
+var currentYear = new Date().getFullYear();
+    
 // 儲存中英文對照資料
 const translations = {
     'zh': {
@@ -1693,7 +1697,7 @@ const translations = {
         'case2-result': '結果：更換號碼後兩週，一位朋友的推薦使她獲得了面試機會，並在重重競爭中脫穎而出。現在她在一家知名外資銀行工作，起薪比預期高20%。',
         
         // 頁腳
-        'copyright': '版權所有 © 2002-2026',
+        'copyright': '版權所有 © 2002-' + currentYear,
         'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
         'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
     },
@@ -1795,7 +1799,7 @@ const translations = {
         'case2-result': 'Result: Two weeks after changing her number, a friend\'s recommendation helped her secure an interview opportunity, and she stood out among the competition. She now works at a well-known foreign bank with a starting salary 20% higher than expected.',
         
         // 頁腳
-        'copyright': 'Copyright © 2002-2026',
+        'copyright': 'Copyright © 2002-' + currentYear,
         'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
         'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
     }
