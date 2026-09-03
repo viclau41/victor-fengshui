@@ -995,6 +995,10 @@
     </footer>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    
+    // 動態取得當前年份（跨年自動更新）
+var currentYear = new Date().getFullYear();
+    
 // 儲存中英文對照資料
 const translations = {
     'zh': {
@@ -1096,7 +1100,7 @@ const translations = {
         'note-text3': '建議提前安排預約，特別是需要大師親臨的服務，以確保在適合的時辰進行。',
         
         // 頁腳
-        'copyright': '版權所有 © 2002-2026',
+        'copyright': '版權所有 © 2002-' + currentYear,
         'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
         'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
     },
@@ -1199,7 +1203,7 @@ const translations = {
         'note-text3': 'We recommend arranging appointments in advance, especially for services requiring the master\'s presence, to ensure they are conducted at auspicious times.',
         
         // 頁腳
-        'copyright': 'Copyright © 2002-2026',
+        'copyright': 'Copyright © 2002-' + currentYear,
         'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
         'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
     }
