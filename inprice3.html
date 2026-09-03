@@ -1244,6 +1244,10 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    
+    // 動態取得當前年份（跨年自動更新）
+var currentYear = new Date().getFullYear();
+    
 // 確保星座名稱可見
 function ensureZodiacVisibility() {
     // 確保所有星座名稱可見
@@ -1380,7 +1384,7 @@ const translations = {
         'case2-result': '結果：占星分析幫助他們理解了彼此深層次的連結，並提供了處理潛在溝通問題的建議。一年後他們舉行了婚禮，並表示星盤分析極大地幫助了他們建立更深入的理解與連結。',
         
         // 頁腳
-        'copyright': '版權所有 © 2002-2026',
+        'copyright': '版權所有 © 2002-' + currentYear,
         'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
         'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
     },
@@ -1464,7 +1468,7 @@ const translations = {
         'case2-result': 'Result: The astrological analysis helped them understand their deep connection and provided advice for handling potential communication issues. A year later, they were married and reported that the chart analysis greatly helped them build a deeper understanding and connection.',
         
         // 頁腳
-        'copyright': 'Copyright © 2002-2026',
+        'copyright': 'Copyright © 2002-' + currentYear,
         'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
         'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
     }
