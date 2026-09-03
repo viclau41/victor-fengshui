@@ -1762,6 +1762,10 @@
 
 <!-- 語言切換腳本 -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    
+    // 動態取得當前年份（跨年自動更新）
+var currentYear = new Date().getFullYear();
+    
 // 檢測是否為Android設備
 function isAndroid() {
     var ua = navigator.userAgent.toLowerCase();
@@ -1938,7 +1942,7 @@ const translations = {
         'case2-result': '吉日效果：出生在精選日期的孩子體質強健，三年內只有輕微感冒2次，與同齡兒童相比，抵抗力明顯更強。',
         
         // 頁腳
-        'copyright': '版權所有 © 2002-2026',
+        'copyright': '版權所有 © 2002-' + currentYear,
         'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
         'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
     },
@@ -2034,7 +2038,7 @@ const translations = {
         'case2-result': 'Impact: The child born on the selected auspicious date has shown excellent health, experiencing only two minor colds in three years, with significantly stronger immunity compared to peers.',
         
         // 頁腳
-        'copyright': 'Copyright © 2002-2026',
+        'copyright': 'Copyright © 2002-' + currentYear,
         'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
         'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
     }
