@@ -1436,6 +1436,10 @@
     </footer>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    
+    // 動態取得當前年份（跨年自動更新）
+var currentYear = new Date().getFullYear();
+    
 // 動態生成月份標籤
 document.addEventListener('DOMContentLoaded', function() {
     const wheelContainer = document.querySelector('.wheel-container');
@@ -1566,7 +1570,7 @@ const translations = {
         'case2-result': '預測實現：李女士接受建議暫緩購房，2024年房市果然下跌，至2025年1月，她以比原計劃低15%的價格購入東南區一處房產，一年後該區域因新政策受益，房價上漲22%。',
         
         // 頁腳
-        'copyright': '版權所有 © 2002-2026',
+        'copyright': '版權所有 © 2002-' + currentYear,
         'address': '公司地址: 銅鑼灣希慎道8號裕景商業中心3樓',
         'contact-info': '電話: 6188 3889 電子郵件: <a href="mailto:viclau41@gmail.com?subject=從網頁內詢問">viclau41@gmail.com</a>'
     },
@@ -1671,7 +1675,7 @@ const translations = {
         'case2-result': 'Prediction fulfilled: Ms. Li accepted our advice and postponed her purchase. As predicted, the property market indeed declined in 2024. By January 2025, she purchased a property in the southeast district at a price 15% lower than her original budget. One year later, due to new policies benefiting that area, the property value increased by 22%.',
         
         // 頁腳
-        'copyright': 'Copyright © 2002-2026',
+        'copyright': 'Copyright © 2002-' + currentYear,
         'address': 'Address: 3/F, Eton Tower, 8 Hysan Ave, Causeway Bay',
         'contact-info': 'Tel: 6188 3889 Email: <a href="mailto:viclau41@gmail.com?subject=Inquiry from Website">viclau41@gmail.com</a>'
     }
