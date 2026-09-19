@@ -463,7 +463,7 @@
     var CONFIG = {
         // ✅ 替換為使用新的 API 路徑
         apiBackend: 'https://my-web-api-amber.vercel.app',
-        botName: 'Gemini-3.8-Flash',
+        botName: 'Gemini-3.5-Flash-lite',
 
         // 【v2.9 升級】將原本只傳回一個大字串的函數，改為傳回拆分的 { system, message } 物件
         promptTemplate: function(userMessage, systemBazi, flyingStarData) {
