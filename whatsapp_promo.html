@@ -471,6 +471,89 @@
         .share-copy-btn { display: block; width: 100%; padding: 12px; border-radius: 25px; border: none; font-size: 15px; font-weight: 700; cursor: pointer; background: linear-gradient(135deg, #2d6b3f, #4caf50); color: #fff; }
         .toast { position: fixed; top: 18px; left: 50%; transform: translateX(-50%) translateY(-80px); background: linear-gradient(135deg, #2d6b3f, #4caf50); color: #fff; padding: 10px 24px; border-radius: 25px; font-size: 14px; font-weight: 700; z-index: 300; transition: transform 0.35s; }
         .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* ===== 40秒示範影片彈窗與按鈕 ===== */
+        .astro-demo-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 900;
+            font-family: 'Noto Serif TC', serif;
+            color: #fde68a;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1.5px solid rgba(251, 191, 36, 0.55);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.18);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .astro-demo-btn:hover {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: #fbbf24;
+            transform: translateY(-1px);
+        }
+        .video-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 8, 18, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 250;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 16px;
+        }
+        .video-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .video-box {
+            width: 100%;
+            max-width: 390px;
+            background: #0f172a;
+            border: 1.5px solid rgba(251, 191, 36, 0.5);
+            border-radius: 18px;
+            padding: 16px;
+            position: relative;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
+            text-align: center;
+        }
+        .video-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .video-close:hover { color: #fbbf24; }
+        .video-heading {
+            color: #fbbf24;
+            font-size: 15px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            padding-right: 22px;
+        }
+        .video-player {
+            width: 100%;
+            max-height: 72vh;
+            border-radius: 12px;
+            background: #000;
+            outline: none;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -701,6 +784,7 @@
             <!-- CTA 按鈕：主角 + 3 大子模組快捷入口 -->
             <div class="astro-cta-group fade-up">
                 <a href="https://astrology.astrofs.com/client" target="_blank" class="astro-cta-horary" id="ctaHorary">💹 立即進入 · 機構金融占星終端 💹</a>
+                <button type="button" class="astro-demo-btn" id="btnWatchDemo" onclick="openDemoVideo()">▶️ 觀看 40 秒實戰操作示範影片</button>
                 <div class="astro-cta-row">
                     <a href="https://astrology.astrofs.com/client" target="_blank" class="astro-cta-sm blue" id="ctaSingle">📡 多股雷達</a>
                     <a href="https://astrology.astrofs.com/client" target="_blank" class="astro-cta-sm purple" id="ctaSynastry">🦢 ABC波浪圖</a>
@@ -811,6 +895,13 @@
         <div class="share-heading">📲 WhatsApp 宣傳文案</div>
         <div class="share-preview" id="promoPreview"></div>
         <button class="share-copy-btn" onclick="copyPromoText()">📋 複製文案</button>
+    </div>
+</div>
+<div class="video-overlay" id="videoOverlay" onclick="closeDemoVideo(event)">
+    <div class="video-box" onclick="event.stopPropagation()">
+        <button type="button" class="video-close" onclick="closeDemoVideoDirect()">&times;</button>
+        <div class="video-heading" id="videoModalHeading">🎬 機構金融占星 · 40秒實戰操作示範</div>
+        <video id="promoDemoVideo" class="video-player" controls playsinline preload="none"></video>
     </div>
 </div>
 <div class="toast" id="toast">✅ 已複製到剪貼板！</div>
@@ -945,6 +1036,8 @@
             document.getElementById('miniQizhengDesc').innerHTML = 'Personal entry/exit days<br>Qimen/Liuren/Ziwei<br>TradingView PineScript';
             document.getElementById('astroAiText').innerHTML = 'Instant <strong>Institutional Order & Risk Execution Sheet</strong>,<br>plus <strong>AI Master Deep Report</strong>, Audio Guide & 1-click TradingView script.';
             document.getElementById('ctaHorary').textContent = '💹 Launch · Financial Astrology Terminal 💹';
+            var demoBtn = document.getElementById('btnWatchDemo'); if (demoBtn) demoBtn.textContent = '▶️ Watch 40s Live Demo Video';
+            var vHead = document.getElementById('videoModalHeading'); if (vHead) vHead.textContent = '🎬 Financial Astrology · 40s Live Demo';
             document.getElementById('ctaSingle').textContent = '📡 Alpha Scanner';
             document.getElementById('ctaSynastry').textContent = '🦢 ABC Wave & Risk';
             document.getElementById('ctaQizheng').textContent = '🏛️ Trader Synastry';
@@ -1012,6 +1105,33 @@
         document.body.removeChild(ta);
         var t = document.getElementById('toast'); t.classList.add('show');
         setTimeout(function(){ t.classList.remove('show'); }, 2200);
+    }
+
+    /* ===== 5B. 40秒實戰示範影片彈窗（點擊才載入，零拖慢網頁） ===== */
+    var DEMO_VIDEO_URL = 'https://astrology.astrofs.com/promo.mp4';
+    function openDemoVideo() {
+        var overlay = document.getElementById('videoOverlay');
+        var vid = document.getElementById('promoDemoVideo');
+        if (!overlay || !vid) return;
+        if (autoTimer) clearTimeout(autoTimer);
+        if (!vid.getAttribute('src')) {
+            vid.setAttribute('src', DEMO_VIDEO_URL);
+        }
+        overlay.classList.add('open');
+        vid.play().catch(function(){});
+    }
+    function closeDemoVideo(e) {
+        if (e.target === e.currentTarget) closeDemoVideoDirect();
+    }
+    function closeDemoVideoDirect() {
+        var overlay = document.getElementById('videoOverlay');
+        var vid = document.getElementById('promoDemoVideo');
+        if (overlay) overlay.classList.remove('open');
+        if (vid) {
+            vid.pause();
+            try { vid.currentTime = 0; } catch (e) {}
+        }
+        resetAutoTimer();
     }
 
     /* ===== 6. 初始化 ===== */
