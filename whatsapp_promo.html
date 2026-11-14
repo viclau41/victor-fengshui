@@ -1108,7 +1108,7 @@
     }
 
     /* ===== 5B. 40秒實戰示範影片彈窗（點擊才載入，零拖慢網頁） ===== */
-    var DEMO_VIDEO_URL = 'https://astrology.astrofs.com/promo.mp4';
+    var DEMO_VIDEO_URL = (new URLSearchParams(window.location.search).get('lang') === 'en') ? 'https://astrology.astrofs.com/promo_en.mp4' : 'https://astrology.astrofs.com/promo.mp4';
     function openDemoVideo() {
         var overlay = document.getElementById('videoOverlay');
         var vid = document.getElementById('promoDemoVideo');
