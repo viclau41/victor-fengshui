@@ -3,47 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>廣東話語音朗讀助手</title>
+<title>廣東話文章語音朗讀器</title>
 <style>
-  body { background: #121212; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Microsoft JhengHei", sans-serif; line-height: 1.8; padding: 16px; max-width: 720px; margin: auto; }
-  .controls { position: sticky; top: 0; background: #1e1e1e; padding: 12px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border: 1px solid #333; z-index: 10; margin-bottom: 16px; }
-  select, button { background: #2c2c2c; color: #fff; border: 1px solid #444; padding: 8px 12px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+  * { box-sizing: border-box; }
+  body {
+    background: #121212;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Microsoft JhengHei", sans-serif;
+    line-height: 1.8;
+    padding: 14px;
+    max-width: 760px;
+    margin: auto;
+  }
+  .controls {
+    position: sticky;
+    top: 0;
+    background: #1e1e1e;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid #333;
+    z-index: 20;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  select, button {
+    background: #2c2c2c;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  select { max-width: 100%; }
+  button:hover { background: #3a3a3a; }
   button.primary { background: #0066cc; border-color: #0077ee; font-weight: bold; }
-  p { padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: background 0.2s; margin: 8px 0; }
-  p:hover { background: #1f1f1f; }
-  p.active { background: #2a3b4c; border-left: 4px solid #4da6ff; color: #ffffff; }
+  button.primary:hover { background: #0077ee; }
+  button.paused { background: #d97706; border-color: #f59e0b; font-weight: bold; }
+  button.danger { background: #7f1d1d; border-color: #991b1b; }
+
+  .input-box {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  textarea {
+    width: 100%;
+    height: 150px;
+    background: #121212;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 15px;
+    line-height: 1.6;
+    resize: vertical;
+  }
+  .input-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  label.checkbox-label {
+    font-size: 13px;
+    color: #bbb;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+
+  #content {
+    min-height: 120px;
+    padding-bottom: 60px;
+  }
+  .placeholder {
+    color: #777;
+    text-align: center;
+    padding: 30px 10px;
+    border: 1px dashed #333;
+    border-radius: 8px;
+  }
+  #content p {
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 6px 0;
+    border-left: 4px solid transparent;
+  }
+  #content p:hover { background: #1f1f1f; }
+  #content p.active {
+    background: #1e3a5f;
+    border-left: 4px solid #4da6ff;
+    color: #ffffff;
+  }
+  #content p.active.is-paused {
+    background: #422006;
+    border-left: 4px solid #f59e0b;
+  }
 </style>
 </head>
 <body>
 
 <div class="controls">
-  <select id="voiceSelect"></select>
-  <select id="rateSelect">
-    <option value="1.0">1.0x 正常</option>
-    <option value="1.2">1.2x 稍快</option>
-    <option value="1.4" selected>1.4x 爽快</option>
-    <option value="1.6">1.6x 極速</option>
+  <select id="voiceSelect" title="選擇廣東話語音"></select>
+  <select id="rateSelect" title="選擇朗讀速度">
+    <option value="1.0">1.0x</option>
+    <option value="1.2">1.2x</option>
+    <option value="1.3">1.3x</option>
+    <option value="1.4" selected>1.4x</option>
+    <option value="1.5">1.5x</option>
+    <option value="1.6">1.6x</option>
   </select>
-  <button class="primary" id="playPauseBtn">▶ 播放 / 暫停</button>
+  <button class="primary" id="playPauseBtn">▶ 開始朗讀</button>
   <button id="stopBtn">⏹ 停止</button>
 </div>
 
+<div class="input-box">
+  <textarea id="articleInput" placeholder="請在此貼上你想朗讀的文章..."></textarea>
+  <div class="input-actions">
+    <div class="btn-group">
+      <button class="primary" id="loadAndPlayBtn">載入並立即朗讀</button>
+      <button id="pasteBtn">📋 貼上</button>
+      <button class="danger" id="clearBtn">清空</button>
+    </div>
+    <label class="checkbox-label">
+      <input type="checkbox" id="cleanMarkdown" checked>
+      自動過濾符號 (** / ### / ---)
+    </label>
+  </div>
+</div>
+
 <div id="content">
-  <p>第一，核心結論：立刻停止賣 AI 程式，轉賣師傅親自把關嘅結果。</p>
-  <p>直接同你講句真話：你之所以推唔郁，唔係你嘅程式唔好，而係你將後台工具當成前台商品去賣，剛好撞正你命盤財帛宮嘅死穴。</p>
-  <p>客人唔信外人嘅 AI，好正常，因為喺佢哋眼中，AI 係免費、冰冷、自己上個網都問到嘅嘢。你要賺錢，必須將 AI 收埋喺幕後做你嘅秘密加速器，台前賣嘅永遠係你嘅資歷、專屬演算法把關、同埋人情溫度。</p>
-  <p>第二，盤面直擊：點解賣程式會食檸檬？</p>
-  <p>睇返你嘅命盤，呢個現象其實寫得好清楚。財帛宮子宮見天機廟、加地空同天機離心自化忌。天機正正代表程式、演算法同 AI 科技。今年有大限天機化祿加流年天機化權，所以你今年研發力爆棚、靈感源源不絕，寫咗好多程式出嚟。</p>
-  <p>但點解變唔到現？因為本命子宮帶地空同離心自化忌。這代表淨係將技術或者工具拎出嚟賣，好容易被市場覺得唔值錢、好易取代，結果你付出咗大量心血，財氣卻留唔住。</p>
-  <p>你真正嘅吸金引擎喺邊？喺申宮，即係天梁大限化權、加祿存、流年天同化祿同流年文昌；以及午宮，即係流年命宮巨門旺、大限文昌同流年文曲。呢組星象講明：你係靠天梁嘅權威把關、解決難題，加上巨門嘅精準口才與深度分析，去令客人心甘情願俾錢。</p>
-  <p>第三，未來兩個月，農曆丙午年底前三大落實方案。</p>
-  <p>由今日西曆 2026年11月25日，農曆丙午年十月十七，去到農曆丙午年年尾，西曆 2027年2月5日，正正係玄學界最旺嘅睇 2027 流年運程同風水黃金檔期。建議你即刻做以下三件事：</p>
-  <p>第一招，轉做前店後廠：賣師傅精批加語音解說，唔好提 AI。唔好再同客講我寫咗個 AI 程式幫你算。改為推出 2027 丁未年個人流年精批加風水佈局方案，由你嘅程式喺後台 3 分鐘幫你生成精準排盤同八成初稿，你只需要花 15 分鐘親自審核、加幾句一針見血嘅師傅點評，再錄一段 3 至 5 分鐘嘅廣東話語音發俾客。咁樣做，你用盡咗 AI 嘅效率，同時完全發揮你今年午宮巨門加文昌文曲嘅口才優勢。客人聽到你把聲、覺得係師傅親自睇過，信任度同收費即時翻幾倍。</p>
-  <p>第二招，反向操作：直接拆解自己用免費 AI 算命點解會出事。既然客人覺得自己都有 AI，你就唔好同佢爭拗，反而拍短片或者寫帖文，拎真實案例示範：坊間免費 AI 成日排錯真太陽時、搞亂四化飛星、更加唔識玄空風水合參，隨時俾錯建議累死人。用專業內容做降維打擊，令客人明白：AI 只係計數機，冇師傅套核心邏輯同親自校準，出嚟嘅結果係信唔過嘅。呢步正正食正你大限紫微化科，丑宮嘅權威名聲運。</p>
-  <p>第三招，程式若要直接變現，改攻同行而唔係散客。你嘅大限命宮喺酉宮，即係本命交友宮，坐武曲化權、七殺，利於從同行或合作夥伴身上搵錢。好多傳統玄學師傅唔識科技、寫報告寫到手軟，你可以將你套程式包裝成玄學師傅專用嘅極速排盤與報告助手，搵同行收月費或合作拆帳，佢哋比散客更識欣賞你套系統嘅價值。</p>
-  <p>第四，時機與風水配合提醒。</p>
-  <p>踏入農曆丁未年，西曆 2027年2月6日起，流年會迎來巨門化忌，到時市場上嘅質疑、口舌同同行競爭會明顯變大。所以必須趁農曆丙午年最後呢兩個多月，盡快將師傅親自把關加流年報告嘅收費模式跑通，先收一筆穩陣錢袋袋平安。</p>
-  <p>呢段時間錄音、寫文案或者同客傾方案，記得繼續坐喺你屋企東南方巽宮張書枱做，借今年九紫喜慶星同一四同宮文昌局嘅氣場，幫你催旺口碑同轉化率。</p>
+  <div class="placeholder">貼上文章後按「載入並立即朗讀」，點擊任何段落可直接跳轉或暫停／繼續。</div>
 </div>
 
 <script>
@@ -52,67 +155,204 @@
   const rateSelect = document.getElementById('rateSelect');
   const playPauseBtn = document.getElementById('playPauseBtn');
   const stopBtn = document.getElementById('stopBtn');
-  const paragraphs = Array.from(document.querySelectorAll('#content p'));
+  const articleInput = document.getElementById('articleInput');
+  const loadAndPlayBtn = document.getElementById('loadAndPlayBtn');
+  const pasteBtn = document.getElementById('pasteBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const cleanMarkdown = document.getElementById('cleanMarkdown');
+  const contentDiv = document.getElementById('content');
+
+  let paragraphs = [];
   let currentIndex = 0;
   let isPlaying = false;
+  let isPaused = false;
+  let speakSessionId = 0;
 
   function loadVoices() {
     const voices = synth.getVoices();
-    const hkVoices = voices.filter(v => v.lang.includes('HK') || v.lang.includes('yue') || v.name.includes('Cantonese') || v.name.includes('Hong Kong'));
+    const hkVoices = voices.filter(v =>
+      v.lang.includes('HK') ||
+      v.lang.includes('yue') ||
+      v.name.includes('Cantonese') ||
+      v.name.includes('Hong Kong') ||
+      v.name.includes('WanLung') ||
+      v.name.includes('HiuGaai') ||
+      v.name.includes('HiuMaan')
+    );
     const list = hkVoices.length ? hkVoices : voices;
-    voiceSelect.innerHTML = list.map((v, i) => `<option value="${voices.indexOf(v)}">${v.name} (${v.lang})</option>`).join('');
+    const prevVal = voiceSelect.value;
+    voiceSelect.innerHTML = list.map(v =>
+      `<option value="${voices.indexOf(v)}">${v.name} (${v.lang})</option>`
+    ).join('');
+    if (prevVal) voiceSelect.value = prevVal;
   }
+
   loadVoices();
-  if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = loadVoices;
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function updateUI() {
+    if (isPlaying && !isPaused) {
+      playPauseBtn.textContent = '⏸ 暫停';
+      playPauseBtn.className = 'paused';
+    } else if (isPlaying && isPaused) {
+      playPauseBtn.textContent = '▶ 繼續';
+      playPauseBtn.className = 'primary';
+    } else {
+      playPauseBtn.textContent = '▶ 開始朗讀';
+      playPauseBtn.className = 'primary';
+    }
+
+    paragraphs.forEach((p, idx) => {
+      p.classList.toggle('active', isPlaying && idx === currentIndex);
+      p.classList.toggle('is-paused', isPlaying && isPaused && idx === currentIndex);
+    });
+  }
+
+  function parseArticle() {
+    let raw = articleInput.value.trim();
+    if (!raw) return false;
+
+    if (cleanMarkdown.checked) {
+      raw = raw
+        .replace(/^#+\s*/gm, '')
+        .replace(/\*\*|__/g, '')
+        .replace(/^[-*_]{3,}\s*$/gm, '')
+        .replace(/^\s*[-*•]\s+/gm, '')
+        .replace(/`+/g, '');
+    }
+
+    const lines = raw.split(/\n+/).map(l => l.trim()).filter(l => l.length > 0);
+    if (!lines.length) return false;
+
+    contentDiv.innerHTML = '';
+    paragraphs = lines.map((text, idx) => {
+      const p = document.createElement('p');
+      p.textContent = text;
+      p.onclick = () => {
+        if (isPlaying && currentIndex === idx) {
+          togglePlayPause();
+        } else {
+          currentIndex = idx;
+          isPlaying = true;
+          isPaused = false;
+          speakParagraph(currentIndex);
+        }
+      };
+      contentDiv.appendChild(p);
+      return p;
+    });
+
+    currentIndex = 0;
+    return true;
+  }
 
   function speakParagraph(index) {
-    if (index >= paragraphs.length) { stopSpeech(); return; }
+    if (index >= paragraphs.length) {
+      stopSpeech();
+      return;
+    }
+
+    speakSessionId++;
+    const currentSession = speakSessionId;
     synth.cancel();
-    paragraphs.forEach(p => p.classList.remove('active'));
-    paragraphs[index].classList.add('active');
+
+    isPlaying = true;
+    isPaused = false;
+    updateUI();
+
     paragraphs[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    const utter = new SpeechSynthesisUtterance(paragraphs[index].innerText);
+    const utter = new SpeechSynthesisUtterance(paragraphs[index].textContent);
     const allVoices = synth.getVoices();
-    if (voiceSelect.value) utter.voice = allVoices[voiceSelect.value];
+    if (voiceSelect.value !== '') {
+      utter.voice = allVoices[voiceSelect.value];
+    }
     utter.lang = 'zh-HK';
     utter.rate = parseFloat(rateSelect.value);
+
     utter.onend = () => {
-      if (isPlaying) {
+      if (currentSession !== speakSessionId) return;
+      if (isPlaying && !isPaused) {
         currentIndex++;
         speakParagraph(currentIndex);
       }
     };
+
+    utter.onerror = () => {
+      if (currentSession !== speakSessionId) return;
+    };
+
     synth.speak(utter);
   }
 
-  function stopSpeech() {
-    isPlaying = false;
-    synth.cancel();
-    paragraphs.forEach(p => p.classList.remove('active'));
-    currentIndex = 0;
-  }
+  function togglePlayPause() {
+    if (!paragraphs.length) {
+      if (!parseArticle()) return;
+    }
 
-  playPauseBtn.onclick = () => {
-    if (synth.speaking && !synth.paused) {
+    if (isPlaying && !isPaused) {
       synth.pause();
-    } else if (synth.paused) {
+      isPaused = true;
+      updateUI();
+    } else if (isPlaying && isPaused) {
       synth.resume();
+      isPaused = false;
+      updateUI();
     } else {
       isPlaying = true;
+      isPaused = false;
+      speakParagraph(currentIndex);
+    }
+  }
+
+  function stopSpeech() {
+    speakSessionId++;
+    synth.cancel();
+    isPlaying = false;
+    isPaused = false;
+    currentIndex = 0;
+    updateUI();
+  }
+
+  playPauseBtn.onclick = togglePlayPause;
+  stopBtn.onclick = stopSpeech;
+
+  loadAndPlayBtn.onclick = () => {
+    stopSpeech();
+    if (parseArticle()) {
+      speakParagraph(0);
+    }
+  };
+
+  rateSelect.onchange = () => {
+    if (isPlaying && !isPaused) {
       speakParagraph(currentIndex);
     }
   };
 
-  stopBtn.onclick = stopSpeech;
+  voiceSelect.onchange = () => {
+    if (isPlaying && !isPaused) {
+      speakParagraph(currentIndex);
+    }
+  };
 
-  paragraphs.forEach((p, idx) => {
-    p.onclick = () => {
-      currentIndex = idx;
-      isPlaying = true;
-      speakParagraph(idx);
-    };
-  });
+  pasteBtn.onclick = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      articleInput.value = text;
+    } catch (err) {
+      alert('瀏覽器未允許自動讀取剪貼簿，請直接在輸入框按 Ctrl+V 或長按貼上。');
+    }
+  };
+
+  clearBtn.onclick = () => {
+    stopSpeech();
+    articleInput.value = '';
+    paragraphs = [];
+    contentDiv.innerHTML = '<div class="placeholder">貼上文章後按「載入並立即朗讀」，點擊任何段落可直接跳轉或暫停／繼續。</div>';
+  };
 </script>
 </body>
 </html>
